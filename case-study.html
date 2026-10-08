@@ -1,0 +1,157 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Feature Delivery Case Study | Your Name</title>
+    <link rel="stylesheet" href="style.css">
+    <style>
+        .case-hero { padding: 65px 0 35px; }
+        .sample-label {
+            display: inline-block;
+            border: 1px solid var(--accent);
+            color: var(--accent);
+            border-radius: 20px;
+            padding: 4px 12px;
+            font-size: 13px;
+        }
+        .case-content { max-width: 800px; }
+        .case-content h2 { margin-top: 38px; }
+        .case-content li { margin-bottom: 10px; color: var(--muted); }
+        .artifact {
+            background: var(--card);
+            border: 1px solid var(--border);
+            padding: 20px;
+            border-radius: 12px;
+            margin: 18px 0;
+        }
+        .artifact strong { color: var(--accent); }
+        .back-link { display: inline-block; margin-top: 22px; color: var(--accent); }
+    </style>
+</head>
+<body>
+
+<nav>
+    <div class="container nav-content">
+        <a class="logo" href="index.html">YOUR NAME</a>
+        <div class="nav-links">
+            <a href="index.html#work">Work</a>
+            <a href="index.html#about">About</a>
+            <a href="index.html#contact">Contact</a>
+        </div>
+    </div>
+</nav>
+
+<header class="case-hero">
+    <div class="container case-content">
+        <span class="sample-label">Sample project · Hypothetical scenario</span>
+        <h1>Improving a SaaS customer onboarding workflow</h1>
+        <p class="intro">
+            An example of how I would turn a customer problem into
+            a scoped feature, actionable requirements and a testable release.
+        </p>
+        <a class="back-link" href="index.html">← Back to portfolio</a>
+    </div>
+</header>
+
+<section>
+    <div class="container case-content">
+
+        <h2>1. The problem</h2>
+        <p class="section-description">
+            Imagine a SaaS platform where new customers struggle to complete
+            onboarding because required setup steps and their current status
+            are not clear.
+        </p>
+
+        <h2>2. The objective</h2>
+        <p class="section-description">
+            Help customers understand the remaining setup steps and make
+            onboarding progress easier to track.
+        </p>
+
+        <h2>3. Proposed solution</h2>
+        <ul>
+            <li>Display a checklist of required onboarding tasks.</li>
+            <li>Show each task's status: Not started, In progress or Complete.</li>
+            <li>Explain what action is needed for incomplete tasks.</li>
+            <li>Provide a clear confirmation when setup is complete.</li>
+        </ul>
+
+        <h2>4. Example user story</h2>
+        <div class="artifact">
+            <strong>User story</strong>
+            <p>
+                As a new customer, I want to see my onboarding tasks and their
+                completion status so that I know what I need to do before
+                I can start using the platform.
+            </p>
+        </div>
+
+        <h2>5. Acceptance criteria</h2>
+        <div class="artifact">
+            <strong>AC1 — Display tasks</strong>
+            <p>Given a customer has signed in, when they open onboarding,
+            then all applicable setup tasks are displayed.</p>
+        </div>
+
+        <div class="artifact">
+            <strong>AC2 — Update status</strong>
+            <p>Given a setup task has been completed, when the system confirms
+            completion, then the displayed status updates accordingly.</p>
+        </div>
+
+        <div class="artifact">
+            <strong>AC3 — Handle errors</strong>
+            <p>Given a task cannot be completed because of a system error,
+            when the error occurs, then the customer receives a clear message
+            and guidance on what to do next.</p>
+        </div>
+
+        <h2>6. Prioritization</h2>
+        <ul>
+            <li><strong>Must have:</strong> Task list and accurate task statuses.</li>
+            <li><strong>Should have:</strong> Helpful instructions for incomplete tasks.</li>
+            <li><strong>Could have:</strong> Optional progress visualization.</li>
+            <li><strong>Later:</strong> Personalized onboarding recommendations.</li>
+        </ul>
+
+        <h2>7. Validation and release plan</h2>
+        <ul>
+            <li>Review requirements with relevant stakeholders.</li>
+            <li>Walk through edge cases with engineering.</li>
+            <li>Prepare UAT scenarios for task completion and error handling.</li>
+            <li>Validate the feature in a test environment.</li>
+            <li>Coordinate release readiness and monitor reported issues after launch.</li>
+        </ul>
+
+        <h2>8. How success could be measured</h2>
+        <ul>
+            <li>Onboarding completion rate.</li>
+            <li>Time taken to complete onboarding.</li>
+            <li>Number of onboarding-related support requests.</li>
+        </ul>
+        <p class="section-description">
+            These are proposed metrics, not measured results. A baseline and
+            target would be established using actual product data.
+        </p>
+
+        <h2>9. My approach</h2>
+        <p class="section-description">
+            I would focus on clarifying the customer problem, agreeing on
+            scope, writing testable requirements, aligning stakeholders,
+            coordinating delivery and validating the result against the
+            intended outcome.
+        </p>
+
+        <a class="back-link" href="index.html">← Back to portfolio</a>
+    </div>
+</section>
+
+<footer>
+    <div class="container">© 2026 YOUR NAME · Product Portfolio</div>
+</footer>
+
+</body>
+</html>

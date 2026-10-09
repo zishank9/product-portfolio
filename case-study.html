@@ -140,154 +140,380 @@
             padding: 35px 0 60px;
         }
 
-        .case-footer a {
-            text-decoration: none;
-        }
-
         .case-back-link {
             display: inline-block;
             margin-top: 20px;
             text-decoration: none;
         }
 
-        /* ETL workflow */
-      
-        /* ETL FLOW DIAGRAM */
-        .etl-flow {
-            display: flex;
-            align-items: center;
-            width: 100%;
-            margin: 36px 0 0;
+        /* =========================
+           ETL PROCESS FLOW
+        ========================= */
+
+        .workflow-intro {
+            max-width: 760px;
         }
 
-        .etl-node {
-            flex: 1 1 0;
-            min-width: 0;
-            text-align: center;
+        .etl-diagram {
+            margin: 30px auto 0;
+            max-width: 860px;
+        }
+
+        .etl-stage {
             position: relative;
+            display: grid;
+            grid-template-columns: 62px minmax(0, 1fr);
+            gap: 18px;
+            align-items: center;
+            padding: 20px 24px;
+            border: 1px solid rgba(128, 128, 128, 0.28);
+            border-radius: 12px;
+            background: rgba(128, 128, 128, 0.045);
         }
 
-        .etl-number {
-            display: block;
-            color: #8b9cff;
-            font-size: 0.75rem;
-            font-weight: 700;
-            letter-spacing: 1px;
-            margin-bottom: 12px;
-        }
-
-        .etl-node-icon {
-            width: 54px;
-            height: 54px;
-            margin: 0 auto 14px;
+        .etl-stage-number {
             display: grid;
             place-items: center;
-            border: 1px solid rgba(139, 156, 255, 0.6);
-            border-radius: 14px;
+            width: 54px;
+            height: 54px;
+            border: 1px solid rgba(139, 156, 255, 0.55);
+            border-radius: 12px;
             color: #aab6ff;
             background: rgba(139, 156, 255, 0.09);
-            font-size: 1.5rem;
+            font-size: 1rem;
+            font-weight: 700;
         }
 
-        .etl-node h3 {
-            font-size: 0.95rem;
-            line-height: 1.4;
-            margin: 0 0 8px;
-        }
-
-        .etl-node p {
-            font-size: 0.8rem;
-            line-height: 1.6;
-            opacity: 0.75;
-            margin: 0;
-        }
-
-        .etl-link {
-            flex: 0 0 34px;
-            display: flex;
-            align-items: center;
+        .etl-stage-label {
+            display: block;
+            margin-bottom: 5px;
             color: #8b9cff;
-            margin: 0 5px 32px;
+            font-size: 0.72rem;
+            font-weight: 700;
+            letter-spacing: 1px;
+            text-transform: uppercase;
         }
 
-        .etl-link span {
-            height: 2px;
-            flex: 1;
-            background: #8b9cff;
-            opacity: 0.7;
+        .etl-stage h3 {
+            margin: 0 0 5px;
+            font-size: 1.05rem;
         }
 
-        .etl-link b {
-            font-size: 1.5rem;
-            line-height: 1;
-            margin-left: -2px;
+        .etl-stage p {
+            margin: 0;
+            font-size: 0.9rem;
+            line-height: 1.7;
+            opacity: 0.82;
         }
 
-        .etl-quality {
-            display: grid;
-            grid-template-columns: 1fr;
-            justify-items: center;
-            margin-top: 22px;
-        }
-
-        .etl-quality-connector {
-            height: 38px;
+        .etl-connector {
+            height: 48px;
             display: flex;
             flex-direction: column;
             align-items: center;
+            justify-content: center;
         }
 
-        .etl-quality-connector span:first-child {
-            height: 24px;
+        .etl-connector-line {
             width: 2px;
+            height: 29px;
             background: #8b9cff;
+            opacity: 0.75;
         }
 
-        .etl-quality-connector span:last-child {
+        .etl-connector-arrow {
             width: 9px;
             height: 9px;
+            margin-top: -6px;
             border-right: 2px solid #8b9cff;
             border-bottom: 2px solid #8b9cff;
             transform: rotate(45deg);
-            margin-top: -5px;
         }
 
-      
-        .etl-quality-content {
-            width: min(100%, 520px);
-            padding: 18px 22px;
-            border: 1px solid rgba(139, 156, 255, 0.55);
-            border-radius: 10px;
+        .etl-quality-gate {
+            padding: 24px;
+            border: 1px solid rgba(139, 156, 255, 0.7);
+            border-radius: 14px;
             background: rgba(139, 156, 255, 0.07);
         }
 
+        .etl-quality-heading {
+            display: flex;
+            align-items: center;
+            gap: 14px;
+            margin-bottom: 18px;
+        }
 
-        .etl-quality-label {
-            color: #8b9cff;
-            font-size: 0.74rem;
-            font-weight: 700;
+        .etl-quality-symbol {
+            display: grid;
+            place-items: center;
+            flex-shrink: 0;
+            width: 46px;
+            height: 46px;
+            border-radius: 50%;
+            background: rgba(139, 156, 255, 0.15);
+            color: #aab6ff;
+            font-size: 1.25rem;
+        }
+
+        .etl-quality-heading h3 {
+            margin: 0 0 5px;
+            font-size: 1.1rem;
+        }
+
+        .etl-quality-heading p {
+            margin: 0;
+            font-size: 0.86rem;
+            opacity: 0.8;
+        }
+
+        .etl-checks {
+            display: grid;
+            grid-template-columns: repeat(3, minmax(0, 1fr));
+            gap: 10px;
+            margin-top: 18px;
+        }
+
+        .etl-check {
+            padding: 12px;
+            border: 1px solid rgba(128, 128, 128, 0.23);
+            border-radius: 8px;
+            font-size: 0.82rem;
+            line-height: 1.55;
+        }
+
+        .etl-check span {
+            display: block;
+            margin-bottom: 5px;
+            color: #aab6ff;
+            font-size: 1rem;
+        }
+
+        .etl-decision {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            margin: 0 auto;
+        }
+
+        .etl-decision-stem {
+            width: 2px;
+            height: 28px;
+            background: #8b9cff;
+        }
+
+        .etl-diamond-wrap {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            width: 100%;
+            min-height: 90px;
+        }
+
+        .etl-diamond {
+            display: grid;
+            place-items: center;
+            width: 110px;
+            height: 74px;
+            padding: 8px;
+            clip-path: polygon(50% 0, 100% 50%, 50% 100%, 0 50%);
+            background: #8b9cff;
+            color: #11152b;
+            font-size: 0.78rem;
+            font-weight: 800;
+            text-align: center;
+            line-height: 1.35;
+        }
+
+        .etl-branch-area {
+            position: relative;
+            display: grid;
+            grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
+            gap: 24px;
+            margin-top: 6px;
+        }
+
+        .etl-branch-area::before {
+            content: "";
+            position: absolute;
+            top: -12px;
+            left: 25%;
+            right: 25%;
+            height: 2px;
+            background: rgba(139, 156, 255, 0.7);
+        }
+
+        .etl-branch {
+            min-width: 0;
+            position: relative;
+            padding-top: 22px;
+        }
+
+        .etl-branch::before {
+            content: "";
+            position: absolute;
+            top: -12px;
+            left: 50%;
+            height: 22px;
+            width: 2px;
+            background: rgba(139, 156, 255, 0.7);
+        }
+
+        .etl-branch-label {
+            display: inline-block;
+            margin-bottom: 12px;
+            padding: 5px 10px;
+            border-radius: 999px;
+            font-size: 0.72rem;
+            font-weight: 800;
+            letter-spacing: 0.6px;
+        }
+
+        .etl-pass-label {
+            color: #7ee2b8;
+            background: rgba(34, 197, 145, 0.12);
+        }
+
+        .etl-issue-label {
+            color: #f4c879;
+            background: rgba(234, 179, 8, 0.12);
+        }
+
+        .etl-outcome {
+            height: 100%;
+            padding: 18px;
+            border: 1px solid rgba(128, 128, 128, 0.28);
+            border-radius: 10px;
+            background: rgba(128, 128, 128, 0.04);
+        }
+
+        .etl-outcome h4 {
+            margin: 0 0 8px;
+            font-size: 0.98rem;
+        }
+
+        .etl-outcome p {
+            margin: 0;
+            font-size: 0.86rem;
+            line-height: 1.7;
+        }
+
+        .etl-pass {
+            border-color: rgba(34, 197, 145, 0.45);
+        }
+
+        .etl-issue {
+            border-color: rgba(234, 179, 8, 0.45);
+        }
+
+        .etl-feedback {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            margin-top: 14px;
+            text-align: center;
+        }
+
+        .etl-feedback-line {
+            width: 2px;
+            height: 22px;
+            background: rgba(234, 179, 8, 0.75);
+        }
+
+        .etl-feedback-card {
+            width: 100%;
+            padding: 16px;
+            border: 1px solid rgba(234, 179, 8, 0.4);
+            border-radius: 10px;
+            background: rgba(234, 179, 8, 0.055);
+        }
+
+        .etl-feedback-card h4 {
+            margin: 0 0 6px;
+            font-size: 0.95rem;
+        }
+
+        .etl-feedback-card p {
+            margin: 0;
+            font-size: 0.84rem;
+            line-height: 1.7;
+        }
+
+        .etl-feedback-return {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 5px;
+            margin-top: 12px;
+            color: #f4c879;
+            font-size: 0.8rem;
+            font-weight: 600;
+            text-align: center;
+        }
+
+        .etl-return-arrow {
+            font-size: 1.4rem;
+            line-height: 1;
+        }
+
+        .etl-final-connector {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            margin: 18px 0;
+        }
+
+        .etl-final-connector span:first-child {
+            width: 2px;
+            height: 24px;
+            background: rgba(34, 197, 145, 0.7);
+        }
+
+        .etl-final-connector span:last-child {
+            width: 9px;
+            height: 9px;
+            margin-top: -6px;
+            border-right: 2px solid #7ee2b8;
+            border-bottom: 2px solid #7ee2b8;
+            transform: rotate(45deg);
+        }
+
+        .etl-complete {
+            padding: 20px 22px;
+            border: 1px solid rgba(34, 197, 145, 0.45);
+            border-radius: 10px;
+            background: rgba(34, 197, 145, 0.06);
+            text-align: center;
+        }
+
+        .etl-complete-label {
+            display: block;
+            margin-bottom: 7px;
+            color: #7ee2b8;
+            font-size: 0.72rem;
+            font-weight: 800;
             letter-spacing: 1px;
         }
 
-        .etl-quality-content h3 {
-            margin: 10px 0 8px;
+        .etl-complete h3 {
+            margin: 0 0 7px;
         }
 
-        .etl-quality-content p {
+        .etl-complete p {
             margin: 0;
-            font-size: 0.92rem;
-            line-height: 1.75;
+            font-size: 0.88rem;
         }
 
         .etl-contribution {
-            margin-top: 20px;
-            padding: 16px 0;
-            border-top: 1px solid rgba(128, 128, 128, 0.25);
-            border-bottom: 1px solid rgba(128, 128, 128, 0.25);
+            margin-top: 24px;
+            padding: 18px 20px;
+            border-left: 3px solid #8b9cff;
+            border-radius: 4px;
+            background: rgba(128, 128, 128, 0.06);
         }
 
         .etl-contribution strong {
-            color: #8b9cff;
+            color: #aab6ff;
         }
 
         .etl-contribution p {
@@ -296,88 +522,62 @@
             line-height: 1.8;
         }
 
-        /* Tablet and mobile */
         @media (max-width: 650px) {
-            .etl-flow {
-                flex-direction: column;
-                align-items: stretch;
-                gap: 0;
-                margin-top: 24px;
+            .case-hero {
+                padding-top: 40px;
             }
 
-            .etl-node {
-                display: grid;
-                grid-template-columns: 42px 46px minmax(0, 1fr);
-                grid-template-rows: auto auto;
-                column-gap: 12px;
-                text-align: left;
-                align-items: center;
-                padding: 10px 0;
+            .case-meta,
+            .artifact-grid {
+                grid-template-columns: 1fr;
             }
 
-            .etl-number {
-                grid-column: 1;
-                grid-row: 1 / 3;
-                margin: 0;
+            .etl-stage {
+                grid-template-columns: 46px minmax(0, 1fr);
+                gap: 13px;
+                padding: 16px;
             }
 
-            .etl-node-icon {
-                grid-column: 2;
-                grid-row: 1 / 3;
+            .etl-stage-number {
                 width: 42px;
                 height: 42px;
-                margin: 0;
-                border-radius: 10px;
             }
 
-            .etl-node h3 {
-                grid-column: 3;
-                grid-row: 1;
-                margin: 0;
-            }
-
-            .etl-node p {
-                grid-column: 3;
-                grid-row: 2;
-                margin-top: 4px;
-            }
-
-            .etl-link {
-                flex: none;
-                height: 24px;
-                width: 2px;
-                margin: 0 0 0 61px;
-                flex-direction: column;
-                align-items: center;
-            }
-
-            .etl-link span {
-                width: 2px;
-                height: 16px;
-                flex: none;
-            }
-
-            .etl-link b {
-                font-size: 1.2rem;
-                transform: rotate(90deg);
-                margin: -5px 0 0;
-            }
-
-            .etl-quality {
-                margin-top: 18px;
-            }
-
-            .etl-quality-content {
+            .etl-quality-gate {
                 padding: 18px;
             }
-        }
 
+            .etl-checks {
+                grid-template-columns: 1fr;
+            }
+
+            .etl-branch-area {
+                grid-template-columns: 1fr;
+                gap: 22px;
+            }
+
+            .etl-branch-area::before {
+                display: none;
+            }
+
+            .etl-branch {
+                padding-top: 18px;
+            }
+
+            .etl-branch::before {
+                top: -5px;
+                height: 22px;
+            }
+
+            .etl-diamond-wrap {
+                min-height: 82px;
+            }
+        }
     </style>
 </head>
 
 <body>
 
-    <!-- Navigation -->
     <nav>
         <div class="container nav-content">
             <a class="logo" href="index.html">Zishan Khan</a>
@@ -390,7 +590,6 @@
         </div>
     </nav>
 
-    <!-- Case Study Header -->
     <header class="case-hero">
         <div class="container case-content">
 
@@ -483,81 +682,221 @@
             </ul>
         </section>
 
-        <!-- 3. ETL Workflow -->
-       
+        <!-- 3. Migration Workflow -->
         <section class="case-section" id="etl-workflow">
             <h2>3. Migration Workflow</h2>
 
             <p class="workflow-intro">
-                From legacy data extraction through transformation, loading,
-                and validation.
+                The workflow covers source data analysis, engineering-led
+                transformation, target loading, and the validation activities
+                used to investigate data and reporting discrepancies.
             </p>
 
-            <div class="etl-flow">
+            <div class="etl-diagram">
 
-                <div class="etl-node">
-                    <span class="etl-number">01</span>
-                    <div class="etl-node-icon">▤</div>
-                    <h3>Legacy PMS</h3>
-                    <p>Source XML files</p>
+                <!-- Stage 1 -->
+                <div class="etl-stage">
+                    <div class="etl-stage-number">01</div>
+                    <div>
+                        <span class="etl-stage-label">Source</span>
+                        <h3>Legacy PMS Data</h3>
+                        <p>
+                            Receive compressed XML files containing historical
+                            hotel and guest data. Review sample data to
+                            understand the migration scope.
+                        </p>
+                    </div>
                 </div>
 
-                <div class="etl-link" aria-hidden="true">
+                <div class="etl-connector" aria-hidden="true">
+                    <span class="etl-connector-line"></span>
+                    <span class="etl-connector-arrow"></span>
+                </div>
+
+                <!-- Stage 2 -->
+                <div class="etl-stage">
+                    <div class="etl-stage-number">02</div>
+                    <div>
+                        <span class="etl-stage-label">Business Analysis</span>
+                        <h3>Requirements &amp; Field Mapping</h3>
+                        <p>
+                            Clarify client expectations, analyse source fields,
+                            document mappings to the target structure, and
+                            translate requirements into user stories.
+                        </p>
+                    </div>
+                </div>
+
+                <div class="etl-connector" aria-hidden="true">
+                    <span class="etl-connector-line"></span>
+                    <span class="etl-connector-arrow"></span>
+                </div>
+
+                <!-- Stage 3 -->
+                <div class="etl-stage">
+                    <div class="etl-stage-number">03</div>
+                    <div>
+                        <span class="etl-stage-label">Engineering</span>
+                        <h3>ETL Transformation</h3>
+                        <p>
+                            The engineering-built ETL solution transforms
+                            the source data according to the agreed mappings
+                            and prepares it for loading.
+                        </p>
+                    </div>
+                </div>
+
+                <div class="etl-connector" aria-hidden="true">
+                    <span class="etl-connector-line"></span>
+                    <span class="etl-connector-arrow"></span>
+                </div>
+
+                <!-- Stage 4 -->
+                <div class="etl-stage">
+                    <div class="etl-stage-number">04</div>
+                    <div>
+                        <span class="etl-stage-label">Target Platform</span>
+                        <h3>Load Data into HotelKey</h3>
+                        <p>
+                            Transformed records are loaded into the target
+                            platform for validation against expected source
+                            data and business results.
+                        </p>
+                    </div>
+                </div>
+
+                <div class="etl-connector" aria-hidden="true">
+                    <span class="etl-connector-line"></span>
+                    <span class="etl-connector-arrow"></span>
+                </div>
+
+                <!-- Stage 5 -->
+                <div class="etl-quality-gate">
+                    <div class="etl-quality-heading">
+                        <div class="etl-quality-symbol" aria-hidden="true">✓</div>
+                        <div>
+                            <span class="etl-stage-label">Stage 05 · Quality Gate</span>
+                            <h3>Validation &amp; Reconciliation</h3>
+                            <p>
+                                Check whether the migrated data matches
+                                expectations and supports accurate reporting.
+                            </p>
+                        </div>
+                    </div>
+
+                    <div class="etl-checks">
+                        <div class="etl-check">
+                            <span>01</span>
+                            Source-to-target SQL comparisons
+                        </div>
+                        <div class="etl-check">
+                            <span>02</span>
+                            Financial consistency checks
+                        </div>
+                        <div class="etl-check">
+                            <span>03</span>
+                            Reporting discrepancy investigation
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Decision -->
+                <div class="etl-decision">
+                    <div class="etl-decision-stem"></div>
+                    <div class="etl-diamond-wrap">
+                        <div class="etl-diamond">
+                            Checks<br>passed?
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Outcomes -->
+                <div class="etl-branch-area">
+
+                    <div class="etl-branch">
+                        <span class="etl-branch-label etl-pass-label">
+                            YES · PASS
+                        </span>
+
+                        <div class="etl-outcome etl-pass">
+                            <h4>Migration Reconciled</h4>
+                            <p>
+                                Record validation results and confirm that
+                                the checked data and reporting results meet
+                                the agreed expectations.
+                            </p>
+                        </div>
+                    </div>
+
+                    <div class="etl-branch">
+                        <span class="etl-branch-label etl-issue-label">
+                            NO · ISSUES FOUND
+                        </span>
+
+                        <div class="etl-outcome etl-issue">
+                            <h4>Investigate Discrepancies</h4>
+                            <p>
+                                Examine query results, document differences,
+                                and coordinate with engineering on issues
+                                requiring correction.
+                            </p>
+                        </div>
+
+                        <div class="etl-feedback">
+                            <div class="etl-feedback-line"></div>
+                            <div class="etl-feedback-card">
+                                <h4>Correct &amp; Revalidate</h4>
+                                <p>
+                                    Recheck the affected data after the
+                                    underlying issue has been addressed.
+                                </p>
+                            </div>
+
+                            <div class="etl-feedback-return">
+                                <span class="etl-return-arrow" aria-hidden="true">↶</span>
+                                <span>Return to validation checks</span>
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+
+                <!-- Completion -->
+                <div class="etl-final-connector" aria-hidden="true">
                     <span></span>
-                    <b>›</b>
-                </div>
-
-                <div class="etl-node">
-                    <span class="etl-number">02</span>
-                    <div class="etl-node-icon">⌕</div>
-                    <h3>Data Mapping</h3>
-                    <p>Requirements and field mapping</p>
-                </div>
-
-                <div class="etl-link" aria-hidden="true">
-                    <span></span>
-                    <b>›</b>
-                </div>
-
-                <div class="etl-node">
-                    <span class="etl-number">03</span>
-                    <div class="etl-node-icon">⚙</div>
-                    <h3>ETL Processing</h3>
-                    <p>Transform and prepare data</p>
-                </div>
-
-                <div class="etl-link" aria-hidden="true">
-                    <span></span>
-                    <b>›</b>
-                </div>
-
-                <div class="etl-node">
-                    <span class="etl-number">04</span>
-                    <div class="etl-node-icon">▤</div>
-                    <h3>HotelKey</h3>
-                    <p>Load into target platform</p>
-                </div>
-
-            </div>
-
-            <div class="etl-quality">
-                <div class="etl-quality-connector" aria-hidden="true">
-                    <span></span>
                     <span></span>
                 </div>
 
-                <div class="etl-quality-content">
-                    <span class="etl-quality-label">05 / QUALITY GATE</span>
-                    <h3>Validation &amp; Reconciliation</h3>
+                <div class="etl-complete">
+                    <span class="etl-complete-label">EXPECTED OUTCOME</span>
+                    <h3>Reliable Migrated Data</h3>
                     <p>
-                        Compare source and target data, check financial consistency,
-                        and investigate reporting discrepancies.
+                        Greater confidence in data integrity, financial
+                        consistency, and reporting accuracy.
                     </p>
                 </div>
+
             </div>
 
-        </section>
+            <div class="etl-contribution">
+                <strong>My role in this workflow</strong>
+                <p>
+                    Client requirements, field mapping, user stories,
+                    engineering coordination, SQL-based validation,
+                    and discrepancy investigation. Engineering owned
+                    the ETL implementation.
+                </p>
+            </div>
 
+            <p>
+                <em>
+                    The diagram is a high-level representation of the
+                    migration and troubleshooting workflow, not a record
+                    of a single execution or a claim that every migration
+                    followed the exact same sequence.
+                </em>
+            </p>
+        </section>
 
         <!-- 4. My Role -->
         <section class="case-section">
@@ -695,28 +1034,23 @@
                     Gather requirements and clarify migration scope with
                     the client.
                 </li>
-
                 <li>
                     <strong>Analyse:</strong>
                     Review sample data and define the required field mappings.
                 </li>
-
                 <li>
                     <strong>Translate:</strong>
                     Document requirements as user stories for engineering.
                 </li>
-
                 <li>
                     <strong>Collaborate:</strong>
                     Work with developers to clarify expected behaviour
                     and delivery requirements.
                 </li>
-
                 <li>
                     <strong>Validate:</strong>
                     Compare source and target data and investigate discrepancies.
                 </li>
-
                 <li>
                     <strong>Improve:</strong>
                     Support the evolution of validation into automated
@@ -735,22 +1069,18 @@
                     processes client migration files and loads transformed
                     data into the target system.
                 </li>
-
                 <li>
                     Helped establish validation practices for checking
                     migrated data against expected results.
                 </li>
-
                 <li>
                     Supported financial consistency checks and reporting
                     reconciliation during migration.
                 </li>
-
                 <li>
                     Contributed to the validation and troubleshooting
                     practices that support discrepancy investigation.
                 </li>
-
                 <li>
                     Helped connect client business requirements with
                     engineering implementation and ongoing product quality.

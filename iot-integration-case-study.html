@@ -1,0 +1,554 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <meta name="description"
+          content="Hospitality IoT and third-party integration case study covering requirements gathering, testing, technical coordination, and client delivery.">
+
+    <title>Hospitality IoT & Third-Party Integrations | Product Portfolio</title>
+
+    <link rel="stylesheet" href="styles.css">
+
+    <style>
+        .case-hero {
+            padding: 65px 0 35px;
+        }
+
+        .case-label {
+            color: #8b9cff;
+            font-size: .85rem;
+            font-weight: 600;
+            letter-spacing: 1px;
+            text-transform: uppercase;
+        }
+
+        .case-hero h1 {
+            max-width: 850px;
+            margin: 16px 0;
+            line-height: 1.15;
+        }
+
+        .case-intro {
+            max-width: 760px;
+            line-height: 1.8;
+            opacity: .85;
+        }
+
+        .case-meta {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+            gap: 18px;
+            margin: 32px 0;
+        }
+
+        .meta-card {
+            padding: 20px;
+            border: 1px solid rgba(128,128,128,.25);
+            border-radius: 12px;
+        }
+
+        .meta-card p {
+            margin-bottom: 6px;
+            opacity: .7;
+            font-size: .9rem;
+        }
+
+        .meta-card strong {
+            line-height: 1.6;
+        }
+
+        .case-section {
+            padding: 30px 0;
+            border-top: 1px solid rgba(128,128,128,.2);
+        }
+
+        .case-section h2 {
+            margin-bottom: 18px;
+        }
+
+        .case-section p,
+        .case-section li {
+            line-height: 1.8;
+        }
+
+        .case-section ul,
+        .case-section ol {
+            padding-left: 24px;
+        }
+
+        .case-section li {
+            margin-bottom: 10px;
+        }
+
+        .case-callout {
+            padding: 22px;
+            margin: 20px 0;
+            border-left: 3px solid #8b9cff;
+            border-radius: 8px;
+            background: rgba(128,128,128,.08);
+            line-height: 1.8;
+        }
+
+        .skill-list {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 10px;
+            margin-top: 16px;
+        }
+
+        .skill-tag {
+            padding: 8px 12px;
+            border: 1px solid rgba(128,128,128,.3);
+            border-radius: 999px;
+            font-size: .9rem;
+        }
+
+        .case-footer {
+            padding: 35px 0 60px;
+        }
+
+        .case-footer a {
+            text-decoration: none;
+        }
+
+        @media (max-width: 600px) {
+            .case-hero {
+                padding-top: 40px;
+            }
+
+            .case-meta {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+    <header>
+        <nav class="container">
+            <a href="index.html" class="logo">Portfolio</a>
+
+            <div class="nav-links">
+                <a href="index.html#work">Work</a>
+                <a href="index.html#about">About</a>
+                <a href="index.html#contact">Contact</a>
+            </div>
+        </nav>
+    </header>
+
+    <main class="container">
+
+        <!-- Hero -->
+        <section class="case-hero">
+
+            <p class="case-label">
+                Case Study 05 · Hospitality Integrations
+            </p>
+
+            <h1>
+                Delivering Hospitality IoT and Third-Party Integrations
+            </h1>
+
+            <p class="case-intro">
+                How I translated client requirements into integration
+                user stories, coordinated developers and external
+                technology teams, prepared a test environment, and
+                supported integration testing and client delivery.
+            </p>
+
+            <div class="case-meta">
+
+                <div class="meta-card">
+                    <p>Role</p>
+                    <strong>Product Delivery Manager</strong>
+                </div>
+
+                <div class="meta-card">
+                    <p>Project focus</p>
+                    <strong>Hospitality IoT and third-party integrations</strong>
+                </div>
+
+                <div class="meta-card">
+                    <p>Systems involved</p>
+                    <strong>PBX, voicemail, Wi-Fi, and external platforms</strong>
+                </div>
+
+                <div class="meta-card">
+                    <p>Delivery scope</p>
+                    <strong>Requirements, testing, coordination, and go-live</strong>
+                </div>
+
+            </div>
+        </section>
+
+        <!-- Overview -->
+        <section class="case-section">
+
+            <h2>Project Overview</h2>
+
+            <p>
+                Hospitality properties often rely on multiple systems
+                working together to support their day-to-day operations.
+                These may include property management software, telephony,
+                voicemail, Wi-Fi services, and other third-party platforms.
+            </p>
+
+            <p>
+                My work involved helping deliver integrations between
+                the hospitality platform and external systems. This
+                required understanding client expectations, documenting
+                requirements, coordinating implementation, and validating
+                that integrations behaved as expected before delivery.
+            </p>
+
+            <p>
+                The work spanned several integration types and external
+                providers, each with its own requirements and coordination
+                needs.
+            </p>
+
+        </section>
+
+        <!-- Challenge -->
+        <section class="case-section">
+
+            <h2>The Challenge</h2>
+
+            <p>
+                Third-party integration delivery required business
+                requirements, product behaviour, and external system
+                expectations to be aligned. Issues could arise from
+                unclear requirements, differences between systems,
+                configuration dependencies, or unexpected behaviour
+                during testing.
+            </p>
+
+            <ul>
+                <li>
+                    Understand the client's intended workflow and
+                    translate it into clear product requirements.
+                </li>
+
+                <li>
+                    Coordinate development work with internal engineers
+                    and external technology providers.
+                </li>
+
+                <li>
+                    Establish a suitable test environment for validating
+                    integration behaviour.
+                </li>
+
+                <li>
+                    Investigate integration issues and coordinate
+                    resolution before delivery.
+                </li>
+
+                <li>
+                    Support go-live and follow-up troubleshooting
+                    when required.
+                </li>
+            </ul>
+
+        </section>
+
+        <!-- Responsibilities -->
+        <section class="case-section">
+
+            <h2>My Role and Contributions</h2>
+
+            <h3>1. Requirements gathering and user stories</h3>
+
+            <ul>
+                <li>
+                    Worked with clients to understand integration
+                    requirements and expected business behaviour.
+                </li>
+
+                <li>
+                    Translated requirements into user stories and
+                    actionable tasks for the development team.
+                </li>
+
+                <li>
+                    Clarified requirements and answered questions
+                    that arose during implementation.
+                </li>
+
+                <li>
+                    Helped align client expectations with the intended
+                    behaviour of the integrated systems.
+                </li>
+            </ul>
+
+            <h3>2. Internal and third-party coordination</h3>
+
+            <ul>
+                <li>
+                    Coordinated with developers and third-party teams
+                    to progress integration work.
+                </li>
+
+                <li>
+                    Followed up on dependencies, technical questions,
+                    and issues affecting delivery.
+                </li>
+
+                <li>
+                    Helped maintain alignment between the business
+                    requirement and the technical implementation.
+                </li>
+            </ul>
+
+            <h3>3. Test-environment setup and validation</h3>
+
+            <ul>
+                <li>
+                    Set up the IoT test environment required to
+                    validate integrations.
+                </li>
+
+                <li>
+                    Tested integration behaviour before delivery
+                    to the client.
+                </li>
+
+                <li>
+                    Investigated unexpected results and coordinated
+                    with the relevant technical teams to resolve issues.
+                </li>
+
+                <li>
+                    Supported follow-up testing where changes were
+                    required.
+                </li>
+            </ul>
+
+            <h3>4. Delivery and post-go-live support</h3>
+
+            <ul>
+                <li>
+                    Coordinated integration delivery to the client.
+                </li>
+
+                <li>
+                    Supported go-live activities and helped address
+                    integration issues when they arose.
+                </li>
+
+                <li>
+                    Worked with developers and external teams during
+                    post-delivery troubleshooting.
+                </li>
+            </ul>
+
+        </section>
+
+        <!-- Systems -->
+        <section class="case-section">
+
+            <h2>Integration Areas</h2>
+
+            <p>
+                My experience covered multiple types of hospitality
+                technology integrations, including:
+            </p>
+
+            <ul>
+                <li>
+                    <strong>PBX and telephony:</strong>
+                    Integrations involving hotel phone systems.
+                </li>
+
+                <li>
+                    <strong>Voicemail:</strong>
+                    Integrations involving voicemail functionality.
+                </li>
+
+                <li>
+                    <strong>Wi-Fi:</strong>
+                    Connectivity-related third-party integrations.
+                </li>
+
+                <li>
+                    <strong>External hospitality platforms:</strong>
+                    Integrations involving providers such as Canary,
+                    Virdee, Toast, and other third-party systems.
+                </li>
+            </ul>
+
+            <p>
+                These examples describe the integration areas and
+                providers I worked with; they do not imply that every
+                provider used the same technical implementation or
+                integration workflow.
+            </p>
+
+        </section>
+
+        <!-- Approach -->
+        <section class="case-section">
+
+            <h2>My Delivery Approach</h2>
+
+            <ol>
+                <li>
+                    <strong>Understand the workflow:</strong>
+                    Gather client requirements and identify the
+                    expected behaviour of the integration.
+                </li>
+
+                <li>
+                    <strong>Document requirements:</strong>
+                    Convert the requirements into user stories
+                    and clear implementation expectations.
+                </li>
+
+                <li>
+                    <strong>Coordinate implementation:</strong>
+                    Work with developers and third-party teams to
+                    clarify dependencies and progress delivery.
+                </li>
+
+                <li>
+                    <strong>Prepare and test:</strong>
+                    Set up the test environment, validate behaviour,
+                    and investigate discrepancies.
+                </li>
+
+                <li>
+                    <strong>Support delivery:</strong>
+                    Coordinate client delivery and assist with
+                    go-live or post-delivery troubleshooting.
+                </li>
+            </ol>
+
+        </section>
+
+        <!-- Outcomes -->
+        <section class="case-section">
+
+            <h2>Contribution and Delivery Impact</h2>
+
+            <p>
+                My contribution helped connect business expectations
+                with technical delivery across multiple integration
+                workstreams.
+            </p>
+
+            <ul>
+                <li>
+                    Translated client requirements into structured
+                    user stories for implementation.
+                </li>
+
+                <li>
+                    Coordinated internal developers and third-party
+                    teams throughout integration delivery.
+                </li>
+
+                <li>
+                    Established a test environment and performed
+                    integration validation before delivery.
+                </li>
+
+                <li>
+                    Supported investigation and resolution of
+                    integration issues.
+                </li>
+
+                <li>
+                    Helped coordinate client delivery, go-live,
+                    and post-delivery troubleshooting.
+                </li>
+            </ul>
+
+            <p>
+                No numerical performance improvements are claimed
+                because verified measurements are not available
+                for publication.
+            </p>
+
+        </section>
+
+        <!-- Learnings -->
+        <section class="case-section">
+
+            <h2>Key Learnings</h2>
+
+            <ul>
+                <li>
+                    Integration projects require a shared understanding
+                    of expected behaviour across clients, internal
+                    developers, and external providers.
+                </li>
+
+                <li>
+                    Clear user stories reduce ambiguity during
+                    implementation and testing.
+                </li>
+
+                <li>
+                    A dedicated test environment helps identify
+                    integration issues before client delivery.
+                </li>
+
+                <li>
+                    Successful delivery includes coordination and
+                    troubleshooting after implementation, not just
+                    completing development tasks.
+                </li>
+            </ul>
+
+        </section>
+
+        <!-- Skills -->
+        <section class="case-section">
+
+            <h2>Skills Demonstrated</h2>
+
+            <div class="skill-list">
+                <span class="skill-tag">Product Delivery</span>
+                <span class="skill-tag">Requirements Gathering</span>
+                <span class="skill-tag">User Stories</span>
+                <span class="skill-tag">Third-Party Integrations</span>
+                <span class="skill-tag">Hospitality Technology</span>
+                <span class="skill-tag">IoT Integration Testing</span>
+                <span class="skill-tag">Test Environment Setup</span>
+                <span class="skill-tag">Stakeholder Coordination</span>
+                <span class="skill-tag">Issue Investigation</span>
+                <span class="skill-tag">Go-live Support</span>
+                <span class="skill-tag">Cross-functional Delivery</span>
+            </div>
+
+        </section>
+
+        <!-- Confidentiality -->
+        <section class="case-section">
+
+            <p>
+                <em>
+                    Confidentiality note: This case study summarizes
+                    my experience at a high level. Internal system
+                    configurations, customer information, proprietary
+                    integration logic, credentials, and technical
+                    implementation details have been omitted.
+                </em>
+            </p>
+
+        </section>
+
+        <footer class="case-footer">
+            <a href="index.html#work">
+                &larr; Back to Selected Work
+            </a>
+        </footer>
+
+    </main>
+
+</body>
+</html>

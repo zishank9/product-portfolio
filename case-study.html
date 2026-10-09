@@ -4,283 +4,823 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Enterprise ETL & Data Migration | Zishan Khan</title>
+    <meta name="description" content="A product delivery case study covering enterprise ETL, legacy hospitality data migration, SQL validation, financial reconciliation and engineering collaboration.">
+
+    <title>Enterprise ETL &amp; Data Migration | Product Portfolio</title>
+
     <link rel="stylesheet" href="styles.css">
+
     <style>
-        .case-hero { padding: 65px 0 35px; }
-        .sample-label {
+        .case-hero {
+            padding: 65px 0 35px;
+        }
+
+        .case-content {
+            max-width: 1000px;
+            margin: 0 auto;
+            padding-left: 24px;
+            padding-right: 24px;
+        }
+
+        .case-label {
             display: inline-block;
-            border: 1px solid var(--accent);
-            color: var(--accent);
-            border-radius: 20px;
-            padding: 4px 12px;
-            font-size: 13px;
+            color: #8b9cff;
+            font-size: 0.85rem;
+            font-weight: 600;
+            letter-spacing: 1px;
+            text-transform: uppercase;
         }
-        .case-content { max-width: 800px; }
-        .case-content h2 { margin-top: 38px; }
-        .case-content li {
-            margin-bottom: 10px;
-            color: var(--muted);
+
+        .case-hero h1 {
+            max-width: 850px;
+            margin: 16px 0;
+            line-height: 1.2;
         }
-        .artifact {
-            background: var(--card);
-            border: 1px solid var(--border);
-            padding: 20px;
+
+        .case-intro {
+            max-width: 780px;
+            line-height: 1.8;
+            opacity: 0.85;
+        }
+
+        .case-meta {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 18px;
+            margin: 32px 0;
+        }
+
+        .meta-card,
+        .artifact-card {
+            padding: 22px;
+            border: 1px solid rgba(128, 128, 128, 0.25);
             border-radius: 12px;
-            margin: 18px 0;
         }
-        .artifact strong { color: var(--accent); }
-        .back-link {
+
+        .meta-card p {
+            margin-bottom: 8px;
+            font-size: 0.9rem;
+            opacity: 0.7;
+        }
+
+        .meta-card strong {
+            line-height: 1.6;
+        }
+
+        .case-section {
+            padding: 30px 0;
+            border-top: 1px solid rgba(128, 128, 128, 0.2);
+        }
+
+        .case-section h2 {
+            margin-bottom: 18px;
+        }
+
+        .case-section h3 {
+            margin-bottom: 10px;
+        }
+
+        .case-section p,
+        .case-section li {
+            line-height: 1.8;
+        }
+
+        .case-section p {
+            margin-bottom: 16px;
+        }
+
+        .case-section ul,
+        .case-section ol {
+            padding-left: 24px;
+        }
+
+        .case-section li {
+            margin-bottom: 10px;
+        }
+
+        .artifact-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+            gap: 18px;
+            margin: 24px 0;
+        }
+
+        .artifact-card h3 {
+            font-size: 1.05rem;
+        }
+
+        .artifact-card p {
+            margin-bottom: 0;
+        }
+
+        .case-callout {
+            padding: 22px;
+            margin: 22px 0;
+            border-left: 3px solid #8b9cff;
+            border-radius: 8px;
+            background: rgba(128, 128, 128, 0.08);
+            line-height: 1.8;
+        }
+
+        .skill-list {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 10px;
+            margin-top: 16px;
+        }
+
+        .skill-tag {
+            padding: 8px 12px;
+            border: 1px solid rgba(128, 128, 128, 0.3);
+            border-radius: 999px;
+            font-size: 0.9rem;
+        }
+
+        .case-footer {
+            padding: 35px 0 60px;
+        }
+
+        .case-footer a {
+            text-decoration: none;
+        }
+
+        .case-back-link {
             display: inline-block;
-            margin-top: 22px;
-            color: var(--accent);
+            margin-top: 20px;
+            text-decoration: none;
         }
+
+        /* ETL workflow */
+      
+        /* ETL FLOW DIAGRAM */
+        .etl-flow {
+            display: flex;
+            align-items: center;
+            width: 100%;
+            margin: 36px 0 0;
+        }
+
+        .etl-node {
+            flex: 1 1 0;
+            min-width: 0;
+            text-align: center;
+            position: relative;
+        }
+
+        .etl-number {
+            display: block;
+            color: #8b9cff;
+            font-size: 0.75rem;
+            font-weight: 700;
+            letter-spacing: 1px;
+            margin-bottom: 12px;
+        }
+
+        .etl-node-icon {
+            width: 54px;
+            height: 54px;
+            margin: 0 auto 14px;
+            display: grid;
+            place-items: center;
+            border: 1px solid rgba(139, 156, 255, 0.6);
+            border-radius: 14px;
+            color: #aab6ff;
+            background: rgba(139, 156, 255, 0.09);
+            font-size: 1.5rem;
+        }
+
+        .etl-node h3 {
+            font-size: 0.95rem;
+            line-height: 1.4;
+            margin: 0 0 8px;
+        }
+
+        .etl-node p {
+            font-size: 0.8rem;
+            line-height: 1.6;
+            opacity: 0.75;
+            margin: 0;
+        }
+
+        .etl-link {
+            flex: 0 0 34px;
+            display: flex;
+            align-items: center;
+            color: #8b9cff;
+            margin: 0 5px 32px;
+        }
+
+        .etl-link span {
+            height: 2px;
+            flex: 1;
+            background: #8b9cff;
+            opacity: 0.7;
+        }
+
+        .etl-link b {
+            font-size: 1.5rem;
+            line-height: 1;
+            margin-left: -2px;
+        }
+
+        .etl-quality {
+            display: grid;
+            grid-template-columns: 1fr;
+            justify-items: center;
+            margin-top: 22px;
+        }
+
+        .etl-quality-connector {
+            height: 38px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+
+        .etl-quality-connector span:first-child {
+            height: 24px;
+            width: 2px;
+            background: #8b9cff;
+        }
+
+        .etl-quality-connector span:last-child {
+            width: 9px;
+            height: 9px;
+            border-right: 2px solid #8b9cff;
+            border-bottom: 2px solid #8b9cff;
+            transform: rotate(45deg);
+            margin-top: -5px;
+        }
+
+      
+        .etl-quality-content {
+            width: min(100%, 520px);
+            padding: 18px 22px;
+            border: 1px solid rgba(139, 156, 255, 0.55);
+            border-radius: 10px;
+            background: rgba(139, 156, 255, 0.07);
+        }
+
+
+        .etl-quality-label {
+            color: #8b9cff;
+            font-size: 0.74rem;
+            font-weight: 700;
+            letter-spacing: 1px;
+        }
+
+        .etl-quality-content h3 {
+            margin: 10px 0 8px;
+        }
+
+        .etl-quality-content p {
+            margin: 0;
+            font-size: 0.92rem;
+            line-height: 1.75;
+        }
+
+        .etl-contribution {
+            margin-top: 20px;
+            padding: 16px 0;
+            border-top: 1px solid rgba(128, 128, 128, 0.25);
+            border-bottom: 1px solid rgba(128, 128, 128, 0.25);
+        }
+
+        .etl-contribution strong {
+            color: #8b9cff;
+        }
+
+        .etl-contribution p {
+            margin: 8px 0 0;
+            font-size: 0.9rem;
+            line-height: 1.8;
+        }
+
+        /* Tablet and mobile */
+        @media (max-width: 650px) {
+            .etl-flow {
+                flex-direction: column;
+                align-items: stretch;
+                gap: 0;
+                margin-top: 24px;
+            }
+
+            .etl-node {
+                display: grid;
+                grid-template-columns: 42px 46px minmax(0, 1fr);
+                grid-template-rows: auto auto;
+                column-gap: 12px;
+                text-align: left;
+                align-items: center;
+                padding: 10px 0;
+            }
+
+            .etl-number {
+                grid-column: 1;
+                grid-row: 1 / 3;
+                margin: 0;
+            }
+
+            .etl-node-icon {
+                grid-column: 2;
+                grid-row: 1 / 3;
+                width: 42px;
+                height: 42px;
+                margin: 0;
+                border-radius: 10px;
+            }
+
+            .etl-node h3 {
+                grid-column: 3;
+                grid-row: 1;
+                margin: 0;
+            }
+
+            .etl-node p {
+                grid-column: 3;
+                grid-row: 2;
+                margin-top: 4px;
+            }
+
+            .etl-link {
+                flex: none;
+                height: 24px;
+                width: 2px;
+                margin: 0 0 0 61px;
+                flex-direction: column;
+                align-items: center;
+            }
+
+            .etl-link span {
+                width: 2px;
+                height: 16px;
+                flex: none;
+            }
+
+            .etl-link b {
+                font-size: 1.2rem;
+                transform: rotate(90deg);
+                margin: -5px 0 0;
+            }
+
+            .etl-quality {
+                margin-top: 18px;
+            }
+
+            .etl-quality-content {
+                padding: 18px;
+            }
+        }
+
     </style>
 </head>
+
 <body>
 
-<nav>
-    <div class="container nav-content">
-        <a class="logo" href="index.html">Zishan Khan</a>
-        <div class="nav-links">
-            <a href="index.html#work">Work</a>
-            <a href="index.html#about">About</a>
-            <a href="index.html#contact">Contact</a>
+    <!-- Navigation -->
+    <nav>
+        <div class="container nav-content">
+            <a class="logo" href="index.html">Zishan Khan</a>
+
+            <div class="nav-links">
+                <a href="index.html#work">Work</a>
+                <a href="index.html#about">About</a>
+                <a href="index.html#contact">Contact</a>
+            </div>
         </div>
-    </div>
-</nav>
+    </nav>
 
-<header class="case-hero">
-    <div class="container case-content">
-        <span class="sample-label">
-            Enterprise Data Migration · ETL Automation
-        </span>
+    <!-- Case Study Header -->
+    <header class="case-hero">
+        <div class="container case-content">
 
-        <h1>Improving Enterprise Data Migration and Validation</h1>
+            <span class="case-label">
+                Enterprise Data Migration · ETL Automation
+            </span>
 
-        <p class="intro">
-            How I worked with an enterprise client and engineering teams
-            to translate legacy data migration requirements into an ETL
-            solution, with a focus on data integrity, financial consistency,
-            and reporting accuracy.
-        </p>
+            <h1>Improving Enterprise Data Migration and Validation</h1>
 
-        <p class="section-description">
-            Role: Product Delivery Manager / Business Analysis and Delivery
-        </p>
-
-        <a class="back-link" href="index.html">← Back to portfolio</a>
-    </div>
-</header>
-
-<section>
-    <div class="container case-content">
-
-        <h2>1. The problem</h2>
-
-        <p class="section-description">
-            An enterprise hospitality client needed to migrate historical
-            hotel and guest data from a legacy Property Management System
-            (PMS) into HotelKey's platform.
-        </p>
-
-        <p class="section-description">
-            The source data was supplied in large, compressed XML files.
-            The information needed to be understood, mapped to the target
-            system's data model, transformed, and loaded into the new
-            platform.
-        </p>
-
-        <p class="section-description">
-            Successful migration also required more than transferring
-            records. Financial balances needed to remain consistent, and
-            reports needed to reflect the migrated data correctly.
-        </p>
-
-        <h2>2. The objective</h2>
-
-        <p class="section-description">
-            Help establish a repeatable ETL process that could migrate
-            the required client data while maintaining data integrity
-            and improving confidence in financial and reporting results.
-        </p>
-
-        <ul>
-            <li>Understand the client's migration requirements.</li>
-            <li>Map source data fields to the target data structure.</li>
-            <li>Enable the engineering team to build a suitable ETL tool.</li>
-            <li>Validate migrated data against expected results.</li>
-            <li>Identify discrepancies affecting financial balances and reports.</li>
-        </ul>
-
-        <h2>3. My role and contributions</h2>
-
-        <ul>
-            <li>
-                <strong>Requirement gathering:</strong>
-                Worked directly with the client to understand which
-                historical data needed to be transferred.
-            </li>
-            <li>
-                <strong>Data mapping:</strong>
-                Analysed sample source files and created field mappings
-                to translate the required information into the target
-                data structure.
-            </li>
-            <li>
-                <strong>User stories:</strong>
-                Converted migration requirements into user stories
-                for the development team.
-            </li>
-            <li>
-                <strong>Engineering collaboration:</strong>
-                Worked with developers as they built an ETL tool that
-                accepted client files, transformed the data, and loaded
-                it into the target database.
-            </li>
-            <li>
-                <strong>Data validation:</strong>
-                Used sample data and validation exercises to check
-                whether the migrated output matched expectations.
-            </li>
-            <li>
-                <strong>Reporting reconciliation:</strong>
-                Ran queries to compare source and target data,
-                investigated discrepancies, and helped validate
-                report accuracy.
-            </li>
-        </ul>
-
-        <h2>4. Financial and reporting integrity</h2>
-
-        <p class="section-description">
-            A key consideration was ensuring that migration preserved
-            important business values, not just the underlying records.
-        </p>
-
-        <div class="artifact">
-            <strong>Financial consistency</strong>
-            <p>
-                Helped validate that financial balances in the legacy
-                system were consistent with the corresponding results
-                after migration.
+            <p class="case-intro">
+                How I worked with an enterprise hospitality client and
+                engineering teams to translate legacy data migration
+                requirements into an ETL solution, with a focus on data
+                integrity, financial consistency, and reporting accuracy.
             </p>
-        </div>
 
-        <div class="artifact">
-            <strong>Reporting accuracy</strong>
+            <div class="case-meta">
+                <div class="meta-card">
+                    <p>Role</p>
+                    <strong>Product Delivery Manager / Business Analysis</strong>
+                </div>
+
+                <div class="meta-card">
+                    <p>Project Focus</p>
+                    <strong>ETL, Data Migration &amp; Validation</strong>
+                </div>
+
+                <div class="meta-card">
+                    <p>Key Collaboration</p>
+                    <strong>Client, Engineering &amp; Product Teams</strong>
+                </div>
+
+                <div class="meta-card">
+                    <p>Core Skills</p>
+                    <strong>Requirements, SQL Validation &amp; Delivery</strong>
+                </div>
+            </div>
+
+            <a class="case-back-link" href="index.html#work">
+                ← Back to portfolio
+            </a>
+
+        </div>
+    </header>
+
+    <main class="container case-content">
+
+        <!-- 1. Problem -->
+        <section class="case-section">
+            <h2>1. The Problem</h2>
+
             <p>
-                Used queries and product knowledge to compare source
-                and target data, investigate differences, and check
-                whether reports reflected the expected results.
+                An enterprise hospitality client needed to migrate historical
+                hotel and guest data from a legacy Property Management System
+                (PMS) into the HotelKey platform.
             </p>
+
+            <p>
+                The source data was provided in large, compressed XML files.
+                The information needed to be analysed, mapped to the target
+                system's data structure, transformed, and loaded into the
+                new platform.
+            </p>
+
+            <p>
+                A successful migration required more than transferring
+                records. Financial balances needed to remain consistent,
+                and reports needed to reflect the migrated data correctly.
+            </p>
+        </section>
+
+        <!-- 2. Objective -->
+        <section class="case-section">
+            <h2>2. The Objective</h2>
+
+            <p>
+                Help define and deliver a repeatable ETL process that could
+                migrate the required client data while maintaining data
+                integrity and improving confidence in financial and reporting
+                results.
+            </p>
+
+            <ul>
+                <li>Understand and document client migration requirements.</li>
+                <li>Map source data fields to the target data structure.</li>
+                <li>Translate requirements into actionable user stories.</li>
+                <li>Support engineering in building the ETL solution.</li>
+                <li>Validate migrated data against expected results.</li>
+                <li>Identify discrepancies affecting financial balances and reports.</li>
+            </ul>
+        </section>
+
+        <!-- 3. ETL Workflow -->
+       
+        <section class="case-section" id="etl-workflow">
+            <h2>3. Migration Workflow</h2>
+
+            <p class="workflow-intro">
+                From legacy data extraction through transformation, loading,
+                and validation.
+            </p>
+
+            <div class="etl-flow">
+
+                <div class="etl-node">
+                    <span class="etl-number">01</span>
+                    <div class="etl-node-icon">▤</div>
+                    <h3>Legacy PMS</h3>
+                    <p>Source XML files</p>
+                </div>
+
+                <div class="etl-link" aria-hidden="true">
+                    <span></span>
+                    <b>›</b>
+                </div>
+
+                <div class="etl-node">
+                    <span class="etl-number">02</span>
+                    <div class="etl-node-icon">⌕</div>
+                    <h3>Data Mapping</h3>
+                    <p>Requirements and field mapping</p>
+                </div>
+
+                <div class="etl-link" aria-hidden="true">
+                    <span></span>
+                    <b>›</b>
+                </div>
+
+                <div class="etl-node">
+                    <span class="etl-number">03</span>
+                    <div class="etl-node-icon">⚙</div>
+                    <h3>ETL Processing</h3>
+                    <p>Transform and prepare data</p>
+                </div>
+
+                <div class="etl-link" aria-hidden="true">
+                    <span></span>
+                    <b>›</b>
+                </div>
+
+                <div class="etl-node">
+                    <span class="etl-number">04</span>
+                    <div class="etl-node-icon">▤</div>
+                    <h3>HotelKey</h3>
+                    <p>Load into target platform</p>
+                </div>
+
+            </div>
+
+            <div class="etl-quality">
+                <div class="etl-quality-connector" aria-hidden="true">
+                    <span></span>
+                    <span></span>
+                </div>
+
+                <div class="etl-quality-content">
+                    <span class="etl-quality-label">05 / QUALITY GATE</span>
+                    <h3>Validation &amp; Reconciliation</h3>
+                    <p>
+                        Compare source and target data, check financial consistency,
+                        and investigate reporting discrepancies.
+                    </p>
+                </div>
+            </div>
+
+        </section>
+
+
+        <!-- 4. My Role -->
+        <section class="case-section">
+            <h2>4. My Role and Contributions</h2>
+
+            <div class="artifact-grid">
+                <div class="artifact-card">
+                    <h3>Requirement Gathering</h3>
+                    <p>
+                        Worked with the client to understand the historical
+                        data that needed to be transferred and clarify
+                        migration expectations.
+                    </p>
+                </div>
+
+                <div class="artifact-card">
+                    <h3>Data Mapping</h3>
+                    <p>
+                        Analysed sample source files and documented field
+                        mappings to help translate the required information
+                        into the target data structure.
+                    </p>
+                </div>
+
+                <div class="artifact-card">
+                    <h3>User Stories</h3>
+                    <p>
+                        Converted migration requirements into user stories
+                        that communicated expected behaviour and requirements
+                        to the development team.
+                    </p>
+                </div>
+
+                <div class="artifact-card">
+                    <h3>Engineering Coordination</h3>
+                    <p>
+                        Collaborated with developers as they built the ETL
+                        tool to accept client files, transform the data,
+                        and load it into the target database.
+                    </p>
+                </div>
+
+                <div class="artifact-card">
+                    <h3>Data Validation</h3>
+                    <p>
+                        Used sample data and validation exercises to check
+                        whether migrated information matched the expected
+                        results.
+                    </p>
+                </div>
+
+                <div class="artifact-card">
+                    <h3>Discrepancy Investigation</h3>
+                    <p>
+                        Ran queries to compare source and target data,
+                        investigated differences, and helped validate
+                        report accuracy.
+                    </p>
+                </div>
+            </div>
+        </section>
+
+        <!-- 5. Financial and Reporting Integrity -->
+        <section class="case-section">
+            <h2>5. Protecting Financial and Reporting Integrity</h2>
+
+            <p>
+                An important part of the project was checking that migrated
+                information remained meaningful to the business. Data could
+                be present in the new system but still produce incorrect
+                financial or reporting results.
+            </p>
+
+            <div class="artifact-grid">
+                <div class="artifact-card">
+                    <h3>Financial Consistency</h3>
+                    <p>
+                        Helped validate that financial balances in the legacy
+                        system were consistent with corresponding results
+                        after migration.
+                    </p>
+                </div>
+
+                <div class="artifact-card">
+                    <h3>Reporting Accuracy</h3>
+                    <p>
+                        Used queries and product knowledge to compare source
+                        and target data, investigate differences, and check
+                        whether reports reflected expected results.
+                    </p>
+                </div>
+            </div>
+
+            <div class="case-callout">
+                <strong>Key consideration:</strong>
+                Successful migration was not just about moving data.
+                The migrated information also needed to support expected
+                business calculations, financial consistency, and reporting.
+            </div>
+        </section>
+
+        <!-- 6. Validation and Automation -->
+        <section class="case-section">
+            <h2>6. From Manual Validation to Automation</h2>
+
+            <p>
+                Initial validation involved analysing sample data and
+                comparing source and target results. SQL queries and
+                troubleshooting helped identify discrepancies that
+                required further investigation.
+            </p>
+
+            <p>
+                The engineering team subsequently automated validation
+                steps. The ETL solution also generates discrepancy reports
+                that help identify reporting differences and support
+                bug investigation.
+            </p>
+
+            <p>
+                I remain loosely involved in troubleshooting when needed.
+                Validation therefore continues to support ongoing data
+                and reporting issue investigation beyond the initial
+                migration work.
+            </p>
+        </section>
+
+        <!-- 7. Delivery Approach -->
+        <section class="case-section">
+            <h2>7. My Delivery Approach</h2>
+
+            <ol>
+                <li>
+                    <strong>Understand:</strong>
+                    Gather requirements and clarify migration scope with
+                    the client.
+                </li>
+
+                <li>
+                    <strong>Analyse:</strong>
+                    Review sample data and define the required field mappings.
+                </li>
+
+                <li>
+                    <strong>Translate:</strong>
+                    Document requirements as user stories for engineering.
+                </li>
+
+                <li>
+                    <strong>Collaborate:</strong>
+                    Work with developers to clarify expected behaviour
+                    and delivery requirements.
+                </li>
+
+                <li>
+                    <strong>Validate:</strong>
+                    Compare source and target data and investigate discrepancies.
+                </li>
+
+                <li>
+                    <strong>Improve:</strong>
+                    Support the evolution of validation into automated
+                    checks and discrepancy reporting.
+                </li>
+            </ol>
+        </section>
+
+        <!-- 8. Outcomes -->
+        <section class="case-section">
+            <h2>8. Outcomes and Impact</h2>
+
+            <ul>
+                <li>
+                    Contributed to delivery of an ETL capability that
+                    processes client migration files and loads transformed
+                    data into the target system.
+                </li>
+
+                <li>
+                    Helped establish validation practices for checking
+                    migrated data against expected results.
+                </li>
+
+                <li>
+                    Supported financial consistency checks and reporting
+                    reconciliation during migration.
+                </li>
+
+                <li>
+                    Contributed to the validation and troubleshooting
+                    practices that support discrepancy investigation.
+                </li>
+
+                <li>
+                    Helped connect client business requirements with
+                    engineering implementation and ongoing product quality.
+                </li>
+            </ul>
+
+            <p>
+                No numerical improvement is claimed because verified
+                performance measurements have not been established
+                for publication.
+            </p>
+        </section>
+
+        <!-- 9. Skills -->
+        <section class="case-section">
+            <h2>9. Skills Demonstrated</h2>
+
+            <div class="skill-list">
+                <span class="skill-tag">Product Delivery</span>
+                <span class="skill-tag">Business Analysis</span>
+                <span class="skill-tag">Requirement Gathering</span>
+                <span class="skill-tag">User Stories</span>
+                <span class="skill-tag">SQL Validation</span>
+                <span class="skill-tag">Data Mapping</span>
+                <span class="skill-tag">ETL Workflows</span>
+                <span class="skill-tag">Data Reconciliation</span>
+                <span class="skill-tag">Engineering Coordination</span>
+                <span class="skill-tag">Issue Investigation</span>
+                <span class="skill-tag">Continuous Improvement</span>
+            </div>
+        </section>
+
+        <!-- 10. Reflection -->
+        <section class="case-section">
+            <h2>10. My Approach to Product Delivery</h2>
+
+            <p>
+                My focus was on connecting the client's business requirements
+                with the engineering team's implementation. This involved
+                understanding the source data, documenting the required
+                mappings, validating the resulting data, and helping ensure
+                that financial and reporting expectations were addressed.
+            </p>
+
+            <p>
+                This project reflects my approach to product delivery:
+                clarify the business need, translate it into actionable
+                requirements, collaborate with technical teams, validate
+                outcomes, and use identified issues to improve the product.
+            </p>
+
+            <div class="case-callout">
+                <strong>Confidentiality note:</strong>
+                This case study omits client identities, proprietary data
+                structures, internal database details, and confidential
+                implementation information.
+            </div>
+
+            <a class="case-back-link" href="index.html#work">
+                ← Back to portfolio
+            </a>
+        </section>
+
+    </main>
+
+    <footer class="case-footer">
+        <div class="container">
+            <p>© 2026 Zishan Khan · Product Portfolio</p>
         </div>
-
-        <h2>5. Validation and automation</h2>
-
-        <p class="section-description">
-            Initial validation involved working with sample data and
-            comparing source and target results. Queries and
-            troubleshooting helped identify discrepancies that needed
-            further investigation.
-        </p>
-
-        <p class="section-description">
-            The engineering team subsequently automated validation
-            steps. The current ETL solution also generates reports
-            highlighting discrepancies affecting reporting, which
-            support ongoing bug investigation and resolution.
-        </p>
-
-        <p class="section-description">
-            I remain loosely involved in troubleshooting when needed.
-            The validation capability has therefore become part of
-            the ongoing process for identifying data and reporting
-            issues, rather than being limited to the initial migration.
-        </p>
-
-        <h2>6. Delivery approach</h2>
-
-        <ul>
-            <li>Gather requirements and clarify migration scope with the client.</li>
-            <li>Review sample data and define field mappings.</li>
-            <li>Write user stories and coordinate requirements with developers.</li>
-            <li>Validate migrated data against expected results.</li>
-            <li>Investigate financial and reporting discrepancies.</li>
-            <li>Support the evolution of validation into an automated process.</li>
-            <li>Use discrepancy reports to support ongoing product quality improvements.</li>
-        </ul>
-
-        <h2>7. Outcome and ongoing impact</h2>
-
-        <ul>
-            <li>
-                Delivered an ETL capability that accepts client migration
-                files and loads transformed data into the target system.
-            </li>
-            <li>
-                Established validation practices for checking migrated
-                data and investigating discrepancies.
-            </li>
-            <li>
-                Contributed to automated validation and discrepancy
-                reporting that supports ongoing issue investigation.
-            </li>
-            <li>
-                Helped address the need for financial consistency and
-                accurate reporting during data migration.
-            </li>
-        </ul>
-
-        <p class="section-description">
-            No numerical improvement is claimed here because verified
-            measurements have not yet been established for publication.
-        </p>
-
-        <h2>8. What this project demonstrates</h2>
-
-        <ul>
-            <li>Enterprise client requirement gathering.</li>
-            <li>Data analysis and field mapping.</li>
-            <li>User story creation and requirements translation.</li>
-            <li>Cross-functional coordination with engineering.</li>
-            <li>SQL-based validation and discrepancy investigation.</li>
-            <li>Financial and reporting reconciliation.</li>
-            <li>Continuous improvement through validation automation.</li>
-        </ul>
-
-        <h2>9. My approach</h2>
-
-        <p class="section-description">
-            My focus was on connecting the client's business requirements
-            with the engineering team's implementation. This involved
-            understanding the source data, documenting the required
-            transformations, validating the resulting data, and helping
-            ensure that financial and reporting expectations were met.
-        </p>
-
-        <p class="section-description">
-            The project reflects how I approach product delivery:
-            clarify the business need, translate it into actionable
-            requirements, work closely with technical teams, validate
-            outcomes, and use identified issues to improve the product.
-        </p>
-
-        <p class="section-description">
-            This case study omits client identities, proprietary data
-            structures, internal database details, and confidential
-            implementation information.
-        </p>
-
-        <a class="back-link" href="index.html">← Back to portfolio</a>
-    </div>
-</section>
-
-<footer>
-    <div class="container">
-        © 2026 Zishan Khan · Product Portfolio
-    </div>
-</footer>
+    </footer>
 
 </body>
 </html>

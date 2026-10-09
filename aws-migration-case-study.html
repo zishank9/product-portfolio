@@ -1,0 +1,511 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <meta name="description"
+          content="Case study on AWS environment migration, cross-functional delivery coordination, deployment workflows, and migration validation.">
+
+    <title>AWS Environment Migration | Product Portfolio</title>
+
+    <link rel="stylesheet" href="styles.css">
+
+    <style>
+        .case-hero {
+            padding: 65px 0 35px;
+        }
+
+        .case-label {
+            color: #8b9cff;
+            font-size: .85rem;
+            font-weight: 600;
+            letter-spacing: 1px;
+            text-transform: uppercase;
+        }
+
+        .case-hero h1 {
+            max-width: 850px;
+            margin: 16px 0;
+            line-height: 1.15;
+        }
+
+        .case-intro {
+            max-width: 760px;
+            line-height: 1.8;
+            opacity: .85;
+        }
+
+        .case-meta {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+            gap: 18px;
+            margin: 32px 0;
+        }
+
+        .meta-card {
+            padding: 20px;
+            border: 1px solid rgba(128,128,128,.25);
+            border-radius: 12px;
+        }
+
+        .meta-card p {
+            margin-bottom: 6px;
+            opacity: .7;
+            font-size: .9rem;
+        }
+
+        .meta-card strong {
+            line-height: 1.6;
+        }
+
+        .case-section {
+            padding: 30px 0;
+            border-top: 1px solid rgba(128,128,128,.2);
+        }
+
+        .case-section h2 {
+            margin-bottom: 18px;
+        }
+
+        .case-section p,
+        .case-section li {
+            line-height: 1.8;
+        }
+
+        .case-section ul,
+        .case-section ol {
+            padding-left: 24px;
+        }
+
+        .case-section li {
+            margin-bottom: 10px;
+        }
+
+        .case-callout {
+            padding: 22px;
+            margin: 20px 0;
+            border-left: 3px solid #8b9cff;
+            border-radius: 8px;
+            background: rgba(128,128,128,.08);
+            line-height: 1.8;
+        }
+
+        .skill-list {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 10px;
+            margin-top: 16px;
+        }
+
+        .skill-tag {
+            padding: 8px 12px;
+            border: 1px solid rgba(128,128,128,.3);
+            border-radius: 999px;
+            font-size: .9rem;
+        }
+
+        .case-footer {
+            padding: 35px 0 60px;
+        }
+
+        .case-footer a {
+            text-decoration: none;
+        }
+
+        @media (max-width: 600px) {
+            .case-hero {
+                padding-top: 40px;
+            }
+
+            .case-meta {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+    <header>
+        <nav class="container">
+            <a href="index.html" class="logo">Portfolio</a>
+
+            <div class="nav-links">
+                <a href="index.html#work">Work</a>
+                <a href="index.html#about">About</a>
+                <a href="index.html#contact">Contact</a>
+            </div>
+        </nav>
+    </header>
+
+    <main class="container">
+
+        <!-- Hero -->
+        <section class="case-hero">
+
+            <p class="case-label">
+                Case Study 04 · Cloud Infrastructure
+            </p>
+
+            <h1>
+                Coordinating AWS Environment Migration
+                and Deployment Readiness
+            </h1>
+
+            <p class="case-intro">
+                How I coordinated DevOps, database, and development teams
+                during an AWS environment migration, helping define the
+                workflow, coordinate automation, validate results, and
+                plan for minimal disruption to application availability.
+            </p>
+
+            <div class="case-meta">
+
+                <div class="meta-card">
+                    <p>Role</p>
+                    <strong>Product Delivery Manager</strong>
+                </div>
+
+                <div class="meta-card">
+                    <p>Teams involved</p>
+                    <strong>DevOps, Database, and Development</strong>
+                </div>
+
+                <div class="meta-card">
+                    <p>Technical context</p>
+                    <strong>AWS, Rundeck, Java, database systems</strong>
+                </div>
+
+                <div class="meta-card">
+                    <p>Primary focus</p>
+                    <strong>Migration coordination and delivery readiness</strong>
+                </div>
+
+            </div>
+        </section>
+
+        <!-- Overview -->
+        <section class="case-section">
+
+            <h2>Project Overview</h2>
+
+            <p>
+                The project involved moving application artifacts between
+                AWS environments. Successful execution required coordinated
+                work across DevOps, database, and development teams, along
+                with a clear migration workflow and validation activities.
+            </p>
+
+            <p>
+                The work included coordinating Rundeck automation scripts,
+                aligning database-related requirements, and working with
+                developers involved in a Java-based program used to transfer
+                application artifacts between environments.
+            </p>
+
+            <p>
+                A key consideration throughout the planning and delivery
+                process was minimizing downtime and reducing the risk of
+                disruption during migration.
+            </p>
+
+        </section>
+
+        <!-- Challenge -->
+        <section class="case-section">
+
+            <h2>The Challenge</h2>
+
+            <p>
+                Moving application artifacts between environments required
+                multiple technical workstreams to remain aligned. The
+                migration needed clear requirements, defined execution
+                steps, appropriate coordination, and validation before
+                the team could consider the work ready for completion.
+            </p>
+
+            <ul>
+                <li>
+                    Coordinate dependencies between DevOps, database,
+                    and development teams.
+                </li>
+
+                <li>
+                    Establish a clear migration workflow and clarify
+                    responsibilities across technical workstreams.
+                </li>
+
+                <li>
+                    Coordinate automation development and the application
+                    artifact transfer process.
+                </li>
+
+                <li>
+                    Plan for minimal downtime while managing migration
+                    risks and dependencies.
+                </li>
+
+                <li>
+                    Validate migration results and investigate issues
+                    discovered during execution.
+                </li>
+            </ul>
+
+        </section>
+
+        <!-- Responsibilities -->
+        <section class="case-section">
+
+            <h2>My Role and Contributions</h2>
+
+            <h3>1. Requirements and migration workflow</h3>
+
+            <ul>
+                <li>
+                    Helped define migration requirements and the
+                    workflow needed to coordinate the activity.
+                </li>
+
+                <li>
+                    Worked across technical teams to clarify dependencies
+                    and align the sequence of migration activities.
+                </li>
+
+                <li>
+                    Helped maintain a shared understanding of the
+                    expected process and delivery requirements.
+                </li>
+            </ul>
+
+            <h3>2. Cross-functional coordination</h3>
+
+            <ul>
+                <li>
+                    Coordinated DevOps, database, and development teams
+                    throughout migration preparation and execution.
+                </li>
+
+                <li>
+                    Coordinated the development of Rundeck scripts
+                    supporting the migration workflow.
+                </li>
+
+                <li>
+                    Worked with developers involved in the Java-based
+                    artifact transfer program, helping align technical
+                    implementation with migration requirements.
+                </li>
+
+                <li>
+                    Followed up on technical dependencies and issues
+                    requiring input from different teams.
+                </li>
+            </ul>
+
+            <h3>3. Downtime and risk considerations</h3>
+
+            <ul>
+                <li>
+                    Helped plan the migration workflow with the objective
+                    of minimizing application downtime.
+                </li>
+
+                <li>
+                    Coordinated the steps needed to prepare the migration
+                    and reduce avoidable execution risks.
+                </li>
+
+                <li>
+                    Helped ensure that migration activities and
+                    dependencies were documented for the teams involved.
+                </li>
+            </ul>
+
+            <h3>4. Validation and troubleshooting</h3>
+
+            <ul>
+                <li>
+                    Reviewed and validated migration results against
+                    the expected outcome.
+                </li>
+
+                <li>
+                    Participated in troubleshooting issues identified
+                    during migration activities.
+                </li>
+
+                <li>
+                    Prepared documentation and deployment procedures
+                    to support a more consistent execution process.
+                </li>
+            </ul>
+
+        </section>
+
+        <!-- Approach -->
+        <section class="case-section">
+
+            <h2>My Approach</h2>
+
+            <ol>
+                <li>
+                    <strong>Define the workflow:</strong>
+                    Help clarify migration requirements, dependencies,
+                    and the expected sequence of activities.
+                </li>
+
+                <li>
+                    <strong>Align technical teams:</strong>
+                    Coordinate DevOps, database, and development work
+                    so that dependent tasks remain aligned.
+                </li>
+
+                <li>
+                    <strong>Coordinate automation:</strong>
+                    Follow up on the Rundeck scripts and Java-based
+                    artifact transfer work required by the migration.
+                </li>
+
+                <li>
+                    <strong>Prepare for execution:</strong>
+                    Help document the process and plan the work with
+                    minimal downtime as an objective.
+                </li>
+
+                <li>
+                    <strong>Validate and troubleshoot:</strong>
+                    Review results, investigate issues with the relevant
+                    teams, and help resolve gaps against expectations.
+                </li>
+            </ol>
+
+        </section>
+
+        <!-- Outcomes -->
+        <section class="case-section">
+
+            <h2>Contribution and Delivery Impact</h2>
+
+            <p>
+                My contribution focused on keeping the technical workstreams
+                aligned and making the migration process more structured,
+                traceable, and easier for the teams to execute.
+            </p>
+
+            <ul>
+                <li>
+                    Helped establish a clearer migration workflow
+                    across multiple technical teams.
+                </li>
+
+                <li>
+                    Coordinated automation-related dependencies
+                    involving Rundeck scripts and the artifact
+                    transfer program.
+                </li>
+
+                <li>
+                    Supported migration validation and troubleshooting
+                    during execution.
+                </li>
+
+                <li>
+                    Prepared documentation and deployment procedures
+                    to support repeatable execution.
+                </li>
+
+                <li>
+                    Kept minimizing downtime as a key consideration
+                    during migration planning.
+                </li>
+            </ul>
+
+            <p>
+                No specific downtime reduction, migration duration,
+                or performance improvement is claimed because verified
+                numerical measurements are not available for publication.
+            </p>
+
+        </section>
+
+        <!-- Learnings -->
+        <section class="case-section">
+
+            <h2>Key Learnings</h2>
+
+            <ul>
+                <li>
+                    Infrastructure migrations depend on coordination
+                    and clear ownership as much as on technical execution.
+                </li>
+
+                <li>
+                    Documented workflows help teams manage dependencies
+                    and execute complex activities more consistently.
+                </li>
+
+                <li>
+                    Migration validation and troubleshooting should
+                    be considered part of delivery, not treated as
+                    afterthoughts.
+                </li>
+
+                <li>
+                    A delivery manager needs enough technical context
+                    to ask the right questions, identify dependencies,
+                    and coordinate decisions without overstating
+                    hands-on engineering responsibilities.
+                </li>
+            </ul>
+
+        </section>
+
+        <!-- Skills -->
+        <section class="case-section">
+
+            <h2>Skills Demonstrated</h2>
+
+            <div class="skill-list">
+                <span class="skill-tag">Product Delivery</span>
+                <span class="skill-tag">Technical Project Coordination</span>
+                <span class="skill-tag">AWS Environment Migration</span>
+                <span class="skill-tag">Requirements Analysis</span>
+                <span class="skill-tag">Cross-functional Collaboration</span>
+                <span class="skill-tag">Migration Planning</span>
+                <span class="skill-tag">Risk and Dependency Management</span>
+                <span class="skill-tag">Rundeck</span>
+                <span class="skill-tag">Java Application Coordination</span>
+                <span class="skill-tag">Database Coordination</span>
+                <span class="skill-tag">Validation and Troubleshooting</span>
+                <span class="skill-tag">Technical Documentation</span>
+            </div>
+
+        </section>
+
+        <!-- Confidentiality -->
+        <section class="case-section">
+
+            <p>
+                <em>
+                    Confidentiality note: This case study describes the
+                    project at a high level. Internal infrastructure
+                    details, customer information, scripts, credentials,
+                    configurations, and proprietary implementation
+                    details have been omitted.
+                </em>
+            </p>
+
+        </section>
+
+        <footer class="case-footer">
+            <a href="index.html#work">
+                &larr; Back to Selected Work
+            </a>
+        </footer>
+
+    </main>
+
+</body>
+</html>

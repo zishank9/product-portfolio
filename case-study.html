@@ -4,8 +4,8 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Feature Delivery Case Study | Your Name</title>
-    <link rel="stylesheet" href="style.css">
+    <title>Enterprise ETL & Data Migration | Zishan Khan</title>
+    <link rel="stylesheet" href="styles.css">
     <style>
         .case-hero { padding: 65px 0 35px; }
         .sample-label {
@@ -18,7 +18,10 @@
         }
         .case-content { max-width: 800px; }
         .case-content h2 { margin-top: 38px; }
-        .case-content li { margin-bottom: 10px; color: var(--muted); }
+        .case-content li {
+            margin-bottom: 10px;
+            color: var(--muted);
+        }
         .artifact {
             background: var(--card);
             border: 1px solid var(--border);
@@ -27,14 +30,18 @@
             margin: 18px 0;
         }
         .artifact strong { color: var(--accent); }
-        .back-link { display: inline-block; margin-top: 22px; color: var(--accent); }
+        .back-link {
+            display: inline-block;
+            margin-top: 22px;
+            color: var(--accent);
+        }
     </style>
 </head>
 <body>
 
 <nav>
     <div class="container nav-content">
-        <a class="logo" href="index.html">YOUR NAME</a>
+        <a class="logo" href="index.html">Zishan Khan</a>
         <div class="nav-links">
             <a href="index.html#work">Work</a>
             <a href="index.html#about">About</a>
@@ -45,12 +52,23 @@
 
 <header class="case-hero">
     <div class="container case-content">
-        <span class="sample-label">Sample project · Hypothetical scenario</span>
-        <h1>Improving a SaaS customer onboarding workflow</h1>
+        <span class="sample-label">
+            Enterprise Data Migration · ETL Automation
+        </span>
+
+        <h1>Improving Enterprise Data Migration and Validation</h1>
+
         <p class="intro">
-            An example of how I would turn a customer problem into
-            a scoped feature, actionable requirements and a testable release.
+            How I worked with an enterprise client and engineering teams
+            to translate legacy data migration requirements into an ETL
+            solution, with a focus on data integrity, financial consistency,
+            and reporting accuracy.
         </p>
+
+        <p class="section-description">
+            Role: Product Delivery Manager / Business Analysis and Delivery
+        </p>
+
         <a class="back-link" href="index.html">← Back to portfolio</a>
     </div>
 </header>
@@ -59,90 +77,199 @@
     <div class="container case-content">
 
         <h2>1. The problem</h2>
+
         <p class="section-description">
-            Imagine a SaaS platform where new customers struggle to complete
-            onboarding because required setup steps and their current status
-            are not clear.
+            An enterprise hospitality client needed to migrate historical
+            hotel and guest data from a legacy Property Management System
+            (PMS) into HotelKey's platform.
+        </p>
+
+        <p class="section-description">
+            The source data was supplied in large, compressed XML files.
+            The information needed to be understood, mapped to the target
+            system's data model, transformed, and loaded into the new
+            platform.
+        </p>
+
+        <p class="section-description">
+            Successful migration also required more than transferring
+            records. Financial balances needed to remain consistent, and
+            reports needed to reflect the migrated data correctly.
         </p>
 
         <h2>2. The objective</h2>
+
         <p class="section-description">
-            Help customers understand the remaining setup steps and make
-            onboarding progress easier to track.
+            Help establish a repeatable ETL process that could migrate
+            the required client data while maintaining data integrity
+            and improving confidence in financial and reporting results.
         </p>
 
-        <h2>3. Proposed solution</h2>
         <ul>
-            <li>Display a checklist of required onboarding tasks.</li>
-            <li>Show each task's status: Not started, In progress or Complete.</li>
-            <li>Explain what action is needed for incomplete tasks.</li>
-            <li>Provide a clear confirmation when setup is complete.</li>
+            <li>Understand the client's migration requirements.</li>
+            <li>Map source data fields to the target data structure.</li>
+            <li>Enable the engineering team to build a suitable ETL tool.</li>
+            <li>Validate migrated data against expected results.</li>
+            <li>Identify discrepancies affecting financial balances and reports.</li>
         </ul>
 
-        <h2>4. Example user story</h2>
+        <h2>3. My role and contributions</h2>
+
+        <ul>
+            <li>
+                <strong>Requirement gathering:</strong>
+                Worked directly with the client to understand which
+                historical data needed to be transferred.
+            </li>
+            <li>
+                <strong>Data mapping:</strong>
+                Analysed sample source files and created field mappings
+                to translate the required information into the target
+                data structure.
+            </li>
+            <li>
+                <strong>User stories:</strong>
+                Converted migration requirements into user stories
+                for the development team.
+            </li>
+            <li>
+                <strong>Engineering collaboration:</strong>
+                Worked with developers as they built an ETL tool that
+                accepted client files, transformed the data, and loaded
+                it into the target database.
+            </li>
+            <li>
+                <strong>Data validation:</strong>
+                Used sample data and validation exercises to check
+                whether the migrated output matched expectations.
+            </li>
+            <li>
+                <strong>Reporting reconciliation:</strong>
+                Ran queries to compare source and target data,
+                investigated discrepancies, and helped validate
+                report accuracy.
+            </li>
+        </ul>
+
+        <h2>4. Financial and reporting integrity</h2>
+
+        <p class="section-description">
+            A key consideration was ensuring that migration preserved
+            important business values, not just the underlying records.
+        </p>
+
         <div class="artifact">
-            <strong>User story</strong>
+            <strong>Financial consistency</strong>
             <p>
-                As a new customer, I want to see my onboarding tasks and their
-                completion status so that I know what I need to do before
-                I can start using the platform.
+                Helped validate that financial balances in the legacy
+                system were consistent with the corresponding results
+                after migration.
             </p>
         </div>
 
-        <h2>5. Acceptance criteria</h2>
         <div class="artifact">
-            <strong>AC1 — Display tasks</strong>
-            <p>Given a customer has signed in, when they open onboarding,
-            then all applicable setup tasks are displayed.</p>
+            <strong>Reporting accuracy</strong>
+            <p>
+                Used queries and product knowledge to compare source
+                and target data, investigate differences, and check
+                whether reports reflected the expected results.
+            </p>
         </div>
 
-        <div class="artifact">
-            <strong>AC2 — Update status</strong>
-            <p>Given a setup task has been completed, when the system confirms
-            completion, then the displayed status updates accordingly.</p>
-        </div>
+        <h2>5. Validation and automation</h2>
 
-        <div class="artifact">
-            <strong>AC3 — Handle errors</strong>
-            <p>Given a task cannot be completed because of a system error,
-            when the error occurs, then the customer receives a clear message
-            and guidance on what to do next.</p>
-        </div>
-
-        <h2>6. Prioritization</h2>
-        <ul>
-            <li><strong>Must have:</strong> Task list and accurate task statuses.</li>
-            <li><strong>Should have:</strong> Helpful instructions for incomplete tasks.</li>
-            <li><strong>Could have:</strong> Optional progress visualization.</li>
-            <li><strong>Later:</strong> Personalized onboarding recommendations.</li>
-        </ul>
-
-        <h2>7. Validation and release plan</h2>
-        <ul>
-            <li>Review requirements with relevant stakeholders.</li>
-            <li>Walk through edge cases with engineering.</li>
-            <li>Prepare UAT scenarios for task completion and error handling.</li>
-            <li>Validate the feature in a test environment.</li>
-            <li>Coordinate release readiness and monitor reported issues after launch.</li>
-        </ul>
-
-        <h2>8. How success could be measured</h2>
-        <ul>
-            <li>Onboarding completion rate.</li>
-            <li>Time taken to complete onboarding.</li>
-            <li>Number of onboarding-related support requests.</li>
-        </ul>
         <p class="section-description">
-            These are proposed metrics, not measured results. A baseline and
-            target would be established using actual product data.
+            Initial validation involved working with sample data and
+            comparing source and target results. Queries and
+            troubleshooting helped identify discrepancies that needed
+            further investigation.
         </p>
 
-        <h2>9. My approach</h2>
         <p class="section-description">
-            I would focus on clarifying the customer problem, agreeing on
-            scope, writing testable requirements, aligning stakeholders,
-            coordinating delivery and validating the result against the
-            intended outcome.
+            The engineering team subsequently automated validation
+            steps. The current ETL solution also generates reports
+            highlighting discrepancies affecting reporting, which
+            support ongoing bug investigation and resolution.
+        </p>
+
+        <p class="section-description">
+            I remain loosely involved in troubleshooting when needed.
+            The validation capability has therefore become part of
+            the ongoing process for identifying data and reporting
+            issues, rather than being limited to the initial migration.
+        </p>
+
+        <h2>6. Delivery approach</h2>
+
+        <ul>
+            <li>Gather requirements and clarify migration scope with the client.</li>
+            <li>Review sample data and define field mappings.</li>
+            <li>Write user stories and coordinate requirements with developers.</li>
+            <li>Validate migrated data against expected results.</li>
+            <li>Investigate financial and reporting discrepancies.</li>
+            <li>Support the evolution of validation into an automated process.</li>
+            <li>Use discrepancy reports to support ongoing product quality improvements.</li>
+        </ul>
+
+        <h2>7. Outcome and ongoing impact</h2>
+
+        <ul>
+            <li>
+                Delivered an ETL capability that accepts client migration
+                files and loads transformed data into the target system.
+            </li>
+            <li>
+                Established validation practices for checking migrated
+                data and investigating discrepancies.
+            </li>
+            <li>
+                Contributed to automated validation and discrepancy
+                reporting that supports ongoing issue investigation.
+            </li>
+            <li>
+                Helped address the need for financial consistency and
+                accurate reporting during data migration.
+            </li>
+        </ul>
+
+        <p class="section-description">
+            No numerical improvement is claimed here because verified
+            measurements have not yet been established for publication.
+        </p>
+
+        <h2>8. What this project demonstrates</h2>
+
+        <ul>
+            <li>Enterprise client requirement gathering.</li>
+            <li>Data analysis and field mapping.</li>
+            <li>User story creation and requirements translation.</li>
+            <li>Cross-functional coordination with engineering.</li>
+            <li>SQL-based validation and discrepancy investigation.</li>
+            <li>Financial and reporting reconciliation.</li>
+            <li>Continuous improvement through validation automation.</li>
+        </ul>
+
+        <h2>9. My approach</h2>
+
+        <p class="section-description">
+            My focus was on connecting the client's business requirements
+            with the engineering team's implementation. This involved
+            understanding the source data, documenting the required
+            transformations, validating the resulting data, and helping
+            ensure that financial and reporting expectations were met.
+        </p>
+
+        <p class="section-description">
+            The project reflects how I approach product delivery:
+            clarify the business need, translate it into actionable
+            requirements, work closely with technical teams, validate
+            outcomes, and use identified issues to improve the product.
+        </p>
+
+        <p class="section-description">
+            This case study omits client identities, proprietary data
+            structures, internal database details, and confidential
+            implementation information.
         </p>
 
         <a class="back-link" href="index.html">← Back to portfolio</a>
@@ -150,7 +277,9 @@
 </section>
 
 <footer>
-    <div class="container">© 2026 YOUR NAME · Product Portfolio</div>
+    <div class="container">
+        © 2026 Zishan Khan · Product Portfolio
+    </div>
 </footer>
 
 </body>

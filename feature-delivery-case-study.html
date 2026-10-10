@@ -5,239 +5,617 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-    <meta name="description" content="Product delivery case study covering enterprise feature development, requirements gathering, user stories, engineering coordination, testing, issue investigation and client delivery.">
+    <meta name="description" content="Enterprise product delivery case study covering requirements gathering, user stories, engineering coordination, testing, issue investigation, and client delivery.">
 
-    <title>Enterprise Feature Delivery | Product Portfolio</title>
+    <meta name="theme-color" content="#101321">
+
+    <title>Enterprise Feature Delivery | Zishan Khan</title>
 
     <link rel="stylesheet" href="styles.css">
 
     <style>
-        .case-hero {
-            padding: 65px 0 35px;
+        :root {
+            --fd-accent: #8b9cff;
+            --fd-accent-soft: rgba(139, 156, 255, 0.13);
+            --fd-border: rgba(128, 128, 128, 0.25);
+            --fd-surface: rgba(128, 128, 128, 0.045);
+            --fd-muted: #8b91a5;
         }
 
-        .case-content {
-            max-width: 1000px;
+        html {
+            scroll-behavior: smooth;
+            scroll-padding-top: 100px;
+        }
+
+        body {
+            overflow-x: hidden;
+        }
+
+        /* Reading progress */
+
+        .reading-progress-track {
+            position: fixed;
+            top: 0;
+            left: 0;
+            z-index: 9999;
+            width: 100%;
+            height: 4px;
+            background: transparent;
+        }
+
+        .reading-progress-bar {
+            width: 0;
+            height: 100%;
+            background: linear-gradient(90deg, #8b9cff, #b5c0ff);
+            transition: width 0.1s linear;
+        }
+
+        /* Page layout */
+
+        .fd-hero {
+            padding: 65px 0 38px;
+        }
+
+        .fd-container {
+            max-width: 1240px;
             margin: 0 auto;
             padding-left: 24px;
             padding-right: 24px;
         }
 
-        .case-label {
+        .fd-label {
             display: inline-block;
-            color: #8b9cff;
-            font-size: 0.85rem;
-            font-weight: 600;
-            letter-spacing: 1px;
+            color: var(--fd-accent);
+            font-size: 0.82rem;
+            font-weight: 700;
+            letter-spacing: 1.1px;
             text-transform: uppercase;
         }
 
-        .case-hero h1 {
-            max-width: 850px;
+        .fd-hero h1 {
+            max-width: 900px;
             margin: 16px 0;
-            line-height: 1.2;
+            line-height: 1.16;
+            font-size: clamp(2rem, 4vw, 3.4rem);
         }
 
-        .case-intro {
-            max-width: 780px;
-            line-height: 1.8;
-            opacity: 0.85;
-        }
-
-        .case-meta {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-            gap: 18px;
-            margin: 32px 0;
-        }
-
-        .meta-card,
-        .artifact-card {
-            padding: 22px;
-            border: 1px solid rgba(128, 128, 128, 0.25);
-            border-radius: 12px;
-        }
-
-        .meta-card p {
-            margin-bottom: 8px;
-            font-size: 0.9rem;
-            opacity: 0.7;
-        }
-
-        .meta-card strong {
-            line-height: 1.6;
-        }
-
-        .case-section {
-            padding: 30px 0;
-            border-top: 1px solid rgba(128, 128, 128, 0.2);
-        }
-
-        .case-section h2 {
-            margin-bottom: 18px;
-        }
-
-        .case-section h3 {
-            margin-bottom: 10px;
-        }
-
-        .case-section p,
-        .case-section li {
-            line-height: 1.8;
-        }
-
-        .case-section p {
-            margin-bottom: 16px;
-        }
-
-        .case-section ul,
-        .case-section ol {
-            padding-left: 24px;
-        }
-
-        .case-section li {
-            margin-bottom: 10px;
-        }
-
-        .artifact-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
-            gap: 18px;
-            margin: 24px 0;
-        }
-
-        .artifact-card h3 {
+        .fd-intro {
+            max-width: 790px;
             font-size: 1.05rem;
+            line-height: 1.9;
+            opacity: 0.86;
         }
 
-        .artifact-card p {
-            margin-bottom: 0;
-        }
-
-        .case-callout {
-            padding: 22px;
-            margin: 22px 0;
-            border-left: 3px solid #8b9cff;
-            border-radius: 8px;
-            background: rgba(128, 128, 128, 0.08);
-            line-height: 1.8;
-        }
-
-        .skill-list {
-            display: flex;
-            flex-wrap: wrap;
-            gap: 10px;
-            margin-top: 16px;
-        }
-
-        .skill-tag {
-            padding: 8px 12px;
-            border: 1px solid rgba(128, 128, 128, 0.3);
-            border-radius: 999px;
-            font-size: 0.9rem;
-        }
-
-        .case-footer {
-            display: flex;
-            flex-wrap: wrap;
-            justify-content: space-between;
-            gap: 16px;
-            padding: 35px 0 60px;
-        }
-
-        .case-footer a {
-            text-decoration: none;
-        }
-
-        .case-back-link {
-            display: inline-block;
-            margin-top: 20px;
-            text-decoration: none;
-        }
-
-        /* FEATURE DELIVERY WORKFLOW */
-
-        .delivery-workflow {
+        .fd-meta {
             display: grid;
             grid-template-columns: repeat(4, minmax(0, 1fr));
             gap: 16px;
-            margin: 26px 0;
+            margin: 32px 0 24px;
         }
 
-        .delivery-stage {
-            padding: 20px;
-            border: 1px solid rgba(128, 128, 128, 0.25);
+        .fd-meta-card {
+            padding: 21px;
+            border: 1px solid var(--fd-border);
+            border-radius: 14px;
+            background: var(--fd-surface);
+            transition: transform 0.2s ease, border-color 0.2s ease;
+        }
+
+        .fd-meta-card:hover {
+            transform: translateY(-3px);
+            border-color: rgba(139, 156, 255, 0.65);
+        }
+
+        .fd-meta-card p {
+            margin: 0 0 8px;
+            font-size: 0.85rem;
+            opacity: 0.7;
+        }
+
+        .fd-meta-card strong {
+            line-height: 1.6;
+        }
+
+        .fd-hero-link {
+            display: inline-flex;
+            margin-top: 5px;
+            text-decoration: none;
+        }
+
+        .fd-layout {
+            display: grid;
+            grid-template-columns: 235px minmax(0, 1fr);
+            gap: 42px;
+            align-items: start;
+            padding-bottom: 30px;
+        }
+
+        /* Sticky table of contents */
+
+        .fd-toc {
+            position: sticky;
+            top: 28px;
+            align-self: start;
+            max-height: calc(100vh - 56px);
+            overflow-y: auto;
+            padding: 20px 14px;
+            border: 1px solid var(--fd-border);
+            border-radius: 14px;
+            background: var(--fd-surface);
+        }
+
+        .fd-toc-heading {
+            margin: 0 0 14px;
+            padding: 0 9px;
+            font-size: 0.76rem;
+            letter-spacing: 1px;
+            text-transform: uppercase;
+            opacity: 0.65;
+        }
+
+        .fd-toc a {
+            display: block;
+            padding: 9px 10px;
+            margin: 3px 0;
+            border-left: 2px solid transparent;
+            border-radius: 0 7px 7px 0;
+            color: inherit;
+            font-size: 0.83rem;
+            line-height: 1.45;
+            text-decoration: none;
+            opacity: 0.75;
+            transition: background 0.2s ease, color 0.2s ease;
+        }
+
+        .fd-toc a:hover,
+        .fd-toc a.active {
+            border-left-color: var(--fd-accent);
+            background: var(--fd-accent-soft);
+            color: var(--fd-accent);
+            opacity: 1;
+        }
+
+        .fd-mobile-toc {
+            display: none;
+            margin: 0 0 24px;
+            border: 1px solid var(--fd-border);
             border-radius: 12px;
+            background: var(--fd-surface);
         }
 
-        .delivery-stage-number {
+        .fd-mobile-toc summary {
+            padding: 16px;
+            cursor: pointer;
+            font-weight: 600;
+        }
+
+        .fd-mobile-toc .fd-mobile-toc-links {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 6px;
+            padding: 0 16px 16px;
+        }
+
+        .fd-mobile-toc a {
+            padding: 8px 0;
+            font-size: 0.86rem;
+            text-decoration: none;
+        }
+
+        /* Main sections */
+
+        .fd-article {
+            min-width: 0;
+        }
+
+        .fd-section {
+            padding: 32px 0;
+            border-top: 1px solid var(--fd-border);
+            scroll-margin-top: 30px;
+        }
+
+        .fd-section:first-child {
+            border-top: 0;
+            padding-top: 0;
+        }
+
+        .fd-section h2 {
+            margin: 0 0 18px;
+            font-size: clamp(1.35rem, 2.5vw, 1.8rem);
+            line-height: 1.35;
+        }
+
+        .fd-section h3 {
+            margin: 24px 0 10px;
+            font-size: 1.06rem;
+            line-height: 1.5;
+        }
+
+        .fd-section p,
+        .fd-section li {
+            line-height: 1.85;
+        }
+
+        .fd-section p {
+            margin-bottom: 16px;
+        }
+
+        .fd-section ul,
+        .fd-section ol {
+            padding-left: 24px;
+        }
+
+        .fd-section li {
+            margin-bottom: 10px;
+        }
+
+        .fd-section p:last-child {
+            margin-bottom: 0;
+        }
+
+        .fd-section-intro {
+            max-width: 850px;
+            opacity: 0.86;
+        }
+
+        .fd-callout {
+            padding: 22px;
+            margin: 22px 0;
+            border-left: 3px solid var(--fd-accent);
+            border-radius: 0 10px 10px 0;
+            background: var(--fd-accent-soft);
+            line-height: 1.85;
+        }
+
+        /* Cards */
+
+        .fd-card-grid {
+            display: grid;
+            grid-template-columns: repeat(2, minmax(0, 1fr));
+            gap: 16px;
+            margin: 24px 0;
+        }
+
+        .fd-card {
+            min-width: 0;
+            padding: 21px;
+            border: 1px solid var(--fd-border);
+            border-radius: 13px;
+            background: var(--fd-surface);
+            transition: transform 0.2s ease, border-color 0.2s ease;
+        }
+
+        .fd-card:hover {
+            transform: translateY(-2px);
+            border-color: rgba(139, 156, 255, 0.5);
+        }
+
+        .fd-card h3 {
+            margin: 0 0 10px;
+        }
+
+        .fd-card p:last-child {
+            margin-bottom: 0;
+        }
+
+        .fd-card details {
+            margin-top: 12px;
+        }
+
+        .fd-card summary {
+            color: var(--fd-accent);
+            cursor: pointer;
+            font-size: 0.9rem;
+            font-weight: 600;
+        }
+
+        .fd-card details p,
+        .fd-card details ul {
+            margin-top: 12px;
+            font-size: 0.94rem;
+        }
+
+        /* Interactive workflow */
+
+        .fd-workflow {
+            display: grid;
+            grid-template-columns: repeat(4, minmax(0, 1fr));
+            gap: 13px;
+            margin: 26px 0 18px;
+        }
+
+        .fd-stage {
+            display: flex;
+            flex-direction: column;
+            align-items: flex-start;
+            width: 100%;
+            min-width: 0;
+            padding: 18px;
+            border: 1px solid var(--fd-border);
+            border-radius: 12px;
+            background: var(--fd-surface);
+            color: inherit;
+            text-align: left;
+            cursor: pointer;
+            font: inherit;
+            transition: transform 0.2s ease, border-color 0.2s ease,
+                        background 0.2s ease;
+        }
+
+        .fd-stage:hover {
+            transform: translateY(-3px);
+            border-color: var(--fd-accent);
+        }
+
+        .fd-stage[aria-pressed="true"] {
+            border-color: var(--fd-accent);
+            background: var(--fd-accent-soft);
+            box-shadow: 0 0 0 1px rgba(139, 156, 255, 0.15);
+        }
+
+        .fd-stage-number {
             display: inline-flex;
             align-items: center;
             justify-content: center;
-            width: 36px;
-            height: 36px;
-            margin-bottom: 14px;
+            width: 34px;
+            height: 34px;
+            margin-bottom: 13px;
             border-radius: 50%;
-            background: rgba(139, 156, 255, 0.15);
-            color: #8b9cff;
+            background: var(--fd-accent-soft);
+            color: var(--fd-accent);
+            font-size: 0.88rem;
             font-weight: 700;
         }
 
-        .delivery-stage h3 {
-            font-size: 1rem;
+        .fd-stage strong {
+            margin-bottom: 8px;
+            line-height: 1.45;
         }
 
-        .delivery-stage p {
-            margin-bottom: 0;
-            font-size: 0.92rem;
+        .fd-stage small {
+            font-size: 0.85rem;
+            line-height: 1.7;
+            opacity: 0.77;
         }
 
-        .example-story {
+        .fd-stage-panel {
             padding: 22px;
-            margin: 22px 0;
-            border: 1px solid rgba(128, 128, 128, 0.25);
+            border: 1px solid rgba(139, 156, 255, 0.4);
             border-radius: 12px;
+            background: var(--fd-accent-soft);
         }
 
-        .example-story p:last-child {
-            margin-bottom: 0;
-        }
-
-        .example-label {
+        .fd-stage-panel-label {
             display: block;
-            margin-bottom: 12px;
-            color: #8b9cff;
-            font-size: 0.8rem;
-            font-weight: 600;
-            letter-spacing: 0.7px;
+            margin-bottom: 8px;
+            color: var(--fd-accent);
+            font-size: 0.76rem;
+            font-weight: 700;
+            letter-spacing: 0.9px;
             text-transform: uppercase;
         }
 
-        @media (max-width: 800px) {
-            .delivery-workflow {
+        .fd-stage-panel h3 {
+            margin: 0 0 10px;
+        }
+
+        .fd-stage-panel p {
+            margin: 0;
+        }
+
+        .fd-workflow-note {
+            margin-top: 14px;
+            font-size: 0.87rem;
+            line-height: 1.7;
+            opacity: 0.7;
+        }
+
+        /* Example user story */
+
+        .fd-example {
+            padding: 24px;
+            margin: 24px 0;
+            border: 1px solid var(--fd-border);
+            border-radius: 14px;
+            background: var(--fd-surface);
+        }
+
+        .fd-example-label {
+            display: block;
+            margin-bottom: 12px;
+            color: var(--fd-accent);
+            font-size: 0.78rem;
+            font-weight: 700;
+            letter-spacing: 0.8px;
+            text-transform: uppercase;
+        }
+
+        .fd-example h3:first-of-type {
+            margin-top: 0;
+        }
+
+        .fd-example p:last-child {
+            margin-bottom: 0;
+        }
+
+        /* Skills */
+
+        .fd-skill-list {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 9px;
+            margin-top: 18px;
+        }
+
+        .fd-skill {
+            display: inline-flex;
+            padding: 8px 12px;
+            border: 1px solid var(--fd-border);
+            border-radius: 999px;
+            font-size: 0.87rem;
+            line-height: 1.4;
+        }
+
+        /* Footer and back to top */
+
+        .fd-footer {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: space-between;
+            gap: 18px;
+            padding: 34px 0 60px;
+            border-top: 1px solid var(--fd-border);
+        }
+
+        .fd-footer a {
+            text-decoration: none;
+        }
+
+        .fd-confidentiality {
+            font-size: 0.9rem;
+            line-height: 1.85;
+            opacity: 0.75;
+        }
+
+        .fd-back-top {
+            position: fixed;
+            right: 22px;
+            bottom: 22px;
+            z-index: 100;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            width: 46px;
+            height: 46px;
+            border: 1px solid var(--fd-border);
+            border-radius: 50%;
+            background: var(--fd-accent);
+            color: #101321;
+            font-size: 1.2rem;
+            cursor: pointer;
+            opacity: 0;
+            visibility: hidden;
+            transform: translateY(8px);
+            transition: opacity 0.2s ease, visibility 0.2s ease,
+                        transform 0.2s ease;
+        }
+
+        .fd-back-top.visible {
+            opacity: 1;
+            visibility: visible;
+            transform: translateY(0);
+        }
+
+        /* Reveal on scroll */
+
+        .fd-reveal {
+            opacity: 0;
+            transform: translateY(14px);
+            transition: opacity 0.5s ease, transform 0.5s ease;
+        }
+
+        .fd-reveal.is-visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        @media (prefers-reduced-motion: reduce) {
+            html {
+                scroll-behavior: auto;
+            }
+
+            *,
+            *::before,
+            *::after {
+                animation-duration: 0.01ms !important;
+                transition-duration: 0.01ms !important;
+            }
+
+            .fd-reveal {
+                opacity: 1;
+                transform: none;
+            }
+        }
+
+        @media (max-width: 1050px) {
+            .fd-layout {
+                grid-template-columns: 200px minmax(0, 1fr);
+                gap: 28px;
+            }
+
+            .fd-meta {
+                grid-template-columns: repeat(2, minmax(0, 1fr));
+            }
+
+            .fd-workflow {
                 grid-template-columns: repeat(2, minmax(0, 1fr));
             }
         }
 
-        @media (max-width: 650px) {
-            .case-hero {
-                padding-top: 40px;
+        @media (max-width: 760px) {
+            .fd-hero {
+                padding-top: 42px;
             }
 
-            .case-meta,
-            .artifact-grid,
-            .delivery-workflow {
+            .fd-layout {
+                display: block;
+            }
+
+            .fd-desktop-toc {
+                display: none;
+            }
+
+            .fd-mobile-toc {
+                display: block;
+            }
+
+            .fd-section {
+                padding: 27px 0;
+            }
+
+            .fd-card-grid {
                 grid-template-columns: 1fr;
             }
 
-            .delivery-stage {
+            .fd-footer {
+                flex-direction: column;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .fd-container {
+                padding-left: 17px;
+                padding-right: 17px;
+            }
+
+            .fd-meta,
+            .fd-workflow {
+                grid-template-columns: 1fr;
+            }
+
+            .fd-mobile-toc .fd-mobile-toc-links {
+                grid-template-columns: 1fr;
+            }
+
+            .fd-meta-card,
+            .fd-card,
+            .fd-example {
                 padding: 18px;
+            }
+
+            .fd-back-top {
+                right: 15px;
+                bottom: 15px;
             }
         }
     </style>
 </head>
 
 <body>
+
+    <div class="reading-progress-track" aria-hidden="true">
+        <div class="reading-progress-bar" id="readingProgress"></div>
+    </div>
 
     <nav>
         <div class="container nav-content">
@@ -251,16 +629,18 @@
         </div>
     </nav>
 
-    <header class="case-hero">
-        <div class="container case-content">
+    <!-- HERO -->
 
-            <span class="case-label">
+    <header class="fd-hero">
+        <div class="fd-container">
+
+            <span class="fd-label">
                 Product Delivery · Enterprise Feature Development
             </span>
 
             <h1>Delivering Enterprise Product Features from Requirements to Release</h1>
 
-            <p class="case-intro">
+            <p class="fd-intro">
                 How I worked across business stakeholders, developers, and QA
                 to translate requirements into actionable user stories,
                 coordinate implementation, validate feature behaviour,
@@ -268,730 +648,1082 @@
                 hospitality software environment.
             </p>
 
-            <div class="case-meta">
-                <div class="meta-card">
+            <div class="fd-meta">
+                <div class="fd-meta-card">
                     <p>Role</p>
                     <strong>Product Delivery Manager</strong>
                 </div>
 
-                <div class="meta-card">
+                <div class="fd-meta-card">
                     <p>Project Focus</p>
                     <strong>Feature Definition &amp; Delivery</strong>
                 </div>
 
-                <div class="meta-card">
+                <div class="fd-meta-card">
                     <p>Key Collaboration</p>
                     <strong>Business, Engineering &amp; QA Teams</strong>
                 </div>
 
-                <div class="meta-card">
+                <div class="fd-meta-card">
                     <p>Core Skills</p>
                     <strong>Requirements, Testing &amp; Coordination</strong>
                 </div>
             </div>
 
-            <a class="case-back-link" href="index.html#work">
-                ← Back to portfolio
+            <a class="fd-hero-link" href="index.html#work">
+                &larr; Back to selected work
             </a>
 
         </div>
     </header>
 
-    <main class="container case-content">
+    <main class="fd-container">
 
-        <!-- 1. Background -->
+        <!-- MOBILE TABLE OF CONTENTS -->
 
-        <section class="case-section">
-            <h2>1. Project Background</h2>
-
-            <p>
-                During my work on enterprise hospitality software, I was
-                involved in taking product and client requirements through
-                development, validation, and delivery. These requirements
-                could involve improving existing functionality, addressing
-                business needs, or introducing behaviour required by an
-                enterprise client.
-            </p>
-
-            <p>
-                Each requirement needed to be understood in its business
-                context and translated into work that developers could
-                implement and QA could validate. The delivery process also
-                required coordination when questions, dependencies, or
-                unexpected behaviour arose.
-            </p>
-
-            <p>
-                My responsibility was to connect the original business
-                expectation with the work being performed by technical teams,
-                helping maintain alignment from initial clarification through
-                delivery and post-delivery support.
-            </p>
-        </section>
-
-        <!-- 2. Problem -->
-
-        <section class="case-section">
-            <h2>2. The Problem</h2>
-
-            <p>
-                A high-level feature request does not always explain every
-                detail needed for implementation. Business stakeholders may
-                describe the desired outcome without specifying all the
-                functional rules, exceptions, dependencies, or validation
-                scenarios.
-            </p>
-
-            <p>
-                If those details remain unclear, different teams can develop
-                different interpretations of the same requirement. This can
-                lead to additional clarification, unexpected behaviour during
-                testing, or gaps between what was requested and what was
-                delivered.
-            </p>
-
-            <p>
-                The challenge was to create a shared understanding of the
-                requirement and maintain that understanding while the feature
-                moved through development, testing, and delivery.
-            </p>
-
-            <div class="case-callout">
-                <strong>Core challenge:</strong>
-                Translate business expectations into clear, actionable
-                requirements while keeping engineering, QA, and delivery
-                stakeholders aligned throughout the feature lifecycle.
+        <details class="fd-mobile-toc">
+            <summary>Explore this case study</summary>
+            <div class="fd-mobile-toc-links">
+                <a href="#background">01. Background</a>
+                <a href="#problem">02. The Problem</a>
+                <a href="#objective">03. Objective</a>
+                <a href="#workflow">04. Workflow</a>
+                <a href="#contributions">05. My Contributions</a>
+                <a href="#requirements">06. Requirements</a>
+                <a href="#user-stories">07. User Stories</a>
+                <a href="#engineering">08. Engineering</a>
+                <a href="#testing">09. Testing &amp; QA</a>
+                <a href="#issues">10. Issue Investigation</a>
+                <a href="#delivery">11. Delivery</a>
+                <a href="#stakeholders">12. Collaboration</a>
+                <a href="#tools">13. Tools</a>
+                <a href="#outcomes">14. Outcomes</a>
+                <a href="#skills">15. Skills</a>
+                <a href="#reflection">16. Reflection</a>
             </div>
-        </section>
+        </details>
 
-        <!-- 3. Objective -->
+        <div class="fd-layout">
 
-        <section class="case-section">
-            <h2>3. The Objective</h2>
+            <!-- DESKTOP TABLE OF CONTENTS -->
 
-            <p>
-                Support the delivery of product features that met the
-                documented business requirements and were appropriately
-                validated before being delivered to clients.
-            </p>
+            <aside class="fd-toc fd-desktop-toc" aria-label="Case study sections">
+                <p class="fd-toc-heading">On this page</p>
+                <nav>
+                    <a href="#background">01. Background</a>
+                    <a href="#problem">02. The Problem</a>
+                    <a href="#objective">03. Objective</a>
+                    <a href="#workflow">04. Workflow</a>
+                    <a href="#contributions">05. My Contributions</a>
+                    <a href="#requirements">06. Requirements</a>
+                    <a href="#user-stories">07. User Stories</a>
+                    <a href="#engineering">08. Engineering</a>
+                    <a href="#testing">09. Testing &amp; QA</a>
+                    <a href="#issues">10. Issue Investigation</a>
+                    <a href="#delivery">11. Delivery</a>
+                    <a href="#stakeholders">12. Collaboration</a>
+                    <a href="#tools">13. Tools</a>
+                    <a href="#outcomes">14. Outcomes</a>
+                    <a href="#skills">15. Skills</a>
+                    <a href="#reflection">16. Reflection</a>
+                </nav>
+            </aside>
 
-            <ul>
-                <li>Understand the business problem and intended outcome.</li>
-                <li>Gather missing information and clarify functional requirements.</li>
-                <li>Translate requirements into user stories and epics where appropriate.</li>
-                <li>Communicate expected behaviour to development teams.</li>
-                <li>Coordinate dependencies and follow up on outstanding questions.</li>
-                <li>Perform product-level testing and support QA validation.</li>
-                <li>Help investigate discrepancies and track issue resolution.</li>
-                <li>Support client delivery, go-live activities, and post-delivery troubleshooting where required.</li>
-            </ul>
-        </section>
+            <article class="fd-article">
 
-        <!-- 4. Workflow -->
+                <!-- 1. BACKGROUND -->
 
-        <section class="case-section">
-            <h2>4. Feature Delivery Workflow</h2>
+                <section class="fd-section fd-reveal" id="background">
+                    <h2>1. Project Background</h2>
 
-            <p>
-                My work connected the different stages of the feature lifecycle.
-                The exact process varied by project, but the core activities
-                involved understanding the requirement, preparing actionable
-                documentation, coordinating implementation, validating
-                behaviour, and supporting delivery.
-            </p>
-
-            <div class="delivery-workflow">
-
-                <div class="delivery-stage">
-                    <span class="delivery-stage-number">1</span>
-                    <h3>Requirements</h3>
                     <p>
-                        Understand the business need, clarify expectations,
-                        and identify missing information.
+                        During my work on enterprise hospitality software, I was
+                        involved in taking product and client requirements through
+                        development, validation, and delivery. These requirements
+                        could involve improving existing functionality, addressing
+                        business needs, or introducing behaviour required by an
+                        enterprise client.
                     </p>
-                </div>
 
-                <div class="delivery-stage">
-                    <span class="delivery-stage-number">2</span>
-                    <h3>Definition</h3>
                     <p>
-                        Document requirements, user stories, business rules,
-                        and acceptance considerations.
+                        Each requirement needed to be understood in its business
+                        context and translated into work that developers could
+                        implement and QA could validate. The delivery process also
+                        required coordination when questions, dependencies, or
+                        unexpected behaviour arose.
                     </p>
-                </div>
 
-                <div class="delivery-stage">
-                    <span class="delivery-stage-number">3</span>
-                    <h3>Development</h3>
                     <p>
-                        Coordinate with developers, answer questions,
-                        and follow up on dependencies.
+                        My responsibility was to connect the original business
+                        expectation with the work being performed by technical teams,
+                        helping maintain alignment from initial clarification through
+                        delivery and post-delivery support.
                     </p>
-                </div>
+                </section>
 
-                <div class="delivery-stage">
-                    <span class="delivery-stage-number">4</span>
-                    <h3>Validation</h3>
+                <!-- 2. PROBLEM -->
+
+                <section class="fd-section fd-reveal" id="problem">
+                    <h2>2. The Problem</h2>
+
                     <p>
-                        Check the expected behaviour and support testing
-                        and issue investigation.
+                        A high-level feature request does not always explain every
+                        detail needed for implementation. Business stakeholders may
+                        describe the desired outcome without specifying all the
+                        functional rules, exceptions, dependencies, or validation
+                        scenarios.
                     </p>
-                </div>
 
-                <div class="delivery-stage">
-                    <span class="delivery-stage-number">5</span>
-                    <h3>Issue Resolution</h3>
                     <p>
-                        Clarify discrepancies and coordinate with the
-                        appropriate teams on next steps.
+                        If those details remain unclear, different teams can develop
+                        different interpretations of the same requirement. This can
+                        lead to additional clarification, unexpected behaviour during
+                        testing, or gaps between what was requested and what was
+                        delivered.
                     </p>
-                </div>
 
-                <div class="delivery-stage">
-                    <span class="delivery-stage-number">6</span>
-                    <h3>Delivery Readiness</h3>
                     <p>
-                        Follow up on validation status, outstanding issues,
-                        and delivery-related dependencies.
+                        The challenge was to create a shared understanding of the
+                        requirement and maintain that understanding while the feature
+                        moved through development, testing, and delivery.
                     </p>
-                </div>
 
-                <div class="delivery-stage">
-                    <span class="delivery-stage-number">7</span>
-                    <h3>Client Delivery</h3>
+                    <div class="fd-callout">
+                        <strong>Core challenge:</strong>
+                        Translate business expectations into clear, actionable
+                        requirements while keeping engineering, QA, and delivery
+                        stakeholders aligned throughout the feature lifecycle.
+                    </div>
+                </section>
+
+                <!-- 3. OBJECTIVE -->
+
+                <section class="fd-section fd-reveal" id="objective">
+                    <h2>3. The Objective</h2>
+
                     <p>
-                        Support delivery and go-live activities with
-                        the relevant stakeholders.
+                        Support the delivery of product features that met the
+                        documented business requirements and were appropriately
+                        validated before being delivered to clients.
                     </p>
-                </div>
 
-                <div class="delivery-stage">
-                    <span class="delivery-stage-number">8</span>
-                    <h3>Follow-up</h3>
+                    <ul>
+                        <li>Understand the business problem and intended outcome.</li>
+                        <li>Gather missing information and clarify functional requirements.</li>
+                        <li>Translate requirements into user stories and epics where appropriate.</li>
+                        <li>Communicate expected behaviour to development teams.</li>
+                        <li>Coordinate dependencies and follow up on outstanding questions.</li>
+                        <li>Perform product-level testing and support QA validation.</li>
+                        <li>Help investigate discrepancies and track issue resolution.</li>
+                        <li>Support client delivery, go-live activities, and post-delivery troubleshooting where required.</li>
+                    </ul>
+                </section>
+
+                <!-- 4. INTERACTIVE WORKFLOW -->
+
+                <section class="fd-section fd-reveal" id="workflow">
+                    <h2>4. Feature Delivery Workflow</h2>
+
+                    <p class="fd-section-intro">
+                        My work connected the different stages of the feature lifecycle.
+                        Select a stage below to explore the key activity and its purpose.
+                        The exact process varied by project, but these activities
+                        formed the general delivery approach.
+                    </p>
+
+                    <div class="fd-workflow" id="featureWorkflow">
+
+                        <button class="fd-stage" type="button"
+                                aria-pressed="true"
+                                data-title="Requirements"
+                                data-detail="Understand the business problem, intended outcome, user needs, and missing information. Clarify assumptions before work progresses so that the team has a shared understanding of what is required.">
+                            <span class="fd-stage-number">1</span>
+                            <strong>Requirements</strong>
+                            <small>Understand the business need and clarify expectations.</small>
+                        </button>
+
+                        <button class="fd-stage" type="button"
+                                aria-pressed="false"
+                                data-title="Definition"
+                                data-detail="Document requirements, user stories, business rules, and relevant acceptance considerations. Provide enough context for engineering to understand the expected behaviour and QA to plan validation.">
+                            <span class="fd-stage-number">2</span>
+                            <strong>Definition</strong>
+                            <small>Turn requirements into actionable work.</small>
+                        </button>
+
+                        <button class="fd-stage" type="button"
+                                aria-pressed="false"
+                                data-title="Development"
+                                data-detail="Coordinate with developers, answer functional questions, follow up on dependencies, and clarify requirements when implementation reveals gaps or ambiguities. Engineering teams implement the underlying code.">
+                            <span class="fd-stage-number">3</span>
+                            <strong>Development</strong>
+                            <small>Coordinate implementation and clarify questions.</small>
+                        </button>
+
+                        <button class="fd-stage" type="button"
+                                aria-pressed="false"
+                                data-title="Validation"
+                                data-detail="Check implemented behaviour against documented expectations. Perform product-level testing, support QA, and identify discrepancies that require clarification or investigation.">
+                            <span class="fd-stage-number">4</span>
+                            <strong>Validation</strong>
+                            <small>Check behaviour against requirements.</small>
+                        </button>
+
+                        <button class="fd-stage" type="button"
+                                aria-pressed="false"
+                                data-title="Issue Resolution"
+                                data-detail="Describe the difference between expected and observed behaviour, share relevant context with developers or QA, and follow up on investigation and validation of proposed fixes.">
+                            <span class="fd-stage-number">5</span>
+                            <strong>Issue Resolution</strong>
+                            <small>Coordinate investigation and follow-up.</small>
+                        </button>
+
+                        <button class="fd-stage" type="button"
+                                aria-pressed="false"
+                                data-title="Delivery Readiness"
+                                data-detail="Follow up on validation status, unresolved issues, requirements clarification, and delivery dependencies so stakeholders have a clear view of outstanding work.">
+                            <span class="fd-stage-number">6</span>
+                            <strong>Delivery Readiness</strong>
+                            <small>Review status, open issues, and dependencies.</small>
+                        </button>
+
+                        <button class="fd-stage" type="button"
+                                aria-pressed="false"
+                                data-title="Client Delivery"
+                                data-detail="Coordinate with the relevant stakeholders during client delivery and go-live activities, helping ensure that questions and delivery concerns reach the appropriate teams.">
+                            <span class="fd-stage-number">7</span>
+                            <strong>Client Delivery</strong>
+                            <small>Support delivery and go-live activities.</small>
+                        </button>
+
+                        <button class="fd-stage" type="button"
+                                aria-pressed="false"
+                                data-title="Follow-up"
+                                data-detail="Help investigate post-delivery issues, clarify expected product behaviour, and coordinate further action when the delivered functionality does not behave as expected.">
+                            <span class="fd-stage-number">8</span>
+                            <strong>Follow-up</strong>
+                            <small>Support post-delivery investigation.</small>
+                        </button>
+
+                    </div>
+
+                    <div class="fd-stage-panel" aria-live="polite">
+                        <span class="fd-stage-panel-label">Selected workflow stage</span>
+                        <h3 id="workflowStageTitle">Requirements</h3>
+                        <p id="workflowStageDetail">
+                            Understand the business problem, intended outcome, user needs,
+                            and missing information. Clarify assumptions before work
+                            progresses so that the team has a shared understanding of
+                            what is required.
+                        </p>
+                    </div>
+
+                    <p class="fd-workflow-note">
+                        This is a simplified representation of my general delivery
+                        responsibilities, not a claim that every project followed
+                        an identical sequence.
+                    </p>
+                </section>
+
+                <!-- 5. CONTRIBUTIONS -->
+
+                <section class="fd-section fd-reveal" id="contributions">
+                    <h2>5. My Role and Contributions</h2>
+
+                    <p class="fd-section-intro">
+                        My contribution combined requirements analysis, product-level
+                        validation, engineering coordination, and delivery support.
+                        Expand each area for more detail.
+                    </p>
+
+                    <div class="fd-card-grid">
+
+                        <div class="fd-card">
+                            <h3>Requirement Gathering</h3>
+                            <p>
+                                Worked with stakeholders to understand business needs,
+                                clarify expected functionality, and identify details
+                                requiring further discussion.
+                            </p>
+                            <details>
+                                <summary>Explore this contribution</summary>
+                                <ul>
+                                    <li>Clarify the intended business outcome.</li>
+                                    <li>Identify gaps and unresolved questions.</li>
+                                    <li>Keep the requirement connected to its business context.</li>
+                                </ul>
+                            </details>
+                        </div>
+
+                        <div class="fd-card">
+                            <h3>User Stories and Documentation</h3>
+                            <p>
+                                Translated requirements into user stories and epics
+                                where appropriate, helping developers understand
+                                expected behaviour and business context.
+                            </p>
+                            <details>
+                                <summary>Explore this contribution</summary>
+                                <ul>
+                                    <li>Document functional expectations.</li>
+                                    <li>Clarify business rules and relevant exceptions.</li>
+                                    <li>Support QA with expected outcomes for validation.</li>
+                                </ul>
+                            </details>
+                        </div>
+
+                        <div class="fd-card">
+                            <h3>Engineering Coordination</h3>
+                            <p>
+                                Worked with developers to answer functional questions,
+                                discuss requirements, and follow up on dependencies
+                                affecting implementation.
+                            </p>
+                            <details>
+                                <summary>Explore this contribution</summary>
+                                <ul>
+                                    <li>Explain the business context behind requests.</li>
+                                    <li>Follow up on open questions.</li>
+                                    <li>Coordinate when issues crossed team boundaries.</li>
+                                </ul>
+                            </details>
+                        </div>
+
+                        <div class="fd-card">
+                            <h3>Product-Level Testing</h3>
+                            <p>
+                                Checked implemented functionality against expected
+                                behaviour before QA handoff and raised discrepancies
+                                requiring investigation.
+                            </p>
+                            <details>
+                                <summary>Explore this contribution</summary>
+                                <ul>
+                                    <li>Compare implementation with requirements.</li>
+                                    <li>Check relevant user flows and business rules.</li>
+                                    <li>Record unexpected behaviour for follow-up.</li>
+                                </ul>
+                            </details>
+                        </div>
+
+                        <div class="fd-card">
+                            <h3>QA Collaboration</h3>
+                            <p>
+                                Helped QA understand business requirements, clarify
+                                expected results, and prepare for relevant testing
+                                activities.
+                            </p>
+                            <details>
+                                <summary>Explore this contribution</summary>
+                                <ul>
+                                    <li>Clarify expected behaviour and acceptance considerations.</li>
+                                    <li>Help explain business scenarios.</li>
+                                    <li>Support investigation of discrepancies.</li>
+                                </ul>
+                            </details>
+                        </div>
+
+                        <div class="fd-card">
+                            <h3>Delivery Support</h3>
+                            <p>
+                                Coordinated with relevant teams during delivery,
+                                helped investigate issues, and supported go-live
+                                and post-delivery troubleshooting when needed.
+                            </p>
+                            <details>
+                                <summary>Explore this contribution</summary>
+                                <ul>
+                                    <li>Follow up on delivery dependencies.</li>
+                                    <li>Help communicate outstanding concerns.</li>
+                                    <li>Support issue investigation after handoff.</li>
+                                </ul>
+                            </details>
+                        </div>
+
+                    </div>
+
+                    <div class="fd-callout">
+                        <strong>Role clarity:</strong>
+                        My contribution focused on requirements, product behaviour,
+                        coordination, and validation. Engineering teams were
+                        responsible for implementing the underlying code.
+                    </div>
+                </section>
+
+                <!-- 6. REQUIREMENTS -->
+
+                <section class="fd-section fd-reveal" id="requirements">
+                    <h2>6. Translating Requirements into Actionable Work</h2>
+
                     <p>
-                        Help investigate post-delivery issues and clarify
-                        expected product behaviour.
+                        Requirements needed to provide enough context for the
+                        development team to understand what was expected and for
+                        QA to determine how the functionality should be validated.
+                        I worked to clarify the business need before and during
+                        implementation.
                     </p>
-                </div>
 
-            </div>
-        </section>
+                    <h3>Key areas of clarification</h3>
 
-        <!-- 5. My Role -->
+                    <ul>
+                        <li>
+                            <strong>Business objective:</strong>
+                            What problem does the requested feature solve?
+                        </li>
+                        <li>
+                            <strong>Expected behaviour:</strong>
+                            What should happen when the user or system performs
+                            a particular action?
+                        </li>
+                        <li>
+                            <strong>Business rules:</strong>
+                            What conditions or restrictions influence the outcome?
+                        </li>
+                        <li>
+                            <strong>Dependencies:</strong>
+                            Are other systems, configurations, or teams involved?
+                        </li>
+                        <li>
+                            <strong>Exceptions:</strong>
+                            How should missing, invalid, or unexpected information
+                            be handled?
+                        </li>
+                        <li>
+                            <strong>Validation:</strong>
+                            What would demonstrate that the requirement had been met?
+                        </li>
+                    </ul>
 
-        <section class="case-section">
-            <h2>5. My Role and Contributions</h2>
-
-            <div class="artifact-grid">
-
-                <div class="artifact-card">
-                    <h3>Requirement Gathering</h3>
                     <p>
-                        Worked with stakeholders to understand business needs,
-                        clarify expected functionality, and identify details
-                        that required further discussion.
+                        Clarifying these areas helped create a more consistent
+                        understanding of the feature and provided a useful reference
+                        during development and testing.
                     </p>
-                </div>
+                </section>
 
-                <div class="artifact-card">
-                    <h3>User Stories and Documentation</h3>
+                <!-- 7. USER STORIES -->
+
+                <section class="fd-section fd-reveal" id="user-stories">
+                    <h2>7. User Stories and Acceptance Criteria</h2>
+
                     <p>
-                        Translated requirements into user stories and epics
-                        where appropriate, helping developers understand the
-                        expected behaviour and business context.
+                        I used user stories and supporting documentation to translate
+                        business needs into actionable development work. The level
+                        of detail depended on the feature and the information
+                        required by the team.
                     </p>
-                </div>
 
-                <div class="artifact-card">
-                    <h3>Engineering Coordination</h3>
                     <p>
-                        Worked with developers to answer functional questions,
-                        discuss requirements, and follow up on dependencies
-                        affecting implementation.
+                        A useful user story communicates who needs the functionality,
+                        what they need, and why it matters. Acceptance criteria
+                        provide additional detail about the expected behaviour.
                     </p>
-                </div>
 
-                <div class="artifact-card">
-                    <h3>Product-Level Testing</h3>
+                    <div class="fd-example">
+                        <span class="fd-example-label">
+                            Illustrative example — not an actual client requirement
+                        </span>
+
+                        <h3>Example User Story</h3>
+
+                        <p>
+                            <strong>As an authorised user,</strong> I want the system
+                            to validate the information I submit so that I can correct
+                            invalid information before proceeding.
+                        </p>
+
+                        <h3>Example Acceptance Criteria</h3>
+
+                        <ul>
+                            <li>The system checks required information before accepting a submission.</li>
+                            <li>Missing or invalid information is handled according to the agreed rules.</li>
+                            <li>The user receives a clear indication when the submission cannot proceed.</li>
+                            <li>A valid submission follows the expected workflow.</li>
+                            <li>The resulting behaviour can be verified in the test environment.</li>
+                        </ul>
+                    </div>
+
                     <p>
-                        Checked implemented functionality against expected
-                        behaviour before QA handoff and raised discrepancies
-                        that required investigation.
+                        The example illustrates how a broad request can be structured
+                        into verifiable expectations. Actual stories and acceptance
+                        criteria must reflect the relevant feature and agreed
+                        business requirements.
                     </p>
-                </div>
+                </section>
 
-                <div class="artifact-card">
-                    <h3>QA Collaboration</h3>
+                <!-- 8. ENGINEERING -->
+
+                <section class="fd-section fd-reveal" id="engineering">
+                    <h2>8. Collaboration with Development Teams</h2>
+
                     <p>
-                        Helped QA understand the business requirements,
-                        clarify expected results, and prepare for relevant
-                        testing activities.
+                        Once requirements were documented, I continued working with
+                        developers to clarify functional questions and help maintain
+                        alignment between the requested outcome and implementation.
+                        This was important when questions arose about existing
+                        functionality, business rules, or dependencies.
                     </p>
-                </div>
 
-                <div class="artifact-card">
-                    <h3>Delivery Support</h3>
+                    <ul>
+                        <li>Explained the business context behind requested functionality.</li>
+                        <li>Clarified requirements when developers identified gaps or ambiguities.</li>
+                        <li>Discussed expected outcomes and relevant exception scenarios.</li>
+                        <li>Followed up on outstanding questions and delivery dependencies.</li>
+                        <li>Coordinated with other teams when issues crossed functional boundaries.</li>
+                        <li>Raised discrepancies between the expected and observed behaviour.</li>
+                    </ul>
+
+                    <div class="fd-callout">
+                        <strong>My approach:</strong>
+                        Effective collaboration requires understanding the business
+                        requirement and the technical context well enough to ask
+                        useful questions, communicate clearly, and help the right
+                        people resolve issues.
+                    </div>
+                </section>
+
+                <!-- 9. TESTING -->
+
+                <section class="fd-section fd-reveal" id="testing">
+                    <h2>9. Product Testing and QA Collaboration</h2>
+
                     <p>
-                        Coordinated with relevant teams during delivery,
-                        helped investigate issues, and supported go-live
-                        and post-delivery troubleshooting when needed.
+                        I performed product-level testing before QA handoff to check
+                        whether implemented functionality matched the documented
+                        requirements. I also supported QA with business context and
+                        testing setup when needed.
                     </p>
-                </div>
 
-            </div>
+                    <h3>Areas of validation</h3>
 
-            <p>
-                My contribution focused on requirements, product behaviour,
-                coordination, and validation. Engineering teams were
-                responsible for implementing the underlying code.
-            </p>
-        </section>
+                    <ul>
+                        <li>Compare the implemented behaviour with the original requirement.</li>
+                        <li>Check the expected user flow and relevant business rules.</li>
+                        <li>Consider applicable error and exception scenarios.</li>
+                        <li>Identify unexpected behaviour and document findings.</li>
+                        <li>Work with developers to clarify discrepancies and investigate defects.</li>
+                        <li>Help QA understand the expected outcome when validating a feature.</li>
+                    </ul>
 
-        <!-- 6. Requirements -->
-
-        <section class="case-section">
-            <h2>6. Translating Requirements into Actionable Work</h2>
-
-            <p>
-                Requirements needed to provide enough context for the
-                development team to understand what was expected and for
-                QA to determine how the functionality should be validated.
-                I worked to clarify the business need before and during
-                implementation.
-            </p>
-
-            <h3>Key areas of clarification</h3>
-
-            <ul>
-                <li>
-                    <strong>Business objective:</strong>
-                    What problem does the requested feature solve?
-                </li>
-                <li>
-                    <strong>Expected behaviour:</strong>
-                    What should happen when the user or system performs
-                    a particular action?
-                </li>
-                <li>
-                    <strong>Business rules:</strong>
-                    What conditions or restrictions influence the outcome?
-                </li>
-                <li>
-                    <strong>Dependencies:</strong>
-                    Are other systems, configurations, or teams involved?
-                </li>
-                <li>
-                    <strong>Exceptions:</strong>
-                    How should missing, invalid, or unexpected information
-                    be handled?
-                </li>
-                <li>
-                    <strong>Validation:</strong>
-                    What would demonstrate that the requirement had been met?
-                </li>
-            </ul>
-
-            <p>
-                Clarifying these areas helped create a more consistent
-                understanding of the feature and provided a useful reference
-                during development and testing.
-            </p>
-        </section>
-
-        <!-- 7. User Stories -->
-
-        <section class="case-section">
-            <h2>7. User Stories and Acceptance Criteria</h2>
-
-            <p>
-                I used user stories and supporting documentation to translate
-                business needs into actionable development work. The level
-                of detail depended on the feature and the information
-                required by the team.
-            </p>
-
-            <p>
-                A useful user story communicates who needs the functionality,
-                what they need, and why it matters. Acceptance criteria
-                provide additional detail about the expected behaviour.
-            </p>
-
-            <div class="example-story">
-                <span class="example-label">
-                    Illustrative example — not an actual client requirement
-                </span>
-
-                <h3>Example User Story</h3>
-
-                <p>
-                    <strong>As an authorised user,</strong> I want the system
-                    to validate the information I submit so that I can correct
-                    invalid information before proceeding.
-                </p>
-
-                <h3>Example Acceptance Criteria</h3>
-
-                <ul>
-                    <li>The system checks required information before accepting a submission.</li>
-                    <li>Missing or invalid information is handled according to the agreed rules.</li>
-                    <li>The user receives a clear indication when the submission cannot proceed.</li>
-                    <li>A valid submission follows the expected workflow.</li>
-                    <li>The resulting behaviour can be verified in the test environment.</li>
-                </ul>
-            </div>
-
-            <p>
-                The example illustrates how a broad request can be structured
-                into verifiable expectations. Actual stories and acceptance
-                criteria must reflect the relevant feature and agreed
-                business requirements.
-            </p>
-        </section>
-
-        <!-- 8. Engineering -->
-
-        <section class="case-section">
-            <h2>8. Collaboration with Development Teams</h2>
-
-            <p>
-                Once requirements were documented, I continued working with
-                developers to clarify functional questions and help maintain
-                alignment between the requested outcome and implementation.
-                This was important when questions arose about existing
-                functionality, business rules, or dependencies.
-            </p>
-
-            <ul>
-                <li>Explained the business context behind requested functionality.</li>
-                <li>Clarified requirements when developers identified gaps or ambiguities.</li>
-                <li>Discussed expected outcomes and relevant exception scenarios.</li>
-                <li>Followed up on outstanding questions and delivery dependencies.</li>
-                <li>Coordinated with other teams when issues crossed functional boundaries.</li>
-                <li>Raised discrepancies between the expected and observed behaviour.</li>
-            </ul>
-
-            <div class="case-callout">
-                <strong>My approach:</strong>
-                Effective collaboration requires understanding the business
-                requirement and the technical context well enough to ask
-                useful questions, communicate clearly, and help the right
-                people resolve issues.
-            </div>
-        </section>
-
-        <!-- 9. Testing -->
-
-        <section class="case-section">
-            <h2>9. Product Testing and QA Collaboration</h2>
-
-            <p>
-                I performed product-level testing before QA handoff to check
-                whether implemented functionality matched the documented
-                requirements. I also supported QA with business context and
-                testing setup when needed.
-            </p>
-
-            <h3>Areas of validation</h3>
-
-            <ul>
-                <li>Compare the implemented behaviour with the original requirement.</li>
-                <li>Check the expected user flow and relevant business rules.</li>
-                <li>Consider applicable error and exception scenarios.</li>
-                <li>Identify unexpected behaviour and document findings.</li>
-                <li>Work with developers to clarify discrepancies and investigate defects.</li>
-                <li>Help QA understand the expected outcome when validating a feature.</li>
-            </ul>
-
-            <p>
-                These checks complemented the QA process rather than
-                replacing it. The objective was to identify mismatches
-                early and ensure that testing remained connected to the
-                intended business outcome.
-            </p>
-        </section>
-
-        <!-- 10. Issue Management -->
-
-        <section class="case-section">
-            <h2>10. Issue Investigation and Resolution</h2>
-
-            <p>
-                When unexpected behaviour appeared during testing or delivery,
-                I helped clarify the difference between the expected result
-                and what the system actually did. This provided a starting
-                point for investigation and coordination with the relevant
-                technical team.
-            </p>
-
-            <div class="artifact-grid">
-
-                <div class="artifact-card">
-                    <h3>Understand the Issue</h3>
                     <p>
-                        Clarify the reported behaviour, expected result,
-                        relevant context, and steps needed to reproduce it
-                        where possible.
+                        These checks complemented the QA process rather than
+                        replacing it. The objective was to identify mismatches
+                        early and ensure that testing remained connected to the
+                        intended business outcome.
                     </p>
-                </div>
+                </section>
 
-                <div class="artifact-card">
-                    <h3>Coordinate Investigation</h3>
+                <!-- 10. ISSUE INVESTIGATION -->
+
+                <section class="fd-section fd-reveal" id="issues">
+                    <h2>10. Issue Investigation and Resolution</h2>
+
                     <p>
-                        Share the relevant details with developers or QA
-                        and help establish the next steps for investigation.
+                        When unexpected behaviour appeared during testing or delivery,
+                        I helped clarify the difference between the expected result
+                        and what the system actually did. This provided a starting
+                        point for investigation and coordination with the relevant
+                        technical team.
                     </p>
-                </div>
 
-                <div class="artifact-card">
-                    <h3>Validate the Outcome</h3>
+                    <div class="fd-card-grid">
+
+                        <div class="fd-card">
+                            <h3>Understand the Issue</h3>
+                            <p>
+                                Clarify the reported behaviour, expected result,
+                                relevant context, and steps needed to reproduce it
+                                where possible.
+                            </p>
+                        </div>
+
+                        <div class="fd-card">
+                            <h3>Coordinate Investigation</h3>
+                            <p>
+                                Share relevant details with developers or QA and
+                                help establish the next steps for investigation.
+                            </p>
+                        </div>
+
+                        <div class="fd-card">
+                            <h3>Validate the Outcome</h3>
+                            <p>
+                                Check the behaviour after a proposed fix or
+                                clarification and help confirm whether the original
+                                concern has been addressed.
+                            </p>
+                        </div>
+
+                    </div>
+
                     <p>
-                        Check the behaviour after a proposed fix or
-                        clarification and help confirm whether the original
-                        concern has been addressed.
+                        This approach helped keep issues connected to the original
+                        requirement instead of treating them as isolated technical
+                        tasks without business context.
                     </p>
-                </div>
+                </section>
 
-            </div>
+                <!-- 11. DELIVERY -->
 
-            <p>
-                This approach helped keep issues connected to the original
-                requirement instead of treating them as isolated technical
-                tasks without business context.
-            </p>
-        </section>
+                <section class="fd-section fd-reveal" id="delivery">
+                    <h2>11. Delivery Readiness and Client Support</h2>
 
-        <!-- 11. Delivery -->
-
-        <section class="case-section">
-            <h2>11. Delivery Readiness and Client Support</h2>
-
-            <p>
-                Feature delivery required coordination beyond implementation.
-                The relevant teams needed visibility into testing status,
-                unresolved issues, dependencies, and the work remaining
-                before or after client handoff.
-            </p>
-
-            <ul>
-                <li>Followed up on implementation and validation progress.</li>
-                <li>Helped identify outstanding clarifications and delivery concerns.</li>
-                <li>Supported communication between teams involved in delivery.</li>
-                <li>Helped assess whether the feature matched the agreed requirement.</li>
-                <li>Supported client delivery and go-live activities where required.</li>
-                <li>Helped investigate post-delivery issues and clarify expected behaviour.</li>
-            </ul>
-
-            <div class="case-callout">
-                <strong>Delivery principle:</strong>
-                Make it clear what has been completed, what has been
-                validated, which issues remain open, and what needs
-                attention during handoff or follow-up.
-            </div>
-        </section>
-
-        <!-- 12. Stakeholders -->
-
-        <section class="case-section">
-            <h2>12. Cross-Functional Collaboration</h2>
-
-            <p>
-                A key part of my role was keeping stakeholders aligned
-                despite their different responsibilities and perspectives.
-                Business teams focused on the desired outcome, developers
-                on implementation, and QA on validating the expected
-                behaviour.
-            </p>
-
-            <div class="artifact-grid">
-
-                <div class="artifact-card">
-                    <h3>Business and Client Stakeholders</h3>
                     <p>
-                        Understand the business objective, clarify expectations,
-                        and communicate relevant questions or concerns.
+                        Feature delivery required coordination beyond implementation.
+                        The relevant teams needed visibility into testing status,
+                        unresolved issues, dependencies, and the work remaining
+                        before or after client handoff.
                     </p>
-                </div>
 
-                <div class="artifact-card">
-                    <h3>Development Teams</h3>
+                    <ul>
+                        <li>Followed up on implementation and validation progress.</li>
+                        <li>Helped identify outstanding clarifications and delivery concerns.</li>
+                        <li>Supported communication between teams involved in delivery.</li>
+                        <li>Helped assess whether the feature matched the agreed requirement.</li>
+                        <li>Supported client delivery and go-live activities where required.</li>
+                        <li>Helped investigate post-delivery issues and clarify expected behaviour.</li>
+                    </ul>
+
+                    <div class="fd-callout">
+                        <strong>Delivery principle:</strong>
+                        Make it clear what has been completed, what has been
+                        validated, which issues remain open, and what needs
+                        attention during handoff or follow-up.
+                    </div>
+                </section>
+
+                <!-- 12. STAKEHOLDERS -->
+
+                <section class="fd-section fd-reveal" id="stakeholders">
+                    <h2>12. Cross-Functional Collaboration</h2>
+
                     <p>
-                        Provide business context, clarify functional
-                        requirements, and coordinate implementation questions.
+                        A key part of my role was keeping stakeholders aligned
+                        despite their different responsibilities and perspectives.
+                        Business teams focused on the desired outcome, developers
+                        on implementation, and QA on validating the expected
+                        behaviour.
                     </p>
-                </div>
 
-                <div class="artifact-card">
-                    <h3>QA Teams</h3>
+                    <div class="fd-card-grid">
+
+                        <div class="fd-card">
+                            <h3>Business and Client Stakeholders</h3>
+                            <p>
+                                Understand the business objective, clarify expectations,
+                                and communicate relevant questions or concerns.
+                            </p>
+                        </div>
+
+                        <div class="fd-card">
+                            <h3>Development Teams</h3>
+                            <p>
+                                Provide business context, clarify functional
+                                requirements, and coordinate implementation questions.
+                            </p>
+                        </div>
+
+                        <div class="fd-card">
+                            <h3>QA Teams</h3>
+                            <p>
+                                Share expected behaviour, clarify business rules,
+                                and support testing preparation and issue investigation.
+                            </p>
+                        </div>
+
+                        <div class="fd-card">
+                            <h3>Delivery Stakeholders</h3>
+                            <p>
+                                Follow up on readiness, outstanding issues,
+                                delivery dependencies, and client handoff activities.
+                            </p>
+                        </div>
+
+                    </div>
+                </section>
+
+                <!-- 13. TOOLS -->
+
+                <section class="fd-section fd-reveal" id="tools">
+                    <h2>13. Tools and Working Methods</h2>
+
                     <p>
-                        Share expected behaviour, clarify business rules,
-                        and support testing preparation and issue investigation.
+                        My wider product delivery work involved tools for
+                        documentation, issue tracking, testing, data investigation,
+                        and operational troubleshooting. The exact tools used
+                        depended on the feature and project.
                     </p>
-                </div>
 
-                <div class="artifact-card">
-                    <h3>Delivery Stakeholders</h3>
+                    <div class="fd-skill-list">
+                        <span class="fd-skill">Jira</span>
+                        <span class="fd-skill">Confluence</span>
+                        <span class="fd-skill">Postman</span>
+                        <span class="fd-skill">Charles Proxy</span>
+                        <span class="fd-skill">MySQL</span>
+                        <span class="fd-skill">Microsoft SQL Server</span>
+                        <span class="fd-skill">Splunk</span>
+                        <span class="fd-skill">Datadog</span>
+                        <span class="fd-skill">AWS CloudWatch</span>
+                        <span class="fd-skill">ServiceNow</span>
+                    </div>
+
+                    <div class="fd-card-grid">
+
+                        <div class="fd-card">
+                            <h3>Planning and Documentation</h3>
+                            <p>
+                                Jira and Confluence supported work tracking,
+                                requirements documentation, and coordination
+                                across teams.
+                            </p>
+                        </div>
+
+                        <div class="fd-card">
+                            <h3>Testing and Investigation</h3>
+                            <p>
+                                Postman, Charles Proxy, and SQL tools supported
+                                relevant testing or investigation activities.
+                            </p>
+                        </div>
+
+                        <div class="fd-card">
+                            <h3>Operational Context</h3>
+                            <p>
+                                Monitoring and incident-management tools were
+                                useful when troubleshooting required additional
+                                operational context.
+                            </p>
+                        </div>
+
+                    </div>
+
                     <p>
-                        Follow up on readiness, outstanding issues,
-                        delivery dependencies, and client handoff activities.
+                        These tools reflect my broader working environment; they
+                        were not necessarily used together on every feature.
                     </p>
-                </div>
+                </section>
 
-            </div>
-        </section>
+                <!-- 14. OUTCOMES -->
 
-        <!-- 13. Tools -->
+                <section class="fd-section fd-reveal" id="outcomes">
+                    <h2>14. Outcomes and Impact</h2>
 
-        <section class="case-section">
-            <h2>13. Tools and Working Methods</h2>
+                    <p>
+                        My contribution focused on helping teams maintain clarity
+                        across requirements, implementation, validation, and
+                        delivery. The outcomes below describe the qualitative
+                        value of these activities rather than unverified numerical
+                        improvements.
+                    </p>
 
-            <p>
-                My wider product delivery work involved tools for
-                documentation, issue tracking, testing, data investigation,
-                and operational troubleshooting. The exact tools used
-                depended on the feature and project.
-            </p>
+                    <div class="fd-card-grid">
 
-            <div class="skill-list">
-                <span class="skill-tag">Jira</span>
-                <span class="skill-tag">Confluence</span>
-                <span class="skill-tag">Postman</span>
-                <span class="skill-tag">Charles Proxy</span>
-                <span class="skill-tag">MySQL</span>
-                <span class="skill-tag">Microsoft SQL Server</span>
-                <span class="skill-tag">Splunk</span>
-                <span class="skill-tag">Datadog</span>
-                <span class="skill-tag">AWS CloudWatch</span>
-                <span class="skill-tag">ServiceNow</span>
-            </div>
+                        <div class="fd-card">
+                            <h3>Clearer Requirements</h3>
+                            <p>
+                                Helped connect business requirements with actionable
+                                development work and shared expectations.
+                            </p>
+                        </div>
 
-            <p>
-                Jira and Confluence supported work tracking and documentation.
-                Postman, Charles Proxy, and SQL tools supported relevant
-                testing or investigation activities, while monitoring and
-                incident-management tools were useful when troubleshooting
-                required operational context.
-            </p>
+                        <div class="fd-card">
+                            <h3>Aligned Teams</h3>
+                            <p>
+                                Helped developers and QA work from a shared
+                                understanding of expected feature behaviour.
+                            </p>
+                        </div>
 
-            <p>
-                These tools reflect my broader working environment; they
-                were not necessarily used together on every feature.
-            </p>
-        </section>
+                        <div class="fd-card">
+                            <h3>Earlier Discrepancy Detection</h3>
+                            <p>
+                                Supported identification and investigation of
+                                discrepancies during product-level testing.
+                            </p>
+                        </div>
 
-        <!-- 14. Outcomes -->
+                        <div class="fd-card">
+                            <h3>Better Issue Visibility</h3>
+                            <p>
+                                Helped surface questions, dependencies, and issues
+                                requiring cross-team coordination.
+                            </p>
+                        </div>
 
-        <section class="case-section">
-            <h2>14. Outcomes and Impact</h2>
+                        <div class="fd-card">
+                            <h3>Delivery Continuity</h3>
+                            <p>
+                                Supported continuity between implementation, QA,
+                                client delivery, and post-delivery troubleshooting.
+                            </p>
+                        </div>
 
-            <p>
-                My contribution focused on helping teams maintain clarity
-                across requirements, implementation, validation, and
-                delivery. The outcomes below describe the qualitative
-                value of these activities rather than unverified numerical
-                improvements.
-            </p>
+                    </div>
 
-            <ul>
-                <li>
-                    Created a clearer connection between business requirements
-                    and actionable development work.
-                </li>
-                <li>
-                    Helped developers and QA work from a shared understanding
-                    of expected feature behaviour.
-                </li>
-                <li>
-                    Supported early identification and investigation of
-                    discrepancies during product-level testing.
-                </li>
-                <li>
-                    Improved visibility into questions, dependencies,
-                    and issues that required cross-team coordination.
-                </li>
-                <li>
-                    Supported continuity between implementation, QA,
-                    client delivery, and post-delivery troubleshooting.
-                </li>
-            </ul>
+                    <p class="fd-workflow-note">
+                        No numerical improvement is claimed because verified
+                        measurements have not been established for publication.
+                    </p>
+                </section>
 
-            <p>
-                No numerical improvement is claimed because verified
-                measurements have not been established for publication.
-            </p>
-        </section>
+                <!-- 15. SKILLS -->
 
-        <!-- 15. Skills -->
+                <section class="fd-section fd-reveal" id="skills">
+                    <h2>15. Skills Demonstrated</h2>
 
-        <section class="case-section">
-            <h2>15. Skills Demonstrated</h2>
+                    <p>
+                        This case study demonstrates my work at the intersection
+                        of product definition, business analysis, technical
+                        coordination, testing, and delivery.
+                    </p>
 
-            <div class="skill-list">
-                <span class="skill-tag">Product Delivery</span>
-                <span class="skill-tag">Business Analysis</span>
-                <span class="skill-tag">Requirement Gathering</span>
-                <span class="skill-tag">User Stories</span>
-                <span class="skill-tag">Acceptance Criteria</span>
-                <span class="skill-tag">Stakeholder Management</span>
-                <span class="skill-tag">Engineering Coordination</span>
-                <span class="skill-tag">Product Testing</span>
-                <span class="skill-tag">QA Collaboration</span>
-                <span class="skill-tag">Issue Investigation</span>
-                <span class="skill-tag">Delivery Coordination</span>
-                <span class="skill-tag">Go-Live Support</span>
-            </div>
-        </section>
+                    <div class="fd-skill-list">
+                        <span class="fd-skill">Product Delivery</span>
+                        <span class="fd-skill">Business Analysis</span>
+                        <span class="fd-skill">Requirement Gathering</span>
+                        <span class="fd-skill">User Stories</span>
+                        <span class="fd-skill">Acceptance Criteria</span>
+                        <span class="fd-skill">Stakeholder Management</span>
+                        <span class="fd-skill">Engineering Coordination</span>
+                        <span class="fd-skill">Product Testing</span>
+                        <span class="fd-skill">QA Collaboration</span>
+                        <span class="fd-skill">Issue Investigation</span>
+                        <span class="fd-skill">Delivery Coordination</span>
+                        <span class="fd-skill">Go-Live Support</span>
+                    </div>
+                </section>
 
-        <!-- 16. Reflection -->
+                <!-- 16. REFLECTION -->
 
-        <section class="case-section">
-            <h2>16. My Approach to Product Delivery</h2>
+                <section class="fd-section fd-reveal" id="reflection">
+                    <h2>16. My Approach to Product Delivery</h2>
 
-            <p>
-                This experience strengthened my ability to work across
-                business and technical teams and to understand how
-                requirements influence implementation, testing, and
-                delivery. It reinforced the importance of asking
-                clarifying questions, documenting expected behaviour,
-                and maintaining communication as work progresses.
-            </p>
+                    <p>
+                        This experience strengthened my ability to work across
+                        business and technical teams and to understand how
+                        requirements influence implementation, testing, and
+                        delivery. It reinforced the importance of asking
+                        clarifying questions, documenting expected behaviour,
+                        and maintaining communication as work progresses.
+                    </p>
 
-            <p>
-                I learned that successful product delivery is not simply
-                about tracking tasks to completion. It also requires
-                understanding why a feature is needed, translating that
-                need into actionable requirements, helping teams resolve
-                ambiguity, and validating that the final behaviour meets
-                the intended objective.
-            </p>
+                    <p>
+                        I learned that successful product delivery is not simply
+                        about tracking tasks to completion. It also requires
+                        understanding why a feature is needed, translating that
+                        need into actionable requirements, helping teams resolve
+                        ambiguity, and validating that the final behaviour meets
+                        the intended objective.
+                    </p>
 
-            <div class="case-callout">
-                <strong>My delivery philosophy:</strong>
-                Understand the business need, define the expected outcome,
-                align the teams doing the work, validate the result, and
-                follow through on delivery and support.
-            </div>
+                    <div class="fd-callout">
+                        <strong>My delivery philosophy:</strong>
+                        Understand the business need, define the expected outcome,
+                        align the teams doing the work, validate the result, and
+                        follow through on delivery and support.
+                    </div>
 
-            <p>
-                This case study describes my general feature-delivery
-                responsibilities across enterprise software work. The
-                illustrative user story is not presented as a specific
-                client project.
-            </p>
-        </section>
+                    <p>
+                        This case study describes my general feature-delivery
+                        responsibilities across enterprise software work. The
+                        illustrative user story is not presented as a specific
+                        client project.
+                    </p>
+                </section>
 
-        <!-- Footer -->
+                <!-- CONFIDENTIALITY -->
 
-        <footer class="case-footer">
+                <section class="fd-section fd-reveal" id="confidentiality">
+                    <p class="fd-confidentiality">
+                        <em>
+                            Confidentiality note: This case study summarizes my
+                            general responsibilities and experience. Customer
+                            information, proprietary implementation details, and
+                            confidential internal documentation have been omitted.
+                        </em>
+                    </p>
+                </section>
+
+            </article>
+        </div>
+
+        <!-- FOOTER -->
+
+        <footer class="fd-footer">
             <a href="index.html#work">
                 &larr; Back to Selected Work
             </a>
 
             <a href="iot-integration-case-study.html">
-                Previous Case Study: Hospitality IoT &rarr;
+                Next Case Study: Hospitality IoT &amp; Integrations &rarr;
             </a>
         </footer>
 
     </main>
+
+    <button class="fd-back-top" id="backToTop"
+            type="button" aria-label="Back to top" title="Back to top">
+        ↑
+    </button>
+
+    <script>
+        (function () {
+            "use strict";
+
+            const progressBar = document.getElementById("readingProgress");
+            const backToTop = document.getElementById("backToTop");
+            const sections = Array.from(
+                document.querySelectorAll(".fd-article .fd-section[id]")
+            );
+            const tocLinks = Array.from(
+                document.querySelectorAll(".fd-toc a, .fd-mobile-toc a")
+            );
+
+            /* Reading progress and back-to-top visibility */
+
+            function updateScrollUI() {
+                const scrollableHeight =
+                    document.documentElement.scrollHeight - window.innerHeight;
+
+                const scrollPercent = scrollableHeight > 0
+                    ? (window.scrollY / scrollableHeight) * 100
+                    : 0;
+
+                progressBar.style.width =
+                    Math.min(100, Math.max(0, scrollPercent)) + "%";
+
+                backToTop.classList.toggle("visible", window.scrollY > 500);
+            }
+
+            window.addEventListener("scroll", updateScrollUI, {
+                passive: true
+            });
+
+            window.addEventListener("resize", updateScrollUI);
+
+            updateScrollUI();
+
+            backToTop.addEventListener("click", function () {
+                window.scrollTo({
+                    top: 0,
+                    behavior: window.matchMedia(
+                        "(prefers-reduced-motion: reduce)"
+                    ).matches ? "auto" : "smooth"
+                });
+            });
+
+            /* Active section in the table of contents */
+
+            function setActiveSection(id) {
+                tocLinks.forEach(function (link) {
+                    const isActive = link.getAttribute("href") === "#" + id;
+
+                    if (isActive) {
+                        link.classList.add("active");
+                        link.setAttribute("aria-current", "location");
+                    } else {
+                        link.classList.remove("active");
+                        link.removeAttribute("aria-current");
+                    }
+                });
+            }
+
+            if ("IntersectionObserver" in window) {
+                const sectionObserver = new IntersectionObserver(
+                    function (entries) {
+                        const visibleEntries = entries
+                            .filter(function (entry) {
+                                return entry.isIntersecting;
+                            })
+                            .sort(function (a, b) {
+                                return a.boundingClientRect.top -
+                                    b.boundingClientRect.top;
+                            });
+
+                        if (visibleEntries.length) {
+                            setActiveSection(visibleEntries[0].target.id);
+                        }
+                    },
+                    {
+                        rootMargin: "-12% 0px -68% 0px",
+                        threshold: 0
+                    }
+                );
+
+                sections.forEach(function (section) {
+                    sectionObserver.observe(section);
+                });
+            }
+
+            /* Close the mobile table of contents after choosing a section */
+
+            const mobileToc = document.querySelector(".fd-mobile-toc");
+
+            document.querySelectorAll(".fd-mobile-toc a").forEach(
+                function (link) {
+                    link.addEventListener("click", function () {
+                        mobileToc.open = false;
+                    });
+                }
+            );
+
+            /* Interactive workflow stages */
+
+            const workflowButtons = Array.from(
+                document.querySelectorAll(".fd-stage")
+            );
+
+            const workflowTitle =
+                document.getElementById("workflowStageTitle");
+
+            const workflowDetail =
+                document.getElementById("workflowStageDetail");
+
+            workflowButtons.forEach(function (button) {
+                button.addEventListener("click", function () {
+                    workflowButtons.forEach(function (item) {
+                        item.setAttribute("aria-pressed", "false");
+                    });
+
+                    button.setAttribute("aria-pressed", "true");
+                    workflowTitle.textContent = button.dataset.title;
+                    workflowDetail.textContent = button.dataset.detail;
+                });
+            });
+
+            /* Reveal sections as they enter the viewport */
+
+            const revealItems = document.querySelectorAll(".fd-reveal");
+
+            if ("IntersectionObserver" in window &&
+                !window.matchMedia(
+                    "(prefers-reduced-motion: reduce)"
+                ).matches) {
+
+                const revealObserver = new IntersectionObserver(
+                    function (entries, observer) {
+                        entries.forEach(function (entry) {
+                            if (entry.isIntersecting) {
+                                entry.target.classList.add("is-visible");
+                                observer.unobserve(entry.target);
+                            }
+                        });
+                    },
+                    {
+                        threshold: 0.08
+                    }
+                );
+
+                revealItems.forEach(function (item) {
+                    revealObserver.observe(item);
+                });
+            } else {
+                revealItems.forEach(function (item) {
+                    item.classList.add("is-visible");
+                });
+            }
+        })();
+    </script>
 
 </body>
 </html>

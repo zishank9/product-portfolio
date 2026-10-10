@@ -4,256 +4,773 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
-    <meta name="description" content="Case study on cloud monitoring, incident management, alert quality, operational documentation, and leadership of a 15-person monitoring team.">
+    <meta name="description" content="Cloud monitoring and incident management case study covering alert quality, operational documentation, process improvement, and leadership of a 15-person monitoring team.">
+    <meta name="theme-color" content="#10172a">
 
     <title>Cloud Monitoring & Incident Management | Zishan Khan</title>
 
     <link rel="stylesheet" href="styles.css">
 
     <style>
-        .case-hero {
-            padding: 65px 0 35px;
+        :root {
+            --mon-accent: #8b9cff;
+            --mon-accent-strong: #6679ed;
+            --mon-border: rgba(128,128,128,.24);
+            --mon-surface: rgba(128,128,128,.055);
+            --mon-muted: #858da0;
+            --mon-radius: 16px;
         }
 
-        .case-label {
-            color: #8b9cff;
-            font-size: 0.85rem;
-            font-weight: 600;
-            letter-spacing: 1px;
+        html {
+            scroll-behavior: smooth;
+            scroll-padding-top: 100px;
+        }
+
+        body {
+            overflow-x: hidden;
+        }
+
+        button {
+            font: inherit;
+        }
+
+        .mon-progress-track {
+            position: fixed;
+            inset: 0 0 auto;
+            height: 4px;
+            z-index: 2000;
+        }
+
+        .mon-progress-bar {
+            width: 0;
+            height: 100%;
+            background: linear-gradient(90deg, #6679ed, #a5b1ff);
+        }
+
+        .mon-hero {
+            padding: 70px 0 40px;
+        }
+
+        .mon-eyebrow {
+            display: inline-flex;
+            align-items: center;
+            gap: 9px;
+            color: var(--mon-accent);
+            font-size: .8rem;
+            font-weight: 800;
+            letter-spacing: 1.5px;
             text-transform: uppercase;
         }
 
-        .case-hero h1 {
-            max-width: 850px;
-            margin: 16px 0;
-            line-height: 1.15;
+        .mon-eyebrow::before {
+            content: "";
+            width: 25px;
+            height: 2px;
+            background: currentColor;
         }
 
-        .case-intro {
-            max-width: 780px;
-            line-height: 1.8;
-            opacity: 0.85;
+        .mon-hero h1 {
+            max-width: 900px;
+            margin: 20px 0;
+            font-size: clamp(2.2rem, 5vw, 4rem);
+            line-height: 1.1;
+            letter-spacing: -1.5px;
+        }
+
+        .mon-gradient {
+            color: var(--mon-accent);
+        }
+
+        .mon-intro {
+            max-width: 790px;
             font-size: 1.05rem;
+            line-height: 1.9;
+            opacity: .84;
         }
 
-        .case-meta {
+        .mon-pills {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 10px;
+            margin-top: 23px;
+        }
+
+        .mon-pill {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            padding: 9px 13px;
+            border: 1px solid var(--mon-border);
+            border-radius: 999px;
+            background: var(--mon-surface);
+            font-size: .84rem;
+        }
+
+        .mon-pill-dot {
+            width: 7px;
+            height: 7px;
+            border-radius: 50%;
+            background: var(--mon-accent);
+        }
+
+        .mon-meta {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
-            gap: 16px;
-            margin: 32px 0;
+            grid-template-columns: repeat(4, minmax(0,1fr));
+            gap: 14px;
+            margin: 30px 0;
         }
 
-        .meta-card {
+        .mon-meta-card {
             padding: 20px;
-            border: 1px solid rgba(128, 128, 128, 0.25);
-            border-radius: 12px;
-            background: rgba(128, 128, 128, 0.04);
+            border: 1px solid var(--mon-border);
+            border-radius: 14px;
+            background: var(--mon-surface);
         }
 
-        .meta-card p {
-            margin: 0 0 8px;
-            opacity: 0.7;
-            font-size: 0.85rem;
+        .mon-meta-card span {
+            display: block;
+            margin-bottom: 9px;
+            color: var(--mon-muted);
+            font-size: .82rem;
         }
 
-        .meta-card strong {
+        .mon-meta-card strong {
+            display: block;
             line-height: 1.6;
         }
 
-        .case-section {
-            padding: 32px 0;
-            border-top: 1px solid rgba(128, 128, 128, 0.2);
-        }
-
-        .case-section h2 {
-            margin: 0 0 18px;
-        }
-
-        .case-section h3 {
-            margin: 26px 0 10px;
-            font-size: 1.08rem;
-        }
-
-        .case-section p,
-        .case-section li {
-            line-height: 1.8;
-        }
-
-        .case-section ul,
-        .case-section ol {
-            padding-left: 24px;
-        }
-
-        .case-section li {
-            margin-bottom: 10px;
-        }
-
-        .section-intro {
-            max-width: 800px;
-            opacity: 0.85;
-        }
-
-        .case-callout {
-            padding: 22px;
-            margin: 22px 0;
-            border-left: 3px solid #8b9cff;
-            border-radius: 8px;
-            background: rgba(128, 128, 128, 0.08);
-            line-height: 1.8;
-        }
-
-        /* Workflow diagram */
-        .workflow {
+        .mon-layout {
             display: grid;
-            grid-template-columns: repeat(3, minmax(0, 1fr));
-            gap: 16px;
-            margin: 28px 0;
+            grid-template-columns: 215px minmax(0,1fr);
+            gap: 42px;
+            align-items: start;
+            padding-bottom: 45px;
         }
 
-        .workflow-step {
-            position: relative;
-            padding: 20px;
-            border: 1px solid rgba(128, 128, 128, 0.25);
-            border-radius: 12px;
-            background: rgba(128, 128, 128, 0.04);
-            min-width: 0;
+        .mon-sidebar {
+            position: sticky;
+            top: 95px;
+            max-height: calc(100vh - 115px);
+            overflow-y: auto;
+            padding: 15px 0;
         }
 
-        .workflow-number {
-            display: inline-flex;
-            align-items: center;
-            justify-content: center;
-            width: 32px;
-            height: 32px;
-            margin-bottom: 12px;
-            border-radius: 50%;
-            background: rgba(139, 156, 255, 0.16);
-            color: #8b9cff;
-            font-size: 0.9rem;
+        .mon-sidebar-label {
+            margin: 0 0 14px;
+            color: var(--mon-muted);
+            font-size: .74rem;
+            font-weight: 800;
+            letter-spacing: 1.2px;
+            text-transform: uppercase;
+        }
+
+        .mon-toc {
+            display: flex;
+            flex-direction: column;
+            gap: 4px;
+        }
+
+        .mon-toc a {
+            display: block;
+            padding: 10px 12px;
+            border-left: 2px solid transparent;
+            border-radius: 0 8px 8px 0;
+            color: inherit;
+            opacity: .72;
+            font-size: .86rem;
+            text-decoration: none;
+            transition: background .2s, opacity .2s, border-color .2s;
+        }
+
+        .mon-toc a:hover,
+        .mon-toc a.active {
+            border-left-color: var(--mon-accent);
+            background: rgba(139,156,255,.09);
+            opacity: 1;
+        }
+
+        .mon-mobile-toc {
+            display: none;
+            margin-bottom: 23px;
+            padding: 15px;
+            border: 1px solid var(--mon-border);
+            border-radius: 13px;
+            background: var(--mon-surface);
+        }
+
+        .mon-mobile-toc summary {
+            cursor: pointer;
             font-weight: 700;
         }
 
-        .workflow-step h3 {
-            margin: 0 0 8px;
-            font-size: 1rem;
+        .mon-mobile-toc .mon-toc {
+            margin-top: 12px;
         }
 
-        .workflow-step p {
-            margin: 0;
-            font-size: 0.92rem;
-            line-height: 1.7;
-            opacity: 0.82;
+        .mon-content {
+            min-width: 0;
         }
 
-        .workflow-note {
-            margin-top: 16px;
-            font-size: 0.88rem;
-            line-height: 1.7;
-            opacity: 0.72;
+        .mon-section {
+            padding: 34px 0;
+            border-top: 1px solid var(--mon-border);
+            scroll-margin-top: 100px;
         }
 
-        /* Contribution cards */
-        .contribution-grid {
-            display: grid;
-            grid-template-columns: repeat(2, minmax(0, 1fr));
-            gap: 18px;
-            margin-top: 24px;
+        .mon-section:first-child {
+            border-top: 0;
         }
 
-        .contribution-card {
-            padding: 22px;
-            border: 1px solid rgba(128, 128, 128, 0.23);
-            border-radius: 12px;
-        }
-
-        .contribution-card h3 {
-            margin: 0 0 12px;
-        }
-
-        .contribution-card ul {
-            margin-bottom: 0;
-        }
-
-        /* Outcomes */
-        .outcome-list {
-            display: grid;
-            grid-template-columns: repeat(2, minmax(0, 1fr));
+        .mon-heading {
+            display: flex;
+            align-items: flex-start;
             gap: 14px;
-            margin-top: 24px;
+            margin-bottom: 22px;
         }
 
-        .outcome-item {
-            padding: 18px;
-            border: 1px solid rgba(128, 128, 128, 0.22);
-            border-radius: 10px;
-            line-height: 1.7;
+        .mon-number {
+            display: grid;
+            flex: 0 0 42px;
+            width: 42px;
+            height: 42px;
+            place-items: center;
+            border: 1px solid rgba(139,156,255,.32);
+            border-radius: 12px;
+            background: rgba(139,156,255,.1);
+            color: var(--mon-accent);
+            font-weight: 800;
         }
 
-        .outcome-item strong {
+        .mon-heading h2 {
+            margin: 2px 0 7px;
+            font-size: clamp(1.4rem,3vw,2rem);
+            line-height: 1.3;
+        }
+
+        .mon-heading p {
+            margin: 0;
+            color: var(--mon-muted);
+            font-size: .9rem;
+        }
+
+        .mon-content p,
+        .mon-content li {
+            line-height: 1.85;
+        }
+
+        .mon-content p {
+            margin: 0 0 16px;
+        }
+
+        .mon-content ul,
+        .mon-content ol {
+            padding-left: 24px;
+        }
+
+        .mon-content li {
+            margin-bottom: 10px;
+        }
+
+        .mon-callout {
+            margin: 23px 0;
+            padding: 21px 23px;
+            border: 1px solid rgba(139,156,255,.24);
+            border-left: 4px solid var(--mon-accent);
+            border-radius: 0 13px 13px 0;
+            background: rgba(139,156,255,.07);
+            line-height: 1.8;
+        }
+
+        .mon-callout strong {
             display: block;
             margin-bottom: 5px;
         }
 
-        .skill-list {
-            display: flex;
-            flex-wrap: wrap;
-            gap: 10px;
-            margin-top: 16px;
+        /* Monitoring tools */
+
+        .mon-tool-grid {
+            display: grid;
+            grid-template-columns: repeat(3,minmax(0,1fr));
+            gap: 13px;
+            margin: 24px 0;
         }
 
-        .skill-tag {
-            padding: 8px 12px;
-            border: 1px solid rgba(128, 128, 128, 0.3);
-            border-radius: 999px;
-            font-size: 0.9rem;
+        .mon-tool-card {
+            padding: 19px;
+            border: 1px solid var(--mon-border);
+            border-radius: 14px;
+            background: var(--mon-surface);
+            transition: transform .2s,border-color .2s;
         }
 
-        .case-footer {
+        .mon-tool-card:hover {
+            transform: translateY(-3px);
+            border-color: var(--mon-accent);
+        }
+
+        .mon-tool-icon {
+            display: grid;
+            width: 43px;
+            height: 43px;
+            place-items: center;
+            margin-bottom: 14px;
+            border: 1px solid rgba(139,156,255,.25);
+            border-radius: 12px;
+            background: rgba(139,156,255,.1);
+            color: var(--mon-accent);
+        }
+
+        .mon-tool-icon svg {
+            width: 23px;
+            height: 23px;
+        }
+
+        .mon-tool-card h3 {
+            margin: 0 0 8px;
+            font-size: 1rem;
+        }
+
+        .mon-tool-card p {
+            margin: 0;
+            font-size: .88rem;
+            opacity: .82;
+        }
+
+        /* Interactive incident workflow */
+
+        .mon-workflow-box {
+            margin: 25px 0;
+            padding: 23px;
+            border: 1px solid var(--mon-border);
+            border-radius: 17px;
+            background: var(--mon-surface);
+        }
+
+        .mon-workflow-top {
             display: flex;
             flex-wrap: wrap;
+            align-items: center;
             justify-content: space-between;
-            gap: 16px;
-            padding: 35px 0 60px;
+            gap: 12px;
+            margin-bottom: 19px;
         }
 
-        .case-footer a {
+        .mon-workflow-top h3 {
+            margin: 0;
+            font-size: 1.05rem;
+        }
+
+        .mon-workflow-top span {
+            color: var(--mon-muted);
+            font-size: .8rem;
+        }
+
+        .mon-workflow-grid {
+            display: grid;
+            grid-template-columns: repeat(3,minmax(0,1fr));
+            gap: 10px;
+        }
+
+        .mon-workflow-step {
+            min-width: 0;
+            padding: 16px;
+            border: 1px solid var(--mon-border);
+            border-radius: 12px;
+            background: transparent;
+            color: inherit;
+            text-align: left;
+            cursor: pointer;
+            transition: transform .2s,border-color .2s,background .2s;
+        }
+
+        .mon-workflow-step:hover {
+            transform: translateY(-3px);
+            border-color: var(--mon-accent);
+        }
+
+        .mon-workflow-step.active {
+            border-color: var(--mon-accent);
+            background: rgba(139,156,255,.12);
+        }
+
+        .mon-step-top {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: 8px;
+            margin-bottom: 12px;
+        }
+
+        .mon-step-number {
+            display: grid;
+            width: 31px;
+            height: 31px;
+            place-items: center;
+            border-radius: 9px;
+            background: rgba(139,156,255,.14);
+            color: var(--mon-accent);
+            font-size: .82rem;
+            font-weight: 800;
+        }
+
+        .mon-step-icon {
+            color: var(--mon-accent);
+        }
+
+        .mon-step-icon svg {
+            display: block;
+            width: 23px;
+            height: 23px;
+        }
+
+        .mon-workflow-step strong {
+            display: block;
+            font-size: .9rem;
+            line-height: 1.5;
+        }
+
+        .mon-workflow-step small {
+            display: block;
+            margin-top: 7px;
+            color: var(--mon-muted);
+            font-size: .77rem;
+            line-height: 1.5;
+        }
+
+        .mon-workflow-detail {
+            margin-top: 16px;
+            padding: 19px;
+            border-radius: 12px;
+            background: rgba(139,156,255,.08);
+        }
+
+        .mon-workflow-detail h4 {
+            margin: 0 0 8px;
+        }
+
+        .mon-workflow-detail p {
+            margin: 0;
+            font-size: .92rem;
+        }
+
+        .mon-caption {
+            margin: 14px 0 0 !important;
+            color: var(--mon-muted);
+            font-size: .81rem;
+        }
+
+        /* Expandable contributions */
+
+        .mon-contributions {
+            display: grid;
+            gap: 12px;
+            margin: 24px 0;
+        }
+
+        .mon-contribution {
+            overflow: hidden;
+            border: 1px solid var(--mon-border);
+            border-radius: 14px;
+            background: var(--mon-surface);
+        }
+
+        .mon-contribution summary {
+            display: flex;
+            align-items: center;
+            gap: 13px;
+            padding: 18px;
+            cursor: pointer;
+            list-style: none;
+        }
+
+        .mon-contribution summary::-webkit-details-marker {
+            display: none;
+        }
+
+        .mon-contribution summary::after {
+            content: "+";
+            margin-left: auto;
+            color: var(--mon-accent);
+            font-size: 1.5rem;
+        }
+
+        .mon-contribution[open] summary::after {
+            content: "−";
+        }
+
+        .mon-contribution summary:hover {
+            background: rgba(139,156,255,.05);
+        }
+
+        .mon-contribution-icon {
+            display: grid;
+            flex: 0 0 40px;
+            width: 40px;
+            height: 40px;
+            place-items: center;
+            border-radius: 11px;
+            background: rgba(139,156,255,.12);
+            color: var(--mon-accent);
+            font-weight: 800;
+        }
+
+        .mon-contribution-title {
+            min-width: 0;
+        }
+
+        .mon-contribution-title strong {
+            display: block;
+            line-height: 1.5;
+        }
+
+        .mon-contribution-title small {
+            display: block;
+            margin-top: 3px;
+            color: var(--mon-muted);
+            line-height: 1.5;
+        }
+
+        .mon-contribution-body {
+            padding: 0 22px 20px 71px;
+        }
+
+        .mon-contribution-body ul {
+            margin: 0;
+        }
+
+        /* Outcome cards */
+
+        .mon-outcome-grid {
+            display: grid;
+            grid-template-columns: repeat(2,minmax(0,1fr));
+            gap: 13px;
+            margin: 24px 0;
+        }
+
+        .mon-outcome-card {
+            display: flex;
+            gap: 12px;
+            padding: 18px;
+            border: 1px solid var(--mon-border);
+            border-radius: 13px;
+            background: var(--mon-surface);
+        }
+
+        .mon-outcome-mark {
+            flex: 0 0 auto;
+            color: var(--mon-accent);
+            font-weight: 900;
+        }
+
+        .mon-outcome-card strong {
+            display: block;
+            margin-bottom: 5px;
+        }
+
+        .mon-outcome-card p {
+            margin: 0;
+            font-size: .88rem;
+            line-height: 1.7;
+        }
+
+        .mon-skills {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 9px;
+            margin-top: 18px;
+        }
+
+        .mon-skill {
+            padding: 9px 13px;
+            border: 1px solid var(--mon-border);
+            border-radius: 999px;
+            background: var(--mon-surface);
+            font-size: .85rem;
+        }
+
+        .mon-note {
+            padding: 18px;
+            border: 1px dashed var(--mon-border);
+            border-radius: 12px;
+            color: var(--mon-muted);
+            font-size: .88rem;
+            line-height: 1.8;
+        }
+
+        .mon-footer {
+            display: flex;
+            flex-wrap: wrap;
+            align-items: center;
+            justify-content: space-between;
+            gap: 15px;
+            padding: 30px 0 60px;
+            border-top: 1px solid var(--mon-border);
+        }
+
+        .mon-footer a {
+            color: inherit;
             text-decoration: none;
         }
 
-        .confidentiality-note {
-            font-size: 0.9rem;
-            line-height: 1.8;
-            opacity: 0.75;
+        .mon-footer a:hover {
+            color: var(--mon-accent);
         }
 
-        @media (max-width: 700px) {
-            .case-hero {
-                padding-top: 40px;
+        .mon-next-link {
+            padding: 12px 16px;
+            border: 1px solid var(--mon-border);
+            border-radius: 10px;
+            transition: background .2s,border-color .2s;
+        }
+
+        .mon-next-link:hover {
+            border-color: var(--mon-accent);
+            background: rgba(139,156,255,.08);
+        }
+
+        .mon-top-button {
+            position: fixed;
+            right: 22px;
+            bottom: 22px;
+            z-index: 1000;
+            display: grid;
+            width: 46px;
+            height: 46px;
+            place-items: center;
+            border: 1px solid var(--mon-border);
+            border-radius: 13px;
+            background: var(--mon-accent-strong);
+            color: white;
+            font-size: 1.25rem;
+            cursor: pointer;
+            opacity: 0;
+            visibility: hidden;
+            transform: translateY(8px);
+            transition: opacity .2s,transform .2s,visibility .2s;
+        }
+
+        .mon-top-button.visible {
+            opacity: 1;
+            visibility: visible;
+            transform: translateY(0);
+        }
+
+        .mon-reveal {
+            opacity: 0;
+            transform: translateY(14px);
+            transition: opacity .5s ease,transform .5s ease;
+        }
+
+        .mon-reveal.revealed {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        :focus-visible {
+            outline: 3px solid var(--mon-accent);
+            outline-offset: 4px;
+        }
+
+        @media(max-width:1000px) {
+            .mon-meta {
+                grid-template-columns: repeat(2,minmax(0,1fr));
             }
 
-            .workflow {
+            .mon-layout {
+                grid-template-columns: 185px minmax(0,1fr);
+                gap: 25px;
+            }
+
+            .mon-tool-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        @media(max-width:760px) {
+            .mon-hero {
+                padding-top: 42px;
+            }
+
+            .mon-layout {
+                display: block;
+            }
+
+            .mon-sidebar {
+                display: none;
+            }
+
+            .mon-mobile-toc {
+                display: block;
+            }
+
+            .mon-section {
+                padding: 28px 0;
+            }
+
+            .mon-workflow-grid {
+                grid-template-columns: repeat(2,minmax(0,1fr));
+            }
+
+            .mon-outcome-grid {
                 grid-template-columns: 1fr;
             }
 
-            .contribution-grid,
-            .outcome-list {
+            .mon-workflow-box {
+                padding: 16px;
+            }
+
+            .mon-contribution-body {
+                padding-left: 20px;
+            }
+        }
+
+        @media(max-width:460px) {
+            .mon-meta {
                 grid-template-columns: 1fr;
             }
 
-            .case-meta {
+            .mon-workflow-grid {
                 grid-template-columns: 1fr 1fr;
             }
-        }
 
-        @media (max-width: 420px) {
-            .case-meta {
-                grid-template-columns: 1fr;
+            .mon-workflow-step {
+                padding: 12px;
             }
 
-            .meta-card,
-            .contribution-card {
-                padding: 17px;
+            .mon-heading {
+                gap: 10px;
+            }
+
+            .mon-number {
+                flex-basis: 36px;
+                width: 36px;
+                height: 36px;
+            }
+
+            .mon-hero h1 {
+                letter-spacing: -.8px;
+            }
+
+            .mon-footer {
+                align-items: flex-start;
+                flex-direction: column;
+            }
+        }
+
+        @media(prefers-reduced-motion:reduce) {
+            html {
+                scroll-behavior: auto;
+            }
+
+            *,
+            *::before,
+            *::after {
+                transition-duration: .01ms !important;
+            }
+
+            .mon-reveal {
+                opacity: 1;
+                transform: none;
             }
         }
     </style>
@@ -261,10 +778,13 @@
 
 <body>
 
+    <div class="mon-progress-track" aria-hidden="true">
+        <div class="mon-progress-bar" id="readingProgress"></div>
+    </div>
+
     <header>
         <nav class="container">
             <a href="index.html" class="logo">Portfolio</a>
-
             <div class="nav-links">
                 <a href="index.html#work">Work</a>
                 <a href="index.html#about">About</a>
@@ -276,12 +796,15 @@
     <main class="container">
 
         <!-- HERO -->
-        <section class="case-hero">
-            <p class="case-label">Case Study 02 · Cloud Operations</p>
+        <section class="mon-hero mon-reveal">
+            <p class="mon-eyebrow">Case Study 02 · Cloud Operations</p>
 
-            <h1>Making Cloud Monitoring More Actionable and Consistent</h1>
+            <h1>
+                Making Cloud Monitoring
+                <span class="mon-gradient">More Actionable and Consistent</span>
+            </h1>
 
-            <p class="case-intro">
+            <p class="mon-intro">
                 I led a 15-person cloud monitoring team and helped improve
                 how application alerts were reviewed, incidents were
                 investigated, and operational knowledge was shared.
@@ -290,465 +813,773 @@
                 coordinating with developers and QA to investigate issues.
             </p>
 
-            <div class="case-meta">
-                <div class="meta-card">
-                    <p>Role</p>
+            <div class="mon-pills">
+                <span class="mon-pill"><span class="mon-pill-dot"></span> Team Leadership</span>
+                <span class="mon-pill"><span class="mon-pill-dot"></span> Incident Management</span>
+                <span class="mon-pill"><span class="mon-pill-dot"></span> Process Improvement</span>
+            </div>
+
+            <div class="mon-meta">
+                <div class="mon-meta-card">
+                    <span>Role</span>
                     <strong>Product Delivery Manager / Team Lead</strong>
                 </div>
-
-                <div class="meta-card">
-                    <p>Team</p>
+                <div class="mon-meta-card">
+                    <span>Team</span>
                     <strong>15-person cloud monitoring team</strong>
                 </div>
-
-                <div class="meta-card">
-                    <p>Tools</p>
+                <div class="mon-meta-card">
+                    <span>Tools</span>
                     <strong>Splunk, Datadog, AWS CloudWatch</strong>
                 </div>
-
-                <div class="meta-card">
-                    <p>Core Focus</p>
+                <div class="mon-meta-card">
+                    <span>Core focus</span>
                     <strong>Incident handling, alert quality, and process improvement</strong>
                 </div>
             </div>
         </section>
 
-        <!-- PROJECT OVERVIEW -->
-        <section class="case-section">
-            <h2>01. Project Overview</h2>
+        <!-- MOBILE CONTENTS -->
+        <details class="mon-mobile-toc">
+            <summary>On this page · Jump to a section</summary>
+            <nav class="mon-toc" aria-label="Mobile table of contents">
+                <a href="#overview">Project Overview</a>
+                <a href="#challenge">The Challenge</a>
+                <a href="#objective">My Objective</a>
+                <a href="#workflow">Incident Workflow</a>
+                <a href="#tools">Monitoring Tools</a>
+                <a href="#contributions">My Contributions</a>
+                <a href="#approach">My Approach</a>
+                <a href="#outcomes">Outcomes and Impact</a>
+                <a href="#learnings">Key Learnings</a>
+                <a href="#skills">Skills Demonstrated</a>
+                <a href="#confidentiality">Confidentiality</a>
+            </nav>
+        </details>
 
-            <p class="section-intro">
-                Application monitoring is most useful when teams can
-                distinguish important signals from routine noise and
-                respond to incidents consistently. This work focused on
-                improving the team's operational practices rather than
-                simply collecting more monitoring data.
-            </p>
+        <div class="mon-layout">
 
-            <div class="case-callout">
-                <strong>The central problem:</strong>
-                Repetitive alerts, inconsistent troubleshooting practices,
-                and issues discovered after testing made it harder to
-                investigate application problems efficiently. The team
-                needed clearer monitoring visibility, reusable procedures,
-                and stronger coordination across monitoring, development,
-                and QA.
-            </div>
-        </section>
+            <aside class="mon-sidebar">
+                <p class="mon-sidebar-label">Explore this case</p>
+                <nav class="mon-toc" aria-label="Case study sections">
+                    <a href="#overview">Project Overview</a>
+                    <a href="#challenge">The Challenge</a>
+                    <a href="#objective">My Objective</a>
+                    <a href="#workflow">Incident Workflow</a>
+                    <a href="#tools">Monitoring Tools</a>
+                    <a href="#contributions">My Contributions</a>
+                    <a href="#approach">My Approach</a>
+                    <a href="#outcomes">Outcomes and Impact</a>
+                    <a href="#learnings">Key Learnings</a>
+                    <a href="#skills">Skills Demonstrated</a>
+                    <a href="#confidentiality">Confidentiality</a>
+                </nav>
+            </aside>
 
-        <!-- CHALLENGE -->
-        <section class="case-section">
-            <h2>02. The Challenge</h2>
+            <div class="mon-content">
 
-            <p>
-                The monitoring team worked with application alerts and
-                operational issues across a cloud-based environment.
-                Several challenges affected the team's ability to
-                investigate and follow up on problems consistently:
-            </p>
+                <!-- 01 OVERVIEW -->
+                <section class="mon-section mon-reveal" id="overview">
+                    <div class="mon-heading">
+                        <span class="mon-number">01</span>
+                        <div>
+                            <h2>Project Overview</h2>
+                            <p>Turning monitoring data into actionable information</p>
+                        </div>
+                    </div>
 
-            <ul>
-                <li>
-                    <strong>Alert noise:</strong>
-                    Repetitive or lower-priority alerts could make
-                    significant application issues harder to spot.
-                </li>
-                <li>
-                    <strong>Inconsistent investigation:</strong>
-                    Troubleshooting approaches and knowledge of recurring
-                    failures needed to be documented more consistently.
-                </li>
-                <li>
-                    <strong>Gaps discovered after testing:</strong>
-                    Some application issues surfaced during monitoring
-                    rather than being identified earlier in testing.
-                </li>
-                <li>
-                    <strong>Cross-team follow-up:</strong>
-                    Investigating technical issues required clear
-                    coordination with developers and QA.
-                </li>
-            </ul>
-        </section>
-
-        <!-- OBJECTIVE -->
-        <section class="case-section">
-            <h2>03. My Objective</h2>
-
-            <p>
-                My objective was to help the team establish a more
-                structured and repeatable monitoring process. This involved
-                improving alert quality, making recurring problems easier
-                to investigate, documenting known troubleshooting steps,
-                and strengthening issue follow-up across teams.
-            </p>
-
-            <div class="case-callout">
-                <strong>My approach:</strong>
-                Make monitoring actionable. The goal was to help the team
-                recognize meaningful signals, follow consistent
-                investigation steps, and communicate findings clearly.
-            </div>
-        </section>
-
-        <!-- WORKFLOW -->
-        <section class="case-section">
-            <h2>04. Monitoring and Incident Workflow</h2>
-
-            <p class="section-intro">
-                The following diagram represents the high-level workflow
-                I helped establish and improve. It is a simplified
-                illustration of the team's operational process, not a
-                screenshot of an internal monitoring system.
-            </p>
-
-            <div class="workflow">
-
-                <div class="workflow-step">
-                    <span class="workflow-number">1</span>
-                    <h3>Monitor Application Health</h3>
                     <p>
-                        Use Splunk, Datadog, and AWS CloudWatch to review
-                        application signals, alerts, and recurring failures.
+                        Application monitoring is most useful when teams can
+                        distinguish important signals from routine noise and
+                        respond to incidents consistently. This work focused
+                        on improving the team's operational practices rather
+                        than simply collecting more monitoring data.
                     </p>
-                </div>
 
-                <div class="workflow-step">
-                    <span class="workflow-number">2</span>
-                    <h3>Review and Prioritize Alerts</h3>
+                    <div class="mon-callout">
+                        <strong>The central problem</strong>
+                        Repetitive alerts, inconsistent troubleshooting practices,
+                        and issues discovered after testing made it harder to
+                        investigate application problems efficiently. The team
+                        needed clearer monitoring visibility, reusable procedures,
+                        and stronger coordination across monitoring, development,
+                        and QA.
+                    </div>
+                </section>
+
+                <!-- 02 CHALLENGE -->
+                <section class="mon-section mon-reveal" id="challenge">
+                    <div class="mon-heading">
+                        <span class="mon-number">02</span>
+                        <div>
+                            <h2>The Challenge</h2>
+                            <p>Improving consistency across monitoring operations</p>
+                        </div>
+                    </div>
+
                     <p>
-                        Review repetitive alerts, refine filtering and
-                        thresholds, and distinguish higher-priority issues
-                        from lower-priority warnings.
+                        The monitoring team worked with application alerts and
+                        operational issues across a cloud-based environment.
+                        Several challenges affected the team's ability to
+                        investigate and follow up on problems consistently:
                     </p>
-                </div>
 
-                <div class="workflow-step">
-                    <span class="workflow-number">3</span>
-                    <h3>Investigate the Issue</h3>
+                    <ul>
+                        <li><strong>Alert noise:</strong> Repetitive or lower-priority alerts could make significant application issues harder to spot.</li>
+                        <li><strong>Inconsistent investigation:</strong> Troubleshooting approaches and knowledge of recurring failures needed to be documented more consistently.</li>
+                        <li><strong>Gaps discovered after testing:</strong> Some application issues surfaced during monitoring rather than being identified earlier in testing.</li>
+                        <li><strong>Cross-team follow-up:</strong> Investigating technical issues required clear coordination with developers and QA.</li>
+                    </ul>
+                </section>
+
+                <!-- 03 OBJECTIVE -->
+                <section class="mon-section mon-reveal" id="objective">
+                    <div class="mon-heading">
+                        <span class="mon-number">03</span>
+                        <div>
+                            <h2>My Objective</h2>
+                            <p>Make monitoring actionable and repeatable</p>
+                        </div>
+                    </div>
+
                     <p>
-                        Review available evidence, identify recurring
-                        patterns, and follow documented troubleshooting
-                        steps for known failures.
+                        My objective was to help the team establish a more
+                        structured and repeatable monitoring process. This
+                        involved improving alert quality, making recurring
+                        problems easier to investigate, documenting known
+                        troubleshooting steps, and strengthening issue
+                        follow-up across teams.
                     </p>
-                </div>
 
-                <div class="workflow-step">
-                    <span class="workflow-number">4</span>
-                    <h3>Coordinate with Developers and QA</h3>
+                    <div class="mon-callout">
+                        <strong>My approach</strong>
+                        Help the team recognize meaningful signals, follow
+                        consistent investigation steps, and communicate findings
+                        clearly.
+                    </div>
+                </section>
+
+                <!-- 04 WORKFLOW -->
+                <section class="mon-section mon-reveal" id="workflow">
+                    <div class="mon-heading">
+                        <span class="mon-number">04</span>
+                        <div>
+                            <h2>Interactive Monitoring Workflow</h2>
+                            <p>Select a stage to explore the operational process</p>
+                        </div>
+                    </div>
+
                     <p>
-                        Share findings, coordinate further technical
-                        investigation, and follow up on issues requiring
-                        development or testing support.
+                        This workflow illustrates how monitoring signals could
+                        be reviewed, investigated, documented, and used to
+                        improve operational practices.
                     </p>
-                </div>
 
-                <div class="workflow-step">
-                    <span class="workflow-number">5</span>
-                    <h3>Document and Track</h3>
+                    <div class="mon-workflow-box">
+                        <div class="mon-workflow-top">
+                            <h3>From alert to process improvement</h3>
+                            <span>6 connected stages</span>
+                        </div>
+
+                        <div class="mon-workflow-grid" role="group" aria-label="Monitoring workflow stages">
+
+                            <button type="button" class="mon-workflow-step active"
+                                    data-step="0" aria-pressed="true">
+                                <span class="mon-step-top">
+                                    <span class="mon-step-number">01</span>
+                                    <span class="mon-step-icon" aria-hidden="true">
+                                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7">
+                                            <path d="M3 12h4l3-8 4 16 3-8h4"/>
+                                        </svg>
+                                    </span>
+                                </span>
+                                <strong>Monitor Health</strong>
+                                <small>Review signals and alerts</small>
+                            </button>
+
+                            <button type="button" class="mon-workflow-step"
+                                    data-step="1" aria-pressed="false">
+                                <span class="mon-step-top">
+                                    <span class="mon-step-number">02</span>
+                                    <span class="mon-step-icon" aria-hidden="true">
+                                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7">
+                                            <circle cx="11" cy="11" r="7"/>
+                                            <path d="m16 16 5 5M8 11h6"/>
+                                        </svg>
+                                    </span>
+                                </span>
+                                <strong>Review Alerts</strong>
+                                <small>Prioritize meaningful signals</small>
+                            </button>
+
+                            <button type="button" class="mon-workflow-step"
+                                    data-step="2" aria-pressed="false">
+                                <span class="mon-step-top">
+                                    <span class="mon-step-number">03</span>
+                                    <span class="mon-step-icon" aria-hidden="true">
+                                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7">
+                                            <circle cx="10.5" cy="10.5" r="6.5"/>
+                                            <path d="m15.5 15.5 5 5M8 10.5l2 2 3.5-4"/>
+                                        </svg>
+                                    </span>
+                                </span>
+                                <strong>Investigate</strong>
+                                <small>Look for patterns and causes</small>
+                            </button>
+
+                            <button type="button" class="mon-workflow-step"
+                                    data-step="3" aria-pressed="false">
+                                <span class="mon-step-top">
+                                    <span class="mon-step-number">04</span>
+                                    <span class="mon-step-icon" aria-hidden="true">
+                                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7">
+                                            <circle cx="8" cy="7" r="3"/>
+                                            <circle cx="17" cy="8" r="2.5"/>
+                                            <path d="M2.5 19c0-3.2 2.3-5 5.5-5s5.5 1.8 5.5 5M14 14c3.9-.8 7 1.2 7 4.5"/>
+                                        </svg>
+                                    </span>
+                                </span>
+                                <strong>Coordinate</strong>
+                                <small>Engage developers and QA</small>
+                            </button>
+
+                            <button type="button" class="mon-workflow-step"
+                                    data-step="4" aria-pressed="false">
+                                <span class="mon-step-top">
+                                    <span class="mon-step-number">05</span>
+                                    <span class="mon-step-icon" aria-hidden="true">
+                                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7">
+                                            <path d="M7 3h10v18H7zM10 7h4M10 11h4M10 15h4"/>
+                                        </svg>
+                                    </span>
+                                </span>
+                                <strong>Document</strong>
+                                <small>Record repeatable procedures</small>
+                            </button>
+
+                            <button type="button" class="mon-workflow-step"
+                                    data-step="5" aria-pressed="false">
+                                <span class="mon-step-top">
+                                    <span class="mon-step-number">06</span>
+                                    <span class="mon-step-icon" aria-hidden="true">
+                                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7">
+                                            <path d="M20 7v5h-5M4 17v-5h5"/>
+                                            <path d="M5.5 9A7 7 0 0 1 18 6l2 6M4 12l2 6a7 7 0 0 0 12.5-3"/>
+                                        </svg>
+                                    </span>
+                                </span>
+                                <strong>Improve</strong>
+                                <small>Review recurring issues</small>
+                            </button>
+
+                        </div>
+
+                        <div class="mon-workflow-detail" aria-live="polite" aria-atomic="true">
+                            <h4 id="workflowTitle">01 · Monitor application health</h4>
+                            <p id="workflowDescription">
+                                Use Splunk, Datadog, and AWS CloudWatch to review
+                                application signals, alerts, and recurring failures.
+                            </p>
+                        </div>
+
+                        <p class="mon-caption">
+                            Simplified representation of the operational process,
+                            not a screenshot of an internal monitoring system.
+                        </p>
+                    </div>
+                </section>
+
+                <!-- 05 TOOLS -->
+                <section class="mon-section mon-reveal" id="tools">
+                    <div class="mon-heading">
+                        <span class="mon-number">05</span>
+                        <div>
+                            <h2>Monitoring Tools</h2>
+                            <p>Platforms used to support monitoring and investigation</p>
+                        </div>
+                    </div>
+
+                    <div class="mon-tool-grid">
+                        <article class="mon-tool-card">
+                            <span class="mon-tool-icon" aria-hidden="true">
+                                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7">
+                                    <path d="M3 18V6M3 18h18"/>
+                                    <path d="m6 14 4-5 4 3 5-7"/>
+                                </svg>
+                            </span>
+                            <h3>Splunk</h3>
+                            <p>Review logs and application signals to investigate errors, recurring patterns, and operational issues.</p>
+                        </article>
+
+                        <article class="mon-tool-card">
+                            <span class="mon-tool-icon" aria-hidden="true">
+                                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7">
+                                    <path d="M3 12h4l3-8 4 16 3-8h4"/>
+                                </svg>
+                            </span>
+                            <h3>Datadog</h3>
+                            <p>Use monitoring visibility and dashboards to review application behaviour and investigate issues.</p>
+                        </article>
+
+                        <article class="mon-tool-card">
+                            <span class="mon-tool-icon" aria-hidden="true">
+                                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7">
+                                    <path d="M12 3 4 7v5c0 5 3.4 7.8 8 9 4.6-1.2 8-4 8-9V7z"/>
+                                    <path d="m8.5 12 2.2 2.2 4.8-5"/>
+                                </svg>
+                            </span>
+                            <h3>AWS CloudWatch</h3>
+                            <p>Review cloud monitoring signals and support investigation of application and environment issues.</p>
+                        </article>
+                    </div>
+
+                    <p class="mon-caption">
+                        These tools supported the monitoring work. The cards
+                        describe their general role in the process, not a
+                        claim that every tool was used for every incident.
+                    </p>
+                </section>
+
+                <!-- 06 CONTRIBUTIONS -->
+                <section class="mon-section mon-reveal" id="contributions">
+                    <div class="mon-heading">
+                        <span class="mon-number">06</span>
+                        <div>
+                            <h2>My Role and Contributions</h2>
+                            <p>Expand each area to explore my responsibilities</p>
+                        </div>
+                    </div>
+
                     <p>
-                        Maintain SOPs and troubleshooting guides, record
-                        recurring problems, and support consistent
-                        escalation and follow-up.
+                        My contribution combined team leadership, operational
+                        process improvement, monitoring visibility, and
+                        cross-functional coordination.
                     </p>
-                </div>
 
-                <div class="workflow-step">
-                    <span class="workflow-number">6</span>
-                    <h3>Review and Improve</h3>
+                    <div class="mon-contributions">
+
+                        <details class="mon-contribution" open>
+                            <summary>
+                                <span class="mon-contribution-icon">01</span>
+                                <span class="mon-contribution-title">
+                                    <strong>Monitoring & Alert Quality</strong>
+                                    <small>Making monitoring information more actionable</small>
+                                </span>
+                            </summary>
+                            <div class="mon-contribution-body">
+                                <ul>
+                                    <li>Created and improved dashboards to make application behaviour and recurring issues easier to review.</li>
+                                    <li>Reviewed repetitive alerts and worked to reduce unnecessary monitoring noise.</li>
+                                    <li>Helped distinguish important application problems from lower-priority warnings.</li>
+                                    <li>Worked on alert thresholds and filtering practices to make monitoring information more actionable.</li>
+                                </ul>
+                            </div>
+                        </details>
+
+                        <details class="mon-contribution">
+                            <summary>
+                                <span class="mon-contribution-icon">02</span>
+                                <span class="mon-contribution-title">
+                                    <strong>SOPs & Troubleshooting</strong>
+                                    <small>Making operational knowledge reusable</small>
+                                </span>
+                            </summary>
+                            <div class="mon-contribution-body">
+                                <ul>
+                                    <li>Created standard operating procedures and troubleshooting guides for common failures.</li>
+                                    <li>Documented repeatable investigation steps for known issues.</li>
+                                    <li>Improved knowledge sharing across the team.</li>
+                                    <li>Supported onboarding and knowledge transfer through reusable operational documentation.</li>
+                                </ul>
+                            </div>
+                        </details>
+
+                        <details class="mon-contribution">
+                            <summary>
+                                <span class="mon-contribution-icon">03</span>
+                                <span class="mon-contribution-title">
+                                    <strong>Team Leadership & Process</strong>
+                                    <small>Coordinating a 15-person monitoring team</small>
+                                </span>
+                            </summary>
+                            <div class="mon-contribution-body">
+                                <ul>
+                                    <li>Led and coordinated a 15-person cloud monitoring team.</li>
+                                    <li>Established more consistent approaches to alert handling, investigation, and escalation.</li>
+                                    <li>Helped define repeatable ways of working across monitoring operations.</li>
+                                    <li>Tracked operational observations and opportunities for improvement.</li>
+                                </ul>
+                            </div>
+                        </details>
+
+                        <details class="mon-contribution">
+                            <summary>
+                                <span class="mon-contribution-icon">04</span>
+                                <span class="mon-contribution-title">
+                                    <strong>Developer & QA Coordination</strong>
+                                    <small>Following technical issues through investigation</small>
+                                </span>
+                            </summary>
+                            <div class="mon-contribution-body">
+                                <ul>
+                                    <li>Coordinated with developers to investigate application errors and recurring failures.</li>
+                                    <li>Worked with QA on issues that required additional technical investigation.</li>
+                                    <li>Helped bring monitoring findings to the attention of the appropriate teams.</li>
+                                    <li>Followed up on bugs and supported clearer communication between teams.</li>
+                                </ul>
+                            </div>
+                        </details>
+
+                    </div>
+                </section>
+
+                <!-- 07 APPROACH -->
+                <section class="mon-section mon-reveal" id="approach">
+                    <div class="mon-heading">
+                        <span class="mon-number">07</span>
+                        <div>
+                            <h2>How I Approached the Problem</h2>
+                            <p>A repeatable process for monitoring improvement</p>
+                        </div>
+                    </div>
+
+                    <ol>
+                        <li>
+                            <strong>Identify recurring patterns.</strong>
+                            Review repeated alerts and application failures to
+                            understand where monitoring noise or repeated
+                            investigation was affecting the team.
+                        </li>
+                        <li>
+                            <strong>Improve monitoring visibility.</strong>
+                            Use dashboards and alert refinement to make relevant
+                            application problems easier to identify.
+                        </li>
+                        <li>
+                            <strong>Standardize investigation.</strong>
+                            Document known troubleshooting steps and establish
+                            clearer alert-handling and escalation practices.
+                        </li>
+                        <li>
+                            <strong>Coordinate technical follow-up.</strong>
+                            Work with developers and QA when an issue required
+                            additional analysis, a bug investigation, or further
+                            technical attention.
+                        </li>
+                        <li>
+                            <strong>Use observations to improve the process.</strong>
+                            Track recurring issues and operational feedback to
+                            identify areas where monitoring and investigation
+                            practices could be improved.
+                        </li>
+                    </ol>
+                </section>
+
+                <!-- 08 OUTCOMES -->
+                <section class="mon-section mon-reveal" id="outcomes">
+                    <div class="mon-heading">
+                        <span class="mon-number">08</span>
+                        <div>
+                            <h2>Outcomes and Impact</h2>
+                            <p>Operational improvements observed through the work</p>
+                        </div>
+                    </div>
+
                     <p>
-                        Use recurring issues and operational observations
-                        to identify opportunities to improve monitoring
-                        visibility and investigation practices.
+                        The work helped establish a more structured and
+                        repeatable approach to monitoring operations and
+                        incident investigation.
                     </p>
-                </div>
 
-            </div>
+                    <div class="mon-outcome-grid">
+                        <article class="mon-outcome-card">
+                            <span class="mon-outcome-mark">✓</span>
+                            <div>
+                                <strong>Reduced Monitoring Noise</strong>
+                                <p>Improved alert filtering and prioritization made monitoring information more actionable.</p>
+                            </div>
+                        </article>
 
-            <p class="workflow-note">
-                This workflow summarizes the process at a high level.
-                Individual incidents could require different investigation
-                or escalation paths depending on the issue.
-            </p>
-        </section>
+                        <article class="mon-outcome-card">
+                            <span class="mon-outcome-mark">✓</span>
+                            <div>
+                                <strong>Consistent Troubleshooting</strong>
+                                <p>SOPs and reusable guides gave the team clearer starting points for common issues.</p>
+                            </div>
+                        </article>
 
-        <!-- CONTRIBUTIONS -->
-        <section class="case-section">
-            <h2>05. My Role and Contributions</h2>
+                        <article class="mon-outcome-card">
+                            <span class="mon-outcome-mark">✓</span>
+                            <div>
+                                <strong>Better Issue Visibility</strong>
+                                <p>Dashboards and recurring-issue reviews helped the team identify application problems and patterns.</p>
+                            </div>
+                        </article>
 
-            <p class="section-intro">
-                My contribution combined team leadership, operational
-                process improvement, monitoring visibility, and
-                cross-functional coordination.
-            </p>
+                        <article class="mon-outcome-card">
+                            <span class="mon-outcome-mark">✓</span>
+                            <div>
+                                <strong>Cross-Team Coordination</strong>
+                                <p>More structured communication supported investigation and follow-up with developers and QA.</p>
+                            </div>
+                        </article>
 
-            <div class="contribution-grid">
+                        <article class="mon-outcome-card">
+                            <span class="mon-outcome-mark">✓</span>
+                            <div>
+                                <strong>Earlier Issue Identification</strong>
+                                <p>Monitoring findings helped surface some application problems before they were reported by clients.</p>
+                            </div>
+                        </article>
 
-                <div class="contribution-card">
-                    <h3>Monitoring and Alert Quality</h3>
+                        <article class="mon-outcome-card">
+                            <span class="mon-outcome-mark">✓</span>
+                            <div>
+                                <strong>Reusable Operational Knowledge</strong>
+                                <p>Documented procedures supported knowledge sharing, onboarding, and continuity across the team.</p>
+                            </div>
+                        </article>
+                    </div>
+
+                    <div class="mon-callout">
+                        <strong>How impact is presented</strong>
+                        These outcomes are described qualitatively because
+                        verified numerical measurements are not available
+                        for publication. The case study does not claim
+                        unverified percentages or time savings.
+                    </div>
+                </section>
+
+                <!-- 09 LEARNINGS -->
+                <section class="mon-section mon-reveal" id="learnings">
+                    <div class="mon-heading">
+                        <span class="mon-number">09</span>
+                        <div>
+                            <h2>Key Learnings</h2>
+                            <p>Lessons from monitoring and incident operations</p>
+                        </div>
+                    </div>
+
                     <ul>
                         <li>
-                            Created and improved dashboards to make
-                            application behaviour and recurring issues
-                            easier to review.
+                            <strong>Monitoring quality matters more than alert volume.</strong>
+                            Teams need useful signals and clear prioritization
+                            to focus attention on meaningful issues.
                         </li>
                         <li>
-                            Reviewed repetitive alerts and worked to
-                            reduce unnecessary monitoring noise.
+                            <strong>Documentation makes operational knowledge reusable.</strong>
+                            Repeatable procedures reduce reliance on informal,
+                            individual knowledge.
                         </li>
                         <li>
-                            Helped distinguish important application
-                            problems from lower-priority warnings.
+                            <strong>Incident management is cross-functional.</strong>
+                            Monitoring teams, developers, and QA need to work
+                            together to investigate and follow up on issues.
                         </li>
                         <li>
-                            Worked on alert thresholds and filtering
-                            practices to make monitoring information
-                            more actionable.
+                            <strong>Process improvement requires ongoing review.</strong>
+                            Recurring issues and team observations can reveal
+                            where monitoring and investigation practices need
+                            further refinement.
                         </li>
                     </ul>
-                </div>
+                </section>
 
-                <div class="contribution-card">
-                    <h3>SOPs and Troubleshooting</h3>
-                    <ul>
-                        <li>
-                            Created standard operating procedures and
-                            troubleshooting guides for common failures.
-                        </li>
-                        <li>
-                            Documented repeatable investigation steps
-                            for known issues.
-                        </li>
-                        <li>
-                            Improved knowledge sharing across the team.
-                        </li>
-                        <li>
-                            Supported onboarding and knowledge transfer
-                            through reusable operational documentation.
-                        </li>
-                    </ul>
-                </div>
+                <!-- 10 SKILLS -->
+                <section class="mon-section mon-reveal" id="skills">
+                    <div class="mon-heading">
+                        <span class="mon-number">10</span>
+                        <div>
+                            <h2>Skills Demonstrated</h2>
+                            <p>Capabilities applied throughout this work</p>
+                        </div>
+                    </div>
 
-                <div class="contribution-card">
-                    <h3>Team Leadership and Process</h3>
-                    <ul>
-                        <li>
-                            Led and coordinated a 15-person cloud
-                            monitoring team.
-                        </li>
-                        <li>
-                            Established more consistent approaches to
-                            alert handling, investigation, and escalation.
-                        </li>
-                        <li>
-                            Helped define repeatable ways of working
-                            across monitoring operations.
-                        </li>
-                        <li>
-                            Tracked operational observations and
-                            opportunities for improvement.
-                        </li>
-                    </ul>
-                </div>
+                    <div class="mon-skills">
+                        <span class="mon-skill">Team Leadership</span>
+                        <span class="mon-skill">Product Delivery</span>
+                        <span class="mon-skill">Incident Management</span>
+                        <span class="mon-skill">Process Improvement</span>
+                        <span class="mon-skill">Stakeholder Coordination</span>
+                        <span class="mon-skill">Root Cause Investigation</span>
+                        <span class="mon-skill">Operational Documentation</span>
+                        <span class="mon-skill">Monitoring Dashboards</span>
+                        <span class="mon-skill">Alert Prioritization</span>
+                        <span class="mon-skill">Splunk</span>
+                        <span class="mon-skill">Datadog</span>
+                        <span class="mon-skill">AWS CloudWatch</span>
+                        <span class="mon-skill">Cross-functional Collaboration</span>
+                    </div>
+                </section>
 
-                <div class="contribution-card">
-                    <h3>Developer and QA Coordination</h3>
-                    <ul>
-                        <li>
-                            Coordinated with developers to investigate
-                            application errors and recurring failures.
-                        </li>
-                        <li>
-                            Worked with QA on issues that required
-                            additional technical investigation.
-                        </li>
-                        <li>
-                            Helped bring monitoring findings to the
-                            attention of the appropriate teams.
-                        </li>
-                        <li>
-                            Followed up on bugs and supported clearer
-                            communication between teams.
-                        </li>
-                    </ul>
-                </div>
+                <!-- 11 CONFIDENTIALITY -->
+                <section class="mon-section mon-reveal" id="confidentiality">
+                    <div class="mon-heading">
+                        <span class="mon-number">11</span>
+                        <div>
+                            <h2>Confidentiality</h2>
+                            <p>Protecting internal operational information</p>
+                        </div>
+                    </div>
+
+                    <div class="mon-note">
+                        <em>
+                            This case study describes my responsibilities
+                            and experience at a high level. Internal
+                            monitoring configurations, customer details,
+                            proprietary dashboards, and sensitive operational
+                            information have been omitted.
+                        </em>
+                    </div>
+                </section>
 
             </div>
-        </section>
+        </div>
 
-        <!-- APPROACH -->
-        <section class="case-section">
-            <h2>06. How I Approached the Problem</h2>
-
-            <ol>
-                <li>
-                    <strong>Identify recurring patterns.</strong>
-                    Review repeated alerts and application failures to
-                    understand where monitoring noise or repeated
-                    investigation was affecting the team.
-                </li>
-
-                <li>
-                    <strong>Improve monitoring visibility.</strong>
-                    Use dashboards and alert refinement to make relevant
-                    application problems easier to identify.
-                </li>
-
-                <li>
-                    <strong>Standardize investigation.</strong>
-                    Document known troubleshooting steps and establish
-                    clearer alert-handling and escalation practices.
-                </li>
-
-                <li>
-                    <strong>Coordinate technical follow-up.</strong>
-                    Work with developers and QA when an issue required
-                    additional analysis, a bug investigation, or further
-                    technical attention.
-                </li>
-
-                <li>
-                    <strong>Use observations to improve the process.</strong>
-                    Track recurring issues and operational feedback to
-                    identify areas where monitoring and investigation
-                    practices could be improved.
-                </li>
-            </ol>
-        </section>
-
-        <!-- OUTCOMES -->
-        <section class="case-section">
-            <h2>07. Outcomes and Impact</h2>
-
-            <p class="section-intro">
-                The work helped establish a more structured and repeatable
-                approach to monitoring operations and incident
-                investigation. The observed improvements included:
-            </p>
-
-            <div class="outcome-list">
-
-                <div class="outcome-item">
-                    <strong>Reduced Monitoring Noise</strong>
-                    Improved alert filtering and prioritization made
-                    monitoring information more actionable.
-                </div>
-
-                <div class="outcome-item">
-                    <strong>More Consistent Troubleshooting</strong>
-                    SOPs and reusable guides gave the team clearer
-                    starting points for common issues.
-                </div>
-
-                <div class="outcome-item">
-                    <strong>Better Issue Visibility</strong>
-                    Dashboards and recurring-issue reviews helped the
-                    team identify application problems and patterns.
-                </div>
-
-                <div class="outcome-item">
-                    <strong>Stronger Cross-Team Coordination</strong>
-                    More structured communication supported investigation
-                    and follow-up with developers and QA.
-                </div>
-
-                <div class="outcome-item">
-                    <strong>Earlier Issue Identification</strong>
-                    Monitoring findings helped surface some application
-                    problems before they were reported by clients.
-                </div>
-
-                <div class="outcome-item">
-                    <strong>Reusable Operational Knowledge</strong>
-                    Documented procedures supported knowledge sharing,
-                    onboarding, and continuity across the team.
-                </div>
-
-            </div>
-
-            <p class="workflow-note">
-                These outcomes are described qualitatively because I do
-                not have verified numerical measurements to publish.
-            </p>
-        </section>
-
-        <!-- LEARNINGS -->
-        <section class="case-section">
-            <h2>08. Key Learnings</h2>
-
-            <ul>
-                <li>
-                    <strong>Monitoring quality matters more than alert volume.</strong>
-                    Teams need useful signals and clear prioritization
-                    to focus attention on meaningful issues.
-                </li>
-
-                <li>
-                    <strong>Documentation makes operational knowledge reusable.</strong>
-                    Repeatable procedures reduce reliance on informal,
-                    individual knowledge.
-                </li>
-
-                <li>
-                    <strong>Incident management is cross-functional.</strong>
-                    Monitoring teams, developers, and QA need to work
-                    together to investigate and follow up on issues.
-                </li>
-
-                <li>
-                    <strong>Process improvement requires ongoing review.</strong>
-                    Recurring issues and team observations can reveal
-                    where monitoring and investigation practices need
-                    further refinement.
-                </li>
-            </ul>
-        </section>
-
-        <!-- SKILLS -->
-        <section class="case-section">
-            <h2>09. Skills Demonstrated</h2>
-
-            <div class="skill-list">
-                <span class="skill-tag">Team Leadership</span>
-                <span class="skill-tag">Product Delivery</span>
-                <span class="skill-tag">Incident Management</span>
-                <span class="skill-tag">Process Improvement</span>
-                <span class="skill-tag">Stakeholder Coordination</span>
-                <span class="skill-tag">Root Cause Investigation</span>
-                <span class="skill-tag">Operational Documentation</span>
-                <span class="skill-tag">Monitoring Dashboards</span>
-                <span class="skill-tag">Alert Prioritization</span>
-                <span class="skill-tag">Splunk</span>
-                <span class="skill-tag">Datadog</span>
-                <span class="skill-tag">AWS CloudWatch</span>
-                <span class="skill-tag">Cross-functional Collaboration</span>
-            </div>
-        </section>
-
-        <!-- CONFIDENTIALITY -->
-        <section class="case-section">
-            <p class="confidentiality-note">
-                <em>
-                    Confidentiality note: This case study describes my
-                    responsibilities and experience at a high level.
-                    Internal monitoring configurations, customer details,
-                    proprietary dashboards, and sensitive operational
-                    information have been omitted.
-                </em>
-            </p>
-        </section>
-
-        <footer class="case-footer">
-            <a href="index.html#work">
-                &larr; Back to Selected Work
-            </a>
-
-            <a href="idm-case-study.html">
-                Next Case Study: Identity Management &rarr;
+        <footer class="mon-footer">
+            <a href="index.html#work">← Back to Selected Work</a>
+            <a class="mon-next-link" href="aws-migration-case-study.html">
+                Next Case Study: AWS Environment Migration →
             </a>
         </footer>
 
     </main>
+
+    <button class="mon-top-button" id="backToTop"
+            type="button" aria-label="Back to top" title="Back to top">
+        ↑
+    </button>
+
+    <script>
+        // Interactive monitoring workflow
+        const monitoringSteps = [
+            {
+                title: "01 · Monitor application health",
+                text: "Use Splunk, Datadog, and AWS CloudWatch to review application signals, alerts, and recurring failures."
+            },
+            {
+                title: "02 · Review and prioritize alerts",
+                text: "Review repetitive alerts, refine filtering and thresholds, and distinguish higher-priority issues from lower-priority warnings."
+            },
+            {
+                title: "03 · Investigate the issue",
+                text: "Review available evidence, identify recurring patterns, and follow documented troubleshooting steps for known failures."
+            },
+            {
+                title: "04 · Coordinate with developers and QA",
+                text: "Share findings, coordinate further technical investigation, and follow up on issues requiring development or testing support."
+            },
+            {
+                title: "05 · Document and track",
+                text: "Maintain SOPs and troubleshooting guides, record recurring problems, and support consistent escalation and follow-up."
+            },
+            {
+                title: "06 · Review and improve",
+                text: "Use recurring issues and operational observations to identify opportunities to improve monitoring visibility and investigation practices."
+            }
+        ];
+
+        const workflowButtons = document.querySelectorAll(".mon-workflow-step");
+        const workflowTitle = document.getElementById("workflowTitle");
+        const workflowDescription = document.getElementById("workflowDescription");
+
+        workflowButtons.forEach((button) => {
+            button.addEventListener("click", () => {
+                const index = Number(button.dataset.step);
+                const step = monitoringSteps[index];
+
+                if (!step) return;
+
+                workflowButtons.forEach((item) => {
+                    const selected = item === button;
+                    item.classList.toggle("active", selected);
+                    item.setAttribute("aria-pressed", String(selected));
+                });
+
+                workflowTitle.textContent = step.title;
+                workflowDescription.textContent = step.text;
+            });
+        });
+
+        // Reading progress and back-to-top button
+        const progressBar = document.getElementById("readingProgress");
+        const backToTop = document.getElementById("backToTop");
+
+        function updateScrollUI() {
+            const total = document.documentElement.scrollHeight - window.innerHeight;
+            const progress = total > 0 ? (window.scrollY / total) * 100 : 0;
+
+            progressBar.style.width = Math.min(100, progress) + "%";
+            backToTop.classList.toggle("visible", window.scrollY > 450);
+        }
+
+        window.addEventListener("scroll", updateScrollUI, { passive: true });
+        window.addEventListener("resize", updateScrollUI);
+        updateScrollUI();
+
+        backToTop.addEventListener("click", () => {
+            window.scrollTo({ top: 0, behavior: "smooth" });
+        });
+
+        // Highlight the current section in both contents menus
+        const contentSections = document.querySelectorAll(".mon-content .mon-section[id]");
+        const tocLinks = document.querySelectorAll(".mon-toc a");
+
+        if ("IntersectionObserver" in window) {
+            const sectionObserver = new IntersectionObserver((entries) => {
+                entries.forEach((entry) => {
+                    if (!entry.isIntersecting) return;
+
+                    const currentId = entry.target.id;
+
+                    tocLinks.forEach((link) => {
+                        const active = link.getAttribute("href") === "#" + currentId;
+                        link.classList.toggle("active", active);
+
+                        if (active) {
+                            link.setAttribute("aria-current", "location");
+                        } else {
+                            link.removeAttribute("aria-current");
+                        }
+                    });
+                });
+            }, {
+                rootMargin: "-20% 0px -65% 0px",
+                threshold: 0
+            });
+
+            contentSections.forEach((section) => sectionObserver.observe(section));
+        }
+
+        // Close the mobile menu after a section is selected
+        const mobileToc = document.querySelector(".mon-mobile-toc");
+
+        mobileToc.querySelectorAll("a").forEach((link) => {
+            link.addEventListener("click", () => {
+                mobileToc.open = false;
+            });
+        });
+
+        // Scroll-reveal animations
+        const revealItems = document.querySelectorAll(".mon-reveal");
+
+        if ("IntersectionObserver" in window &&
+            !window.matchMedia("(prefers-reduced-motion: reduce)").matches) {
+
+            const revealObserver = new IntersectionObserver((entries, observer) => {
+                entries.forEach((entry) => {
+                    if (entry.isIntersecting) {
+                        entry.target.classList.add("revealed");
+                        observer.unobserve(entry.target);
+                    }
+                });
+            }, { threshold: 0.08 });
+
+            revealItems.forEach((item) => revealObserver.observe(item));
+        } else {
+            revealItems.forEach((item) => item.classList.add("revealed"));
+        }
+    </script>
 
 </body>
 </html>

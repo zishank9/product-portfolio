@@ -7,19 +7,63 @@
 
     <meta name="description" content="Identity management case study covering enterprise IDM integrations, Amazon Cognito, AWS Lambda, identity migration scenarios, and product delivery.">
 
+    <meta name="theme-color" content="#0b1020">
     <title>Identity Management & Cognito Integrations | Zishan Khan</title>
 
     <link rel="stylesheet" href="styles.css">
 
     <style>
+        :root {
+            --idm-accent: #8b9cff;
+            --idm-accent-soft: rgba(139, 156, 255, .12);
+            --idm-border: rgba(128, 128, 128, .23);
+            --idm-surface: rgba(128, 128, 128, .045);
+            --idm-radius: 14px;
+            --idm-transition: .25s ease;
+        }
+
+        html {
+            scroll-behavior: smooth;
+            scroll-padding-top: 105px;
+        }
+
+        body {
+            overflow-x: hidden;
+        }
+
+        a, button {
+            -webkit-tap-highlight-color: transparent;
+        }
+
+        button {
+            font: inherit;
+        }
+
+        /* Reading progress */
+        .idm-progress-track {
+            position: fixed;
+            z-index: 1001;
+            inset: 0 0 auto;
+            height: 4px;
+            background: transparent;
+        }
+
+        .idm-progress-bar {
+            width: 0;
+            height: 100%;
+            background: linear-gradient(90deg, #8b9cff, #b6a0ff);
+            transition: width .08s linear;
+        }
+
+        /* Hero */
         .case-hero {
             padding: 65px 0 35px;
         }
 
         .case-label {
-            color: #8b9cff;
+            color: var(--idm-accent);
             font-size: .85rem;
-            font-weight: 600;
+            font-weight: 700;
             letter-spacing: 1px;
             text-transform: uppercase;
         }
@@ -28,27 +72,70 @@
             max-width: 850px;
             margin: 16px 0;
             line-height: 1.15;
+            letter-spacing: -.035em;
         }
 
         .case-intro {
             max-width: 780px;
-            line-height: 1.8;
-            opacity: .85;
+            line-height: 1.85;
+            opacity: .86;
             font-size: 1.05rem;
+        }
+
+        .idm-hero-actions {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 12px;
+            margin: 24px 0;
+        }
+
+        .idm-action {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            gap: 8px;
+            min-height: 43px;
+            padding: 10px 16px;
+            border: 1px solid var(--idm-border);
+            border-radius: 9px;
+            color: inherit;
+            text-decoration: none;
+            background: var(--idm-surface);
+            transition: transform var(--idm-transition),
+                        border-color var(--idm-transition),
+                        background var(--idm-transition);
+        }
+
+        .idm-action:hover {
+            transform: translateY(-2px);
+            border-color: var(--idm-accent);
+            background: var(--idm-accent-soft);
+        }
+
+        .idm-action-primary {
+            border-color: var(--idm-accent);
+            background: var(--idm-accent-soft);
         }
 
         .case-meta {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+            grid-template-columns: repeat(4, minmax(0, 1fr));
             gap: 16px;
             margin: 32px 0;
         }
 
         .meta-card {
             padding: 20px;
-            border: 1px solid rgba(128, 128, 128, .25);
+            border: 1px solid var(--idm-border);
             border-radius: 12px;
-            background: rgba(128, 128, 128, .04);
+            background: var(--idm-surface);
+            transition: transform var(--idm-transition),
+                        border-color var(--idm-transition);
+        }
+
+        .meta-card:hover {
+            transform: translateY(-3px);
+            border-color: var(--idm-accent);
         }
 
         .meta-card p {
@@ -61,13 +148,97 @@
             line-height: 1.6;
         }
 
+        /* Main page layout */
+        .idm-layout {
+            display: grid;
+            grid-template-columns: 225px minmax(0, 1fr);
+            align-items: start;
+            gap: 36px;
+        }
+
+        .idm-toc {
+            position: sticky;
+            top: 24px;
+            max-height: calc(100vh - 48px);
+            overflow-y: auto;
+            padding: 17px 12px;
+            border: 1px solid var(--idm-border);
+            border-radius: 12px;
+            background: var(--idm-surface);
+        }
+
+        .idm-toc-title {
+            margin: 0 0 12px;
+            padding: 0 8px;
+            font-size: .78rem;
+            letter-spacing: 1px;
+            text-transform: uppercase;
+            opacity: .65;
+        }
+
+        .idm-toc a {
+            display: block;
+            margin: 3px 0;
+            padding: 9px 10px;
+            border-left: 2px solid transparent;
+            border-radius: 0 7px 7px 0;
+            color: inherit;
+            font-size: .84rem;
+            line-height: 1.45;
+            text-decoration: none;
+            opacity: .76;
+            transition: color var(--idm-transition),
+                        background var(--idm-transition),
+                        border-color var(--idm-transition);
+        }
+
+        .idm-toc a:hover,
+        .idm-toc a.active {
+            color: var(--idm-accent);
+            background: var(--idm-accent-soft);
+            border-left-color: var(--idm-accent);
+            opacity: 1;
+        }
+
+        .idm-toc-mobile {
+            display: none;
+            margin: 8px 0 24px;
+            padding: 12px 14px;
+            border: 1px solid var(--idm-border);
+            border-radius: 10px;
+            background: var(--idm-surface);
+        }
+
+        .idm-toc-mobile summary {
+            cursor: pointer;
+            font-weight: 600;
+        }
+
+        .idm-toc-mobile .idm-mobile-links {
+            display: grid;
+            gap: 7px;
+            padding-top: 12px;
+        }
+
+        .idm-toc-mobile a {
+            color: inherit;
+            text-decoration: none;
+            padding: 5px 0;
+        }
+
+        .idm-content {
+            min-width: 0;
+        }
+
         .case-section {
             padding: 32px 0;
-            border-top: 1px solid rgba(128, 128, 128, .2);
+            border-top: 1px solid var(--idm-border);
+            scroll-margin-top: 30px;
         }
 
         .case-section h2 {
             margin-bottom: 18px;
+            line-height: 1.35;
         }
 
         .case-section h3 {
@@ -90,26 +261,101 @@
         }
 
         .section-intro {
-            max-width: 1600px;
+            max-width: 900px;
             opacity: .85;
         }
 
         .case-callout {
             padding: 22px;
             margin: 22px 0;
-            border-left: 3px solid #8b9cff;
+            border-left: 3px solid var(--idm-accent);
             border-radius: 8px;
-            background: rgba(128, 128, 128, .08);
+            background: var(--idm-accent-soft);
             line-height: 1.8;
+        }
+
+        /* Interactive workflow */
+        .idm-workflow {
+            margin: 24px 0;
+            padding: 20px;
+            border: 1px solid var(--idm-border);
+            border-radius: var(--idm-radius);
+            background: var(--idm-surface);
+        }
+
+        .idm-workflow h3 {
+            margin-top: 0;
+        }
+
+        .idm-workflow-grid {
+            display: grid;
+            grid-template-columns: repeat(5, minmax(0, 1fr));
+            gap: 10px;
+        }
+
+        .idm-stage {
+            position: relative;
+            min-height: 115px;
+            padding: 15px 10px;
+            text-align: left;
+            color: inherit;
+            cursor: pointer;
+            border: 1px solid var(--idm-border);
+            border-radius: 10px;
+            background: var(--idm-surface);
+            transition: transform var(--idm-transition),
+                        border-color var(--idm-transition),
+                        background var(--idm-transition);
+        }
+
+        .idm-stage:hover {
+            transform: translateY(-3px);
+            border-color: var(--idm-accent);
+        }
+
+        .idm-stage[aria-pressed="true"] {
+            border-color: var(--idm-accent);
+            background: var(--idm-accent-soft);
+        }
+
+        .idm-stage-number {
+            display: block;
+            margin-bottom: 12px;
+            color: var(--idm-accent);
+            font-size: .78rem;
+            font-weight: 800;
+            letter-spacing: 1px;
+        }
+
+        .idm-stage strong {
+            display: block;
+            line-height: 1.5;
+            font-size: .88rem;
+        }
+
+        .idm-stage-detail {
+            margin-top: 14px;
+            padding: 18px;
+            border: 1px solid var(--idm-border);
+            border-radius: 10px;
+            line-height: 1.8;
+        }
+
+        .idm-stage-detail h4 {
+            margin: 0 0 8px;
+        }
+
+        .idm-stage-detail p {
+            margin: 0;
         }
 
         /* Enterprise IDM delivery diagram */
         .flow-container {
             margin: 26px 0 18px;
             padding: 24px;
-            border: 1px solid rgba(128, 128, 128, .22);
-            border-radius: 14px;
-            background: rgba(128, 128, 128, .035);
+            border: 1px solid var(--idm-border);
+            border-radius: var(--idm-radius);
+            background: var(--idm-surface);
         }
 
         .flow-heading {
@@ -138,14 +384,14 @@
             min-width: 0;
             padding: 17px 12px;
             text-align: center;
-            border: 1px solid rgba(128, 128, 128, .28);
+            border: 1px solid var(--idm-border);
             border-radius: 10px;
-            background: rgba(128, 128, 128, .06);
+            background: var(--idm-surface);
         }
 
         .flow-node.highlight {
             border-color: rgba(139, 156, 255, .65);
-            background: rgba(139, 156, 255, .10);
+            background: var(--idm-accent-soft);
         }
 
         .flow-node strong {
@@ -169,7 +415,7 @@
             align-items: center;
             justify-content: center;
             flex: 0 0 20px;
-            color: #8b9cff;
+            color: var(--idm-accent);
             font-size: 1.3rem;
             font-weight: 700;
         }
@@ -187,14 +433,24 @@
             opacity: .72;
         }
 
-        /* Single image covering both user migration scenarios */
+        /* Images: click to zoom */
         .migration-figure {
             margin: 28px 0;
             padding: 16px;
-            border: 1px solid rgba(128, 128, 128, .22);
-            border-radius: 14px;
-            background: rgba(128, 128, 128, .035);
+            border: 1px solid var(--idm-border);
+            border-radius: var(--idm-radius);
+            background: var(--idm-surface);
             overflow: hidden;
+        }
+
+        .idm-image-button {
+            display: block;
+            width: 100%;
+            padding: 0;
+            border: 0;
+            border-radius: 8px;
+            background: transparent;
+            cursor: zoom-in;
         }
 
         .migration-figure img {
@@ -203,6 +459,12 @@
             max-width: 100%;
             height: auto;
             border-radius: 8px;
+            transition: transform .3s ease, opacity .3s ease;
+        }
+
+        .idm-image-button:hover img {
+            transform: scale(1.01);
+            opacity: .93;
         }
 
         .migration-figure figcaption {
@@ -213,20 +475,92 @@
             opacity: .72;
         }
 
-        .migration-scenarios {
+        .idm-zoom-hint {
+            display: inline-block;
+            margin-top: 8px;
+            color: var(--idm-accent);
+            font-size: .82rem;
+        }
+
+        .idm-lightbox {
+            position: fixed;
+            z-index: 2000;
+            inset: 0;
+            display: none;
+            align-items: center;
+            justify-content: center;
+            padding: 30px;
+            background: rgba(4, 7, 17, .92);
+        }
+
+        .idm-lightbox.open {
+            display: flex;
+        }
+
+        .idm-lightbox img {
+            display: block;
+            max-width: 100%;
+            max-height: 85vh;
+            object-fit: contain;
+            border-radius: 8px;
+        }
+
+        .idm-lightbox-close {
+            position: absolute;
+            top: 18px;
+            right: 20px;
+            width: 46px;
+            height: 46px;
+            color: white;
+            font-size: 1.8rem;
+            border: 1px solid rgba(255,255,255,.35);
+            border-radius: 50%;
+            background: rgba(255,255,255,.1);
+            cursor: pointer;
+        }
+
+        .idm-lightbox-caption {
+            position: absolute;
+            right: 20px;
+            bottom: 16px;
+            left: 20px;
+            color: #eee;
+            text-align: center;
+            font-size: .9rem;
+        }
+
+        /* Cards */
+        .migration-scenarios,
+        .contribution-grid,
+        .outcome-list {
             display: grid;
             grid-template-columns: repeat(2, minmax(0, 1fr));
             gap: 18px;
             margin: 24px 0;
         }
 
-        .migration-scenario {
+        .migration-scenario,
+        .contribution-card,
+        .outcome-item {
+            min-width: 0;
             padding: 20px;
-            border: 1px solid rgba(128, 128, 128, .22);
+            border: 1px solid var(--idm-border);
             border-radius: 12px;
+            background: var(--idm-surface);
+            transition: transform var(--idm-transition),
+                        border-color var(--idm-transition),
+                        background var(--idm-transition);
         }
 
-        .migration-scenario h3 {
+        .migration-scenario:hover,
+        .contribution-card:hover,
+        .outcome-item:hover {
+            transform: translateY(-3px);
+            border-color: var(--idm-accent);
+        }
+
+        .migration-scenario h3,
+        .contribution-card h3 {
             margin: 0 0 10px;
         }
 
@@ -234,38 +568,15 @@
             margin-bottom: 0;
         }
 
-        .contribution-grid {
-            display: grid;
-            grid-template-columns: repeat(2, minmax(0, 1fr));
-            gap: 18px;
-            margin-top: 24px;
-        }
-
-        .contribution-card {
-            padding: 22px;
-            border: 1px solid rgba(128, 128, 128, .23);
-            border-radius: 12px;
-        }
-
         .contribution-card h3 {
-            margin: 0 0 12px;
+            margin-top: 0;
         }
 
         .contribution-card ul {
             margin-bottom: 0;
         }
 
-        .outcome-list {
-            display: grid;
-            grid-template-columns: repeat(2, minmax(0, 1fr));
-            gap: 14px;
-            margin-top: 24px;
-        }
-
         .outcome-item {
-            padding: 18px;
-            border: 1px solid rgba(128, 128, 128, .22);
-            border-radius: 10px;
             line-height: 1.7;
         }
 
@@ -277,11 +588,48 @@
         .status-note {
             padding: 18px;
             margin-top: 20px;
-            border: 1px solid rgba(128, 128, 128, .25);
+            border: 1px solid var(--idm-border);
             border-radius: 10px;
             line-height: 1.8;
         }
 
+        .status-note p:last-child {
+            margin-bottom: 0;
+        }
+
+        /* Optional expandable content wrappers */
+        .idm-expandable {
+            margin: 16px 0;
+            border: 1px solid var(--idm-border);
+            border-radius: 10px;
+            background: var(--idm-surface);
+        }
+
+        .idm-expandable summary {
+            padding: 15px 17px;
+            cursor: pointer;
+            font-weight: 600;
+            line-height: 1.6;
+        }
+
+        .idm-expandable summary::marker {
+            color: var(--idm-accent);
+        }
+
+        .idm-expandable-body {
+            padding: 0 17px 17px;
+            line-height: 1.8;
+        }
+
+        .idm-expandable-body > :first-child {
+            margin-top: 0;
+        }
+
+        .idm-expandable-body > :last-child {
+            margin-bottom: 0;
+        }
+
+        /* Skills and footer */
         .skill-list {
             display: flex;
             flex-wrap: wrap;
@@ -291,9 +639,16 @@
 
         .skill-tag {
             padding: 8px 12px;
-            border: 1px solid rgba(128, 128, 128, .3);
+            border: 1px solid var(--idm-border);
             border-radius: 999px;
             font-size: .9rem;
+            transition: background var(--idm-transition),
+                        border-color var(--idm-transition);
+        }
+
+        .skill-tag:hover {
+            border-color: var(--idm-accent);
+            background: var(--idm-accent-soft);
         }
 
         .case-footer {
@@ -314,9 +669,84 @@
             opacity: .75;
         }
 
+        .idm-back-top {
+            position: fixed;
+            z-index: 900;
+            right: 22px;
+            bottom: 22px;
+            display: grid;
+            place-items: center;
+            width: 46px;
+            height: 46px;
+            color: inherit;
+            border: 1px solid var(--idm-border);
+            border-radius: 50%;
+            background: var(--idm-surface);
+            box-shadow: 0 6px 24px rgba(0,0,0,.12);
+            cursor: pointer;
+            opacity: 0;
+            visibility: hidden;
+            transform: translateY(8px);
+            transition: all var(--idm-transition);
+        }
+
+        .idm-back-top.visible {
+            opacity: 1;
+            visibility: visible;
+            transform: translateY(0);
+        }
+
+        /* Reveal effects */
+        .idm-reveal {
+            opacity: 0;
+            transform: translateY(16px);
+            transition: opacity .55s ease, transform .55s ease;
+        }
+
+        .idm-reveal.is-visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        :focus-visible {
+            outline: 2px solid var(--idm-accent);
+            outline-offset: 4px;
+        }
+
+        @media (max-width: 1050px) {
+            .idm-layout {
+                grid-template-columns: 190px minmax(0, 1fr);
+                gap: 24px;
+            }
+
+            .case-meta {
+                grid-template-columns: repeat(2, minmax(0, 1fr));
+            }
+
+            .idm-workflow-grid {
+                grid-template-columns: repeat(3, minmax(0, 1fr));
+            }
+        }
+
         @media (max-width: 760px) {
             .case-hero {
                 padding-top: 40px;
+            }
+
+            .idm-layout {
+                display: block;
+            }
+
+            .idm-toc {
+                display: none;
+            }
+
+            .idm-toc-mobile {
+                display: block;
+            }
+
+            .idm-workflow-grid {
+                grid-template-columns: repeat(2, minmax(0, 1fr));
             }
 
             .flow-container {
@@ -346,8 +776,8 @@
                 grid-template-columns: 1fr;
             }
 
-            .case-meta {
-                grid-template-columns: 1fr 1fr;
+            .idm-lightbox {
+                padding: 15px;
             }
         }
 
@@ -359,13 +789,55 @@
             .flow-container,
             .contribution-card,
             .migration-figure {
-                padding: 16px;
+                padding: 14px;
+            }
+
+            .idm-workflow {
+                padding: 14px;
+            }
+
+            .idm-workflow-grid {
+                gap: 8px;
+            }
+
+            .idm-stage {
+                min-height: 105px;
+                padding: 12px 9px;
+            }
+
+            .idm-hero-actions .idm-action {
+                width: 100%;
+            }
+
+            .case-footer {
+                flex-direction: column;
+            }
+        }
+
+        @media (prefers-reduced-motion: reduce) {
+            html {
+                scroll-behavior: auto;
+            }
+
+            *, *::before, *::after {
+                animation-duration: .01ms !important;
+                animation-iteration-count: 1 !important;
+                transition-duration: .01ms !important;
+            }
+
+            .idm-reveal {
+                opacity: 1;
+                transform: none;
             }
         }
     </style>
 </head>
 
 <body>
+
+    <div class="idm-progress-track" aria-hidden="true">
+        <div class="idm-progress-bar" id="idmProgressBar"></div>
+    </div>
 
     <header>
         <nav class="container">
@@ -382,7 +854,7 @@
     <main class="container">
 
         <!-- HERO -->
-        <section class="case-hero">
+        <section class="case-hero" id="top">
             <p class="case-label">Case Study 03 · Identity & Integrations</p>
 
             <h1>Delivering Enterprise Identity Integrations with Amazon Cognito</h1>
@@ -395,6 +867,15 @@
                 product delivery responsibilities with hands-on technical
                 implementation.
             </p>
+
+            <div class="idm-hero-actions">
+                <a class="idm-action idm-action-primary" href="#idm-section-1">
+                    Explore the case study ↓
+                </a>
+                <a class="idm-action" href="#user-migration">
+                    View migration scenarios
+                </a>
+            </div>
 
             <div class="case-meta">
                 <div class="meta-card">
@@ -419,407 +900,530 @@
             </div>
         </section>
 
-        <!-- OVERVIEW -->
-        <section class="case-section">
-            <h2>01. Project Overview</h2>
-
-            <p>
-                Enterprise clients required identity management integrations
-                to support authentication and user access within a
-                hospitality platform. My responsibilities included
-                understanding client requirements, translating them into
-                development tasks, coordinating integration setup, and
-                supporting delivery readiness.
-            </p>
-
-            <p>
-                A related initiative focused on identity migration:
-                moving database-backed user identities to Amazon Cognito
-                and migrating identities between Cognito environments.
-                I personally implemented an AWS Lambda function for the
-                planned migration solution.
-            </p>
-
-            <div class="case-callout">
-                <strong>Two related workstreams:</strong>
-                Enterprise IDM integration delivery and development of
-                a Lambda-based identity migration component. The diagram
-                below shows the delivery workflow separately from one
-                combined illustration of the two migration scenarios.
+        <!-- MOBILE CONTENTS -->
+        <details class="idm-toc-mobile">
+            <summary>On this page · Jump to a section</summary>
+            <div class="idm-mobile-links">
+                <a href="#idm-section-1">01. Project Overview</a>
+                <a href="#idm-section-2">02. Enterprise IDM Integration Flow</a>
+                <a href="#idm-section-3">03. The Challenge</a>
+                <a href="#user-migration">04. User Migration Architecture</a>
+                <a href="#idm-section-5">05. Implementation Status and Scope</a>
+                <a href="#idm-section-6">06. My Role and Contributions</a>
+                <a href="#idm-section-7">07. My Delivery Approach</a>
+                <a href="#idm-section-8">08. Outcomes and Contributions</a>
+                <a href="#idm-section-9">09. Key Learnings</a>
+                <a href="#idm-section-10">10. Skills Demonstrated</a>
             </div>
-        </section>
+        </details>
 
-        <!-- ENTERPRISE IDM FLOW -->
-        <section class="case-section">
-            <h2>02. Enterprise IDM Integration Flow</h2>
+        <div class="idm-layout">
 
-            <p class="section-intro">
-                This flow illustrates how I worked with client requirements
-                and internal teams to prepare identity integrations for
-                delivery.
-            </p>
-            <figure class="migration-figure">
-                <img
-                    src="images/enterprise-idm-integration.png"
-                    alt="Enterprise IDM Migration"
-                    loading="lazy"
-                >
+            <!-- STICKY DESKTOP CONTENTS -->
+            <aside class="idm-toc" aria-label="Case study contents">
+                <p class="idm-toc-title">On this page</p>
+                <a href="#idm-section-1">01. Project Overview</a>
+                <a href="#idm-section-2">02. Integration Flow</a>
+                <a href="#idm-section-3">03. The Challenge</a>
+                <a href="#user-migration">04. Migration Architecture</a>
+                <a href="#idm-section-5">05. Implementation Scope</a>
+                <a href="#idm-section-6">06. My Contributions</a>
+                <a href="#idm-section-7">07. Delivery Approach</a>
+                <a href="#idm-section-8">08. Outcomes</a>
+                <a href="#idm-section-9">09. Key Learnings</a>
+                <a href="#idm-section-10">10. Skills Demonstrated</a>
+            </aside>
 
-                <figcaption>
-                    High-level illustration of enterprise IDM integration
-                </figcaption>
-            </figure>
+            <div class="idm-content">
 
-           
-        </section>
+                <!-- OVERVIEW -->
+                <section class="case-section idm-reveal" id="idm-section-1">
+                    <h2>01. Project Overview</h2>
 
-        <!-- CHALLENGE -->
-        <section class="case-section">
-            <h2>03. The Challenge</h2>
-
-            <ul>
-                <li>
-                    Translate enterprise identity requirements into
-                    clear implementation tasks.
-                </li>
-                <li>
-                    Coordinate product, development, and testing work
-                    so integrations were prepared for client use.
-                </li>
-                <li>
-                    Address client-specific business rules in the
-                    planned identity migration solution.
-                </li>
-                <li>
-                    Implement a migration component while keeping
-                    development status separate from the broader
-                    rollout plan.
-                </li>
-            </ul>
-        </section>
-
-        <!-- SINGLE USER MIGRATION IMAGE -->
-        <section class="case-section" id="user-migration">
-            <h2>04. User Migration Architecture</h2>
-
-            <p class="section-intro">
-                The identity migration initiative covered two scenarios:
-                migrating users from existing database-backed records
-                to Amazon Cognito, and migrating users between Cognito
-                environments. I implemented an AWS Lambda function
-                to support the planned migration solution.
-            </p>
-
-            <figure class="migration-figure">
-                <img
-                    src="images/cognito-migration-flow.png"
-                    alt="Combined user migration diagram showing database-to-Cognito and Cognito-to-Cognito migration scenarios"
-                    loading="lazy"
-                >
-
-                <figcaption>
-                    High-level illustration of both planned user migration scenarios.
-                    The diagram is conceptual and does not represent a complete
-                    production architecture.
-                </figcaption>
-            </figure>
-
-            <div class="migration-scenarios">
-                <div class="migration-scenario">
-                    <h3>Scenario A: Database to Cognito</h3>
                     <p>
-                        The planned scenario involved moving user identities
-                        from existing database-backed records to Amazon Cognito,
-                        with client-specific business rules handled by the
-                        migration solution.
+                        Enterprise clients required identity management integrations
+                        to support authentication and user access within a
+                        hospitality platform. My responsibilities included
+                        understanding client requirements, translating them into
+                        development tasks, coordinating integration setup, and
+                        supporting delivery readiness.
                     </p>
-                </div>
 
-                <div class="migration-scenario">
-                    <h3>Scenario B: Cognito to Cognito</h3>
                     <p>
-                        The second scenario involved moving identities from
-                        a source Cognito environment to a target Cognito
-                        environment as part of a planned migration initiative.
+                        A related initiative focused on identity migration:
+                        moving database-backed user identities to Amazon Cognito
+                        and migrating identities between Cognito environments.
+                        I personally implemented an AWS Lambda function for the
+                        planned migration solution.
                     </p>
-                </div>
-            </div>
 
-            <h3>My contribution</h3>
+                    <div class="case-callout">
+                        <strong>Two related workstreams:</strong>
+                        Enterprise IDM integration delivery and development of
+                        a Lambda-based identity migration component. The diagram
+                        below shows the delivery workflow separately from one
+                        combined illustration of the two migration scenarios.
+                    </div>
+                </section>
 
-            <ul>
-                <li>
-                    Worked through business requirements for the planned
-                    identity migration scenarios.
-                </li>
-                <li>
-                    Personally implemented an AWS Lambda function for
-                    the migration solution.
-                </li>
-                <li>
-                    Incorporated required client-specific business rules
-                    into the component.
-                </li>
-                <li>
-                    Connected expected business behaviour with the
-                    technical implementation.
-                </li>
-            </ul>
+                <!-- ENTERPRISE IDM FLOW -->
+                <section class="case-section idm-reveal" id="idm-section-2">
+                    <h2>02. Enterprise IDM Integration Flow</h2>
 
-            <p class="flow-note">
-                Exact triggers, APIs, password handling, and validation
-                mechanisms are not specified here because this portfolio
-                does not document those implementation details.
-            </p>
-        </section>
+                    <p class="section-intro">
+                        This flow illustrates how I worked with client requirements
+                        and internal teams to prepare identity integrations for
+                        delivery.
+                    </p>
 
-        <!-- DELIVERY SCOPE -->
-        <section class="case-section">
-            <h2>05. Implementation Status and Scope</h2>
+                    <figure class="migration-figure">
+                        <button
+                            class="idm-image-button"
+                            type="button"
+                            data-zoom-src="images/enterprise-idm-integration.png"
+                            data-zoom-alt="High-level illustration of enterprise identity management integration"
+                            aria-label="Enlarge enterprise IDM integration diagram"
+                        >
+                            <img
+                                src="images/enterprise-idm-integration.png"
+                                alt="High-level illustration of enterprise IDM integration"
+                                loading="lazy"
+                            >
+                        </button>
+                        <figcaption>
+                            High-level illustration of enterprise IDM integration.
+                            <br>
+                            <span class="idm-zoom-hint">Click the diagram to enlarge it</span>
+                        </figcaption>
+                    </figure>
 
-            <p>
-                The AWS Lambda function was implemented during my tenure.
-                The broader initiative was intended to support migration
-                of a large user population, with a target of more than
-                50,000 users.
-            </p>
+                    <div class="idm-workflow">
+                        <h3>Explore the delivery workflow</h3>
+                        <p class="flow-description">
+                            Select each stage to see how it relates to the work.
+                        </p>
 
-            <div class="status-note">
-                <strong>Scope clarification</strong>
-                <p>
-                    The planned large-scale migration was not executed
-                    before I left the company. The target population is
-                    a description of the initiative's intended scale,
-                    not the number of users migrated.
-                </p>
-            </div>
+                        <div class="idm-workflow-grid" role="group" aria-label="Interactive delivery workflow">
+                            <button class="idm-stage" type="button" aria-pressed="true"
+                                data-stage="0">
+                                <span class="idm-stage-number">STAGE 01</span>
+                                <strong>Understand requirements</strong>
+                            </button>
+                            <button class="idm-stage" type="button" aria-pressed="false"
+                                data-stage="1">
+                                <span class="idm-stage-number">STAGE 02</span>
+                                <strong>Define user stories</strong>
+                            </button>
+                            <button class="idm-stage" type="button" aria-pressed="false"
+                                data-stage="2">
+                                <span class="idm-stage-number">STAGE 03</span>
+                                <strong>Coordinate integration</strong>
+                            </button>
+                            <button class="idm-stage" type="button" aria-pressed="false"
+                                data-stage="3">
+                                <span class="idm-stage-number">STAGE 04</span>
+                                <strong>Test and investigate</strong>
+                            </button>
+                            <button class="idm-stage" type="button" aria-pressed="false"
+                                data-stage="4">
+                                <span class="idm-stage-number">STAGE 05</span>
+                                <strong>Prepare for delivery</strong>
+                            </button>
+                        </div>
 
-            <p>
-                Implementing a migration component and completing a
-                production-scale identity migration are separate
-                delivery milestones.
-            </p>
-        </section>
+                        <div class="idm-stage-detail" aria-live="polite">
+                            <h4 id="idmStageTitle">01. Understand requirements</h4>
+                            <p id="idmStageDescription">
+                                Clarify client needs, identity integration expectations,
+                                and required business behaviour before work proceeds.
+                            </p>
+                        </div>
+                    </div>
+                </section>
 
-        <!-- CONTRIBUTIONS -->
-        <section class="case-section">
-            <h2>06. My Role and Contributions</h2>
+                <!-- CHALLENGE -->
+                <section class="case-section idm-reveal" id="idm-section-3">
+                    <h2>03. The Challenge</h2>
 
-            <div class="contribution-grid">
-
-                <div class="contribution-card">
-                    <h3>Requirements and Product Delivery</h3>
                     <ul>
                         <li>
-                            Worked with enterprise clients to understand
-                            identity integration requirements.
+                            Translate enterprise identity requirements into
+                            clear implementation tasks.
                         </li>
                         <li>
-                            Translated requirements into user stories
-                            and actionable development tasks.
+                            Coordinate product, development, and testing work
+                            so integrations were prepared for client use.
                         </li>
                         <li>
-                            Clarified expected business behaviour
-                            with technical teams.
+                            Address client-specific business rules in the
+                            planned identity migration solution.
                         </li>
                         <li>
-                            Supported delivery readiness ahead of go-live.
+                            Implement a migration component while keeping
+                            development status separate from the broader
+                            rollout plan.
                         </li>
                     </ul>
-                </div>
+                </section>
 
-                <div class="contribution-card">
-                    <h3>Engineering Coordination</h3>
+                <!-- USER MIGRATION -->
+                <section class="case-section idm-reveal" id="user-migration">
+                    <h2>04. User Migration Architecture</h2>
+
+                    <p class="section-intro">
+                        The identity migration initiative covered two scenarios:
+                        migrating users from existing database-backed records
+                        to Amazon Cognito, and migrating users between Cognito
+                        environments. I implemented an AWS Lambda function
+                        to support the planned migration solution.
+                    </p>
+
+                    <figure class="migration-figure">
+                        <button
+                            class="idm-image-button"
+                            type="button"
+                            data-zoom-src="images/cognito-migration-flow.png"
+                            data-zoom-alt="Combined user migration diagram showing database-to-Cognito and Cognito-to-Cognito migration scenarios"
+                            aria-label="Enlarge the Cognito migration diagram"
+                        >
+                            <img
+                                src="images/cognito-migration-flow.png"
+                                alt="Combined user migration diagram showing database-to-Cognito and Cognito-to-Cognito migration scenarios"
+                                loading="lazy"
+                            >
+                        </button>
+
+                        <figcaption>
+                            High-level illustration of both planned user migration scenarios.
+                            The diagram is conceptual and does not represent a complete
+                            production architecture.
+                            <br>
+                            <span class="idm-zoom-hint">Click the diagram to enlarge it</span>
+                        </figcaption>
+                    </figure>
+
+                    <div class="migration-scenarios">
+
+                        <details class="idm-expandable">
+                            <summary>Scenario A: Database to Cognito</summary>
+                            <div class="idm-expandable-body">
+                                <p>
+                                    The planned scenario involved moving user identities
+                                    from existing database-backed records to Amazon Cognito,
+                                    with client-specific business rules handled by the
+                                    migration solution.
+                                </p>
+                            </div>
+                        </details>
+
+                        <details class="idm-expandable">
+                            <summary>Scenario B: Cognito to Cognito</summary>
+                            <div class="idm-expandable-body">
+                                <p>
+                                    The second scenario involved moving identities from
+                                    a source Cognito environment to a target Cognito
+                                    environment as part of a planned migration initiative.
+                                </p>
+                            </div>
+                        </details>
+
+                    </div>
+
+                    <h3>My contribution</h3>
+
                     <ul>
                         <li>
-                            Coordinated integration setup with developers.
+                            Worked through business requirements for the planned
+                            identity migration scenarios.
                         </li>
                         <li>
-                            Helped investigate issues during implementation
-                            and testing.
+                            Personally implemented an AWS Lambda function for
+                            the migration solution.
                         </li>
                         <li>
-                            Followed up on integration questions and
-                            delivery dependencies.
+                            Incorporated required client-specific business rules
+                            into the component.
                         </li>
                         <li>
-                            Supported communication between business
-                            requirements and technical implementation.
+                            Connected expected business behaviour with the
+                            technical implementation.
                         </li>
                     </ul>
-                </div>
 
-                <div class="contribution-card">
-                    <h3>Hands-on AWS Lambda Implementation</h3>
+                    <p class="flow-note">
+                        Exact triggers, APIs, password handling, and validation
+                        mechanisms are not specified here because this portfolio
+                        does not document those implementation details.
+                    </p>
+                </section>
+
+                <!-- IMPLEMENTATION STATUS -->
+                <section class="case-section idm-reveal" id="idm-section-5">
+                    <h2>05. Implementation Status and Scope</h2>
+
+                    <p>
+                        The AWS Lambda function was implemented during my tenure.
+                        The broader initiative was intended to support migration
+                        of a large user population, with a target of more than
+                        50,000 users.
+                    </p>
+
+                    <div class="status-note">
+                        <strong>Scope clarification</strong>
+                        <p>
+                            The planned large-scale migration was not executed
+                            before I left the company. The target population is
+                            a description of the initiative's intended scale,
+                            not the number of users migrated.
+                        </p>
+                    </div>
+
+                    <p>
+                        Implementing a migration component and completing a
+                        production-scale identity migration are separate
+                        delivery milestones.
+                    </p>
+                </section>
+
+                <!-- CONTRIBUTIONS -->
+                <section class="case-section idm-reveal" id="idm-section-6">
+                    <h2>06. My Role and Contributions</h2>
+
+                    <p class="section-intro">
+                        Expand each area to explore the responsibilities I handled.
+                    </p>
+
+                    <div class="contribution-grid">
+
+                        <details class="idm-expandable">
+                            <summary>Requirements and Product Delivery</summary>
+                            <div class="idm-expandable-body">
+                                <ul>
+                                    <li>
+                                        Worked with enterprise clients to understand
+                                        identity integration requirements.
+                                    </li>
+                                    <li>
+                                        Translated requirements into user stories
+                                        and actionable development tasks.
+                                    </li>
+                                    <li>
+                                        Clarified expected business behaviour
+                                        with technical teams.
+                                    </li>
+                                    <li>
+                                        Supported delivery readiness ahead of go-live.
+                                    </li>
+                                </ul>
+                            </div>
+                        </details>
+
+                        <details class="idm-expandable">
+                            <summary>Engineering Coordination</summary>
+                            <div class="idm-expandable-body">
+                                <ul>
+                                    <li>
+                                        Coordinated integration setup with developers.
+                                    </li>
+                                    <li>
+                                        Helped investigate issues during implementation
+                                        and testing.
+                                    </li>
+                                    <li>
+                                        Followed up on integration questions and
+                                        delivery dependencies.
+                                    </li>
+                                    <li>
+                                        Supported communication between business
+                                        requirements and technical implementation.
+                                    </li>
+                                </ul>
+                            </div>
+                        </details>
+
+                        <details class="idm-expandable">
+                            <summary>Hands-on AWS Lambda Implementation</summary>
+                            <div class="idm-expandable-body">
+                                <ul>
+                                    <li>
+                                        Personally implemented a Lambda function
+                                        for the identity migration initiative.
+                                    </li>
+                                    <li>
+                                        Worked on the database-to-Cognito and
+                                        Cognito-to-Cognito migration scenarios.
+                                    </li>
+                                    <li>
+                                        Incorporated the required client-specific
+                                        business rules.
+                                    </li>
+                                </ul>
+                            </div>
+                        </details>
+
+                        <details class="idm-expandable">
+                            <summary>Delivery Scope and Readiness</summary>
+                            <div class="idm-expandable-body">
+                                <ul>
+                                    <li>
+                                        Supported integration testing and issue
+                                        investigation.
+                                    </li>
+                                    <li>
+                                        Helped prepare enterprise integrations
+                                        for client use.
+                                    </li>
+                                    <li>
+                                        Kept the implemented Lambda component
+                                        distinct from the uncompleted large-scale
+                                        migration rollout.
+                                    </li>
+                                </ul>
+                            </div>
+                        </details>
+
+                    </div>
+                </section>
+
+                <!-- DELIVERY APPROACH -->
+                <section class="case-section idm-reveal" id="idm-section-7">
+                    <h2>07. My Delivery Approach</h2>
+
+                    <p class="section-intro">
+                        The sequence below summarizes how I approached delivery
+                        from initial requirements through delivery readiness.
+                    </p>
+
+                    <ol>
+                        <li>
+                            <strong>Understand:</strong>
+                            Clarify business requirements, client-specific needs,
+                            and identity integration expectations.
+                        </li>
+                        <li>
+                            <strong>Translate:</strong>
+                            Convert requirements into user stories and
+                            implementation expectations.
+                        </li>
+                        <li>
+                            <strong>Coordinate:</strong>
+                            Work with developers and testing teams to address
+                            questions and dependencies.
+                        </li>
+                        <li>
+                            <strong>Implement and investigate:</strong>
+                            Contribute hands-on to the Lambda migration component
+                            and support technical issue investigation.
+                        </li>
+                        <li>
+                            <strong>Prepare for delivery:</strong>
+                            Support integration readiness while accurately
+                            communicating what was implemented and what
+                            remained planned.
+                        </li>
+                    </ol>
+                </section>
+
+                <!-- OUTCOMES -->
+                <section class="case-section idm-reveal" id="idm-section-8">
+                    <h2>08. Outcomes and Contributions</h2>
+
+                    <div class="outcome-list">
+
+                        <div class="outcome-item">
+                            <strong>Structured Requirements</strong>
+                            Converted enterprise identity needs into user
+                            stories and actionable development tasks.
+                        </div>
+
+                        <div class="outcome-item">
+                            <strong>Integration Delivery Support</strong>
+                            Coordinated engineering work for IDM integrations
+                            intended for enterprise client use.
+                        </div>
+
+                        <div class="outcome-item">
+                            <strong>Hands-on Technical Contribution</strong>
+                            Implemented an AWS Lambda function for the planned
+                            identity migration solution.
+                        </div>
+
+                        <div class="outcome-item">
+                            <strong>Business and Technical Alignment</strong>
+                            Worked across requirements and implementation to
+                            address identity migration needs.
+                        </div>
+
+                    </div>
+
+                    <p class="flow-note">
+                        No claim is made that the planned large-scale user
+                        migration was completed or that the target population
+                        was migrated during my tenure.
+                    </p>
+                </section>
+
+                <!-- LEARNINGS -->
+                <section class="case-section idm-reveal" id="idm-section-9">
+                    <h2>09. Key Learnings</h2>
+
                     <ul>
                         <li>
-                            Personally implemented a Lambda function
-                            for the identity migration initiative.
+                            Identity integrations depend on clear requirements
+                            and coordination across technical teams.
                         </li>
                         <li>
-                            Worked on the database-to-Cognito and
-                            Cognito-to-Cognito migration scenarios.
+                            User stories should make expected business behaviour
+                            understandable to developers and testers.
                         </li>
                         <li>
-                            Incorporated the required client-specific
-                            business rules.
+                            Technical implementation and production rollout
+                            are separate delivery milestones.
+                        </li>
+                        <li>
+                            Product delivery benefits from enough technical
+                            understanding to clarify requirements and
+                            investigate issues.
                         </li>
                     </ul>
-                </div>
+                </section>
 
-                <div class="contribution-card">
-                    <h3>Delivery Scope and Readiness</h3>
-                    <ul>
-                        <li>
-                            Supported integration testing and issue
-                            investigation.
-                        </li>
-                        <li>
-                            Helped prepare enterprise integrations
-                            for client use.
-                        </li>
-                        <li>
-                            Kept the implemented Lambda component
-                            distinct from the uncompleted large-scale
-                            migration rollout.
-                        </li>
-                    </ul>
-                </div>
+                <!-- SKILLS -->
+                <section class="case-section idm-reveal" id="idm-section-10">
+                    <h2>10. Skills Demonstrated</h2>
 
-            </div>
-        </section>
+                    <div class="skill-list">
+                        <span class="skill-tag">Product Delivery</span>
+                        <span class="skill-tag">Requirements Gathering</span>
+                        <span class="skill-tag">User Stories</span>
+                        <span class="skill-tag">Enterprise Integrations</span>
+                        <span class="skill-tag">Identity Management</span>
+                        <span class="skill-tag">Amazon Cognito</span>
+                        <span class="skill-tag">AWS Lambda</span>
+                        <span class="skill-tag">Technical Coordination</span>
+                        <span class="skill-tag">Testing Coordination</span>
+                        <span class="skill-tag">Go-live Readiness</span>
+                        <span class="skill-tag">Issue Investigation</span>
+                        <span class="skill-tag">Cross-functional Collaboration</span>
+                    </div>
+                </section>
 
-        <!-- APPROACH -->
-        <section class="case-section">
-            <h2>07. My Delivery Approach</h2>
-
-            <ol>
-                <li>
-                    <strong>Understand:</strong>
-                    Clarify business requirements, client-specific needs,
-                    and identity integration expectations.
-                </li>
-                <li>
-                    <strong>Translate:</strong>
-                    Convert requirements into user stories and
-                    implementation expectations.
-                </li>
-                <li>
-                    <strong>Coordinate:</strong>
-                    Work with developers and testing teams to address
-                    questions and dependencies.
-                </li>
-                <li>
-                    <strong>Implement and investigate:</strong>
-                    Contribute hands-on to the Lambda migration component
-                    and support technical issue investigation.
-                </li>
-                <li>
-                    <strong>Prepare for delivery:</strong>
-                    Support integration readiness while accurately
-                    communicating what was implemented and what
-                    remained planned.
-                </li>
-            </ol>
-        </section>
-
-        <!-- OUTCOMES -->
-        <section class="case-section">
-            <h2>08. Outcomes and Contributions</h2>
-
-            <div class="outcome-list">
-
-                <div class="outcome-item">
-                    <strong>Structured Requirements</strong>
-                    Converted enterprise identity needs into user
-                    stories and actionable development tasks.
-                </div>
-
-                <div class="outcome-item">
-                    <strong>Integration Delivery Support</strong>
-                    Coordinated engineering work for IDM integrations
-                    intended for enterprise client use.
-                </div>
-
-                <div class="outcome-item">
-                    <strong>Hands-on Technical Contribution</strong>
-                    Implemented an AWS Lambda function for the planned
-                    identity migration solution.
-                </div>
-
-                <div class="outcome-item">
-                    <strong>Business and Technical Alignment</strong>
-                    Worked across requirements and implementation to
-                    address identity migration needs.
-                </div>
+                <!-- CONFIDENTIALITY -->
+                <section class="case-section idm-reveal" id="idm-section-11">
+                    <p class="confidentiality-note">
+                        <em>
+                            Confidentiality note: This case study describes the
+                            work at a high level. Customer identities, internal
+                            implementation details, identity data, credentials,
+                            and proprietary configurations have been omitted.
+                            The diagrams are conceptual illustrations and are
+                            not representations of a production architecture.
+                        </em>
+                    </p>
+                </section>
 
             </div>
-
-            <p class="flow-note">
-                No claim is made that the planned large-scale user
-                migration was completed or that the target population
-                was migrated during my tenure.
-            </p>
-        </section>
-
-        <!-- LEARNINGS -->
-        <section class="case-section">
-            <h2>09. Key Learnings</h2>
-
-            <ul>
-                <li>
-                    Identity integrations depend on clear requirements
-                    and coordination across technical teams.
-                </li>
-                <li>
-                    User stories should make expected business behaviour
-                    understandable to developers and testers.
-                </li>
-                <li>
-                    Technical implementation and production rollout
-                    are separate delivery milestones.
-                </li>
-                <li>
-                    Product delivery benefits from enough technical
-                    understanding to clarify requirements and
-                    investigate issues.
-                </li>
-            </ul>
-        </section>
-
-        <!-- SKILLS -->
-        <section class="case-section">
-            <h2>10. Skills Demonstrated</h2>
-
-            <div class="skill-list">
-                <span class="skill-tag">Product Delivery</span>
-                <span class="skill-tag">Requirements Gathering</span>
-                <span class="skill-tag">User Stories</span>
-                <span class="skill-tag">Enterprise Integrations</span>
-                <span class="skill-tag">Identity Management</span>
-                <span class="skill-tag">Amazon Cognito</span>
-                <span class="skill-tag">AWS Lambda</span>
-                <span class="skill-tag">Technical Coordination</span>
-                <span class="skill-tag">Testing Coordination</span>
-                <span class="skill-tag">Go-live Readiness</span>
-                <span class="skill-tag">Issue Investigation</span>
-                <span class="skill-tag">Cross-functional Collaboration</span>
-            </div>
-        </section>
-
-        <!-- CONFIDENTIALITY -->
-        <section class="case-section">
-            <p class="confidentiality-note">
-                <em>
-                    Confidentiality note: This case study describes the
-                    work at a high level. Customer identities, internal
-                    implementation details, identity data, credentials,
-                    and proprietary configurations have been omitted.
-                    The diagrams are conceptual illustrations and are
-                    not representations of a production architecture.
-                </em>
-            </p>
-        </section>
+        </div>
 
         <footer class="case-footer">
             <a href="index.html#work">
@@ -832,6 +1436,267 @@
         </footer>
 
     </main>
+
+    <!-- IMAGE LIGHTBOX -->
+    <div class="idm-lightbox" id="idmLightbox"
+         role="dialog" aria-modal="true"
+         aria-label="Enlarged diagram viewer"
+         aria-hidden="true">
+        <button class="idm-lightbox-close" id="idmLightboxClose"
+                type="button" aria-label="Close enlarged image">×</button>
+        <img id="idmLightboxImage" src="" alt="">
+        <p class="idm-lightbox-caption" id="idmLightboxCaption"></p>
+    </div>
+
+    <!-- BACK TO TOP -->
+    <button class="idm-back-top" id="idmBackTop"
+            type="button" aria-label="Back to top" title="Back to top">
+        ↑
+    </button>
+
+    <script>
+        (() => {
+            "use strict";
+
+            const progressBar = document.getElementById("idmProgressBar");
+            const backTop = document.getElementById("idmBackTop");
+
+            /* Reading progress and back-to-top button */
+            function updateScrollUI() {
+                const scrollableHeight =
+                    document.documentElement.scrollHeight - window.innerHeight;
+
+                const progress = scrollableHeight > 0
+                    ? (window.scrollY / scrollableHeight) * 100
+                    : 0;
+
+                progressBar.style.width = `${Math.min(100, progress)}%`;
+                backTop.classList.toggle("visible", window.scrollY > 500);
+            }
+
+            window.addEventListener("scroll", updateScrollUI, {
+                passive: true
+            });
+
+            window.addEventListener("resize", updateScrollUI);
+            updateScrollUI();
+
+            backTop.addEventListener("click", () => {
+                window.scrollTo({
+                    top: 0,
+                    behavior: window.matchMedia(
+                        "(prefers-reduced-motion: reduce)"
+                    ).matches ? "auto" : "smooth"
+                });
+            });
+
+            /* Interactive delivery workflow */
+            const stages = [
+                {
+                    title: "01. Understand requirements",
+                    description:
+                        "Clarify client needs, identity integration expectations, " +
+                        "and required business behaviour before work proceeds."
+                },
+                {
+                    title: "02. Define user stories",
+                    description:
+                        "Translate the agreed requirements into user stories and " +
+                        "actionable development tasks that explain the expected behaviour."
+                },
+                {
+                    title: "03. Coordinate integration",
+                    description:
+                        "Work with developers and relevant teams on integration setup, " +
+                        "questions, dependencies, and delivery coordination."
+                },
+                {
+                    title: "04. Test and investigate",
+                    description:
+                        "Support integration testing and help investigate issues " +
+                        "identified during implementation and testing."
+                },
+                {
+                    title: "05. Prepare for delivery",
+                    description:
+                        "Support readiness for client use while communicating " +
+                        "implementation status and outstanding rollout work accurately."
+                }
+            ];
+
+            const stageButtons = document.querySelectorAll(".idm-stage");
+            const stageTitle = document.getElementById("idmStageTitle");
+            const stageDescription =
+                document.getElementById("idmStageDescription");
+
+            stageButtons.forEach((button) => {
+                button.addEventListener("click", () => {
+                    const index = Number(button.dataset.stage);
+                    const stage = stages[index];
+
+                    if (!stage) return;
+
+                    stageButtons.forEach((item) => {
+                        item.setAttribute(
+                            "aria-pressed",
+                            String(item === button)
+                        );
+                    });
+
+                    stageTitle.textContent = stage.title;
+                    stageDescription.textContent = stage.description;
+                });
+            });
+
+            /* Active section indicator in the table of contents */
+            const sections = Array.from(
+                document.querySelectorAll(
+                    ".idm-content .case-section[id]"
+                )
+            );
+
+            const tocLinks = Array.from(
+                document.querySelectorAll(
+                    ".idm-toc a, .idm-toc-mobile a"
+                )
+            );
+
+            if ("IntersectionObserver" in window) {
+                const sectionObserver = new IntersectionObserver(
+                    (entries) => {
+                        const visibleEntries = entries
+                            .filter((entry) => entry.isIntersecting)
+                            .sort((a, b) =>
+                                b.intersectionRatio - a.intersectionRatio
+                            );
+
+                        if (!visibleEntries.length) return;
+
+                        const activeId = visibleEntries[0].target.id;
+
+                        tocLinks.forEach((link) => {
+                            const active =
+                                link.getAttribute("href") === `#${activeId}`;
+
+                            if (active) {
+                                link.classList.add("active");
+                                link.setAttribute("aria-current", "location");
+                            } else {
+                                link.classList.remove("active");
+                                link.removeAttribute("aria-current");
+                            }
+                        });
+                    },
+                    {
+                        rootMargin: "-15% 0px -65% 0px",
+                        threshold: [0, 0.1, 0.3, 0.6]
+                    }
+                );
+
+                sections.forEach((section) => {
+                    sectionObserver.observe(section);
+                });
+            }
+
+            /* Close mobile contents menu after selecting a section */
+            const mobileToc = document.querySelector(".idm-toc-mobile");
+
+            mobileToc.querySelectorAll("a").forEach((link) => {
+                link.addEventListener("click", () => {
+                    mobileToc.open = false;
+                });
+            });
+
+            /* Reveal sections as they enter the viewport */
+            const revealItems = document.querySelectorAll(".idm-reveal");
+            const reduceMotion = window.matchMedia(
+                "(prefers-reduced-motion: reduce)"
+            ).matches;
+
+            if ("IntersectionObserver" in window && !reduceMotion) {
+                const revealObserver = new IntersectionObserver(
+                    (entries, observer) => {
+                        entries.forEach((entry) => {
+                            if (entry.isIntersecting) {
+                                entry.target.classList.add("is-visible");
+                                observer.unobserve(entry.target);
+                            }
+                        });
+                    },
+                    { threshold: 0.08 }
+                );
+
+                revealItems.forEach((item) => {
+                    revealObserver.observe(item);
+                });
+            } else {
+                revealItems.forEach((item) => {
+                    item.classList.add("is-visible");
+                });
+            }
+
+            /* Diagram zoom lightbox */
+            const lightbox = document.getElementById("idmLightbox");
+            const lightboxImage = document.getElementById("idmLightboxImage");
+            const lightboxCaption =
+                document.getElementById("idmLightboxCaption");
+            const lightboxClose =
+                document.getElementById("idmLightboxClose");
+
+            let previouslyFocusedElement = null;
+
+            function openLightbox(button) {
+                const imageSrc = button.dataset.zoomSrc;
+                const imageAlt = button.dataset.zoomAlt || "";
+
+                if (!imageSrc) return;
+
+                previouslyFocusedElement = button;
+                lightboxImage.src = imageSrc;
+                lightboxImage.alt = imageAlt;
+                lightboxCaption.textContent = imageAlt;
+
+                lightbox.classList.add("open");
+                lightbox.setAttribute("aria-hidden", "false");
+                document.body.style.overflow = "hidden";
+                lightboxClose.focus();
+            }
+
+            function closeLightbox() {
+                lightbox.classList.remove("open");
+                lightbox.setAttribute("aria-hidden", "true");
+                lightboxImage.src = "";
+                document.body.style.overflow = "";
+
+                if (previouslyFocusedElement) {
+                    previouslyFocusedElement.focus();
+                }
+            }
+
+            document.querySelectorAll("[data-zoom-src]").forEach((button) => {
+                button.addEventListener("click", () => {
+                    openLightbox(button);
+                });
+            });
+
+            lightboxClose.addEventListener("click", closeLightbox);
+
+            lightbox.addEventListener("click", (event) => {
+                if (event.target === lightbox) {
+                    closeLightbox();
+                }
+            });
+
+            document.addEventListener("keydown", (event) => {
+                if (
+                    event.key === "Escape" &&
+                    lightbox.classList.contains("open")
+                ) {
+                    closeLightbox();
+                }
+            });
+        })();
+    </script>
 
 </body>
 </html>

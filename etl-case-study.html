@@ -4,19 +4,58 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="A product delivery case study covering enterprise ETL, legacy hospitality data migration, SQL validation, financial reconciliation and engineering collaboration.">
 
-    <title>Enterprise ETL &amp; Data Migration | Product Portfolio</title>
+    <meta name="description" content="Product delivery case study covering enterprise ETL, legacy hospitality data migration, SQL validation, financial reconciliation and engineering collaboration.">
+
+    <meta name="theme-color" content="#0b1020">
+    <title>Enterprise ETL &amp; Data Migration | Zishan Khan</title>
 
     <link rel="stylesheet" href="styles.css">
 
     <style>
+        :root {
+            --etl-accent: #8b9cff;
+            --etl-accent-soft: rgba(139, 156, 255, .12);
+            --etl-border: rgba(128, 128, 128, .25);
+            --etl-surface: rgba(128, 128, 128, .045);
+            --etl-transition: .25s ease;
+        }
+
+        html {
+            scroll-behavior: smooth;
+            scroll-padding-top: 100px;
+        }
+
+        body {
+            overflow-x: hidden;
+        }
+
+        button {
+            font: inherit;
+        }
+
+        /* Reading progress */
+        .etl-progress-track {
+            position: fixed;
+            z-index: 1001;
+            inset: 0 0 auto;
+            height: 4px;
+            pointer-events: none;
+        }
+
+        .etl-progress-bar {
+            width: 0;
+            height: 100%;
+            background: linear-gradient(90deg, #8b9cff, #b6a0ff);
+        }
+
+        /* Hero */
         .case-hero {
             padding: 65px 0 35px;
         }
 
         .case-content {
-            max-width: 1000px;
+            max-width: 1100px;
             margin: 0 auto;
             padding-left: 24px;
             padding-right: 24px;
@@ -24,9 +63,9 @@
 
         .case-label {
             display: inline-block;
-            color: #8b9cff;
-            font-size: 0.85rem;
-            font-weight: 600;
+            color: var(--etl-accent);
+            font-size: .85rem;
+            font-weight: 700;
             letter-spacing: 1px;
             text-transform: uppercase;
         }
@@ -35,45 +74,174 @@
             max-width: 850px;
             margin: 16px 0;
             line-height: 1.2;
+            letter-spacing: -.025em;
         }
 
         .case-intro {
             max-width: 780px;
-            line-height: 1.8;
-            opacity: 0.85;
+            line-height: 1.85;
+            opacity: .86;
+            font-size: 1.04rem;
+        }
+
+        .etl-hero-actions {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 12px;
+            margin: 24px 0;
+        }
+
+        .etl-action {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            min-height: 43px;
+            padding: 10px 16px;
+            border: 1px solid var(--etl-border);
+            border-radius: 9px;
+            color: inherit;
+            text-decoration: none;
+            background: var(--etl-surface);
+            transition: transform var(--etl-transition),
+                        border-color var(--etl-transition),
+                        background var(--etl-transition);
+        }
+
+        .etl-action:hover {
+            transform: translateY(-2px);
+            border-color: var(--etl-accent);
+            background: var(--etl-accent-soft);
+        }
+
+        .etl-action-primary {
+            border-color: var(--etl-accent);
+            background: var(--etl-accent-soft);
         }
 
         .case-meta {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-            gap: 18px;
+            grid-template-columns: repeat(4, minmax(0, 1fr));
+            gap: 16px;
             margin: 32px 0;
         }
 
         .meta-card,
         .artifact-card {
             padding: 22px;
-            border: 1px solid rgba(128, 128, 128, 0.25);
+            border: 1px solid var(--etl-border);
             border-radius: 12px;
+            background: var(--etl-surface);
+            transition: transform var(--etl-transition),
+                        border-color var(--etl-transition);
+        }
+
+        .meta-card:hover,
+        .artifact-card:hover {
+            transform: translateY(-3px);
+            border-color: var(--etl-accent);
         }
 
         .meta-card p {
             margin-bottom: 8px;
-            font-size: 0.9rem;
-            opacity: 0.7;
+            font-size: .9rem;
+            opacity: .7;
         }
 
         .meta-card strong {
             line-height: 1.6;
         }
 
+        /* Page layout */
+        .etl-layout {
+            display: grid;
+            grid-template-columns: 215px minmax(0, 1fr);
+            align-items: start;
+            gap: 34px;
+        }
+
+        .etl-toc {
+            position: sticky;
+            top: 24px;
+            max-height: calc(100vh - 48px);
+            overflow-y: auto;
+            padding: 16px 12px;
+            border: 1px solid var(--etl-border);
+            border-radius: 12px;
+            background: var(--etl-surface);
+        }
+
+        .etl-toc-title {
+            margin: 0 0 12px;
+            padding: 0 8px;
+            font-size: .78rem;
+            letter-spacing: 1px;
+            text-transform: uppercase;
+            opacity: .65;
+        }
+
+        .etl-toc a {
+            display: block;
+            margin: 3px 0;
+            padding: 9px 10px;
+            border-left: 2px solid transparent;
+            border-radius: 0 7px 7px 0;
+            color: inherit;
+            font-size: .83rem;
+            line-height: 1.45;
+            text-decoration: none;
+            opacity: .78;
+            transition: color var(--etl-transition),
+                        background var(--etl-transition),
+                        border-color var(--etl-transition);
+        }
+
+        .etl-toc a:hover,
+        .etl-toc a.active {
+            color: var(--etl-accent);
+            background: var(--etl-accent-soft);
+            border-left-color: var(--etl-accent);
+            opacity: 1;
+        }
+
+        .etl-mobile-toc {
+            display: none;
+            margin: 8px 0 24px;
+            padding: 12px 14px;
+            border: 1px solid var(--etl-border);
+            border-radius: 10px;
+            background: var(--etl-surface);
+        }
+
+        .etl-mobile-toc summary {
+            cursor: pointer;
+            font-weight: 600;
+        }
+
+        .etl-mobile-links {
+            display: grid;
+            gap: 7px;
+            padding-top: 12px;
+        }
+
+        .etl-mobile-links a {
+            padding: 5px 0;
+            color: inherit;
+            text-decoration: none;
+        }
+
+        .etl-main {
+            min-width: 0;
+        }
+
         .case-section {
-            padding: 30px 0;
-            border-top: 1px solid rgba(128, 128, 128, 0.2);
+            padding: 32px 0;
+            border-top: 1px solid var(--etl-border);
+            scroll-margin-top: 30px;
         }
 
         .case-section h2 {
             margin-bottom: 18px;
+            line-height: 1.35;
         }
 
         .case-section h3 {
@@ -98,30 +266,302 @@
             margin-bottom: 10px;
         }
 
+        .etl-muted {
+            opacity: .78;
+        }
+
+        .case-callout {
+            padding: 22px;
+            margin: 22px 0;
+            border-left: 3px solid var(--etl-accent);
+            border-radius: 8px;
+            background: var(--etl-accent-soft);
+            line-height: 1.8;
+        }
+
+        /* ETL workflow image */
+        .workflow-figure {
+            width: 100%;
+            margin: 28px auto 0;
+        }
+
+        .workflow-image-button {
+            display: block;
+            width: 100%;
+            padding: 0;
+            overflow: hidden;
+            border: 1px solid var(--etl-border);
+            border-radius: 12px;
+            background: #0b0d14;
+            cursor: zoom-in;
+        }
+
+        .workflow-figure img {
+            display: block;
+            width: 100%;
+            height: auto;
+            background: #0b0d14;
+            transition: transform .3s ease;
+        }
+
+        .workflow-image-button:hover img {
+            transform: scale(1.015);
+        }
+
+        .etl-zoom-hint {
+            display: block;
+            padding: 10px 12px;
+            border-top: 1px solid var(--etl-border);
+            font-size: .82rem;
+            text-align: center;
+            opacity: .75;
+        }
+
+        .workflow-figure figcaption {
+            max-width: 800px;
+            margin: 14px auto 0;
+            font-size: .88rem;
+            line-height: 1.7;
+            opacity: .75;
+            text-align: center;
+        }
+
+        /* Image lightbox */
+        .etl-lightbox {
+            position: fixed;
+            z-index: 2000;
+            inset: 0;
+            display: none;
+            align-items: center;
+            justify-content: center;
+            padding: 24px;
+            background: rgba(4, 7, 16, .92);
+        }
+
+        .etl-lightbox.open {
+            display: flex;
+        }
+
+        .etl-lightbox-inner {
+            position: relative;
+            width: min(1100px, 100%);
+            max-height: 100%;
+        }
+
+        .etl-lightbox img {
+            display: block;
+            max-width: 100%;
+            max-height: 82vh;
+            margin: 0 auto;
+            object-fit: contain;
+            border-radius: 8px;
+            background: #0b0d14;
+        }
+
+        .etl-lightbox-caption {
+            margin-top: 12px;
+            color: #fff;
+            font-size: .9rem;
+            line-height: 1.6;
+            text-align: center;
+        }
+
+        .etl-lightbox-close {
+            position: absolute;
+            z-index: 1;
+            top: -16px;
+            right: -8px;
+            display: grid;
+            place-items: center;
+            width: 42px;
+            height: 42px;
+            border: 1px solid rgba(255,255,255,.35);
+            border-radius: 50%;
+            color: #fff;
+            background: #24283a;
+            font-size: 1.4rem;
+            cursor: pointer;
+        }
+
+        /* Interactive workflow stages */
+        .etl-workflow-panel {
+            margin: 24px 0;
+            padding: 20px;
+            border: 1px solid var(--etl-border);
+            border-radius: 14px;
+            background: var(--etl-surface);
+        }
+
+        .etl-workflow-panel > h3 {
+            margin-top: 0;
+        }
+
+        .etl-stage-grid {
+            display: grid;
+            grid-template-columns: repeat(3, minmax(0, 1fr));
+            gap: 10px;
+            margin: 20px 0;
+        }
+
+        .etl-stage-button {
+            min-width: 0;
+            min-height: 110px;
+            padding: 14px;
+            color: inherit;
+            text-align: left;
+            border: 1px solid var(--etl-border);
+            border-radius: 10px;
+            background: var(--etl-surface);
+            cursor: pointer;
+            transition: transform var(--etl-transition),
+                        border-color var(--etl-transition),
+                        background var(--etl-transition);
+        }
+
+        .etl-stage-button:hover {
+            transform: translateY(-3px);
+            border-color: var(--etl-accent);
+        }
+
+        .etl-stage-button[aria-pressed="true"] {
+            border-color: var(--etl-accent);
+            background: var(--etl-accent-soft);
+        }
+
+        .etl-stage-number {
+            display: block;
+            margin-bottom: 10px;
+            color: var(--etl-accent);
+            font-size: .76rem;
+            font-weight: 800;
+            letter-spacing: 1px;
+        }
+
+        .etl-stage-button strong {
+            display: block;
+            font-size: .9rem;
+            line-height: 1.5;
+        }
+
+        .etl-stage-detail {
+            padding: 18px;
+            border: 1px solid var(--etl-border);
+            border-radius: 10px;
+            line-height: 1.8;
+        }
+
+        .etl-stage-detail h4 {
+            margin: 0 0 8px;
+        }
+
+        .etl-stage-detail p {
+            margin: 0;
+        }
+
+        /* Contributions and artifacts */
         .artifact-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
-            gap: 18px;
+            grid-template-columns: repeat(2, minmax(0, 1fr));
+            gap: 14px;
             margin: 24px 0;
         }
 
         .artifact-card h3 {
-            font-size: 1.05rem;
+            font-size: 1.02rem;
+            line-height: 1.5;
         }
 
         .artifact-card p {
             margin-bottom: 0;
         }
 
-        .case-callout {
-            padding: 22px;
-            margin: 22px 0;
-            border-left: 3px solid #8b9cff;
-            border-radius: 8px;
-            background: rgba(128, 128, 128, 0.08);
-            line-height: 1.8;
+        .etl-expandable {
+            padding: 0;
+            overflow: hidden;
         }
 
+        .etl-expandable summary {
+            position: relative;
+            padding: 20px;
+            padding-right: 44px;
+            cursor: pointer;
+            list-style: none;
+        }
+
+        .etl-expandable summary::-webkit-details-marker {
+            display: none;
+        }
+
+        .etl-expandable summary::after {
+            content: "+";
+            position: absolute;
+            top: 18px;
+            right: 18px;
+            color: var(--etl-accent);
+            font-size: 1.35rem;
+        }
+
+        .etl-expandable[open] summary::after {
+            content: "−";
+        }
+
+        .etl-expandable summary h3 {
+            margin: 0 0 9px;
+        }
+
+        .etl-expandable summary p {
+            margin: 0;
+        }
+
+        .etl-expandable-body {
+            padding: 0 20px 20px;
+        }
+
+        .etl-expandable-body p:last-child,
+        .etl-expandable-body ul:last-child {
+            margin-bottom: 0;
+        }
+
+        /* Outcome cards */
+        .etl-outcome-grid {
+            display: grid;
+            grid-template-columns: repeat(2, minmax(0, 1fr));
+            gap: 14px;
+            margin: 24px 0;
+        }
+
+        .etl-outcome-card {
+            padding: 20px;
+            border: 1px solid var(--etl-border);
+            border-radius: 12px;
+            background: var(--etl-surface);
+            transition: transform var(--etl-transition),
+                        border-color var(--etl-transition);
+        }
+
+        .etl-outcome-card:hover {
+            transform: translateY(-3px);
+            border-color: var(--etl-accent);
+        }
+
+        .etl-outcome-card h3 {
+            margin: 0 0 8px;
+            font-size: 1rem;
+        }
+
+        .etl-outcome-card p {
+            margin: 0;
+        }
+
+        .etl-outcome-number {
+            display: block;
+            margin-bottom: 10px;
+            color: var(--etl-accent);
+            font-weight: 800;
+            letter-spacing: 1px;
+        }
+
+        /* Skills and footer */
         .skill-list {
             display: flex;
             flex-wrap: wrap;
@@ -131,12 +571,19 @@
 
         .skill-tag {
             padding: 8px 12px;
-            border: 1px solid rgba(128, 128, 128, 0.3);
+            border: 1px solid var(--etl-border);
             border-radius: 999px;
-            font-size: 0.9rem;
+            font-size: .9rem;
+            transition: background var(--etl-transition),
+                        border-color var(--etl-transition);
         }
 
-       .case-footer {
+        .skill-tag:hover {
+            border-color: var(--etl-accent);
+            background: var(--etl-accent-soft);
+        }
+
+        .case-footer {
             display: flex;
             flex-wrap: wrap;
             justify-content: space-between;
@@ -148,115 +595,162 @@
             text-decoration: none;
         }
 
-        .case-back-link {
-            display: inline-block;
-            margin-top: 20px;
-            text-decoration: none;
+        .etl-back-top {
+            position: fixed;
+            z-index: 900;
+            right: 22px;
+            bottom: 22px;
+            display: grid;
+            place-items: center;
+            width: 46px;
+            height: 46px;
+            border: 1px solid var(--etl-border);
+            border-radius: 50%;
+            color: inherit;
+            background: var(--etl-surface);
+            box-shadow: 0 6px 24px rgba(0,0,0,.12);
+            cursor: pointer;
+            opacity: 0;
+            visibility: hidden;
+            transform: translateY(8px);
+            transition: all var(--etl-transition);
         }
 
-        /* =========================
-        ETL PROCESS FLOW
-        ========================= */
-
-
-        /* ETL workflow image */
-
-        .workflow-figure {
-            width: 100%;
-            margin: 28px auto 0;
+        .etl-back-top.visible {
+            opacity: 1;
+            visibility: visible;
+            transform: translateY(0);
         }
 
-        .workflow-figure img {
-            display: block;
-            width: 100%;
-            height: auto;
-            border: 1px solid rgba(128, 128, 128, 0.25);
-            border-radius: 12px;
-            background: #0b0d14;
+        /* Scroll reveal */
+        .etl-reveal {
+            opacity: 0;
+            transform: translateY(16px);
+            transition: opacity .55s ease, transform .55s ease;
         }
 
-        .workflow-figure figcaption {
-            max-width: 800px;
-            margin: 14px auto 0;
-            font-size: 0.88rem;
-            line-height: 1.7;
-            opacity: 0.75;
-            text-align: center;
+        .etl-reveal.is-visible {
+            opacity: 1;
+            transform: translateY(0);
         }
 
-        @media (max-width: 650px) {
-            .workflow-figure {
-                margin-top: 20px;
+        :focus-visible {
+            outline: 2px solid var(--etl-accent);
+            outline-offset: 4px;
+        }
+
+        @media (max-width: 1050px) {
+            .etl-layout {
+                grid-template-columns: 185px minmax(0, 1fr);
+                gap: 24px;
             }
 
-            .workflow-figure img {
-                border-radius: 8px;
-            }
-
-            .workflow-figure figcaption {
-                font-size: 0.82rem;
-                text-align: left;
+            .case-meta {
+                grid-template-columns: repeat(2, minmax(0, 1fr));
             }
         }
 
-
-        @media (max-width: 650px) {
+        @media (max-width: 760px) {
             .case-hero {
                 padding-top: 40px;
             }
 
-            .case-meta,
-            .artifact-grid {
+            .etl-layout {
+                display: block;
+            }
+
+            .etl-toc {
+                display: none;
+            }
+
+            .etl-mobile-toc {
+                display: block;
+            }
+
+            .etl-stage-grid {
+                grid-template-columns: repeat(2, minmax(0, 1fr));
+            }
+
+            .artifact-grid,
+            .etl-outcome-grid {
                 grid-template-columns: 1fr;
-            }
-
-            .etl-stage {
-                grid-template-columns: 46px minmax(0, 1fr);
-                gap: 13px;
-                padding: 16px;
-            }
-
-            .etl-stage-number {
-                width: 42px;
-                height: 42px;
-            }
-
-            .etl-quality-gate {
-                padding: 18px;
-            }
-
-            .etl-checks {
-                grid-template-columns: 1fr;
-            }
-
-            .etl-branch-area {
-                grid-template-columns: minmax(0, 1fr);
-                gap: 24px;
-            }
-
-            .etl-branch {
-                padding-top: 18px;
-            }
-
-            .etl-branch::before {
-                top: -5px;
-                height: 22px;
-            }
-
-            .etl-diamond-wrap {
-                min-height: 82px;
-            }
-
-            .etl-outcome,
-            .etl-feedback-card {
-                width: 100%;
             }
         }
 
+        @media (max-width: 480px) {
+            .case-content {
+                padding-left: 18px;
+                padding-right: 18px;
+            }
+
+            .case-meta {
+                grid-template-columns: 1fr;
+            }
+
+            .etl-workflow-panel {
+                padding: 14px;
+            }
+
+            .etl-stage-button {
+                min-height: 100px;
+                padding: 11px;
+            }
+
+            .etl-hero-actions .etl-action {
+                width: 100%;
+            }
+
+            .workflow-figure {
+                margin-top: 20px;
+            }
+
+            .workflow-image-button {
+                border-radius: 8px;
+            }
+
+            .workflow-figure figcaption {
+                font-size: .82rem;
+                text-align: left;
+            }
+
+            .etl-lightbox {
+                padding: 14px;
+            }
+
+            .etl-lightbox-close {
+                top: -10px;
+                right: -4px;
+            }
+
+            .case-footer {
+                flex-direction: column;
+            }
+        }
+
+        @media (prefers-reduced-motion: reduce) {
+            html {
+                scroll-behavior: auto;
+            }
+
+            *, *::before, *::after {
+                animation-duration: .01ms !important;
+                animation-iteration-count: 1 !important;
+                transition-duration: .01ms !important;
+            }
+
+            .etl-reveal {
+                opacity: 1;
+                transform: none;
+            }
+        }
     </style>
 </head>
 
 <body>
+
+    <div class="etl-progress-track" aria-hidden="true">
+        <div class="etl-progress-bar" id="etlProgressBar"></div>
+    </div>
 
     <nav>
         <div class="container nav-content">
@@ -269,7 +763,8 @@
         </div>
     </nav>
 
-    <header class="case-hero">
+    <!-- HERO -->
+    <header class="case-hero" id="top">
         <div class="container case-content">
 
             <span class="case-label">
@@ -284,6 +779,15 @@
                 requirements into an ETL solution, with a focus on data
                 integrity, financial consistency, and reporting accuracy.
             </p>
+
+            <div class="etl-hero-actions">
+                <a class="etl-action etl-action-primary" href="#etl-problem">
+                    Explore the case study ↓
+                </a>
+                <a class="etl-action" href="#etl-workflow">
+                    Explore the migration workflow
+                </a>
+            </div>
 
             <div class="case-meta">
                 <div class="meta-card">
@@ -307,342 +811,850 @@
                 </div>
             </div>
 
-            <a class="case-back-link" href="index.html#work">
-                ← Back to portfolio
-            </a>
-
         </div>
     </header>
 
     <main class="container case-content">
 
-        <!-- 1. Problem -->
-        <section class="case-section">
-            <h2>1. The Problem</h2>
+        <!-- MOBILE CONTENTS -->
+        <details class="etl-mobile-toc">
+            <summary>On this page · Jump to a section</summary>
+            <div class="etl-mobile-links">
+                <a href="#etl-problem">The Problem</a>
+                <a href="#etl-objective">The Objective</a>
+                <a href="#etl-workflow">Migration Workflow</a>
+                <a href="#etl-contributions">My Contributions</a>
+                <a href="#etl-integrity">Financial &amp; Reporting Integrity</a>
+                <a href="#etl-automation">Validation &amp; Automation</a>
+                <a href="#etl-approach">My Delivery Approach</a>
+                <a href="#etl-outcomes">Outcomes &amp; Impact</a>
+                <a href="#etl-skills">Skills Demonstrated</a>
+                <a href="#etl-reflection">My Approach to Product Delivery</a>
+            </div>
+        </details>
 
-            <p>
-                An enterprise hospitality client needed to migrate historical
-                hotel and guest data from a legacy Property Management System
-                (PMS) into the HotelKey platform.
-            </p>
+        <div class="etl-layout">
 
-            <p>
-                The source data was provided in large, compressed XML files.
-                The information needed to be analysed, mapped to the target
-                system's data structure, transformed, and loaded into the
-                new platform.
-            </p>
+            <!-- DESKTOP CONTENTS -->
+            <aside class="etl-toc" aria-label="Case study contents">
+                <p class="etl-toc-title">On this page</p>
+                <a href="#etl-problem">The Problem</a>
+                <a href="#etl-objective">The Objective</a>
+                <a href="#etl-workflow">Migration Workflow</a>
+                <a href="#etl-contributions">My Contributions</a>
+                <a href="#etl-integrity">Financial &amp; Reporting Integrity</a>
+                <a href="#etl-automation">Validation &amp; Automation</a>
+                <a href="#etl-approach">My Delivery Approach</a>
+                <a href="#etl-outcomes">Outcomes &amp; Impact</a>
+                <a href="#etl-skills">Skills Demonstrated</a>
+                <a href="#etl-reflection">My Approach to Product Delivery</a>
+            </aside>
 
-            <p>
-                A successful migration required more than transferring
-                records. Financial balances needed to remain consistent,
-                and reports needed to reflect the migrated data correctly.
-            </p>
-        </section>
+            <div class="etl-main">
 
-        <!-- 2. Objective -->
-        <section class="case-section">
-            <h2>2. The Objective</h2>
+                <!-- 1. PROBLEM -->
+                <section class="case-section etl-reveal" id="etl-problem">
+                    <h2>1. The Problem</h2>
 
-            <p>
-                Help define and deliver a repeatable ETL process that could
-                migrate the required client data while maintaining data
-                integrity and improving confidence in financial and reporting
-                results.
-            </p>
-
-            <ul>
-                <li>Understand and document client migration requirements.</li>
-                <li>Map source data fields to the target data structure.</li>
-                <li>Translate requirements into actionable user stories.</li>
-                <li>Support engineering in building the ETL solution.</li>
-                <li>Validate migrated data against expected results.</li>
-                <li>Identify discrepancies affecting financial balances and reports.</li>
-            </ul>
-        </section>
-
-        <!-- 3. Migration Workflow -->
-       
-        <section class="case-section" id="etl-workflow">
-            <h2>3. Migration Workflow</h2>
-
-            <p>
-                This workflow illustrates how legacy hospitality data moved
-                through requirements analysis, ETL processing, and validation.
-                It also shows how discrepancies were investigated and
-                validation repeated when needed.
-            </p>
-
-            <figure class="workflow-figure">
-                <img
-                    src="images/etl-migration-flow.png"
-                    alt="Enterprise ETL migration flowchart showing legacy PMS data, requirements and field mapping, ETL transformation, HotelKey loading, validation and reconciliation, passed or failed checks, discrepancy investigation, and revalidation."
-                    loading="lazy"
-                >
-
-                <figcaption>
-                    High-level ETL migration workflow and validation process.
-                    Engineering implemented the ETL solution; my role focused on
-                    requirements, data mapping, coordination, SQL validation,
-                    and discrepancy investigation.
-                </figcaption>
-            </figure>
-        </section>
-
-
-        <!-- 4. My Role -->
-        <section class="case-section">
-            <h2>4. My Role and Contributions</h2>
-
-            <div class="artifact-grid">
-                <div class="artifact-card">
-                    <h3>Requirement Gathering</h3>
                     <p>
-                        Worked with the client to understand the historical
-                        data that needed to be transferred and clarify
-                        migration expectations.
+                        An enterprise hospitality client needed to migrate historical
+                        hotel and guest data from a legacy Property Management System
+                        (PMS) into the HotelKey platform.
                     </p>
-                </div>
 
-                <div class="artifact-card">
-                    <h3>Data Mapping</h3>
                     <p>
-                        Analysed sample source files and documented field
-                        mappings to help translate the required information
-                        into the target data structure.
+                        The source data was provided in large, compressed XML files.
+                        The information needed to be analysed, mapped to the target
+                        system's data structure, transformed, and loaded into the
+                        new platform.
                     </p>
-                </div>
 
-                <div class="artifact-card">
-                    <h3>User Stories</h3>
                     <p>
-                        Converted migration requirements into user stories
-                        that communicated expected behaviour and requirements
-                        to the development team.
+                        A successful migration required more than transferring
+                        records. Financial balances needed to remain consistent,
+                        and reports needed to reflect the migrated data correctly.
                     </p>
-                </div>
 
-                <div class="artifact-card">
-                    <h3>Engineering Coordination</h3>
-                    <p>
-                        Collaborated with developers as they built the ETL
-                        tool to accept client files, transform the data,
-                        and load it into the target database.
-                    </p>
-                </div>
+                    <div class="case-callout">
+                        <strong>The central challenge:</strong>
+                        Data needed to be transferred into the new platform while
+                        preserving the business meaning of the original records,
+                        especially for financial calculations and reporting.
+                    </div>
+                </section>
 
-                <div class="artifact-card">
-                    <h3>Data Validation</h3>
+                <!-- 2. OBJECTIVE -->
+                <section class="case-section etl-reveal" id="etl-objective">
+                    <h2>2. The Objective</h2>
+
                     <p>
-                        Used sample data and validation exercises to check
-                        whether migrated information matched the expected
+                        Help define and deliver a repeatable ETL process that could
+                        migrate the required client data while maintaining data
+                        integrity and improving confidence in financial and reporting
                         results.
                     </p>
-                </div>
 
-                <div class="artifact-card">
-                    <h3>Discrepancy Investigation</h3>
+                    <ul>
+                        <li>Understand and document client migration requirements.</li>
+                        <li>Map source data fields to the target data structure.</li>
+                        <li>Translate requirements into actionable user stories.</li>
+                        <li>Support engineering in building the ETL solution.</li>
+                        <li>Validate migrated data against expected results.</li>
+                        <li>Identify discrepancies affecting financial balances and reports.</li>
+                    </ul>
+                </section>
+
+                <!-- 3. MIGRATION WORKFLOW -->
+                <section class="case-section etl-reveal" id="etl-workflow">
+                    <h2>3. Migration Workflow</h2>
+
                     <p>
-                        Ran queries to compare source and target data,
-                        investigated differences, and helped validate
-                        report accuracy.
+                        This workflow illustrates how legacy hospitality data moved
+                        through requirements analysis, ETL processing, and validation.
+                        It also shows how discrepancies were investigated and
+                        validation repeated when needed.
                     </p>
-                </div>
-            </div>
-        </section>
 
-        <!-- 5. Financial and Reporting Integrity -->
-        <section class="case-section">
-            <h2>5. Protecting Financial and Reporting Integrity</h2>
+                    <figure class="workflow-figure">
+                        <button class="workflow-image-button"
+                                id="etlOpenDiagram"
+                                type="button"
+                                aria-label="Enlarge the ETL migration workflow diagram">
+                            <img
+                                id="etlDiagram"
+                                src="images/etl-migration-flow.png"
+                                alt="Enterprise ETL migration flowchart showing legacy PMS data, requirements and field mapping, ETL transformation, HotelKey loading, validation and reconciliation, passed or failed checks, discrepancy investigation, and revalidation."
+                                loading="lazy"
+                            >
+                            <span class="etl-zoom-hint">
+                                Click to enlarge diagram ↗
+                            </span>
+                        </button>
 
-            <p>
-                An important part of the project was checking that migrated
-                information remained meaningful to the business. Data could
-                be present in the new system but still produce incorrect
-                financial or reporting results.
-            </p>
+                        <figcaption>
+                            High-level ETL migration workflow and validation process.
+                            Engineering implemented the ETL solution; my role focused on
+                            requirements, data mapping, coordination, SQL validation,
+                            and discrepancy investigation.
+                        </figcaption>
+                    </figure>
 
-            <div class="artifact-grid">
-                <div class="artifact-card">
-                    <h3>Financial Consistency</h3>
+                    <div class="etl-workflow-panel">
+                        <h3>Explore the ETL stages</h3>
+
+                        <p class="etl-muted">
+                            Select each stage to see its purpose and the product
+                            delivery activities associated with it.
+                        </p>
+
+                        <div class="etl-stage-grid" role="group"
+                             aria-label="Interactive ETL workflow stages">
+
+                            <button type="button" class="etl-stage-button"
+                                    data-etl-stage="0" aria-pressed="true">
+                                <span class="etl-stage-number">STAGE 01</span>
+                                <strong>Source data &amp; requirements</strong>
+                            </button>
+
+                            <button type="button" class="etl-stage-button"
+                                    data-etl-stage="1" aria-pressed="false">
+                                <span class="etl-stage-number">STAGE 02</span>
+                                <strong>Field mapping</strong>
+                            </button>
+
+                            <button type="button" class="etl-stage-button"
+                                    data-etl-stage="2" aria-pressed="false">
+                                <span class="etl-stage-number">STAGE 03</span>
+                                <strong>ETL transformation</strong>
+                            </button>
+
+                            <button type="button" class="etl-stage-button"
+                                    data-etl-stage="3" aria-pressed="false">
+                                <span class="etl-stage-number">STAGE 04</span>
+                                <strong>Target data loading</strong>
+                            </button>
+
+                            <button type="button" class="etl-stage-button"
+                                    data-etl-stage="4" aria-pressed="false">
+                                <span class="etl-stage-number">STAGE 05</span>
+                                <strong>Validation &amp; reconciliation</strong>
+                            </button>
+
+                            <button type="button" class="etl-stage-button"
+                                    data-etl-stage="5" aria-pressed="false">
+                                <span class="etl-stage-number">STAGE 06</span>
+                                <strong>Investigate &amp; revalidate</strong>
+                            </button>
+
+                        </div>
+
+                        <div class="etl-stage-detail" aria-live="polite">
+                            <h4 id="etlStageTitle">01. Source data &amp; requirements</h4>
+                            <p id="etlStageDescription">
+                                Understand the client's migration needs, review
+                                representative source data, and clarify the
+                                information that must be available in the target system.
+                            </p>
+                        </div>
+                    </div>
+
+                    <div class="case-callout">
+                        <strong>My role in the workflow:</strong>
+                        I translated business requirements into mappings and user
+                        stories, coordinated with developers, and supported
+                        validation. The engineering team implemented the ETL solution.
+                    </div>
+                </section>
+
+                <!-- 4. CONTRIBUTIONS -->
+                <section class="case-section etl-reveal" id="etl-contributions">
+                    <h2>4. My Role and Contributions</h2>
+
+                    <p class="etl-muted">
+                        Expand each area to see how I contributed to requirements,
+                        implementation coordination, and data quality.
+                    </p>
+
+                    <div class="artifact-grid">
+
+                        <details class="artifact-card etl-expandable">
+                            <summary>
+                                <h3>Requirement Gathering</h3>
+                                <p>
+                                    Understanding the historical data that needed
+                                    to be transferred and clarifying expectations.
+                                </p>
+                            </summary>
+                            <div class="etl-expandable-body">
+                                <p>
+                                    Worked with the client to understand migration
+                                    requirements, clarify expected outcomes, and
+                                    communicate the required behaviour to the team.
+                                </p>
+                            </div>
+                        </details>
+
+                        <details class="artifact-card etl-expandable">
+                            <summary>
+                                <h3>Data Mapping</h3>
+                                <p>
+                                    Analysing sample source files and documenting
+                                    field mappings for the target structure.
+                                </p>
+                            </summary>
+                            <div class="etl-expandable-body">
+                                <p>
+                                    Reviewed sample data and documented how source
+                                    fields corresponded to the target data structure.
+                                    These mappings helped engineering understand
+                                    the expected transformation.
+                                </p>
+                            </div>
+                        </details>
+
+                        <details class="artifact-card etl-expandable">
+                            <summary>
+                                <h3>User Stories</h3>
+                                <p>
+                                    Translating migration requirements into actionable
+                                    work for the development team.
+                                </p>
+                            </summary>
+                            <div class="etl-expandable-body">
+                                <p>
+                                    Converted requirements into user stories that
+                                    communicated expected behaviour, transformation
+                                    needs, and validation expectations to developers.
+                                </p>
+                            </div>
+                        </details>
+
+                        <details class="artifact-card etl-expandable">
+                            <summary>
+                                <h3>Engineering Coordination</h3>
+                                <p>
+                                    Collaborating with developers building the ETL tool.
+                                </p>
+                            </summary>
+                            <div class="etl-expandable-body">
+                                <p>
+                                    Worked with developers as they built the ETL tool
+                                    to accept client files, transform the data, and
+                                    load it into the target database.
+                                </p>
+                            </div>
+                        </details>
+
+                        <details class="artifact-card etl-expandable">
+                            <summary>
+                                <h3>Data Validation</h3>
+                                <p>
+                                    Checking whether migrated information matched
+                                    expected results.
+                                </p>
+                            </summary>
+                            <div class="etl-expandable-body">
+                                <p>
+                                    Used sample data and validation exercises to
+                                    compare source and target results and identify
+                                    differences requiring further investigation.
+                                </p>
+                            </div>
+                        </details>
+
+                        <details class="artifact-card etl-expandable">
+                            <summary>
+                                <h3>Discrepancy Investigation</h3>
+                                <p>
+                                    Comparing data, investigating differences,
+                                    and helping validate reporting accuracy.
+                                </p>
+                            </summary>
+                            <div class="etl-expandable-body">
+                                <p>
+                                    Ran SQL queries to compare source and target data,
+                                    investigated discrepancies, and helped check
+                                    whether reports reflected expected results.
+                                </p>
+                            </div>
+                        </details>
+
+                    </div>
+                </section>
+
+                <!-- 5. FINANCIAL AND REPORTING INTEGRITY -->
+                <section class="case-section etl-reveal" id="etl-integrity">
+                    <h2>5. Protecting Financial and Reporting Integrity</h2>
+
                     <p>
-                        Helped validate that financial balances in the legacy
-                        system were consistent with corresponding results
-                        after migration.
+                        An important part of the project was checking that migrated
+                        information remained meaningful to the business. Data could
+                        be present in the new system but still produce incorrect
+                        financial or reporting results.
                     </p>
-                </div>
 
-                <div class="artifact-card">
-                    <h3>Reporting Accuracy</h3>
+                    <div class="etl-outcome-grid">
+
+                        <article class="etl-outcome-card">
+                            <span class="etl-outcome-number">FOCUS 01</span>
+                            <h3>Financial Consistency</h3>
+                            <p>
+                                Helped validate that financial balances in the legacy
+                                system were consistent with corresponding results
+                                after migration.
+                            </p>
+                        </article>
+
+                        <article class="etl-outcome-card">
+                            <span class="etl-outcome-number">FOCUS 02</span>
+                            <h3>Reporting Accuracy</h3>
+                            <p>
+                                Used queries and product knowledge to compare source
+                                and target data, investigate differences, and check
+                                whether reports reflected expected results.
+                            </p>
+                        </article>
+
+                    </div>
+
+                    <div class="case-callout">
+                        <strong>Key consideration:</strong>
+                        Successful migration was not just about moving data.
+                        The migrated information also needed to support expected
+                        business calculations, financial consistency, and reporting.
+                    </div>
+                </section>
+
+                <!-- 6. VALIDATION AND AUTOMATION -->
+                <section class="case-section etl-reveal" id="etl-automation">
+                    <h2>6. From Manual Validation to Automation</h2>
+
                     <p>
-                        Used queries and product knowledge to compare source
-                        and target data, investigate differences, and check
-                        whether reports reflected expected results.
+                        Initial validation involved analysing sample data and
+                        comparing source and target results. SQL queries and
+                        troubleshooting helped identify discrepancies that
+                        required further investigation.
                     </p>
-                </div>
+
+                    <p>
+                        The engineering team subsequently automated validation
+                        steps. The ETL solution also generates discrepancy reports
+                        that help identify reporting differences and support
+                        bug investigation.
+                    </p>
+
+                    <p>
+                        I remain loosely involved in troubleshooting when needed.
+                        Validation therefore continues to support ongoing data
+                        and reporting issue investigation beyond the initial
+                        migration work.
+                    </p>
+
+                    <div class="etl-outcome-grid">
+
+                        <article class="etl-outcome-card">
+                            <span class="etl-outcome-number">INITIAL APPROACH</span>
+                            <h3>Manual comparison and investigation</h3>
+                            <p>
+                                Review sample data, run queries, compare source and
+                                target results, and investigate identified differences.
+                            </p>
+                        </article>
+
+                        <article class="etl-outcome-card">
+                            <span class="etl-outcome-number">EVOLVED APPROACH</span>
+                            <h3>Automated validation support</h3>
+                            <p>
+                                Engineering automated validation steps, and the
+                                solution generates discrepancy reports to support
+                                further investigation.
+                            </p>
+                        </article>
+
+                    </div>
+
+                    <p class="etl-muted">
+                        This comparison describes the evolution of the validation
+                        process. It does not imply a measured reduction in effort
+                        or a quantified improvement.
+                    </p>
+                </section>
+
+                <!-- 7. DELIVERY APPROACH -->
+                <section class="case-section etl-reveal" id="etl-approach">
+                    <h2>7. My Delivery Approach</h2>
+
+                    <ol>
+                        <li>
+                            <strong>Understand:</strong>
+                            Gather requirements and clarify migration scope with
+                            the client.
+                        </li>
+                        <li>
+                            <strong>Analyse:</strong>
+                            Review sample data and define the required field mappings.
+                        </li>
+                        <li>
+                            <strong>Translate:</strong>
+                            Document requirements as user stories for engineering.
+                        </li>
+                        <li>
+                            <strong>Collaborate:</strong>
+                            Work with developers to clarify expected behaviour
+                            and delivery requirements.
+                        </li>
+                        <li>
+                            <strong>Validate:</strong>
+                            Compare source and target data and investigate discrepancies.
+                        </li>
+                        <li>
+                            <strong>Improve:</strong>
+                            Support the evolution of validation into automated
+                            checks and discrepancy reporting.
+                        </li>
+                    </ol>
+                </section>
+
+                <!-- 8. OUTCOMES -->
+                <section class="case-section etl-reveal" id="etl-outcomes">
+                    <h2>8. Outcomes and Impact</h2>
+
+                    <div class="etl-outcome-grid">
+
+                        <article class="etl-outcome-card">
+                            <span class="etl-outcome-number">01</span>
+                            <h3>ETL Capability</h3>
+                            <p>
+                                Contributed to delivery of an ETL capability that
+                                processes client migration files and loads transformed
+                                data into the target system.
+                            </p>
+                        </article>
+
+                        <article class="etl-outcome-card">
+                            <span class="etl-outcome-number">02</span>
+                            <h3>Data Validation</h3>
+                            <p>
+                                Helped establish validation practices for checking
+                                migrated data against expected results.
+                            </p>
+                        </article>
+
+                        <article class="etl-outcome-card">
+                            <span class="etl-outcome-number">03</span>
+                            <h3>Financial Reconciliation</h3>
+                            <p>
+                                Supported financial consistency checks and reporting
+                                reconciliation during migration.
+                            </p>
+                        </article>
+
+                        <article class="etl-outcome-card">
+                            <span class="etl-outcome-number">04</span>
+                            <h3>Ongoing Product Quality</h3>
+                            <p>
+                                Contributed to validation and troubleshooting practices
+                                that support discrepancy investigation.
+                            </p>
+                        </article>
+
+                    </div>
+
+                    <p>
+                        Helped connect client business requirements with
+                        engineering implementation and ongoing product quality.
+                    </p>
+
+                    <p class="etl-muted">
+                        No numerical improvement is claimed because verified
+                        performance measurements have not been established
+                        for publication.
+                    </p>
+                </section>
+
+                <!-- 9. SKILLS -->
+                <section class="case-section etl-reveal" id="etl-skills">
+                    <h2>9. Skills Demonstrated</h2>
+
+                    <div class="skill-list">
+                        <span class="skill-tag">Product Delivery</span>
+                        <span class="skill-tag">Business Analysis</span>
+                        <span class="skill-tag">Requirement Gathering</span>
+                        <span class="skill-tag">User Stories</span>
+                        <span class="skill-tag">SQL Validation</span>
+                        <span class="skill-tag">Data Mapping</span>
+                        <span class="skill-tag">ETL Workflows</span>
+                        <span class="skill-tag">Data Reconciliation</span>
+                        <span class="skill-tag">Engineering Coordination</span>
+                        <span class="skill-tag">Issue Investigation</span>
+                        <span class="skill-tag">Continuous Improvement</span>
+                    </div>
+                </section>
+
+                <!-- 10. REFLECTION -->
+                <section class="case-section etl-reveal" id="etl-reflection">
+                    <h2>10. My Approach to Product Delivery</h2>
+
+                    <p>
+                        My focus was on connecting the client's business requirements
+                        with the engineering team's implementation. This involved
+                        understanding the source data, documenting the required
+                        mappings, validating the resulting data, and helping ensure
+                        that financial and reporting expectations were addressed.
+                    </p>
+
+                    <p>
+                        This project reflects my approach to product delivery:
+                        clarify the business need, translate it into actionable
+                        requirements, collaborate with technical teams, validate
+                        outcomes, and use identified issues to improve the product.
+                    </p>
+
+                    <div class="case-callout">
+                        <strong>Confidentiality note:</strong>
+                        This case study omits client identities, proprietary data
+                        structures, internal database details, and confidential
+                        implementation information.
+                    </div>
+                </section>
+
             </div>
+        </div>
 
-            <div class="case-callout">
-                <strong>Key consideration:</strong>
-                Successful migration was not just about moving data.
-                The migrated information also needed to support expected
-                business calculations, financial consistency, and reporting.
-            </div>
-        </section>
+        <footer class="case-footer">
+            <a href="index.html#work">
+                &larr; Back to Selected Work
+            </a>
 
-        <!-- 6. Validation and Automation -->
-        <section class="case-section">
-            <h2>6. From Manual Validation to Automation</h2>
+            <a href="monitoring-case-study.html">
+                Next Case Study: Cloud Monitoring &rarr;
+            </a>
+        </footer>
 
-            <p>
-                Initial validation involved analysing sample data and
-                comparing source and target results. SQL queries and
-                troubleshooting helped identify discrepancies that
-                required further investigation.
+    </main>
+
+    <!-- DIAGRAM LIGHTBOX -->
+    <div class="etl-lightbox" id="etlLightbox"
+         role="dialog" aria-modal="true"
+         aria-label="Enlarged ETL migration workflow"
+         aria-hidden="true">
+
+        <div class="etl-lightbox-inner">
+            <button class="etl-lightbox-close" id="etlCloseDiagram"
+                    type="button" aria-label="Close enlarged diagram">
+                &times;
+            </button>
+
+            <img src="images/etl-migration-flow.png"
+                 alt="Enlarged ETL migration workflow diagram">
+
+            <p class="etl-lightbox-caption">
+                Enterprise ETL migration and validation workflow.
+                Press Escape to close.
             </p>
+        </div>
+    </div>
 
-            <p>
-                The engineering team subsequently automated validation
-                steps. The ETL solution also generates discrepancy reports
-                that help identify reporting differences and support
-                bug investigation.
-            </p>
+    <!-- BACK TO TOP -->
+    <button class="etl-back-top" id="etlBackTop"
+            type="button" aria-label="Back to top" title="Back to top">
+        ↑
+    </button>
 
-            <p>
-                I remain loosely involved in troubleshooting when needed.
-                Validation therefore continues to support ongoing data
-                and reporting issue investigation beyond the initial
-                migration work.
-            </p>
-        </section>
+    <script>
+        (() => {
+            "use strict";
 
-        <!-- 7. Delivery Approach -->
-        <section class="case-section">
-            <h2>7. My Delivery Approach</h2>
+            const progressBar = document.getElementById("etlProgressBar");
+            const backTop = document.getElementById("etlBackTop");
 
-            <ol>
-                <li>
-                    <strong>Understand:</strong>
-                    Gather requirements and clarify migration scope with
-                    the client.
-                </li>
-                <li>
-                    <strong>Analyse:</strong>
-                    Review sample data and define the required field mappings.
-                </li>
-                <li>
-                    <strong>Translate:</strong>
-                    Document requirements as user stories for engineering.
-                </li>
-                <li>
-                    <strong>Collaborate:</strong>
-                    Work with developers to clarify expected behaviour
-                    and delivery requirements.
-                </li>
-                <li>
-                    <strong>Validate:</strong>
-                    Compare source and target data and investigate discrepancies.
-                </li>
-                <li>
-                    <strong>Improve:</strong>
-                    Support the evolution of validation into automated
-                    checks and discrepancy reporting.
-                </li>
-            </ol>
-        </section>
+            /* Reading progress and back-to-top visibility */
+            function updateScrollUI() {
+                const scrollableHeight =
+                    document.documentElement.scrollHeight - window.innerHeight;
 
-        <!-- 8. Outcomes -->
-        <section class="case-section">
-            <h2>8. Outcomes and Impact</h2>
+                const progress = scrollableHeight > 0
+                    ? (window.scrollY / scrollableHeight) * 100
+                    : 0;
 
-            <ul>
-                <li>
-                    Contributed to delivery of an ETL capability that
-                    processes client migration files and loads transformed
-                    data into the target system.
-                </li>
-                <li>
-                    Helped establish validation practices for checking
-                    migrated data against expected results.
-                </li>
-                <li>
-                    Supported financial consistency checks and reporting
-                    reconciliation during migration.
-                </li>
-                <li>
-                    Contributed to the validation and troubleshooting
-                    practices that support discrepancy investigation.
-                </li>
-                <li>
-                    Helped connect client business requirements with
-                    engineering implementation and ongoing product quality.
-                </li>
-            </ul>
+                progressBar.style.width =
+                    `${Math.min(100, Math.max(0, progress))}%`;
 
-            <p>
-                No numerical improvement is claimed because verified
-                performance measurements have not been established
-                for publication.
-            </p>
-        </section>
+                backTop.classList.toggle("visible", window.scrollY > 500);
+            }
 
-        <!-- 9. Skills -->
-        <section class="case-section">
-            <h2>9. Skills Demonstrated</h2>
+            window.addEventListener("scroll", updateScrollUI, {
+                passive: true
+            });
 
-            <div class="skill-list">
-                <span class="skill-tag">Product Delivery</span>
-                <span class="skill-tag">Business Analysis</span>
-                <span class="skill-tag">Requirement Gathering</span>
-                <span class="skill-tag">User Stories</span>
-                <span class="skill-tag">SQL Validation</span>
-                <span class="skill-tag">Data Mapping</span>
-                <span class="skill-tag">ETL Workflows</span>
-                <span class="skill-tag">Data Reconciliation</span>
-                <span class="skill-tag">Engineering Coordination</span>
-                <span class="skill-tag">Issue Investigation</span>
-                <span class="skill-tag">Continuous Improvement</span>
-            </div>
-        </section>
+            window.addEventListener("resize", updateScrollUI);
+            updateScrollUI();
 
-        <!-- 10. Reflection -->
-        <section class="case-section">
-            <h2>10. My Approach to Product Delivery</h2>
+            backTop.addEventListener("click", () => {
+                const reduceMotion = window.matchMedia(
+                    "(prefers-reduced-motion: reduce)"
+                ).matches;
 
-            <p>
-                My focus was on connecting the client's business requirements
-                with the engineering team's implementation. This involved
-                understanding the source data, documenting the required
-                mappings, validating the resulting data, and helping ensure
-                that financial and reporting expectations were addressed.
-            </p>
+                window.scrollTo({
+                    top: 0,
+                    behavior: reduceMotion ? "auto" : "smooth"
+                });
+            });
 
-            <p>
-                This project reflects my approach to product delivery:
-                clarify the business need, translate it into actionable
-                requirements, collaborate with technical teams, validate
-                outcomes, and use identified issues to improve the product.
-            </p>
+            /* Interactive ETL workflow */
+            const etlStages = [
+                {
+                    title: "01. Source data & requirements",
+                    description:
+                        "Understand the client's migration needs, review " +
+                        "representative source data, and clarify the information " +
+                        "that must be available in the target system."
+                },
+                {
+                    title: "02. Field mapping",
+                    description:
+                        "Analyse sample source files and document how source " +
+                        "fields correspond to the target data structure. These " +
+                        "mappings communicate the expected transformation to " +
+                        "the engineering team."
+                },
+                {
+                    title: "03. ETL transformation",
+                    description:
+                        "The engineering team implements the ETL solution to " +
+                        "process the source files and transform data according " +
+                        "to the agreed requirements and mappings."
+                },
+                {
+                    title: "04. Target data loading",
+                    description:
+                        "The transformed data is loaded into the target platform. " +
+                        "The delivery focus is to ensure that the required records " +
+                        "are available for subsequent validation."
+                },
+                {
+                    title: "05. Validation & reconciliation",
+                    description:
+                        "Compare source and target data using sample data and SQL " +
+                        "queries. Check expected results, financial consistency, " +
+                        "and reporting accuracy, then identify discrepancies."
+                },
+                {
+                    title: "06. Investigate & revalidate",
+                    description:
+                        "Investigate identified differences with the relevant " +
+                        "teams, address issues, and repeat validation as needed. " +
+                        "Automated checks and discrepancy reports support " +
+                        "ongoing investigation."
+                }
+            ];
 
-            <div class="case-callout">
-                <strong>Confidentiality note:</strong>
-                This case study omits client identities, proprietary data
-                structures, internal database details, and confidential
-                implementation information.
-            </div>
+            const stageButtons =
+                document.querySelectorAll(".etl-stage-button");
 
-        </section>
+            const stageTitle = document.getElementById("etlStageTitle");
+            const stageDescription =
+                document.getElementById("etlStageDescription");
 
-    
-            <footer class="case-footer">
-                        <a href="index.html#work">
-                            &larr; Back to Selected Work
-                        </a>
+            stageButtons.forEach((button) => {
+                button.addEventListener("click", () => {
+                    const index = Number(button.dataset.etlStage);
+                    const stage = etlStages[index];
 
-                        <a href="aws-migration-case-study.html">
-                            Next Case Study: Identity Management &rarr;
-                        </a>
-            </footer>
-</main>
+                    if (!stage) return;
+
+                    stageButtons.forEach((item) => {
+                        item.setAttribute(
+                            "aria-pressed",
+                            String(item === button)
+                        );
+                    });
+
+                    stageTitle.textContent = stage.title;
+                    stageDescription.textContent = stage.description;
+                });
+            });
+
+            /* Active table-of-contents section */
+            const sections = Array.from(
+                document.querySelectorAll(".etl-main .case-section[id]")
+            );
+
+            const tocLinks = Array.from(
+                document.querySelectorAll(
+                    ".etl-toc a, .etl-mobile-links a"
+                )
+            );
+
+            if ("IntersectionObserver" in window) {
+                const sectionObserver = new IntersectionObserver(
+                    (entries) => {
+                        const visibleEntries = entries
+                            .filter((entry) => entry.isIntersecting)
+                            .sort((a, b) =>
+                                b.intersectionRatio - a.intersectionRatio
+                            );
+
+                        if (!visibleEntries.length) return;
+
+                        const activeId = visibleEntries[0].target.id;
+
+                        tocLinks.forEach((link) => {
+                            const active =
+                                link.getAttribute("href") === `#${activeId}`;
+
+                            link.classList.toggle("active", active);
+
+                            if (active) {
+                                link.setAttribute("aria-current", "location");
+                            } else {
+                                link.removeAttribute("aria-current");
+                            }
+                        });
+                    },
+                    {
+                        rootMargin: "-15% 0px -65% 0px",
+                        threshold: [0, 0.1, 0.3, 0.6]
+                    }
+                );
+
+                sections.forEach((section) => {
+                    sectionObserver.observe(section);
+                });
+            }
+
+            /* Close mobile contents after choosing a section */
+            const mobileToc = document.querySelector(".etl-mobile-toc");
+
+            mobileToc.querySelectorAll("a").forEach((link) => {
+                link.addEventListener("click", () => {
+                    mobileToc.open = false;
+                });
+            });
+
+            /* Diagram lightbox */
+            const lightbox = document.getElementById("etlLightbox");
+            const openDiagram = document.getElementById("etlOpenDiagram");
+            const closeDiagram = document.getElementById("etlCloseDiagram");
+            const diagram = document.getElementById("etlDiagram");
+
+            let previousFocus = null;
+
+            function showLightbox() {
+                previousFocus = document.activeElement;
+                lightbox.classList.add("open");
+                lightbox.setAttribute("aria-hidden", "false");
+                document.body.style.overflow = "hidden";
+                closeDiagram.focus();
+            }
+
+            function hideLightbox() {
+                lightbox.classList.remove("open");
+                lightbox.setAttribute("aria-hidden", "true");
+                document.body.style.overflow = "";
+
+                if (previousFocus) {
+                    previousFocus.focus();
+                }
+            }
+
+            openDiagram.addEventListener("click", showLightbox);
+            closeDiagram.addEventListener("click", hideLightbox);
+
+            lightbox.addEventListener("click", (event) => {
+                if (event.target === lightbox) {
+                    hideLightbox();
+                }
+            });
+
+            document.addEventListener("keydown", (event) => {
+                if (event.key === "Escape" &&
+                    lightbox.classList.contains("open")) {
+                    hideLightbox();
+                }
+            });
+
+            /* Provide a helpful fallback if the diagram path is incorrect */
+            diagram.addEventListener("error", () => {
+                openDiagram.setAttribute("aria-disabled", "true");
+                openDiagram.style.cursor = "default";
+
+                const hint = openDiagram.querySelector(".etl-zoom-hint");
+                if (hint) {
+                    hint.textContent =
+                        "Diagram unavailable — check images/etl-migration-flow.png";
+                }
+            });
+
+            /* Scroll reveal animations */
+            const revealItems = document.querySelectorAll(".etl-reveal");
+            const reduceMotion = window.matchMedia(
+                "(prefers-reduced-motion: reduce)"
+            ).matches;
+
+            if ("IntersectionObserver" in window && !reduceMotion) {
+                const revealObserver = new IntersectionObserver(
+                    (entries, observer) => {
+                        entries.forEach((entry) => {
+                            if (entry.isIntersecting) {
+                                entry.target.classList.add("is-visible");
+                                observer.unobserve(entry.target);
+                            }
+                        });
+                    },
+                    { threshold: 0.08 }
+                );
+
+                revealItems.forEach((item) => {
+                    revealObserver.observe(item);
+                });
+            } else {
+                revealItems.forEach((item) => {
+                    item.classList.add("is-visible");
+                });
+            }
+        })();
+    </script>
+
 </body>
 </html>

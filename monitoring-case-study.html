@@ -61,7 +61,7 @@
                 <span class="mon-gradient">More Actionable and Consistent</span>
             </h1>
 
-            <p class="mon-intro">
+            <p class="case-intro">
                 I led a 15-person cloud monitoring team and helped improve
                 how application alerts were reviewed, incidents were
                 investigated, and operational knowledge was shared.
@@ -707,136 +707,7 @@
         ↑
     </button>
 
-    <script>
-        // Interactive monitoring workflow
-        const monitoringSteps = [
-            {
-                title: "01 · Monitor application health",
-                text: "Use Splunk, Datadog, and AWS CloudWatch to review application signals, alerts, and recurring failures."
-            },
-            {
-                title: "02 · Review and prioritize alerts",
-                text: "Review repetitive alerts, refine filtering and thresholds, and distinguish higher-priority issues from lower-priority warnings."
-            },
-            {
-                title: "03 · Investigate the issue",
-                text: "Review available evidence, identify recurring patterns, and follow documented troubleshooting steps for known failures."
-            },
-            {
-                title: "04 · Coordinate with developers and QA",
-                text: "Share findings, coordinate further technical investigation, and follow up on issues requiring development or testing support."
-            },
-            {
-                title: "05 · Document and track",
-                text: "Maintain SOPs and troubleshooting guides, record recurring problems, and support consistent escalation and follow-up."
-            },
-            {
-                title: "06 · Review and improve",
-                text: "Use recurring issues and operational observations to identify opportunities to improve monitoring visibility and investigation practices."
-            }
-        ];
-
-        const workflowButtons = document.querySelectorAll(".mon-workflow-step");
-        const workflowTitle = document.getElementById("workflowTitle");
-        const workflowDescription = document.getElementById("workflowDescription");
-
-        workflowButtons.forEach((button) => {
-            button.addEventListener("click", () => {
-                const index = Number(button.dataset.step);
-                const step = monitoringSteps[index];
-
-                if (!step) return;
-
-                workflowButtons.forEach((item) => {
-                    const selected = item === button;
-                    item.classList.toggle("active", selected);
-                    item.setAttribute("aria-pressed", String(selected));
-                });
-
-                workflowTitle.textContent = step.title;
-                workflowDescription.textContent = step.text;
-            });
-        });
-
-        // Reading progress and back-to-top button
-        const progressBar = document.getElementById("readingProgress");
-        const backToTop = document.getElementById("backToTop");
-
-        function updateScrollUI() {
-            const total = document.documentElement.scrollHeight - window.innerHeight;
-            const progress = total > 0 ? (window.scrollY / total) * 100 : 0;
-
-            progressBar.style.width = Math.min(100, progress) + "%";
-            backToTop.classList.toggle("visible", window.scrollY > 450);
-        }
-
-        window.addEventListener("scroll", updateScrollUI, { passive: true });
-        window.addEventListener("resize", updateScrollUI);
-        updateScrollUI();
-
-        backToTop.addEventListener("click", () => {
-            window.scrollTo({ top: 0, behavior: "smooth" });
-        });
-
-        // Highlight the current section in both contents menus
-        const contentSections = document.querySelectorAll(".mon-content .mon-section[id]");
-        const tocLinks = document.querySelectorAll(".mon-toc a");
-
-        if ("IntersectionObserver" in window) {
-            const sectionObserver = new IntersectionObserver((entries) => {
-                entries.forEach((entry) => {
-                    if (!entry.isIntersecting) return;
-
-                    const currentId = entry.target.id;
-
-                    tocLinks.forEach((link) => {
-                        const active = link.getAttribute("href") === "#" + currentId;
-                        link.classList.toggle("active", active);
-
-                        if (active) {
-                            link.setAttribute("aria-current", "location");
-                        } else {
-                            link.removeAttribute("aria-current");
-                        }
-                    });
-                });
-            }, {
-                rootMargin: "-20% 0px -65% 0px",
-                threshold: 0
-            });
-
-            contentSections.forEach((section) => sectionObserver.observe(section));
-        }
-
-        // Close the mobile menu after a section is selected
-        const mobileToc = document.querySelector(".mon-mobile-toc");
-
-        mobileToc.querySelectorAll("a").forEach((link) => {
-            link.addEventListener("click", () => {
-                mobileToc.open = false;
-            });
-        });
-
-        // Scroll-reveal animations
-        const revealItems = document.querySelectorAll(".mon-reveal");
-
-        if ("IntersectionObserver" in window &&
-            !window.matchMedia("(prefers-reduced-motion: reduce)").matches) {
-
-            const revealObserver = new IntersectionObserver((entries, observer) => {
-                entries.forEach((entry) => {
-                    if (entry.isIntersecting) {
-                        entry.target.classList.add("revealed");
-                        observer.unobserve(entry.target);
-                    }
-                });
-            }, { threshold: 0.08 });
-
-            revealItems.forEach((item) => revealObserver.observe(item));
-        } else {
-            revealItems.forEach((item) => item.classList.add("revealed"));
-        }
-    </script>
+    <script src="case-study-common.js"></script>
 
 </body>
 </html>

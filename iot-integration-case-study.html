@@ -62,7 +62,7 @@
                 <span class="iot-gradient-text">Third-Party Integrations</span>
             </h1>
 
-            <p class="iot-hero-intro">
+            <p class="case-intro">
                 How I translated client requirements into integration
                 user stories, coordinated developers and external
                 technology teams, prepared a test environment, and
@@ -665,137 +665,7 @@
         ↑
     </button>
 
-    <script>
-        // Interactive workflow stages
-        const workflowStages = [
-            {
-                title: "01 · Requirements gathering",
-                text: "I worked with clients to understand the intended business workflow and the expected behaviour of the integration before translating those needs into requirements."
-            },
-            {
-                title: "02 · User stories and expectations",
-                text: "I translated requirements into user stories and actionable tasks, clarifying expected behaviour and answering questions raised during implementation."
-            },
-            {
-                title: "03 · Internal and external coordination",
-                text: "I coordinated with developers and third-party teams, followed up on dependencies, and helped keep the business requirement aligned with the technical implementation."
-            },
-            {
-                title: "04 · Test environment and validation",
-                text: "I set up the IoT test environment, tested integration behaviour before delivery, investigated unexpected results, and coordinated follow-up testing when changes were needed."
-            },
-            {
-                title: "05 · Client delivery and support",
-                text: "I coordinated delivery to the client and supported go-live activities and post-delivery troubleshooting with developers and external teams when issues arose."
-            }
-        ];
-
-        const stageButtons = document.querySelectorAll(".iot-stage");
-        const stageTitle = document.getElementById("stageDetailTitle");
-        const stageText = document.getElementById("stageDetailText");
-
-        stageButtons.forEach((button) => {
-            button.addEventListener("click", () => {
-                const index = Number(button.dataset.stage);
-                const stage = workflowStages[index];
-
-                if (!stage) return;
-
-                stageButtons.forEach((item) => {
-                    const selected = item === button;
-                    item.classList.toggle("active", selected);
-                    item.setAttribute("aria-pressed", String(selected));
-                });
-
-                stageTitle.textContent = stage.title;
-                stageText.textContent = stage.text;
-            });
-        });
-
-        // Reading progress and back-to-top visibility
-        const progressBar = document.getElementById("readingProgress");
-        const backToTop = document.getElementById("backToTop");
-
-        function updateScrollUI() {
-            const scrollableHeight =
-                document.documentElement.scrollHeight - window.innerHeight;
-
-            const progress = scrollableHeight > 0
-                ? (window.scrollY / scrollableHeight) * 100
-                : 0;
-
-            progressBar.style.width = Math.min(100, progress) + "%";
-            backToTop.classList.toggle("visible", window.scrollY > 450);
-        }
-
-        window.addEventListener("scroll", updateScrollUI, { passive: true });
-        window.addEventListener("resize", updateScrollUI);
-        updateScrollUI();
-
-        backToTop.addEventListener("click", () => {
-            window.scrollTo({ top: 0, behavior: "smooth" });
-        });
-
-        // Highlight the current section in both tables of contents
-        const sections = document.querySelectorAll(".iot-content .iot-section[id]");
-        const tocLinks = document.querySelectorAll(".iot-toc a");
-
-        if ("IntersectionObserver" in window) {
-            const sectionObserver = new IntersectionObserver((entries) => {
-                entries.forEach((entry) => {
-                    if (!entry.isIntersecting) return;
-
-                    const currentId = entry.target.id;
-
-                    tocLinks.forEach((link) => {
-                        const active = link.getAttribute("href") === "#" + currentId;
-
-                        link.classList.toggle("active", active);
-
-                        if (active) {
-                            link.setAttribute("aria-current", "location");
-                        } else {
-                            link.removeAttribute("aria-current");
-                        }
-                    });
-                });
-            }, {
-                rootMargin: "-20% 0px -65% 0px",
-                threshold: 0
-            });
-
-            sections.forEach((section) => sectionObserver.observe(section));
-        }
-
-        // Close the mobile contents menu after selecting a section
-        const mobileToc = document.querySelector(".iot-mobile-toc");
-
-        mobileToc.querySelectorAll("a").forEach((link) => {
-            link.addEventListener("click", () => {
-                mobileToc.open = false;
-            });
-        });
-
-        // Scroll-reveal animations, with a fallback for older browsers
-        const revealItems = document.querySelectorAll(".iot-reveal");
-
-        if ("IntersectionObserver" in window &&
-            !window.matchMedia("(prefers-reduced-motion: reduce)").matches) {
-
-            const revealObserver = new IntersectionObserver((entries, observer) => {
-                entries.forEach((entry) => {
-                    if (entry.isIntersecting) {
-                        entry.target.classList.add("revealed");
-                        observer.unobserve(entry.target);
-                    }
-                });
-            }, { threshold: 0.08 });
-
-            revealItems.forEach((item) => revealObserver.observe(item));
-        } else {
-            revealItems.forEach((item) => item.classList.add("revealed"));
-        }
-    </script>
+    <script src="case-study-common.js"></script>
 
 </body>
 </html>

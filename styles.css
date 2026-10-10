@@ -23,8 +23,17 @@
     --accent-2: #8de0d0;
     --case-accent: #8b9cff;
     --case-accent-soft: rgba(139, 156, 255, 0.12);
+    --case-accent-soft-strong: rgba(139, 156, 255, 0.13);
+    --case-accent-strong: #6679ed;
     --case-border: rgba(128, 128, 128, 0.24);
+    --case-border-soft: rgba(128, 128, 128, 0.23);
+    --case-border-strong: rgba(128, 128, 128, 0.25);
     --case-surface: rgba(128, 128, 128, 0.045);
+    --case-surface-raised: rgba(128, 128, 128, 0.055);
+    --case-muted-feature: #8b91a5;
+    --case-muted-quiet: #858da0;
+    --case-radius-idm: 14px;
+    --case-radius-monitor: 16px;
     --case-transition: 0.25s ease;
 
     /* Borders and effects */
@@ -32,7 +41,7 @@
     --border-strong: rgba(121, 169, 255, 0.45);
 
     /* Layout */
-    --content-width: 1120px;
+    --content-width: 1500px;
     --page-gutter: 20px;
 
     /* Consistent spacing */
@@ -656,27 +665,25 @@ section {
 }
 
 .case-intro {
-    max-width: 780px;
+    max-width: 790px;
     font-size: 1.05rem;
-    line-height: 1.85;
+    line-height: 1.9;
     opacity: 0.86;
-}
-
-.case-hero p {
-    max-width: 800px;
-    font-size: 1.02rem;
-    line-height: 1.85;
 }
 
 .case-content {
     padding: 35px 0 70px;
 }
 
-.case-section {
+.case-section,
+.fd-section {
     padding: 32px 0;
-    margin-bottom: 42px;
     border-top: 1px solid var(--case-border);
     scroll-margin-top: 30px;
+}
+
+.case-section {
+    margin-bottom: 42px;
 }
 
 .case-section h2 {
@@ -806,6 +813,274 @@ section {
 
 .case-footer a {
     text-decoration: none;
+}
+
+.aws-hero-actions,
+.etl-hero-actions,
+.idm-hero-actions {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 12px;
+    margin: 24px 0;
+}
+
+.aws-progress-bar,
+.etl-progress-bar,
+.reading-progress-bar,
+.idm-progress-bar,
+.iot-progress-bar,
+.mon-progress-bar {
+    width: 0;
+    height: 100%;
+}
+
+.aws-progress-track,
+.etl-progress-track,
+.reading-progress-track,
+.idm-progress-track,
+.iot-progress-track,
+.mon-progress-track {
+    position: fixed;
+    inset: 0 0 auto;
+    height: 4px;
+}
+
+.aws-back-top,
+.etl-back-top,
+.fd-back-top,
+.idm-back-top,
+.iot-top-button,
+.mon-top-button {
+    --back-top-offset: 22px;
+    position: fixed;
+    right: var(--back-top-offset);
+    bottom: var(--back-top-offset);
+    width: 46px;
+    height: 46px;
+    cursor: pointer;
+    opacity: 0;
+    visibility: hidden;
+    transform: translateY(8px);
+}
+
+.iot-top-button {
+    --back-top-offset: 23px;
+}
+
+.aws-action,
+.etl-action,
+.idm-action {
+    --action-accent: var(--case-accent);
+    --action-accent-soft: var(--case-accent-soft);
+    --action-border: var(--case-border);
+    --action-surface: var(--case-surface);
+    --action-transition: var(--case-transition);
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    min-height: 43px;
+    padding: 10px 16px;
+    border: 1px solid var(--action-border);
+    border-radius: 9px;
+    color: inherit;
+    text-decoration: none;
+    background: var(--action-surface);
+    transition: transform var(--action-transition),
+                border-color var(--action-transition),
+                background var(--action-transition);
+}
+
+.aws-action {
+    --action-accent: var(--case-accent);
+    --action-accent-soft: var(--case-accent-soft);
+    --action-border: var(--case-border-soft);
+    --action-surface: var(--case-surface);
+    --action-transition: var(--case-transition);
+}
+
+.etl-action {
+    --action-accent: var(--case-accent);
+    --action-accent-soft: var(--case-accent-soft);
+    --action-border: var(--case-border-strong);
+    --action-surface: var(--case-surface);
+    --action-transition: var(--case-transition);
+}
+
+.idm-action {
+    --action-accent: var(--case-accent);
+    --action-accent-soft: var(--case-accent-soft);
+    --action-border: var(--case-border-soft);
+    --action-surface: var(--case-surface);
+    --action-transition: var(--case-transition);
+    gap: 8px;
+}
+
+.aws-action:hover,
+.etl-action:hover,
+.idm-action:hover {
+    transform: translateY(-2px);
+    border-color: var(--action-accent);
+    background: var(--action-accent-soft);
+}
+
+.aws-action-primary,
+.etl-action-primary,
+.idm-action-primary {
+    border-color: var(--action-accent);
+    background: var(--action-accent-soft);
+}
+
+.aws-stage:hover,
+.etl-stage-button:hover,
+.fd-stage:hover,
+.idm-stage:hover,
+.iot-stage:hover,
+.mon-workflow-step:hover {
+    transform: translateY(-3px);
+    border-color: var(--case-accent);
+}
+
+.aws-accordion[open] summary::after,
+.etl-expandable[open] summary::after,
+.iot-responsibility[open] summary::after,
+.mon-contribution[open] summary::after {
+    content: "−";
+}
+
+.fd-section p,
+.fd-section li,
+.iot-content p,
+.iot-content li,
+.mon-content p,
+.mon-content li {
+    line-height: 1.85;
+}
+
+.case-section ul,
+.case-section ol,
+.fd-section ul,
+.fd-section ol,
+.iot-content ul,
+.iot-content ol,
+.mon-content ul,
+.mon-content ol {
+    padding-left: 24px;
+}
+
+.aws-toc-title,
+.etl-toc-title,
+.idm-toc-title {
+    margin: 0 0 12px;
+    padding: 0 8px;
+    font-size: 0.78rem;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+    opacity: 0.65;
+}
+
+.aws-mobile-toc summary,
+.etl-mobile-toc summary,
+.idm-toc-mobile summary {
+    cursor: pointer;
+    font-weight: 600;
+}
+
+.aws-mobile-links,
+.etl-mobile-links,
+.idm-toc-mobile .idm-mobile-links {
+    display: grid;
+    gap: 7px;
+    padding-top: 12px;
+}
+
+.aws-content,
+.etl-main,
+.fd-article,
+.idm-content,
+.iot-content,
+.mon-content,
+.iot-responsibility-title,
+.mon-contribution-title {
+    min-width: 0;
+}
+
+.aws-stage-detail h4,
+.aws-team-card h3,
+.etl-stage-detail h4,
+.idm-stage-detail h4,
+.iot-stage-detail h4,
+.mon-workflow-detail h4 {
+    margin: 0 0 8px;
+}
+
+.aws-stage-detail p,
+.etl-stage-detail p,
+.etl-expandable summary p,
+.etl-outcome-card p,
+.fd-stage-panel p,
+.idm-stage-detail p,
+.iot-responsibility-body ul,
+.mon-contribution-body ul {
+    margin: 0;
+}
+
+.aws-outcome-grid,
+.etl-outcome-grid,
+.iot-integration-grid {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 14px;
+    margin: 24px 0;
+}
+
+.aws-team-card p,
+.iot-stage-detail p,
+.mon-workflow-detail p {
+    margin: 0;
+    font-size: 0.92rem;
+}
+
+.aws-back-top.visible,
+.etl-back-top.visible,
+.fd-back-top.visible,
+.idm-back-top.visible,
+.iot-top-button.visible,
+.mon-top-button.visible {
+    opacity: 1;
+    visibility: visible;
+    transform: translateY(0);
+}
+
+.aws-reveal.is-visible,
+.etl-reveal.is-visible,
+.fd-reveal.is-visible,
+.idm-reveal.is-visible,
+.iot-reveal.revealed,
+.mon-reveal.revealed {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+.aws-reveal,
+.etl-reveal,
+.fd-reveal,
+.idm-reveal,
+.iot-reveal,
+.mon-reveal {
+    opacity: 0;
+    transform: translateY(var(--reveal-offset, 16px));
+    transition: opacity var(--reveal-duration, 0.55s) ease,
+                transform var(--reveal-duration, 0.55s) ease;
+}
+
+.fd-reveal,
+.mon-reveal {
+    --reveal-offset: 14px;
+    --reveal-duration: 0.5s;
+}
+
+.iot-reveal {
+    --reveal-offset: 15px;
 }
 
 .case-list {
@@ -1138,9 +1413,8 @@ hr {
 /* 17. RESPONSIVE: MOBILE */
 
 @media (max-width: 700px) {
-    :root {
-        --page-gutter: 15px;
-        --space-7: 57px;
+    .container {
+        width: min(var(--content-width), calc(100% - 30px));
     }
 
     .section {
@@ -1317,61 +1591,14 @@ hr {
 }
 
 /* ------------------------------------------------------------------------------------------------------------------------------------*/
-        :root {
-            --aws-accent: var(--case-accent);
-            --aws-accent-soft: var(--case-accent-soft);
-            --aws-border: rgba(128, 128, 128, .23);
-            --aws-surface: rgba(128, 128, 128, .045);
-            --aws-transition: .25s ease;
-        }
-
-        /* Reading progress */
+/* Reading progress */
         .aws-progress-track {
-            position: fixed;
             z-index: 1001;
-            inset: 0 0 auto;
-            height: 4px;
             pointer-events: none;
         }
 
         .aws-progress-bar {
-            width: 0;
-            height: 100%;
             background: linear-gradient(90deg, #8b9cff, #b6a0ff);
-        }
-
-        .aws-hero-actions {
-            display: flex;
-            flex-wrap: wrap;
-            gap: 12px;
-            margin: 24px 0;
-        }
-
-        .aws-action {
-            display: inline-flex;
-            align-items: center;
-            justify-content: center;
-            min-height: 43px;
-            padding: 10px 16px;
-            border: 1px solid var(--aws-border);
-            border-radius: 9px;
-            color: inherit;
-            text-decoration: none;
-            background: var(--aws-surface);
-            transition: transform var(--aws-transition),
-                        border-color var(--aws-transition),
-                        background var(--aws-transition);
-        }
-
-        .aws-action:hover {
-            transform: translateY(-2px);
-            border-color: var(--aws-accent);
-            background: var(--aws-accent-soft);
-        }
-
-        .aws-action-primary {
-            border-color: var(--aws-accent);
-            background: var(--aws-accent-soft);
         }
 
         /* Layout and table of contents */
@@ -1388,18 +1615,9 @@ hr {
             max-height: calc(100vh - 48px);
             overflow-y: auto;
             padding: 17px 12px;
-            border: 1px solid var(--aws-border);
+            border: 1px solid var(--case-border-soft);
             border-radius: 12px;
-            background: var(--aws-surface);
-        }
-
-        .aws-toc-title {
-            margin: 0 0 12px;
-            padding: 0 8px;
-            font-size: .78rem;
-            letter-spacing: 1px;
-            text-transform: uppercase;
-            opacity: .65;
+            background: var(--case-surface);
         }
 
         .aws-toc a {
@@ -1413,16 +1631,16 @@ hr {
             line-height: 1.45;
             text-decoration: none;
             opacity: .76;
-            transition: color var(--aws-transition),
-                        background var(--aws-transition),
-                        border-color var(--aws-transition);
+            transition: color var(--case-transition),
+                        background var(--case-transition),
+                        border-color var(--case-transition);
         }
 
         .aws-toc a:hover,
         .aws-toc a.active {
-            color: var(--aws-accent);
-            background: var(--aws-accent-soft);
-            border-left-color: var(--aws-accent);
+            color: var(--case-accent);
+            background: var(--case-accent-soft);
+            border-left-color: var(--case-accent);
             opacity: 1;
         }
 
@@ -1430,30 +1648,15 @@ hr {
             display: none;
             margin: 8px 0 24px;
             padding: 12px 14px;
-            border: 1px solid var(--aws-border);
+            border: 1px solid var(--case-border-soft);
             border-radius: 10px;
-            background: var(--aws-surface);
-        }
-
-        .aws-mobile-toc summary {
-            cursor: pointer;
-            font-weight: 600;
-        }
-
-        .aws-mobile-links {
-            display: grid;
-            gap: 7px;
-            padding-top: 12px;
+            background: var(--case-surface);
         }
 
         .aws-mobile-links a {
             color: inherit;
             text-decoration: none;
             padding: 5px 0;
-        }
-
-        .aws-content {
-            min-width: 0;
         }
 
         .aws-muted {
@@ -1464,9 +1667,9 @@ hr {
         .aws-workflow {
             margin: 24px 0;
             padding: 20px;
-            border: 1px solid var(--aws-border);
+            border: 1px solid var(--case-border-soft);
             border-radius: 14px;
-            background: var(--aws-surface);
+            background: var(--case-surface);
         }
 
         .aws-workflow > h3 {
@@ -1486,28 +1689,23 @@ hr {
             text-align: left;
             color: inherit;
             cursor: pointer;
-            border: 1px solid var(--aws-border);
+            border: 1px solid var(--case-border-soft);
             border-radius: 10px;
-            background: var(--aws-surface);
-            transition: transform var(--aws-transition),
-                        border-color var(--aws-transition),
-                        background var(--aws-transition);
-        }
-
-        .aws-stage:hover {
-            transform: translateY(-3px);
-            border-color: var(--aws-accent);
+            background: var(--case-surface);
+            transition: transform var(--case-transition),
+                        border-color var(--case-transition),
+                        background var(--case-transition);
         }
 
         .aws-stage[aria-pressed="true"] {
-            border-color: var(--aws-accent);
-            background: var(--aws-accent-soft);
+            border-color: var(--case-accent);
+            background: var(--case-accent-soft);
         }
 
         .aws-stage-number {
             display: block;
             margin-bottom: 12px;
-            color: var(--aws-accent);
+            color: var(--case-accent);
             font-size: .78rem;
             font-weight: 800;
             letter-spacing: 1px;
@@ -1522,17 +1720,9 @@ hr {
         .aws-stage-detail {
             margin-top: 14px;
             padding: 18px;
-            border: 1px solid var(--aws-border);
+            border: 1px solid var(--case-border-soft);
             border-radius: 10px;
             line-height: 1.8;
-        }
-
-        .aws-stage-detail h4 {
-            margin: 0 0 8px;
-        }
-
-        .aws-stage-detail p {
-            margin: 0;
         }
 
         /* Cross-team coordination visual */
@@ -1545,16 +1735,16 @@ hr {
 
         .aws-team-card {
             padding: 18px;
-            border: 1px solid var(--aws-border);
+            border: 1px solid var(--case-border-soft);
             border-radius: 12px;
-            background: var(--aws-surface);
-            transition: transform var(--aws-transition),
-                        border-color var(--aws-transition);
+            background: var(--case-surface);
+            transition: transform var(--case-transition),
+                        border-color var(--case-transition);
         }
 
         .aws-team-card:hover {
             transform: translateY(-3px);
-            border-color: var(--aws-accent);
+            border-color: var(--case-accent);
         }
 
         .aws-team-icon {
@@ -1564,28 +1754,19 @@ hr {
             height: 38px;
             margin-bottom: 12px;
             border-radius: 10px;
-            color: var(--aws-accent);
-            background: var(--aws-accent-soft);
+            color: var(--case-accent);
+            background: var(--case-accent-soft);
             font-size: 1.1rem;
             font-weight: 800;
-        }
-
-        .aws-team-card h3 {
-            margin: 0 0 8px;
-        }
-
-        .aws-team-card p {
-            margin: 0;
-            font-size: .92rem;
         }
 
         /* Expandable responsibilities */
         .aws-accordion {
             margin: 14px 0;
-            border: 1px solid var(--aws-border);
+            border: 1px solid var(--case-border-soft);
             border-radius: 10px;
-            background: var(--aws-surface);
-            transition: border-color var(--aws-transition);
+            background: var(--case-surface);
+            transition: border-color var(--case-transition);
         }
 
         .aws-accordion[open] {
@@ -1610,13 +1791,9 @@ hr {
             position: absolute;
             top: 50%;
             right: 17px;
-            color: var(--aws-accent);
+            color: var(--case-accent);
             font-size: 1.35rem;
             transform: translateY(-50%);
-        }
-
-        .aws-accordion[open] summary::after {
-            content: "−";
         }
 
         .aws-accordion-body {
@@ -1641,26 +1818,19 @@ hr {
         }
 
         /* Outcome cards */
-        .aws-outcome-grid {
-            display: grid;
-            grid-template-columns: repeat(2, minmax(0, 1fr));
-            gap: 14px;
-            margin: 24px 0;
-        }
-
         .aws-outcome-card {
             padding: 19px;
-            border: 1px solid var(--aws-border);
+            border: 1px solid var(--case-border-soft);
             border-radius: 12px;
-            background: var(--aws-surface);
+            background: var(--case-surface);
             line-height: 1.8;
-            transition: transform var(--aws-transition),
-                        border-color var(--aws-transition);
+            transition: transform var(--case-transition),
+                        border-color var(--case-transition);
         }
 
         .aws-outcome-card:hover {
             transform: translateY(-3px);
-            border-color: var(--aws-accent);
+            border-color: var(--case-accent);
         }
 
         .aws-outcome-card strong {
@@ -1671,47 +1841,20 @@ hr {
         .aws-outcome-icon {
             display: inline-block;
             margin-bottom: 8px;
-            color: var(--aws-accent);
+            color: var(--case-accent);
             font-size: 1.15rem;
         }
 
         .aws-back-top {
-            position: fixed;
             z-index: 900;
-            right: 22px;
-            bottom: 22px;
             display: grid;
             place-items: center;
-            width: 46px;
-            height: 46px;
             color: inherit;
-            border: 1px solid var(--aws-border);
+            border: 1px solid var(--case-border-soft);
             border-radius: 50%;
-            background: var(--aws-surface);
+            background: var(--case-surface);
             box-shadow: 0 6px 24px rgba(0,0,0,.12);
-            cursor: pointer;
-            opacity: 0;
-            visibility: hidden;
-            transform: translateY(8px);
-            transition: all var(--aws-transition);
-        }
-
-        .aws-back-top.visible {
-            opacity: 1;
-            visibility: visible;
-            transform: translateY(0);
-        }
-
-        /* Scroll reveal */
-        .aws-reveal {
-            opacity: 0;
-            transform: translateY(16px);
-            transition: opacity .55s ease, transform .55s ease;
-        }
-
-        .aws-reveal.is-visible {
-            opacity: 1;
-            transform: translateY(0);
+            transition: all var(--case-transition);
         }
 
         @media (max-width: 1100px) {
@@ -1768,26 +1911,13 @@ hr {
         }
 
    /* ------------------------------------------------------------------------------------------------------------------------------------*/
-        :root {
-            --etl-accent: var(--case-accent);
-            --etl-accent-soft: var(--case-accent-soft);
-            --etl-border: rgba(128, 128, 128, .25);
-            --etl-surface: rgba(128, 128, 128, .045);
-            --etl-transition: .25s ease;
-        }
-
-        /* Reading progress */
+/* Reading progress */
         .etl-progress-track {
-            position: fixed;
             z-index: 1001;
-            inset: 0 0 auto;
-            height: 4px;
             pointer-events: none;
         }
 
         .etl-progress-bar {
-            width: 0;
-            height: 100%;
             background: linear-gradient(90deg, #8b9cff, #b6a0ff);
         }
 
@@ -1798,52 +1928,18 @@ hr {
             padding-right: 24px;
         }
 
-        .etl-hero-actions {
-            display: flex;
-            flex-wrap: wrap;
-            gap: 12px;
-            margin: 24px 0;
-        }
-
-        .etl-action {
-            display: inline-flex;
-            align-items: center;
-            justify-content: center;
-            min-height: 43px;
-            padding: 10px 16px;
-            border: 1px solid var(--etl-border);
-            border-radius: 9px;
-            color: inherit;
-            text-decoration: none;
-            background: var(--etl-surface);
-            transition: transform var(--etl-transition),
-                        border-color var(--etl-transition),
-                        background var(--etl-transition);
-        }
-
-        .etl-action:hover {
-            transform: translateY(-2px);
-            border-color: var(--etl-accent);
-            background: var(--etl-accent-soft);
-        }
-
-        .etl-action-primary {
-            border-color: var(--etl-accent);
-            background: var(--etl-accent-soft);
-        }
-
         .artifact-card {
             padding: 22px;
-            border: 1px solid var(--etl-border);
+            border: 1px solid var(--case-border-strong);
             border-radius: 12px;
-            background: var(--etl-surface);
-            transition: transform var(--etl-transition),
-                        border-color var(--etl-transition);
+            background: var(--case-surface);
+            transition: transform var(--case-transition),
+                        border-color var(--case-transition);
         }
 
         .artifact-card:hover {
             transform: translateY(-3px);
-            border-color: var(--etl-accent);
+            border-color: var(--case-accent);
         }
 
         /* Page layout */
@@ -1860,18 +1956,9 @@ hr {
             max-height: calc(100vh - 48px);
             overflow-y: auto;
             padding: 16px 12px;
-            border: 1px solid var(--etl-border);
+            border: 1px solid var(--case-border-strong);
             border-radius: 12px;
-            background: var(--etl-surface);
-        }
-
-        .etl-toc-title {
-            margin: 0 0 12px;
-            padding: 0 8px;
-            font-size: .78rem;
-            letter-spacing: 1px;
-            text-transform: uppercase;
-            opacity: .65;
+            background: var(--case-surface);
         }
 
         .etl-toc a {
@@ -1885,16 +1972,16 @@ hr {
             line-height: 1.45;
             text-decoration: none;
             opacity: .78;
-            transition: color var(--etl-transition),
-                        background var(--etl-transition),
-                        border-color var(--etl-transition);
+            transition: color var(--case-transition),
+                        background var(--case-transition),
+                        border-color var(--case-transition);
         }
 
         .etl-toc a:hover,
         .etl-toc a.active {
-            color: var(--etl-accent);
-            background: var(--etl-accent-soft);
-            border-left-color: var(--etl-accent);
+            color: var(--case-accent);
+            background: var(--case-accent-soft);
+            border-left-color: var(--case-accent);
             opacity: 1;
         }
 
@@ -1902,30 +1989,15 @@ hr {
             display: none;
             margin: 8px 0 24px;
             padding: 12px 14px;
-            border: 1px solid var(--etl-border);
+            border: 1px solid var(--case-border-strong);
             border-radius: 10px;
-            background: var(--etl-surface);
-        }
-
-        .etl-mobile-toc summary {
-            cursor: pointer;
-            font-weight: 600;
-        }
-
-        .etl-mobile-links {
-            display: grid;
-            gap: 7px;
-            padding-top: 12px;
+            background: var(--case-surface);
         }
 
         .etl-mobile-links a {
             padding: 5px 0;
             color: inherit;
             text-decoration: none;
-        }
-
-        .etl-main {
-            min-width: 0;
         }
 
         .etl-muted {
@@ -1943,7 +2015,7 @@ hr {
             width: 100%;
             padding: 0;
             overflow: hidden;
-            border: 1px solid var(--etl-border);
+            border: 1px solid var(--case-border-strong);
             border-radius: 12px;
             background: #0b0d14;
             cursor: zoom-in;
@@ -1964,7 +2036,7 @@ hr {
         .etl-zoom-hint {
             display: block;
             padding: 10px 12px;
-            border-top: 1px solid var(--etl-border);
+            border-top: 1px solid var(--case-border-strong);
             font-size: .82rem;
             text-align: center;
             opacity: .75;
@@ -2040,9 +2112,9 @@ hr {
         .etl-workflow-panel {
             margin: 24px 0;
             padding: 20px;
-            border: 1px solid var(--etl-border);
+            border: 1px solid var(--case-border-strong);
             border-radius: 14px;
-            background: var(--etl-surface);
+            background: var(--case-surface);
         }
 
         .etl-workflow-panel > h3 {
@@ -2062,29 +2134,24 @@ hr {
             padding: 14px;
             color: inherit;
             text-align: left;
-            border: 1px solid var(--etl-border);
+            border: 1px solid var(--case-border-strong);
             border-radius: 10px;
-            background: var(--etl-surface);
+            background: var(--case-surface);
             cursor: pointer;
-            transition: transform var(--etl-transition),
-                        border-color var(--etl-transition),
-                        background var(--etl-transition);
-        }
-
-        .etl-stage-button:hover {
-            transform: translateY(-3px);
-            border-color: var(--etl-accent);
+            transition: transform var(--case-transition),
+                        border-color var(--case-transition),
+                        background var(--case-transition);
         }
 
         .etl-stage-button[aria-pressed="true"] {
-            border-color: var(--etl-accent);
-            background: var(--etl-accent-soft);
+            border-color: var(--case-accent);
+            background: var(--case-accent-soft);
         }
 
         .etl-stage-number {
             display: block;
             margin-bottom: 10px;
-            color: var(--etl-accent);
+            color: var(--case-accent);
             font-size: .76rem;
             font-weight: 800;
             letter-spacing: 1px;
@@ -2098,13 +2165,9 @@ hr {
 
         .etl-stage-detail {
             padding: 18px;
-            border: 1px solid var(--etl-border);
+            border: 1px solid var(--case-border-strong);
             border-radius: 10px;
             line-height: 1.8;
-        }
-
-        .etl-stage-detail h4 {
-            margin: 0 0 8px;
         }
 
         .etl-stage-detail p {
@@ -2150,20 +2213,12 @@ hr {
             position: absolute;
             top: 18px;
             right: 18px;
-            color: var(--etl-accent);
+            color: var(--case-accent);
             font-size: 1.35rem;
-        }
-
-        .etl-expandable[open] summary::after {
-            content: "−";
         }
 
         .etl-expandable summary h3 {
             margin: 0 0 9px;
-        }
-
-        .etl-expandable summary p {
-            margin: 0;
         }
 
         .etl-expandable-body {
@@ -2176,25 +2231,18 @@ hr {
         }
 
         /* Outcome cards */
-        .etl-outcome-grid {
-            display: grid;
-            grid-template-columns: repeat(2, minmax(0, 1fr));
-            gap: 14px;
-            margin: 24px 0;
-        }
-
         .etl-outcome-card {
             padding: 20px;
-            border: 1px solid var(--etl-border);
+            border: 1px solid var(--case-border-strong);
             border-radius: 12px;
-            background: var(--etl-surface);
-            transition: transform var(--etl-transition),
-                        border-color var(--etl-transition);
+            background: var(--case-surface);
+            transition: transform var(--case-transition),
+                        border-color var(--case-transition);
         }
 
         .etl-outcome-card:hover {
             transform: translateY(-3px);
-            border-color: var(--etl-accent);
+            border-color: var(--case-accent);
         }
 
         .etl-outcome-card h3 {
@@ -2202,56 +2250,25 @@ hr {
             font-size: 1rem;
         }
 
-        .etl-outcome-card p {
-            margin: 0;
-        }
-
         .etl-outcome-number {
             display: block;
             margin-bottom: 10px;
-            color: var(--etl-accent);
+            color: var(--case-accent);
             font-weight: 800;
             letter-spacing: 1px;
         }
 
         /* Skills and footer */
         .etl-back-top {
-            position: fixed;
             z-index: 900;
-            right: 22px;
-            bottom: 22px;
             display: grid;
             place-items: center;
-            width: 46px;
-            height: 46px;
-            border: 1px solid var(--etl-border);
+            border: 1px solid var(--case-border-strong);
             border-radius: 50%;
             color: inherit;
-            background: var(--etl-surface);
+            background: var(--case-surface);
             box-shadow: 0 6px 24px rgba(0,0,0,.12);
-            cursor: pointer;
-            opacity: 0;
-            visibility: hidden;
-            transform: translateY(8px);
-            transition: all var(--etl-transition);
-        }
-
-        .etl-back-top.visible {
-            opacity: 1;
-            visibility: visible;
-            transform: translateY(0);
-        }
-
-        /* Scroll reveal */
-        .etl-reveal {
-            opacity: 0;
-            transform: translateY(16px);
-            transition: opacity .55s ease, transform .55s ease;
-        }
-
-        .etl-reveal.is-visible {
-            opacity: 1;
-            transform: translateY(0);
+            transition: all var(--case-transition);
         }
 
         @media (max-width: 1050px) {
@@ -2330,29 +2347,15 @@ hr {
 
 /* ------------------------------------------------------------------------------------------------------------------------------------ */
 
-        :root {
-            --fd-accent: var(--case-accent);
-            --fd-accent-soft: rgba(139, 156, 255, 0.13);
-            --fd-border: rgba(128, 128, 128, 0.25);
-            --fd-surface: rgba(128, 128, 128, 0.045);
-            --fd-muted: #8b91a5;
-        }
-
-        /* Reading progress */
+/* Reading progress */
 
         .reading-progress-track {
-            position: fixed;
-            top: 0;
-            left: 0;
             z-index: 9999;
             width: 100%;
-            height: 4px;
             background: transparent;
         }
 
         .reading-progress-bar {
-            width: 0;
-            height: 100%;
             background: linear-gradient(90deg, #8b9cff, #b5c0ff);
             transition: width 0.1s linear;
         }
@@ -2372,7 +2375,7 @@ hr {
 
         .fd-label {
             display: inline-block;
-            color: var(--fd-accent);
+            color: var(--case-accent);
             font-size: 0.82rem;
             font-weight: 700;
             letter-spacing: 1.1px;
@@ -2386,13 +2389,6 @@ hr {
             font-size: clamp(2rem, 4vw, 3.4rem);
         }
 
-        .fd-intro {
-            max-width: 790px;
-            font-size: 1.05rem;
-            line-height: 1.9;
-            opacity: 0.86;
-        }
-
         .fd-meta {
             display: grid;
             grid-template-columns: repeat(4, minmax(0, 1fr));
@@ -2402,9 +2398,9 @@ hr {
 
         .fd-meta-card {
             padding: 21px;
-            border: 1px solid var(--fd-border);
+            border: 1px solid var(--case-border-strong);
             border-radius: 14px;
-            background: var(--fd-surface);
+            background: var(--case-surface);
             transition: transform 0.2s ease, border-color 0.2s ease;
         }
 
@@ -2446,9 +2442,9 @@ hr {
             max-height: calc(100vh - 56px);
             overflow-y: auto;
             padding: 20px 14px;
-            border: 1px solid var(--fd-border);
+            border: 1px solid var(--case-border-strong);
             border-radius: 14px;
-            background: var(--fd-surface);
+            background: var(--case-surface);
         }
 
         .fd-toc-heading {
@@ -2476,18 +2472,18 @@ hr {
 
         .fd-toc a:hover,
         .fd-toc a.active {
-            border-left-color: var(--fd-accent);
-            background: var(--fd-accent-soft);
-            color: var(--fd-accent);
+            border-left-color: var(--case-accent);
+            background: var(--case-accent-soft-strong);
+            color: var(--case-accent);
             opacity: 1;
         }
 
         .fd-mobile-toc {
             display: none;
             margin: 0 0 24px;
-            border: 1px solid var(--fd-border);
+            border: 1px solid var(--case-border-strong);
             border-radius: 12px;
-            background: var(--fd-surface);
+            background: var(--case-surface);
         }
 
         .fd-mobile-toc summary {
@@ -2511,16 +2507,6 @@ hr {
 
         /* Main sections */
 
-        .fd-article {
-            min-width: 0;
-        }
-
-        .fd-section {
-            padding: 32px 0;
-            border-top: 1px solid var(--fd-border);
-            scroll-margin-top: 30px;
-        }
-
         .fd-section:first-child {
             border-top: 0;
             padding-top: 0;
@@ -2538,18 +2524,8 @@ hr {
             line-height: 1.5;
         }
 
-        .fd-section p,
-        .fd-section li {
-            line-height: 1.85;
-        }
-
         .fd-section p {
             margin-bottom: 16px;
-        }
-
-        .fd-section ul,
-        .fd-section ol {
-            padding-left: 24px;
         }
 
         .fd-section li {
@@ -2560,7 +2536,7 @@ hr {
             margin-bottom: 0;
         }
 
-        .fd-section-intro {
+        .case-section-intro {
             max-width: 850px;
             opacity: 0.86;
         }
@@ -2568,9 +2544,9 @@ hr {
         .fd-callout {
             padding: 22px;
             margin: 22px 0;
-            border-left: 3px solid var(--fd-accent);
+            border-left: 3px solid var(--case-accent);
             border-radius: 0 10px 10px 0;
-            background: var(--fd-accent-soft);
+            background: var(--case-accent-soft-strong);
             line-height: 1.85;
         }
 
@@ -2586,9 +2562,9 @@ hr {
         .fd-card {
             min-width: 0;
             padding: 21px;
-            border: 1px solid var(--fd-border);
+            border: 1px solid var(--case-border-strong);
             border-radius: 13px;
-            background: var(--fd-surface);
+            background: var(--case-surface);
             transition: transform 0.2s ease, border-color 0.2s ease;
         }
 
@@ -2610,7 +2586,7 @@ hr {
         }
 
         .fd-card summary {
-            color: var(--fd-accent);
+            color: var(--case-accent);
             cursor: pointer;
             font-size: 0.9rem;
             font-weight: 600;
@@ -2638,9 +2614,9 @@ hr {
             width: 100%;
             min-width: 0;
             padding: 18px;
-            border: 1px solid var(--fd-border);
+            border: 1px solid var(--case-border-strong);
             border-radius: 12px;
-            background: var(--fd-surface);
+            background: var(--case-surface);
             color: inherit;
             text-align: left;
             cursor: pointer;
@@ -2649,14 +2625,9 @@ hr {
                         background 0.2s ease;
         }
 
-        .fd-stage:hover {
-            transform: translateY(-3px);
-            border-color: var(--fd-accent);
-        }
-
         .fd-stage[aria-pressed="true"] {
-            border-color: var(--fd-accent);
-            background: var(--fd-accent-soft);
+            border-color: var(--case-accent);
+            background: var(--case-accent-soft-strong);
             box-shadow: 0 0 0 1px rgba(139, 156, 255, 0.15);
         }
 
@@ -2668,8 +2639,8 @@ hr {
             height: 34px;
             margin-bottom: 13px;
             border-radius: 50%;
-            background: var(--fd-accent-soft);
-            color: var(--fd-accent);
+            background: var(--case-accent-soft-strong);
+            color: var(--case-accent);
             font-size: 0.88rem;
             font-weight: 700;
         }
@@ -2689,13 +2660,13 @@ hr {
             padding: 22px;
             border: 1px solid rgba(139, 156, 255, 0.4);
             border-radius: 12px;
-            background: var(--fd-accent-soft);
+            background: var(--case-accent-soft-strong);
         }
 
         .fd-stage-panel-label {
             display: block;
             margin-bottom: 8px;
-            color: var(--fd-accent);
+            color: var(--case-accent);
             font-size: 0.76rem;
             font-weight: 700;
             letter-spacing: 0.9px;
@@ -2704,10 +2675,6 @@ hr {
 
         .fd-stage-panel h3 {
             margin: 0 0 10px;
-        }
-
-        .fd-stage-panel p {
-            margin: 0;
         }
 
         .fd-workflow-note {
@@ -2722,15 +2689,15 @@ hr {
         .fd-example {
             padding: 24px;
             margin: 24px 0;
-            border: 1px solid var(--fd-border);
+            border: 1px solid var(--case-border-strong);
             border-radius: 14px;
-            background: var(--fd-surface);
+            background: var(--case-surface);
         }
 
         .fd-example-label {
             display: block;
             margin-bottom: 12px;
-            color: var(--fd-accent);
+            color: var(--case-accent);
             font-size: 0.78rem;
             font-weight: 700;
             letter-spacing: 0.8px;
@@ -2757,7 +2724,7 @@ hr {
         .fd-skill {
             display: inline-flex;
             padding: 8px 12px;
-            border: 1px solid var(--fd-border);
+            border: 1px solid var(--case-border-strong);
             border-radius: 999px;
             font-size: 0.87rem;
             line-height: 1.4;
@@ -2771,7 +2738,7 @@ hr {
             justify-content: space-between;
             gap: 18px;
             padding: 34px 0 60px;
-            border-top: 1px solid var(--fd-border);
+            border-top: 1px solid var(--case-border-strong);
         }
 
         .fd-footer a {
@@ -2785,46 +2752,20 @@ hr {
         }
 
         .fd-back-top {
-            position: fixed;
-            right: 22px;
-            bottom: 22px;
             z-index: 100;
             display: inline-flex;
             align-items: center;
             justify-content: center;
-            width: 46px;
-            height: 46px;
-            border: 1px solid var(--fd-border);
+            border: 1px solid var(--case-border-strong);
             border-radius: 50%;
-            background: var(--fd-accent);
+            background: var(--case-accent);
             color: #101321;
             font-size: 1.2rem;
-            cursor: pointer;
-            opacity: 0;
-            visibility: hidden;
-            transform: translateY(8px);
             transition: opacity 0.2s ease, visibility 0.2s ease,
                         transform 0.2s ease;
         }
 
-        .fd-back-top.visible {
-            opacity: 1;
-            visibility: visible;
-            transform: translateY(0);
-        }
-
         /* Reveal on scroll */
-
-        .fd-reveal {
-            opacity: 0;
-            transform: translateY(14px);
-            transition: opacity 0.5s ease, transform 0.5s ease;
-        }
-
-        .fd-reveal.is-visible {
-            opacity: 1;
-            transform: translateY(0);
-        }
 
         @media (max-width: 1050px) {
             .fd-layout {
@@ -2899,64 +2840,15 @@ hr {
         }
     /* ------------------------------------------------------------------------------------------------------------------------------------ */
 
-        :root {
-            --idm-accent: var(--case-accent);
-            --idm-accent-soft: var(--case-accent-soft);
-            --idm-border: rgba(128, 128, 128, .23);
-            --idm-surface: rgba(128, 128, 128, .045);
-            --idm-radius: 14px;
-            --idm-transition: .25s ease;
-        }
-
-        /* Reading progress */
+/* Reading progress */
         .idm-progress-track {
-            position: fixed;
             z-index: 1001;
-            inset: 0 0 auto;
-            height: 4px;
             background: transparent;
         }
 
         .idm-progress-bar {
-            width: 0;
-            height: 100%;
             background: linear-gradient(90deg, #8b9cff, #b6a0ff);
             transition: width .08s linear;
-        }
-
-        .idm-hero-actions {
-            display: flex;
-            flex-wrap: wrap;
-            gap: 12px;
-            margin: 24px 0;
-        }
-
-        .idm-action {
-            display: inline-flex;
-            align-items: center;
-            justify-content: center;
-            gap: 8px;
-            min-height: 43px;
-            padding: 10px 16px;
-            border: 1px solid var(--idm-border);
-            border-radius: 9px;
-            color: inherit;
-            text-decoration: none;
-            background: var(--idm-surface);
-            transition: transform var(--idm-transition),
-                        border-color var(--idm-transition),
-                        background var(--idm-transition);
-        }
-
-        .idm-action:hover {
-            transform: translateY(-2px);
-            border-color: var(--idm-accent);
-            background: var(--idm-accent-soft);
-        }
-
-        .idm-action-primary {
-            border-color: var(--idm-accent);
-            background: var(--idm-accent-soft);
         }
 
         /* Main page layout */
@@ -2973,18 +2865,9 @@ hr {
             max-height: calc(100vh - 48px);
             overflow-y: auto;
             padding: 17px 12px;
-            border: 1px solid var(--idm-border);
+            border: 1px solid var(--case-border-soft);
             border-radius: 12px;
-            background: var(--idm-surface);
-        }
-
-        .idm-toc-title {
-            margin: 0 0 12px;
-            padding: 0 8px;
-            font-size: .78rem;
-            letter-spacing: 1px;
-            text-transform: uppercase;
-            opacity: .65;
+            background: var(--case-surface);
         }
 
         .idm-toc a {
@@ -2998,16 +2881,16 @@ hr {
             line-height: 1.45;
             text-decoration: none;
             opacity: .76;
-            transition: color var(--idm-transition),
-                        background var(--idm-transition),
-                        border-color var(--idm-transition);
+            transition: color var(--case-transition),
+                        background var(--case-transition),
+                        border-color var(--case-transition);
         }
 
         .idm-toc a:hover,
         .idm-toc a.active {
-            color: var(--idm-accent);
-            background: var(--idm-accent-soft);
-            border-left-color: var(--idm-accent);
+            color: var(--case-accent);
+            background: var(--case-accent-soft);
+            border-left-color: var(--case-accent);
             opacity: 1;
         }
 
@@ -3015,20 +2898,9 @@ hr {
             display: none;
             margin: 8px 0 24px;
             padding: 12px 14px;
-            border: 1px solid var(--idm-border);
+            border: 1px solid var(--case-border-soft);
             border-radius: 10px;
-            background: var(--idm-surface);
-        }
-
-        .idm-toc-mobile summary {
-            cursor: pointer;
-            font-weight: 600;
-        }
-
-        .idm-toc-mobile .idm-mobile-links {
-            display: grid;
-            gap: 7px;
-            padding-top: 12px;
+            background: var(--case-surface);
         }
 
         .idm-toc-mobile a {
@@ -3037,22 +2909,13 @@ hr {
             padding: 5px 0;
         }
 
-        .idm-content {
-            min-width: 0;
-        }
-
-        .section-intro {
-            max-width: 900px;
-            opacity: .85;
-        }
-
         /* Interactive workflow */
         .idm-workflow {
             margin: 24px 0;
             padding: 20px;
-            border: 1px solid var(--idm-border);
-            border-radius: var(--idm-radius);
-            background: var(--idm-surface);
+            border: 1px solid var(--case-border-soft);
+            border-radius: var(--case-radius-idm);
+            background: var(--case-surface);
         }
 
         .idm-workflow h3 {
@@ -3072,28 +2935,23 @@ hr {
             text-align: left;
             color: inherit;
             cursor: pointer;
-            border: 1px solid var(--idm-border);
+            border: 1px solid var(--case-border-soft);
             border-radius: 10px;
-            background: var(--idm-surface);
-            transition: transform var(--idm-transition),
-                        border-color var(--idm-transition),
-                        background var(--idm-transition);
-        }
-
-        .idm-stage:hover {
-            transform: translateY(-3px);
-            border-color: var(--idm-accent);
+            background: var(--case-surface);
+            transition: transform var(--case-transition),
+                        border-color var(--case-transition),
+                        background var(--case-transition);
         }
 
         .idm-stage[aria-pressed="true"] {
-            border-color: var(--idm-accent);
-            background: var(--idm-accent-soft);
+            border-color: var(--case-accent);
+            background: var(--case-accent-soft);
         }
 
         .idm-stage-number {
             display: block;
             margin-bottom: 12px;
-            color: var(--idm-accent);
+            color: var(--case-accent);
             font-size: .78rem;
             font-weight: 800;
             letter-spacing: 1px;
@@ -3108,26 +2966,18 @@ hr {
         .idm-stage-detail {
             margin-top: 14px;
             padding: 18px;
-            border: 1px solid var(--idm-border);
+            border: 1px solid var(--case-border-soft);
             border-radius: 10px;
             line-height: 1.8;
-        }
-
-        .idm-stage-detail h4 {
-            margin: 0 0 8px;
-        }
-
-        .idm-stage-detail p {
-            margin: 0;
         }
 
         /* Enterprise IDM delivery diagram */
         .flow-container {
             margin: 26px 0 18px;
             padding: 24px;
-            border: 1px solid var(--idm-border);
-            border-radius: var(--idm-radius);
-            background: var(--idm-surface);
+            border: 1px solid var(--case-border-soft);
+            border-radius: var(--case-radius-idm);
+            background: var(--case-surface);
         }
 
         .flow-heading {
@@ -3156,14 +3006,14 @@ hr {
             min-width: 0;
             padding: 17px 12px;
             text-align: center;
-            border: 1px solid var(--idm-border);
+            border: 1px solid var(--case-border-soft);
             border-radius: 10px;
-            background: var(--idm-surface);
+            background: var(--case-surface);
         }
 
         .flow-node.highlight {
             border-color: rgba(139, 156, 255, .65);
-            background: var(--idm-accent-soft);
+            background: var(--case-accent-soft);
         }
 
         .flow-node strong {
@@ -3187,7 +3037,7 @@ hr {
             align-items: center;
             justify-content: center;
             flex: 0 0 20px;
-            color: var(--idm-accent);
+            color: var(--case-accent);
             font-size: 1.3rem;
             font-weight: 700;
         }
@@ -3209,9 +3059,9 @@ hr {
         .migration-figure {
             margin: 28px 0;
             padding: 16px;
-            border: 1px solid var(--idm-border);
-            border-radius: var(--idm-radius);
-            background: var(--idm-surface);
+            border: 1px solid var(--case-border-soft);
+            border-radius: var(--case-radius-idm);
+            background: var(--case-surface);
             overflow: hidden;
         }
 
@@ -3250,7 +3100,7 @@ hr {
         .idm-zoom-hint {
             display: inline-block;
             margin-top: 8px;
-            color: var(--idm-accent);
+            color: var(--case-accent);
             font-size: .82rem;
         }
 
@@ -3316,19 +3166,19 @@ hr {
         .outcome-item {
             min-width: 0;
             padding: 20px;
-            border: 1px solid var(--idm-border);
+            border: 1px solid var(--case-border-soft);
             border-radius: 12px;
-            background: var(--idm-surface);
-            transition: transform var(--idm-transition),
-                        border-color var(--idm-transition),
-                        background var(--idm-transition);
+            background: var(--case-surface);
+            transition: transform var(--case-transition),
+                        border-color var(--case-transition),
+                        background var(--case-transition);
         }
 
         .migration-scenario:hover,
         .contribution-card:hover,
         .outcome-item:hover {
             transform: translateY(-3px);
-            border-color: var(--idm-accent);
+            border-color: var(--case-accent);
         }
 
         .migration-scenario h3,
@@ -3360,7 +3210,7 @@ hr {
         .status-note {
             padding: 18px;
             margin-top: 20px;
-            border: 1px solid var(--idm-border);
+            border: 1px solid var(--case-border-soft);
             border-radius: 10px;
             line-height: 1.8;
         }
@@ -3372,9 +3222,9 @@ hr {
         /* Optional expandable content wrappers */
         .idm-expandable {
             margin: 16px 0;
-            border: 1px solid var(--idm-border);
+            border: 1px solid var(--case-border-soft);
             border-radius: 10px;
-            background: var(--idm-surface);
+            background: var(--case-surface);
         }
 
         .idm-expandable summary {
@@ -3385,7 +3235,7 @@ hr {
         }
 
         .idm-expandable summary::marker {
-            color: var(--idm-accent);
+            color: var(--case-accent);
         }
 
         .idm-expandable-body {
@@ -3408,42 +3258,15 @@ hr {
         }
 
         .idm-back-top {
-            position: fixed;
             z-index: 900;
-            right: 22px;
-            bottom: 22px;
             display: grid;
             place-items: center;
-            width: 46px;
-            height: 46px;
             color: inherit;
-            border: 1px solid var(--idm-border);
+            border: 1px solid var(--case-border-soft);
             border-radius: 50%;
-            background: var(--idm-surface);
+            background: var(--case-surface);
             box-shadow: 0 6px 24px rgba(0,0,0,.12);
-            cursor: pointer;
-            opacity: 0;
-            visibility: hidden;
-            transform: translateY(8px);
-            transition: all var(--idm-transition);
-        }
-
-        .idm-back-top.visible {
-            opacity: 1;
-            visibility: visible;
-            transform: translateY(0);
-        }
-
-        /* Reveal effects */
-        .idm-reveal {
-            opacity: 0;
-            transform: translateY(16px);
-            transition: opacity .55s ease, transform .55s ease;
-        }
-
-        .idm-reveal.is-visible {
-            opacity: 1;
-            transform: translateY(0);
+            transition: all var(--case-transition);
         }
 
         @media (max-width: 1050px) {
@@ -3534,26 +3357,12 @@ hr {
 
    /* ------------------------------------------------------------------------------------------------------------------------------------ */
 
-        :root {
-            --iot-accent: var(--case-accent);
-            --iot-accent-strong: #6679ed;
-            --iot-border: rgba(128, 128, 128, .24);
-            --iot-surface: rgba(128, 128, 128, .055);
-            --iot-muted: #858da0;
-            --iot-radius: 16px;
-        }
-
-        .iot-progress-track {
-            position: fixed;
-            inset: 0 0 auto;
-            height: 4px;
+.iot-progress-track {
             z-index: 2000;
             background: transparent;
         }
 
         .iot-progress-bar {
-            height: 100%;
-            width: 0;
             background: linear-gradient(90deg, #6679ed, #a5b1ff);
             transition: width .1s linear;
         }
@@ -3566,7 +3375,7 @@ hr {
             display: inline-flex;
             align-items: center;
             gap: 9px;
-            color: var(--iot-accent);
+            color: var(--case-accent);
             font-size: .8rem;
             font-weight: 800;
             letter-spacing: 1.6px;
@@ -3589,14 +3398,7 @@ hr {
         }
 
         .iot-gradient-text {
-            color: var(--iot-accent);
-        }
-
-        .iot-hero-intro {
-            max-width: 780px;
-            font-size: 1.08rem;
-            line-height: 1.9;
-            opacity: .82;
+            color: var(--case-accent);
         }
 
         .iot-hero-pills {
@@ -3611,17 +3413,17 @@ hr {
             align-items: center;
             gap: 8px;
             padding: 9px 13px;
-            border: 1px solid var(--iot-border);
+            border: 1px solid var(--case-border);
             border-radius: 999px;
             font-size: .83rem;
-            background: var(--iot-surface);
+            background: var(--case-surface-raised);
         }
 
         .iot-pill-dot {
             width: 7px;
             height: 7px;
             border-radius: 50%;
-            background: var(--iot-accent);
+            background: var(--case-accent);
         }
 
         .iot-meta-grid {
@@ -3633,15 +3435,15 @@ hr {
 
         .iot-meta-card {
             padding: 21px;
-            border: 1px solid var(--iot-border);
+            border: 1px solid var(--case-border);
             border-radius: 15px;
-            background: var(--iot-surface);
+            background: var(--case-surface-raised);
         }
 
         .iot-meta-card span {
             display: block;
             margin-bottom: 10px;
-            color: var(--iot-muted);
+            color: var(--case-muted-quiet);
             font-size: .82rem;
         }
 
@@ -3669,7 +3471,7 @@ hr {
 
         .iot-sidebar-label {
             margin: 0 0 15px;
-            color: var(--iot-muted);
+            color: var(--case-muted-quiet);
             font-size: .75rem;
             font-weight: 800;
             letter-spacing: 1.3px;
@@ -3696,7 +3498,7 @@ hr {
 
         .iot-toc a:hover,
         .iot-toc a.active {
-            border-left-color: var(--iot-accent);
+            border-left-color: var(--case-accent);
             background: rgba(139, 156, 255, .09);
             opacity: 1;
         }
@@ -3705,9 +3507,9 @@ hr {
             display: none;
             margin: 0 0 24px;
             padding: 15px;
-            border: 1px solid var(--iot-border);
+            border: 1px solid var(--case-border);
             border-radius: 13px;
-            background: var(--iot-surface);
+            background: var(--case-surface-raised);
         }
 
         .iot-mobile-toc summary {
@@ -3719,13 +3521,9 @@ hr {
             margin-top: 12px;
         }
 
-        .iot-content {
-            min-width: 0;
-        }
-
         .iot-section {
             padding: 36px 0;
-            border-top: 1px solid var(--iot-border);
+            border-top: 1px solid var(--case-border);
             scroll-margin-top: 100px;
         }
 
@@ -3749,7 +3547,7 @@ hr {
             border: 1px solid rgba(139, 156, 255, .35);
             border-radius: 12px;
             background: rgba(139, 156, 255, .1);
-            color: var(--iot-accent);
+            color: var(--case-accent);
             font-weight: 800;
         }
 
@@ -3761,22 +3559,12 @@ hr {
 
         .iot-section-heading p {
             margin: 0;
-            color: var(--iot-muted);
+            color: var(--case-muted-quiet);
             font-size: .92rem;
-        }
-
-        .iot-content p,
-        .iot-content li {
-            line-height: 1.85;
         }
 
         .iot-content p {
             margin: 0 0 16px;
-        }
-
-        .iot-content ul,
-        .iot-content ol {
-            padding-left: 24px;
         }
 
         .iot-content li {
@@ -3787,7 +3575,7 @@ hr {
             margin: 23px 0;
             padding: 21px 23px;
             border: 1px solid rgba(139, 156, 255, .25);
-            border-left: 4px solid var(--iot-accent);
+            border-left: 4px solid var(--case-accent);
             border-radius: 0 13px 13px 0;
             background: rgba(139, 156, 255, .07);
         }
@@ -3802,9 +3590,9 @@ hr {
         .iot-workflow {
             margin: 26px 0;
             padding: 25px;
-            border: 1px solid var(--iot-border);
-            border-radius: var(--iot-radius);
-            background: var(--iot-surface);
+            border: 1px solid var(--case-border);
+            border-radius: var(--radius-lg);
+            background: var(--case-surface-raised);
         }
 
         .iot-workflow-top {
@@ -3822,7 +3610,7 @@ hr {
         }
 
         .iot-workflow-top span {
-            color: var(--iot-muted);
+            color: var(--case-muted-quiet);
             font-size: .8rem;
         }
 
@@ -3836,7 +3624,7 @@ hr {
             position: relative;
             min-width: 0;
             padding: 15px 10px;
-            border: 1px solid var(--iot-border);
+            border: 1px solid var(--case-border);
             border-radius: 12px;
             background: transparent;
             color: inherit;
@@ -3845,13 +3633,8 @@ hr {
             transition: transform .2s, border-color .2s, background .2s;
         }
 
-        .iot-stage:hover {
-            transform: translateY(-3px);
-            border-color: var(--iot-accent);
-        }
-
         .iot-stage.active {
-            border-color: var(--iot-accent);
+            border-color: var(--case-accent);
             background: rgba(139, 156, 255, .13);
         }
 
@@ -3863,14 +3646,14 @@ hr {
             margin-bottom: 13px;
             border-radius: 9px;
             background: rgba(139, 156, 255, .13);
-            color: var(--iot-accent);
+            color: var(--case-accent);
             font-weight: 800;
         }
 
         .iot-stage-icon {
             display: block;
             margin-bottom: 12px;
-            color: var(--iot-accent);
+            color: var(--case-accent);
         }
 
         .iot-stage-icon svg {
@@ -3887,7 +3670,7 @@ hr {
         .iot-stage small {
             display: block;
             margin-top: 7px;
-            color: var(--iot-muted);
+            color: var(--case-muted-quiet);
             font-size: .75rem;
             line-height: 1.5;
         }
@@ -3899,29 +3682,13 @@ hr {
             background: rgba(139, 156, 255, .08);
         }
 
-        .iot-stage-detail h4 {
-            margin: 0 0 8px;
-        }
-
-        .iot-stage-detail p {
-            margin: 0;
-            font-size: .92rem;
-        }
-
         .iot-workflow-caption {
             margin: 15px 0 0 !important;
-            color: var(--iot-muted);
+            color: var(--case-muted-quiet);
             font-size: .8rem;
         }
 
         /* Integration cards */
-
-        .iot-integration-grid {
-            display: grid;
-            grid-template-columns: repeat(2, minmax(0, 1fr));
-            gap: 14px;
-            margin: 24px 0;
-        }
 
         .iot-integration-card {
             display: flex;
@@ -3929,9 +3696,9 @@ hr {
             gap: 10px;
             min-width: 0;
             padding: 20px;
-            border: 1px solid var(--iot-border);
+            border: 1px solid var(--case-border);
             border-radius: 15px;
-            background: var(--iot-surface);
+            background: var(--case-surface-raised);
             transition: transform .2s, border-color .2s;
         }
 
@@ -3954,7 +3721,7 @@ hr {
             place-items: center;
             border-radius: 12px;
             background: rgba(139, 156, 255, .12);
-            color: var(--iot-accent);
+            color: var(--case-accent);
         }
 
         .iot-card-icon svg {
@@ -3977,7 +3744,7 @@ hr {
             align-self: flex-start;
             margin-top: auto;
             padding-top: 4px;
-            color: var(--iot-muted);
+            color: var(--case-muted-quiet);
             font-size: .76rem;
         }
 
@@ -3990,7 +3757,7 @@ hr {
 
         .iot-provider {
             padding: 8px 13px;
-            border: 1px solid var(--iot-border);
+            border: 1px solid var(--case-border);
             border-radius: 999px;
             font-size: .84rem;
         }
@@ -4004,10 +3771,10 @@ hr {
         }
 
         .iot-responsibility {
-            border: 1px solid var(--iot-border);
+            border: 1px solid var(--case-border);
             border-radius: 14px;
             overflow: hidden;
-            background: var(--iot-surface);
+            background: var(--case-surface-raised);
         }
 
         .iot-responsibility summary {
@@ -4026,13 +3793,9 @@ hr {
         .iot-responsibility summary::after {
             content: "+";
             margin-left: auto;
-            color: var(--iot-accent);
+            color: var(--case-accent);
             font-size: 1.5rem;
             line-height: 1;
-        }
-
-        .iot-responsibility[open] summary::after {
-            content: "−";
         }
 
         .iot-responsibility summary:hover {
@@ -4047,13 +3810,9 @@ hr {
             place-items: center;
             border-radius: 11px;
             background: rgba(139, 156, 255, .12);
-            color: var(--iot-accent);
+            color: var(--case-accent);
             font-size: 1rem;
             font-weight: 800;
-        }
-
-        .iot-responsibility-title {
-            min-width: 0;
         }
 
         .iot-responsibility-title strong {
@@ -4064,16 +3823,12 @@ hr {
         .iot-responsibility-title small {
             display: block;
             margin-top: 3px;
-            color: var(--iot-muted);
+            color: var(--case-muted-quiet);
             line-height: 1.5;
         }
 
         .iot-responsibility-body {
             padding: 0 20px 19px 70px;
-        }
-
-        .iot-responsibility-body ul {
-            margin: 0;
         }
 
         /* Impact and skills */
@@ -4089,13 +3844,13 @@ hr {
             display: flex;
             gap: 11px;
             padding: 16px;
-            border: 1px solid var(--iot-border);
+            border: 1px solid var(--case-border);
             border-radius: 12px;
         }
 
         .iot-check {
             flex: 0 0 auto;
-            color: var(--iot-accent);
+            color: var(--case-accent);
             font-weight: 900;
         }
 
@@ -4113,17 +3868,17 @@ hr {
 
         .iot-skill {
             padding: 9px 13px;
-            border: 1px solid var(--iot-border);
+            border: 1px solid var(--case-border);
             border-radius: 999px;
             font-size: .85rem;
-            background: var(--iot-surface);
+            background: var(--case-surface-raised);
         }
 
         .iot-confidentiality {
             padding: 19px;
-            border: 1px dashed var(--iot-border);
+            border: 1px dashed var(--case-border);
             border-radius: 13px;
-            color: var(--iot-muted);
+            color: var(--case-muted-quiet);
             font-size: .88rem;
             line-height: 1.8;
         }
@@ -4135,7 +3890,7 @@ hr {
             justify-content: space-between;
             gap: 15px;
             padding: 30px 0 60px;
-            border-top: 1px solid var(--iot-border);
+            border-top: 1px solid var(--case-border);
         }
 
         .iot-footer a {
@@ -4144,7 +3899,7 @@ hr {
         }
 
         .iot-footer a:hover {
-            color: var(--iot-accent);
+            color: var(--case-accent);
         }
 
         .iot-next-link {
@@ -4152,52 +3907,26 @@ hr {
             align-items: center;
             gap: 8px;
             padding: 12px 16px;
-            border: 1px solid var(--iot-border);
+            border: 1px solid var(--case-border);
             border-radius: 10px;
             transition: border-color .2s, background .2s;
         }
 
         .iot-next-link:hover {
-            border-color: var(--iot-accent);
+            border-color: var(--case-accent);
             background: rgba(139, 156, 255, .08);
         }
 
         .iot-top-button {
-            position: fixed;
-            right: 23px;
-            bottom: 23px;
             z-index: 1000;
             display: grid;
-            width: 46px;
-            height: 46px;
             place-items: center;
-            border: 1px solid var(--iot-border);
+            border: 1px solid var(--case-border);
             border-radius: 13px;
-            background: var(--iot-accent-strong);
+            background: var(--case-accent-strong);
             color: #fff;
             font-size: 1.25rem;
-            cursor: pointer;
-            opacity: 0;
-            visibility: hidden;
-            transform: translateY(8px);
             transition: opacity .2s, transform .2s, visibility .2s;
-        }
-
-        .iot-top-button.visible {
-            opacity: 1;
-            visibility: visible;
-            transform: translateY(0);
-        }
-
-        .iot-reveal {
-            opacity: 0;
-            transform: translateY(15px);
-            transition: opacity .55s ease, transform .55s ease;
-        }
-
-        .iot-reveal.revealed {
-            opacity: 1;
-            transform: translateY(0);
         }
 
         @media (max-width: 1000px) {
@@ -4293,25 +4022,11 @@ hr {
 
    /* ------------------------------------------------------------------------------------------------------------------------------------ */
 
-        :root {
-            --mon-accent: var(--case-accent);
-            --mon-accent-strong: #6679ed;
-            --mon-border: rgba(128,128,128,.24);
-            --mon-surface: rgba(128,128,128,.055);
-            --mon-muted: #858da0;
-            --mon-radius: 16px;
-        }
-
-        .mon-progress-track {
-            position: fixed;
-            inset: 0 0 auto;
-            height: 4px;
+.mon-progress-track {
             z-index: 2000;
         }
 
         .mon-progress-bar {
-            width: 0;
-            height: 100%;
             background: linear-gradient(90deg, #6679ed, #a5b1ff);
         }
 
@@ -4323,7 +4038,7 @@ hr {
             display: inline-flex;
             align-items: center;
             gap: 9px;
-            color: var(--mon-accent);
+            color: var(--case-accent);
             font-size: .8rem;
             font-weight: 800;
             letter-spacing: 1.5px;
@@ -4346,14 +4061,7 @@ hr {
         }
 
         .mon-gradient {
-            color: var(--mon-accent);
-        }
-
-        .mon-intro {
-            max-width: 790px;
-            font-size: 1.05rem;
-            line-height: 1.9;
-            opacity: .84;
+            color: var(--case-accent);
         }
 
         .mon-pills {
@@ -4368,9 +4076,9 @@ hr {
             align-items: center;
             gap: 8px;
             padding: 9px 13px;
-            border: 1px solid var(--mon-border);
+            border: 1px solid var(--case-border);
             border-radius: 999px;
-            background: var(--mon-surface);
+            background: var(--case-surface-raised);
             font-size: .84rem;
         }
 
@@ -4378,7 +4086,7 @@ hr {
             width: 7px;
             height: 7px;
             border-radius: 50%;
-            background: var(--mon-accent);
+            background: var(--case-accent);
         }
 
         .mon-meta {
@@ -4390,15 +4098,15 @@ hr {
 
         .mon-meta-card {
             padding: 20px;
-            border: 1px solid var(--mon-border);
+            border: 1px solid var(--case-border);
             border-radius: 14px;
-            background: var(--mon-surface);
+            background: var(--case-surface-raised);
         }
 
         .mon-meta-card span {
             display: block;
             margin-bottom: 9px;
-            color: var(--mon-muted);
+            color: var(--case-muted-quiet);
             font-size: .82rem;
         }
 
@@ -4425,7 +4133,7 @@ hr {
 
         .mon-sidebar-label {
             margin: 0 0 14px;
-            color: var(--mon-muted);
+            color: var(--case-muted-quiet);
             font-size: .74rem;
             font-weight: 800;
             letter-spacing: 1.2px;
@@ -4452,7 +4160,7 @@ hr {
 
         .mon-toc a:hover,
         .mon-toc a.active {
-            border-left-color: var(--mon-accent);
+            border-left-color: var(--case-accent);
             background: rgba(139,156,255,.09);
             opacity: 1;
         }
@@ -4461,9 +4169,9 @@ hr {
             display: none;
             margin-bottom: 23px;
             padding: 15px;
-            border: 1px solid var(--mon-border);
+            border: 1px solid var(--case-border);
             border-radius: 13px;
-            background: var(--mon-surface);
+            background: var(--case-surface-raised);
         }
 
         .mon-mobile-toc summary {
@@ -4475,13 +4183,9 @@ hr {
             margin-top: 12px;
         }
 
-        .mon-content {
-            min-width: 0;
-        }
-
         .mon-section {
             padding: 34px 0;
-            border-top: 1px solid var(--mon-border);
+            border-top: 1px solid var(--case-border);
             scroll-margin-top: 100px;
         }
 
@@ -4505,7 +4209,7 @@ hr {
             border: 1px solid rgba(139,156,255,.32);
             border-radius: 12px;
             background: rgba(139,156,255,.1);
-            color: var(--mon-accent);
+            color: var(--case-accent);
             font-weight: 800;
         }
 
@@ -4517,22 +4221,12 @@ hr {
 
         .mon-heading p {
             margin: 0;
-            color: var(--mon-muted);
+            color: var(--case-muted-quiet);
             font-size: .9rem;
-        }
-
-        .mon-content p,
-        .mon-content li {
-            line-height: 1.85;
         }
 
         .mon-content p {
             margin: 0 0 16px;
-        }
-
-        .mon-content ul,
-        .mon-content ol {
-            padding-left: 24px;
         }
 
         .mon-content li {
@@ -4543,7 +4237,7 @@ hr {
             margin: 23px 0;
             padding: 21px 23px;
             border: 1px solid rgba(139,156,255,.24);
-            border-left: 4px solid var(--mon-accent);
+            border-left: 4px solid var(--case-accent);
             border-radius: 0 13px 13px 0;
             background: rgba(139,156,255,.07);
             line-height: 1.8;
@@ -4565,15 +4259,15 @@ hr {
 
         .mon-tool-card {
             padding: 19px;
-            border: 1px solid var(--mon-border);
+            border: 1px solid var(--case-border);
             border-radius: 14px;
-            background: var(--mon-surface);
+            background: var(--case-surface-raised);
             transition: transform .2s,border-color .2s;
         }
 
         .mon-tool-card:hover {
             transform: translateY(-3px);
-            border-color: var(--mon-accent);
+            border-color: var(--case-accent);
         }
 
         .mon-tool-icon {
@@ -4585,7 +4279,7 @@ hr {
             border: 1px solid rgba(139,156,255,.25);
             border-radius: 12px;
             background: rgba(139,156,255,.1);
-            color: var(--mon-accent);
+            color: var(--case-accent);
         }
 
         .mon-tool-icon svg {
@@ -4609,9 +4303,9 @@ hr {
         .mon-workflow-box {
             margin: 25px 0;
             padding: 23px;
-            border: 1px solid var(--mon-border);
+            border: 1px solid var(--case-border);
             border-radius: 17px;
-            background: var(--mon-surface);
+            background: var(--case-surface-raised);
         }
 
         .mon-workflow-top {
@@ -4629,7 +4323,7 @@ hr {
         }
 
         .mon-workflow-top span {
-            color: var(--mon-muted);
+            color: var(--case-muted-quiet);
             font-size: .8rem;
         }
 
@@ -4642,7 +4336,7 @@ hr {
         .mon-workflow-step {
             min-width: 0;
             padding: 16px;
-            border: 1px solid var(--mon-border);
+            border: 1px solid var(--case-border);
             border-radius: 12px;
             background: transparent;
             color: inherit;
@@ -4651,13 +4345,8 @@ hr {
             transition: transform .2s,border-color .2s,background .2s;
         }
 
-        .mon-workflow-step:hover {
-            transform: translateY(-3px);
-            border-color: var(--mon-accent);
-        }
-
         .mon-workflow-step.active {
-            border-color: var(--mon-accent);
+            border-color: var(--case-accent);
             background: rgba(139,156,255,.12);
         }
 
@@ -4676,13 +4365,13 @@ hr {
             place-items: center;
             border-radius: 9px;
             background: rgba(139,156,255,.14);
-            color: var(--mon-accent);
+            color: var(--case-accent);
             font-size: .82rem;
             font-weight: 800;
         }
 
         .mon-step-icon {
-            color: var(--mon-accent);
+            color: var(--case-accent);
         }
 
         .mon-step-icon svg {
@@ -4700,7 +4389,7 @@ hr {
         .mon-workflow-step small {
             display: block;
             margin-top: 7px;
-            color: var(--mon-muted);
+            color: var(--case-muted-quiet);
             font-size: .77rem;
             line-height: 1.5;
         }
@@ -4712,18 +4401,9 @@ hr {
             background: rgba(139,156,255,.08);
         }
 
-        .mon-workflow-detail h4 {
-            margin: 0 0 8px;
-        }
-
-        .mon-workflow-detail p {
-            margin: 0;
-            font-size: .92rem;
-        }
-
         .mon-caption {
             margin: 14px 0 0 !important;
-            color: var(--mon-muted);
+            color: var(--case-muted-quiet);
             font-size: .81rem;
         }
 
@@ -4737,9 +4417,9 @@ hr {
 
         .mon-contribution {
             overflow: hidden;
-            border: 1px solid var(--mon-border);
+            border: 1px solid var(--case-border);
             border-radius: 14px;
-            background: var(--mon-surface);
+            background: var(--case-surface-raised);
         }
 
         .mon-contribution summary {
@@ -4758,12 +4438,8 @@ hr {
         .mon-contribution summary::after {
             content: "+";
             margin-left: auto;
-            color: var(--mon-accent);
+            color: var(--case-accent);
             font-size: 1.5rem;
-        }
-
-        .mon-contribution[open] summary::after {
-            content: "−";
         }
 
         .mon-contribution summary:hover {
@@ -4778,12 +4454,8 @@ hr {
             place-items: center;
             border-radius: 11px;
             background: rgba(139,156,255,.12);
-            color: var(--mon-accent);
+            color: var(--case-accent);
             font-weight: 800;
-        }
-
-        .mon-contribution-title {
-            min-width: 0;
         }
 
         .mon-contribution-title strong {
@@ -4794,16 +4466,12 @@ hr {
         .mon-contribution-title small {
             display: block;
             margin-top: 3px;
-            color: var(--mon-muted);
+            color: var(--case-muted-quiet);
             line-height: 1.5;
         }
 
         .mon-contribution-body {
             padding: 0 22px 20px 71px;
-        }
-
-        .mon-contribution-body ul {
-            margin: 0;
         }
 
         /* Outcome cards */
@@ -4819,14 +4487,14 @@ hr {
             display: flex;
             gap: 12px;
             padding: 18px;
-            border: 1px solid var(--mon-border);
+            border: 1px solid var(--case-border);
             border-radius: 13px;
-            background: var(--mon-surface);
+            background: var(--case-surface-raised);
         }
 
         .mon-outcome-mark {
             flex: 0 0 auto;
-            color: var(--mon-accent);
+            color: var(--case-accent);
             font-weight: 900;
         }
 
@@ -4850,17 +4518,17 @@ hr {
 
         .mon-skill {
             padding: 9px 13px;
-            border: 1px solid var(--mon-border);
+            border: 1px solid var(--case-border);
             border-radius: 999px;
-            background: var(--mon-surface);
+            background: var(--case-surface-raised);
             font-size: .85rem;
         }
 
         .mon-note {
             padding: 18px;
-            border: 1px dashed var(--mon-border);
+            border: 1px dashed var(--case-border);
             border-radius: 12px;
-            color: var(--mon-muted);
+            color: var(--case-muted-quiet);
             font-size: .88rem;
             line-height: 1.8;
         }
@@ -4872,7 +4540,7 @@ hr {
             justify-content: space-between;
             gap: 15px;
             padding: 30px 0 60px;
-            border-top: 1px solid var(--mon-border);
+            border-top: 1px solid var(--case-border);
         }
 
         .mon-footer a {
@@ -4881,57 +4549,31 @@ hr {
         }
 
         .mon-footer a:hover {
-            color: var(--mon-accent);
+            color: var(--case-accent);
         }
 
         .mon-next-link {
             padding: 12px 16px;
-            border: 1px solid var(--mon-border);
+            border: 1px solid var(--case-border);
             border-radius: 10px;
             transition: background .2s,border-color .2s;
         }
 
         .mon-next-link:hover {
-            border-color: var(--mon-accent);
+            border-color: var(--case-accent);
             background: rgba(139,156,255,.08);
         }
 
         .mon-top-button {
-            position: fixed;
-            right: 22px;
-            bottom: 22px;
             z-index: 1000;
             display: grid;
-            width: 46px;
-            height: 46px;
             place-items: center;
-            border: 1px solid var(--mon-border);
+            border: 1px solid var(--case-border);
             border-radius: 13px;
-            background: var(--mon-accent-strong);
+            background: var(--case-accent-strong);
             color: white;
             font-size: 1.25rem;
-            cursor: pointer;
-            opacity: 0;
-            visibility: hidden;
-            transform: translateY(8px);
             transition: opacity .2s,transform .2s,visibility .2s;
-        }
-
-        .mon-top-button.visible {
-            opacity: 1;
-            visibility: visible;
-            transform: translateY(0);
-        }
-
-        .mon-reveal {
-            opacity: 0;
-            transform: translateY(14px);
-            transition: opacity .5s ease,transform .5s ease;
-        }
-
-        .mon-reveal.revealed {
-            opacity: 1;
-            transform: translateY(0);
         }
 
         @media(max-width:1000px) {

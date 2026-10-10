@@ -173,7 +173,7 @@
                 <section class="case-section idm-reveal" id="idm-section-2">
                     <h2>02. Enterprise IDM Integration Flow</h2>
 
-                    <p class="section-intro">
+                    <p class="case-section-intro">
                         This flow illustrates how I worked with client requirements
                         and internal teams to prepare identity integrations for
                         delivery.
@@ -273,7 +273,7 @@
                 <section class="case-section idm-reveal" id="user-migration">
                     <h2>04. User Migration Architecture</h2>
 
-                    <p class="section-intro">
+                    <p class="case-section-intro">
                         The identity migration initiative covered two scenarios:
                         migrating users from existing database-backed records
                         to Amazon Cognito, and migrating users between Cognito
@@ -392,7 +392,7 @@
                 <section class="case-section idm-reveal" id="idm-section-6">
                     <h2>06. My Role and Contributions</h2>
 
-                    <p class="section-intro">
+                    <p class="case-section-intro">
                         Expand each area to explore the responsibilities I handled.
                     </p>
 
@@ -492,7 +492,7 @@
                 <section class="case-section idm-reveal" id="idm-section-7">
                     <h2>07. My Delivery Approach</h2>
 
-                    <p class="section-intro">
+                    <p class="case-section-intro">
                         The sequence below summarizes how I approached delivery
                         from initial requirements through delivery readiness.
                     </p>
@@ -657,249 +657,7 @@
         ↑
     </button>
 
-    <script>
-        (() => {
-            "use strict";
-
-            const progressBar = document.getElementById("idmProgressBar");
-            const backTop = document.getElementById("idmBackTop");
-
-            /* Reading progress and back-to-top button */
-            function updateScrollUI() {
-                const scrollableHeight =
-                    document.documentElement.scrollHeight - window.innerHeight;
-
-                const progress = scrollableHeight > 0
-                    ? (window.scrollY / scrollableHeight) * 100
-                    : 0;
-
-                progressBar.style.width = `${Math.min(100, progress)}%`;
-                backTop.classList.toggle("visible", window.scrollY > 500);
-            }
-
-            window.addEventListener("scroll", updateScrollUI, {
-                passive: true
-            });
-
-            window.addEventListener("resize", updateScrollUI);
-            updateScrollUI();
-
-            backTop.addEventListener("click", () => {
-                window.scrollTo({
-                    top: 0,
-                    behavior: window.matchMedia(
-                        "(prefers-reduced-motion: reduce)"
-                    ).matches ? "auto" : "smooth"
-                });
-            });
-
-            /* Interactive delivery workflow */
-            const stages = [
-                {
-                    title: "01. Understand requirements",
-                    description:
-                        "Clarify client needs, identity integration expectations, " +
-                        "and required business behaviour before work proceeds."
-                },
-                {
-                    title: "02. Define user stories",
-                    description:
-                        "Translate the agreed requirements into user stories and " +
-                        "actionable development tasks that explain the expected behaviour."
-                },
-                {
-                    title: "03. Coordinate integration",
-                    description:
-                        "Work with developers and relevant teams on integration setup, " +
-                        "questions, dependencies, and delivery coordination."
-                },
-                {
-                    title: "04. Test and investigate",
-                    description:
-                        "Support integration testing and help investigate issues " +
-                        "identified during implementation and testing."
-                },
-                {
-                    title: "05. Prepare for delivery",
-                    description:
-                        "Support readiness for client use while communicating " +
-                        "implementation status and outstanding rollout work accurately."
-                }
-            ];
-
-            const stageButtons = document.querySelectorAll(".idm-stage");
-            const stageTitle = document.getElementById("idmStageTitle");
-            const stageDescription =
-                document.getElementById("idmStageDescription");
-
-            stageButtons.forEach((button) => {
-                button.addEventListener("click", () => {
-                    const index = Number(button.dataset.stage);
-                    const stage = stages[index];
-
-                    if (!stage) return;
-
-                    stageButtons.forEach((item) => {
-                        item.setAttribute(
-                            "aria-pressed",
-                            String(item === button)
-                        );
-                    });
-
-                    stageTitle.textContent = stage.title;
-                    stageDescription.textContent = stage.description;
-                });
-            });
-
-            /* Active section indicator in the table of contents */
-            const sections = Array.from(
-                document.querySelectorAll(
-                    ".idm-content .case-section[id]"
-                )
-            );
-
-            const tocLinks = Array.from(
-                document.querySelectorAll(
-                    ".idm-toc a, .idm-toc-mobile a"
-                )
-            );
-
-            if ("IntersectionObserver" in window) {
-                const sectionObserver = new IntersectionObserver(
-                    (entries) => {
-                        const visibleEntries = entries
-                            .filter((entry) => entry.isIntersecting)
-                            .sort((a, b) =>
-                                b.intersectionRatio - a.intersectionRatio
-                            );
-
-                        if (!visibleEntries.length) return;
-
-                        const activeId = visibleEntries[0].target.id;
-
-                        tocLinks.forEach((link) => {
-                            const active =
-                                link.getAttribute("href") === `#${activeId}`;
-
-                            if (active) {
-                                link.classList.add("active");
-                                link.setAttribute("aria-current", "location");
-                            } else {
-                                link.classList.remove("active");
-                                link.removeAttribute("aria-current");
-                            }
-                        });
-                    },
-                    {
-                        rootMargin: "-15% 0px -65% 0px",
-                        threshold: [0, 0.1, 0.3, 0.6]
-                    }
-                );
-
-                sections.forEach((section) => {
-                    sectionObserver.observe(section);
-                });
-            }
-
-            /* Close mobile contents menu after selecting a section */
-            const mobileToc = document.querySelector(".idm-toc-mobile");
-
-            mobileToc.querySelectorAll("a").forEach((link) => {
-                link.addEventListener("click", () => {
-                    mobileToc.open = false;
-                });
-            });
-
-            /* Reveal sections as they enter the viewport */
-            const revealItems = document.querySelectorAll(".idm-reveal");
-            const reduceMotion = window.matchMedia(
-                "(prefers-reduced-motion: reduce)"
-            ).matches;
-
-            if ("IntersectionObserver" in window && !reduceMotion) {
-                const revealObserver = new IntersectionObserver(
-                    (entries, observer) => {
-                        entries.forEach((entry) => {
-                            if (entry.isIntersecting) {
-                                entry.target.classList.add("is-visible");
-                                observer.unobserve(entry.target);
-                            }
-                        });
-                    },
-                    { threshold: 0.08 }
-                );
-
-                revealItems.forEach((item) => {
-                    revealObserver.observe(item);
-                });
-            } else {
-                revealItems.forEach((item) => {
-                    item.classList.add("is-visible");
-                });
-            }
-
-            /* Diagram zoom lightbox */
-            const lightbox = document.getElementById("idmLightbox");
-            const lightboxImage = document.getElementById("idmLightboxImage");
-            const lightboxCaption =
-                document.getElementById("idmLightboxCaption");
-            const lightboxClose =
-                document.getElementById("idmLightboxClose");
-
-            let previouslyFocusedElement = null;
-
-            function openLightbox(button) {
-                const imageSrc = button.dataset.zoomSrc;
-                const imageAlt = button.dataset.zoomAlt || "";
-
-                if (!imageSrc) return;
-
-                previouslyFocusedElement = button;
-                lightboxImage.src = imageSrc;
-                lightboxImage.alt = imageAlt;
-                lightboxCaption.textContent = imageAlt;
-
-                lightbox.classList.add("open");
-                lightbox.setAttribute("aria-hidden", "false");
-                document.body.style.overflow = "hidden";
-                lightboxClose.focus();
-            }
-
-            function closeLightbox() {
-                lightbox.classList.remove("open");
-                lightbox.setAttribute("aria-hidden", "true");
-                lightboxImage.src = "";
-                document.body.style.overflow = "";
-
-                if (previouslyFocusedElement) {
-                    previouslyFocusedElement.focus();
-                }
-            }
-
-            document.querySelectorAll("[data-zoom-src]").forEach((button) => {
-                button.addEventListener("click", () => {
-                    openLightbox(button);
-                });
-            });
-
-            lightboxClose.addEventListener("click", closeLightbox);
-
-            lightbox.addEventListener("click", (event) => {
-                if (event.target === lightbox) {
-                    closeLightbox();
-                }
-            });
-
-            document.addEventListener("keydown", (event) => {
-                if (
-                    event.key === "Escape" &&
-                    lightbox.classList.contains("open")
-                ) {
-                    closeLightbox();
-                }
-            });
-        })();
-    </script>
+    <script src="case-study-common.js"></script>
 
 </body>
 </html>

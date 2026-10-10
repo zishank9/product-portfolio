@@ -4,8 +4,11 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="Cloud monitoring and incident management case study covering team leadership, monitoring processes, and operational improvements.">
-    <title>Cloud Monitoring & Incident Management | Product Portfolio</title>
+
+    <meta name="description" content="Case study on cloud monitoring, incident management, alert quality, operational documentation, and leadership of a 15-person monitoring team.">
+
+    <title>Cloud Monitoring & Incident Management | Zishan Khan</title>
+
     <link rel="stylesheet" href="styles.css">
 
     <style>
@@ -28,15 +31,16 @@
         }
 
         .case-intro {
-            max-width: 760px;
+            max-width: 780px;
             line-height: 1.8;
             opacity: 0.85;
+            font-size: 1.05rem;
         }
 
         .case-meta {
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
-            gap: 18px;
+            gap: 16px;
             margin: 32px 0;
         }
 
@@ -44,12 +48,13 @@
             padding: 20px;
             border: 1px solid rgba(128, 128, 128, 0.25);
             border-radius: 12px;
+            background: rgba(128, 128, 128, 0.04);
         }
 
         .meta-card p {
-            margin-bottom: 6px;
+            margin: 0 0 8px;
             opacity: 0.7;
-            font-size: 0.9rem;
+            font-size: 0.85rem;
         }
 
         .meta-card strong {
@@ -57,12 +62,17 @@
         }
 
         .case-section {
-            padding: 30px 0;
+            padding: 32px 0;
             border-top: 1px solid rgba(128, 128, 128, 0.2);
         }
 
         .case-section h2 {
-            margin-bottom: 18px;
+            margin: 0 0 18px;
+        }
+
+        .case-section h3 {
+            margin: 26px 0 10px;
+            font-size: 1.08rem;
         }
 
         .case-section p,
@@ -79,13 +89,110 @@
             margin-bottom: 10px;
         }
 
+        .section-intro {
+            max-width: 800px;
+            opacity: 0.85;
+        }
+
         .case-callout {
             padding: 22px;
-            margin: 20px 0;
+            margin: 22px 0;
             border-left: 3px solid #8b9cff;
             border-radius: 8px;
             background: rgba(128, 128, 128, 0.08);
             line-height: 1.8;
+        }
+
+        /* Workflow diagram */
+        .workflow {
+            display: grid;
+            grid-template-columns: repeat(3, minmax(0, 1fr));
+            gap: 16px;
+            margin: 28px 0;
+        }
+
+        .workflow-step {
+            position: relative;
+            padding: 20px;
+            border: 1px solid rgba(128, 128, 128, 0.25);
+            border-radius: 12px;
+            background: rgba(128, 128, 128, 0.04);
+            min-width: 0;
+        }
+
+        .workflow-number {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            width: 32px;
+            height: 32px;
+            margin-bottom: 12px;
+            border-radius: 50%;
+            background: rgba(139, 156, 255, 0.16);
+            color: #8b9cff;
+            font-size: 0.9rem;
+            font-weight: 700;
+        }
+
+        .workflow-step h3 {
+            margin: 0 0 8px;
+            font-size: 1rem;
+        }
+
+        .workflow-step p {
+            margin: 0;
+            font-size: 0.92rem;
+            line-height: 1.7;
+            opacity: 0.82;
+        }
+
+        .workflow-note {
+            margin-top: 16px;
+            font-size: 0.88rem;
+            line-height: 1.7;
+            opacity: 0.72;
+        }
+
+        /* Contribution cards */
+        .contribution-grid {
+            display: grid;
+            grid-template-columns: repeat(2, minmax(0, 1fr));
+            gap: 18px;
+            margin-top: 24px;
+        }
+
+        .contribution-card {
+            padding: 22px;
+            border: 1px solid rgba(128, 128, 128, 0.23);
+            border-radius: 12px;
+        }
+
+        .contribution-card h3 {
+            margin: 0 0 12px;
+        }
+
+        .contribution-card ul {
+            margin-bottom: 0;
+        }
+
+        /* Outcomes */
+        .outcome-list {
+            display: grid;
+            grid-template-columns: repeat(2, minmax(0, 1fr));
+            gap: 14px;
+            margin-top: 24px;
+        }
+
+        .outcome-item {
+            padding: 18px;
+            border: 1px solid rgba(128, 128, 128, 0.22);
+            border-radius: 10px;
+            line-height: 1.7;
+        }
+
+        .outcome-item strong {
+            display: block;
+            margin-bottom: 5px;
         }
 
         .skill-list {
@@ -103,6 +210,10 @@
         }
 
         .case-footer {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: space-between;
+            gap: 16px;
             padding: 35px 0 60px;
         }
 
@@ -110,19 +221,46 @@
             text-decoration: none;
         }
 
-        @media (max-width: 600px) {
+        .confidentiality-note {
+            font-size: 0.9rem;
+            line-height: 1.8;
+            opacity: 0.75;
+        }
+
+        @media (max-width: 700px) {
             .case-hero {
                 padding-top: 40px;
             }
 
+            .workflow {
+                grid-template-columns: 1fr;
+            }
+
+            .contribution-grid,
+            .outcome-list {
+                grid-template-columns: 1fr;
+            }
+
+            .case-meta {
+                grid-template-columns: 1fr 1fr;
+            }
+        }
+
+        @media (max-width: 420px) {
             .case-meta {
                 grid-template-columns: 1fr;
+            }
+
+            .meta-card,
+            .contribution-card {
+                padding: 17px;
             }
         }
     </style>
 </head>
 
 <body>
+
     <header>
         <nav class="container">
             <a href="index.html" class="logo">Portfolio</a>
@@ -137,21 +275,19 @@
 
     <main class="container">
 
-        <!-- Hero -->
+        <!-- HERO -->
         <section class="case-hero">
-            <p class="case-label">
-                Case Study 02 · Cloud Operations
-            </p>
+            <p class="case-label">Case Study 02 · Cloud Operations</p>
 
-            <h1>
-                Building a More Consistent Cloud Monitoring Process
-            </h1>
+            <h1>Making Cloud Monitoring More Actionable and Consistent</h1>
 
             <p class="case-intro">
-                How I helped establish monitoring practices, coordinate a
-                15-person team, and improve incident investigation through
-                clearer dashboards, reusable documentation, and more
-                consistent alert handling.
+                I led a 15-person cloud monitoring team and helped improve
+                how application alerts were reviewed, incidents were
+                investigated, and operational knowledge was shared.
+                My focus was on reducing unnecessary monitoring noise,
+                creating repeatable troubleshooting practices, and
+                coordinating with developers and QA to investigate issues.
             </p>
 
             <div class="case-meta">
@@ -162,7 +298,7 @@
 
                 <div class="meta-card">
                     <p>Team</p>
-                    <strong>15-person monitoring team</strong>
+                    <strong>15-person cloud monitoring team</strong>
                 </div>
 
                 <div class="meta-card">
@@ -171,215 +307,406 @@
                 </div>
 
                 <div class="meta-card">
-                    <p>Focus</p>
-                    <strong>Monitoring, incidents, and process improvement</strong>
+                    <p>Core Focus</p>
+                    <strong>Incident handling, alert quality, and process improvement</strong>
                 </div>
             </div>
         </section>
 
-        <!-- Challenge -->
+        <!-- PROJECT OVERVIEW -->
         <section class="case-section">
-            <h2>The Challenge</h2>
+            <h2>01. Project Overview</h2>
 
-            <p>
-                Application monitoring had several operational challenges.
-                Excessive or repetitive alerts made it harder to identify
-                important issues, some problems were missed during testing
-                and discovered later, and troubleshooting practices were
-                not sufficiently consistent across the team.
-            </p>
-
-            <p>
-                The team needed a more structured way to review application
-                health, investigate recurring failures, document known
-                issues, and coordinate with developers and QA.
-            </p>
-        </section>
-
-        <!-- Objective -->
-        <section class="case-section">
-            <h2>My Objective</h2>
-
-            <p>
-                My objective was to establish a more consistent monitoring
-                and incident-handling process, improve visibility into
-                recurring application problems, and help the team identify
-                and investigate issues more effectively.
+            <p class="section-intro">
+                Application monitoring is most useful when teams can
+                distinguish important signals from routine noise and
+                respond to incidents consistently. This work focused on
+                improving the team's operational practices rather than
+                simply collecting more monitoring data.
             </p>
 
             <div class="case-callout">
-                <strong>Core principle:</strong>
-                Make monitoring actionable. The goal was not simply to
-                collect more alerts, but to help the team distinguish
-                meaningful signals from noise and respond consistently.
+                <strong>The central problem:</strong>
+                Repetitive alerts, inconsistent troubleshooting practices,
+                and issues discovered after testing made it harder to
+                investigate application problems efficiently. The team
+                needed clearer monitoring visibility, reusable procedures,
+                and stronger coordination across monitoring, development,
+                and QA.
             </div>
         </section>
 
-        <!-- Responsibilities -->
+        <!-- CHALLENGE -->
         <section class="case-section">
-            <h2>My Role and Contributions</h2>
+            <h2>02. The Challenge</h2>
 
-            <h3>1. Monitoring dashboards and alert quality</h3>
-
-            <ul>
-                <li>
-                    Created monitoring dashboards using the team's
-                    observability tools to improve visibility into
-                    application behaviour and recurring issues.
-                </li>
-                <li>
-                    Reviewed repetitive alerts and worked on reducing
-                    unnecessary monitoring noise.
-                </li>
-                <li>
-                    Helped distinguish higher-priority application
-                    problems from lower-priority warnings.
-                </li>
-                <li>
-                    Worked on alert thresholds and filtering practices
-                    to make monitoring information more actionable.
-                </li>
-            </ul>
-
-            <h3>2. Standard operating procedures and troubleshooting</h3>
+            <p>
+                The monitoring team worked with application alerts and
+                operational issues across a cloud-based environment.
+                Several challenges affected the team's ability to
+                investigate and follow up on problems consistently:
+            </p>
 
             <ul>
                 <li>
-                    Created SOPs and troubleshooting guides for common
-                    application failures.
+                    <strong>Alert noise:</strong>
+                    Repetitive or lower-priority alerts could make
+                    significant application issues harder to spot.
                 </li>
                 <li>
-                    Documented repeatable investigation steps so that
-                    the team could approach known issues more consistently.
+                    <strong>Inconsistent investigation:</strong>
+                    Troubleshooting approaches and knowledge of recurring
+                    failures needed to be documented more consistently.
                 </li>
                 <li>
-                    Improved knowledge sharing and made it easier for
-                    team members to learn established troubleshooting
-                    practices.
-                </li>
-            </ul>
-
-            <h3>3. Team leadership and coordination</h3>
-
-            <ul>
-                <li>
-                    Led and coordinated a 15-person cloud monitoring team.
+                    <strong>Gaps discovered after testing:</strong>
+                    Some application issues surfaced during monitoring
+                    rather than being identified earlier in testing.
                 </li>
                 <li>
-                    Established more consistent approaches to alert
-                    handling, incident investigation, and escalation.
-                </li>
-                <li>
-                    Coordinated with developers and QA to investigate
-                    application errors, follow up on bugs, and improve
-                    issue visibility.
-                </li>
-                <li>
-                    Tracked operational performance and areas where
-                    monitoring and investigation processes could improve.
+                    <strong>Cross-team follow-up:</strong>
+                    Investigating technical issues required clear
+                    coordination with developers and QA.
                 </li>
             </ul>
         </section>
 
-        <!-- Approach -->
+        <!-- OBJECTIVE -->
         <section class="case-section">
-            <h2>My Approach</h2>
+            <h2>03. My Objective</h2>
+
+            <p>
+                My objective was to help the team establish a more
+                structured and repeatable monitoring process. This involved
+                improving alert quality, making recurring problems easier
+                to investigate, documenting known troubleshooting steps,
+                and strengthening issue follow-up across teams.
+            </p>
+
+            <div class="case-callout">
+                <strong>My approach:</strong>
+                Make monitoring actionable. The goal was to help the team
+                recognize meaningful signals, follow consistent
+                investigation steps, and communicate findings clearly.
+            </div>
+        </section>
+
+        <!-- WORKFLOW -->
+        <section class="case-section">
+            <h2>04. Monitoring and Incident Workflow</h2>
+
+            <p class="section-intro">
+                The following diagram represents the high-level workflow
+                I helped establish and improve. It is a simplified
+                illustration of the team's operational process, not a
+                screenshot of an internal monitoring system.
+            </p>
+
+            <div class="workflow">
+
+                <div class="workflow-step">
+                    <span class="workflow-number">1</span>
+                    <h3>Monitor Application Health</h3>
+                    <p>
+                        Use Splunk, Datadog, and AWS CloudWatch to review
+                        application signals, alerts, and recurring failures.
+                    </p>
+                </div>
+
+                <div class="workflow-step">
+                    <span class="workflow-number">2</span>
+                    <h3>Review and Prioritize Alerts</h3>
+                    <p>
+                        Review repetitive alerts, refine filtering and
+                        thresholds, and distinguish higher-priority issues
+                        from lower-priority warnings.
+                    </p>
+                </div>
+
+                <div class="workflow-step">
+                    <span class="workflow-number">3</span>
+                    <h3>Investigate the Issue</h3>
+                    <p>
+                        Review available evidence, identify recurring
+                        patterns, and follow documented troubleshooting
+                        steps for known failures.
+                    </p>
+                </div>
+
+                <div class="workflow-step">
+                    <span class="workflow-number">4</span>
+                    <h3>Coordinate with Developers and QA</h3>
+                    <p>
+                        Share findings, coordinate further technical
+                        investigation, and follow up on issues requiring
+                        development or testing support.
+                    </p>
+                </div>
+
+                <div class="workflow-step">
+                    <span class="workflow-number">5</span>
+                    <h3>Document and Track</h3>
+                    <p>
+                        Maintain SOPs and troubleshooting guides, record
+                        recurring problems, and support consistent
+                        escalation and follow-up.
+                    </p>
+                </div>
+
+                <div class="workflow-step">
+                    <span class="workflow-number">6</span>
+                    <h3>Review and Improve</h3>
+                    <p>
+                        Use recurring issues and operational observations
+                        to identify opportunities to improve monitoring
+                        visibility and investigation practices.
+                    </p>
+                </div>
+
+            </div>
+
+            <p class="workflow-note">
+                This workflow summarizes the process at a high level.
+                Individual incidents could require different investigation
+                or escalation paths depending on the issue.
+            </p>
+        </section>
+
+        <!-- CONTRIBUTIONS -->
+        <section class="case-section">
+            <h2>05. My Role and Contributions</h2>
+
+            <p class="section-intro">
+                My contribution combined team leadership, operational
+                process improvement, monitoring visibility, and
+                cross-functional coordination.
+            </p>
+
+            <div class="contribution-grid">
+
+                <div class="contribution-card">
+                    <h3>Monitoring and Alert Quality</h3>
+                    <ul>
+                        <li>
+                            Created and improved dashboards to make
+                            application behaviour and recurring issues
+                            easier to review.
+                        </li>
+                        <li>
+                            Reviewed repetitive alerts and worked to
+                            reduce unnecessary monitoring noise.
+                        </li>
+                        <li>
+                            Helped distinguish important application
+                            problems from lower-priority warnings.
+                        </li>
+                        <li>
+                            Worked on alert thresholds and filtering
+                            practices to make monitoring information
+                            more actionable.
+                        </li>
+                    </ul>
+                </div>
+
+                <div class="contribution-card">
+                    <h3>SOPs and Troubleshooting</h3>
+                    <ul>
+                        <li>
+                            Created standard operating procedures and
+                            troubleshooting guides for common failures.
+                        </li>
+                        <li>
+                            Documented repeatable investigation steps
+                            for known issues.
+                        </li>
+                        <li>
+                            Improved knowledge sharing across the team.
+                        </li>
+                        <li>
+                            Supported onboarding and knowledge transfer
+                            through reusable operational documentation.
+                        </li>
+                    </ul>
+                </div>
+
+                <div class="contribution-card">
+                    <h3>Team Leadership and Process</h3>
+                    <ul>
+                        <li>
+                            Led and coordinated a 15-person cloud
+                            monitoring team.
+                        </li>
+                        <li>
+                            Established more consistent approaches to
+                            alert handling, investigation, and escalation.
+                        </li>
+                        <li>
+                            Helped define repeatable ways of working
+                            across monitoring operations.
+                        </li>
+                        <li>
+                            Tracked operational observations and
+                            opportunities for improvement.
+                        </li>
+                    </ul>
+                </div>
+
+                <div class="contribution-card">
+                    <h3>Developer and QA Coordination</h3>
+                    <ul>
+                        <li>
+                            Coordinated with developers to investigate
+                            application errors and recurring failures.
+                        </li>
+                        <li>
+                            Worked with QA on issues that required
+                            additional technical investigation.
+                        </li>
+                        <li>
+                            Helped bring monitoring findings to the
+                            attention of the appropriate teams.
+                        </li>
+                        <li>
+                            Followed up on bugs and supported clearer
+                            communication between teams.
+                        </li>
+                    </ul>
+                </div>
+
+            </div>
+        </section>
+
+        <!-- APPROACH -->
+        <section class="case-section">
+            <h2>06. How I Approached the Problem</h2>
 
             <ol>
                 <li>
-                    <strong>Identify patterns:</strong>
-                    Review recurring alerts and application failures
-                    to understand where noise or repeated investigation
-                    was affecting the team.
+                    <strong>Identify recurring patterns.</strong>
+                    Review repeated alerts and application failures to
+                    understand where monitoring noise or repeated
+                    investigation was affecting the team.
                 </li>
+
                 <li>
-                    <strong>Improve visibility:</strong>
-                    Use monitoring dashboards and alert refinement to
-                    make relevant application problems easier to identify.
+                    <strong>Improve monitoring visibility.</strong>
+                    Use dashboards and alert refinement to make relevant
+                    application problems easier to identify.
                 </li>
+
                 <li>
-                    <strong>Standardize investigation:</strong>
-                    Document common troubleshooting steps and establish
+                    <strong>Standardize investigation.</strong>
+                    Document known troubleshooting steps and establish
                     clearer alert-handling and escalation practices.
                 </li>
+
                 <li>
-                    <strong>Collaborate across teams:</strong>
-                    Coordinate with developers and QA when investigating
-                    bugs or issues requiring further technical analysis.
+                    <strong>Coordinate technical follow-up.</strong>
+                    Work with developers and QA when an issue required
+                    additional analysis, a bug investigation, or further
+                    technical attention.
                 </li>
+
                 <li>
-                    <strong>Review and improve:</strong>
-                    Track recurring issues and operational observations
-                    to identify opportunities for further improvement.
+                    <strong>Use observations to improve the process.</strong>
+                    Track recurring issues and operational feedback to
+                    identify areas where monitoring and investigation
+                    practices could be improved.
                 </li>
             </ol>
         </section>
 
-        <!-- Outcomes -->
+        <!-- OUTCOMES -->
         <section class="case-section">
-            <h2>Outcomes and Impact</h2>
+            <h2>07. Outcomes and Impact</h2>
 
-            <p>
+            <p class="section-intro">
                 The work helped establish a more structured and repeatable
-                approach to cloud monitoring and incident investigation.
-                The key observed outcomes included:
+                approach to monitoring operations and incident
+                investigation. The observed improvements included:
             </p>
 
-            <ul>
-                <li>Reduced application monitoring noise.</li>
-                <li>More consistent troubleshooting practices.</li>
-                <li>Better visibility into recurring application issues.</li>
-                <li>Improved identification of application problems.</li>
-                <li>
-                    Better coordination between monitoring, developers,
-                    and QA.
-                </li>
-                <li>
-                    More opportunities to identify issues before clients
-                    reported them.
-                </li>
-                <li>
-                    Easier onboarding and knowledge transfer through
-                    reusable SOPs and troubleshooting guides.
-                </li>
-            </ul>
+            <div class="outcome-list">
 
-            <p>
+                <div class="outcome-item">
+                    <strong>Reduced Monitoring Noise</strong>
+                    Improved alert filtering and prioritization made
+                    monitoring information more actionable.
+                </div>
+
+                <div class="outcome-item">
+                    <strong>More Consistent Troubleshooting</strong>
+                    SOPs and reusable guides gave the team clearer
+                    starting points for common issues.
+                </div>
+
+                <div class="outcome-item">
+                    <strong>Better Issue Visibility</strong>
+                    Dashboards and recurring-issue reviews helped the
+                    team identify application problems and patterns.
+                </div>
+
+                <div class="outcome-item">
+                    <strong>Stronger Cross-Team Coordination</strong>
+                    More structured communication supported investigation
+                    and follow-up with developers and QA.
+                </div>
+
+                <div class="outcome-item">
+                    <strong>Earlier Issue Identification</strong>
+                    Monitoring findings helped surface some application
+                    problems before they were reported by clients.
+                </div>
+
+                <div class="outcome-item">
+                    <strong>Reusable Operational Knowledge</strong>
+                    Documented procedures supported knowledge sharing,
+                    onboarding, and continuity across the team.
+                </div>
+
+            </div>
+
+            <p class="workflow-note">
                 These outcomes are described qualitatively because I do
                 not have verified numerical measurements to publish.
             </p>
         </section>
 
-        <!-- Learnings -->
+        <!-- LEARNINGS -->
         <section class="case-section">
-            <h2>Key Learnings</h2>
+            <h2>08. Key Learnings</h2>
 
             <ul>
                 <li>
-                    Effective monitoring depends on signal quality,
-                    not simply the volume of alerts collected.
+                    <strong>Monitoring quality matters more than alert volume.</strong>
+                    Teams need useful signals and clear prioritization
+                    to focus attention on meaningful issues.
                 </li>
+
                 <li>
-                    Clear documentation makes operational knowledge
-                    reusable and reduces reliance on individual team
-                    members.
+                    <strong>Documentation makes operational knowledge reusable.</strong>
+                    Repeatable procedures reduce reliance on informal,
+                    individual knowledge.
                 </li>
+
                 <li>
-                    Incident management works best when monitoring,
-                    development, and QA collaborate around shared
-                    evidence and clear ownership.
+                    <strong>Incident management is cross-functional.</strong>
+                    Monitoring teams, developers, and QA need to work
+                    together to investigate and follow up on issues.
                 </li>
+
                 <li>
-                    Sustainable operational improvements require
-                    consistent processes, team coordination, and
-                    ongoing review.
+                    <strong>Process improvement requires ongoing review.</strong>
+                    Recurring issues and team observations can reveal
+                    where monitoring and investigation practices need
+                    further refinement.
                 </li>
             </ul>
         </section>
 
-        <!-- Skills -->
+        <!-- SKILLS -->
         <section class="case-section">
-            <h2>Skills Demonstrated</h2>
+            <h2>09. Skills Demonstrated</h2>
 
             <div class="skill-list">
                 <span class="skill-tag">Team Leadership</span>
@@ -389,6 +716,8 @@
                 <span class="skill-tag">Stakeholder Coordination</span>
                 <span class="skill-tag">Root Cause Investigation</span>
                 <span class="skill-tag">Operational Documentation</span>
+                <span class="skill-tag">Monitoring Dashboards</span>
+                <span class="skill-tag">Alert Prioritization</span>
                 <span class="skill-tag">Splunk</span>
                 <span class="skill-tag">Datadog</span>
                 <span class="skill-tag">AWS CloudWatch</span>
@@ -396,9 +725,9 @@
             </div>
         </section>
 
-        <!-- Confidentiality -->
+        <!-- CONFIDENTIALITY -->
         <section class="case-section">
-            <p>
+            <p class="confidentiality-note">
                 <em>
                     Confidentiality note: This case study describes my
                     responsibilities and experience at a high level.
@@ -413,8 +742,13 @@
             <a href="index.html#work">
                 &larr; Back to Selected Work
             </a>
+
+            <a href="idm-case-study.html">
+                Next Case Study: Identity Management &rarr;
+            </a>
         </footer>
 
     </main>
+
 </body>
 </html>

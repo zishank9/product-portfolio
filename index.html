@@ -4,2210 +4,516 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
-    <title>Zishan Khan | Product Delivery Manager</title>
-
-    <meta name="description"
-          content="Zishan Khan's product portfolio showcasing enterprise product delivery, business analysis, ETL migration, identity management, cloud operations and integrations.">
-
-    <meta name="author" content="Zishan Khan">
+    <meta name="description" content="Zishan Khan is a Product Delivery Manager with experience in enterprise software delivery, business analysis, data migration, identity management, cloud monitoring, and integrations.">
     <meta name="theme-color" content="#0b1020">
-
+    <title>Zishan Khan | Product Delivery Manager</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+    href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Space+Grotesk:wght@400;500;600;700&display=swap"
+    rel="stylesheet"
+    >   
     <link rel="stylesheet" href="styles.css">
-
-    <style>
-        /* =========================================
-           HOMEPAGE DESIGN SYSTEM
-        ========================================= */
-
-        :root {
-            --home-bg: #0b1020;
-            --home-panel: #111a2e;
-            --home-panel-light: #15213a;
-            --home-text: #edf2ff;
-            --home-muted: #a7b3ca;
-            --home-accent: #79a9ff;
-            --home-accent-2: #8de0d0;
-            --home-border: rgba(171, 193, 230, 0.15);
-            --home-radius: 18px;
-            --home-width: 1120px;
-        }
-
-        html {
-            scroll-behavior: smooth;
-            scroll-padding-top: 90px;
-        }
-
-        body {
-            margin: 0;
-            background: var(--home-bg);
-            color: var(--home-text);
-        }
-
-        body.home-menu-open {
-            overflow: hidden;
-        }
-
-        .home-container {
-            width: min(var(--home-width), calc(100% - 44px));
-            margin-inline: auto;
-        }
-
-        .home-section {
-            padding: 94px 0;
-            position: relative;
-        }
-
-        .home-section-alt {
-            background: rgba(255, 255, 255, 0.018);
-            border-block: 1px solid rgba(255, 255, 255, 0.035);
-        }
-
-        .home-eyebrow {
-            display: inline-flex;
-            align-items: center;
-            gap: 9px;
-            margin: 0 0 22px;
-            color: var(--home-accent-2);
-            font-size: 0.76rem;
-            font-weight: 800;
-            letter-spacing: 0.16em;
-            text-transform: uppercase;
-        }
-
-        .home-eyebrow::before {
-            content: "";
-            width: 24px;
-            height: 2px;
-            background: var(--home-accent-2);
-        }
-
-        .home-section-heading {
-            max-width: 720px;
-            margin-bottom: 38px;
-        }
-
-        .home-section-heading h2 {
-            margin: 0 0 14px;
-            color: var(--home-text);
-            font-size: clamp(2rem, 4vw, 3rem);
-            line-height: 1.15;
-            letter-spacing: -0.045em;
-        }
-
-        .home-section-heading p {
-            margin: 0;
-            color: var(--home-muted);
-            line-height: 1.85;
-            max-width: 680px;
-        }
-
-        .home-accent {
-            color: var(--home-accent);
-        }
-
-        .home-muted {
-            color: var(--home-muted);
-        }
-
-        /* =========================================
-           NAVIGATION
-        ========================================= */
-
-        .home-nav {
-            position: sticky;
-            top: 0;
-            z-index: 1000;
-            background: rgba(11, 16, 32, 0.88);
-            backdrop-filter: blur(18px);
-            border-bottom: 1px solid var(--home-border);
-        }
-
-        .home-nav-inner {
-            min-height: 76px;
-            display: flex;
-            align-items: center;
-            justify-content: space-between;
-            gap: 24px;
-        }
-
-        .home-brand {
-            color: var(--home-text);
-            text-decoration: none;
-            font-weight: 850;
-            font-size: 1.12rem;
-            letter-spacing: -0.035em;
-        }
-
-        .home-brand span {
-            color: var(--home-accent);
-        }
-
-        .home-nav-links {
-            display: flex;
-            align-items: center;
-            gap: 27px;
-        }
-
-        .home-nav-links a {
-            color: var(--home-muted);
-            text-decoration: none;
-            font-size: 0.9rem;
-            transition: color 0.2s ease;
-        }
-
-        .home-nav-links a:hover,
-        .home-nav-links a:focus-visible {
-            color: var(--home-accent);
-        }
-
-        .home-nav-links .home-nav-cta {
-            padding: 10px 16px;
-            border: 1px solid var(--home-border);
-            border-radius: 10px;
-            color: var(--home-text);
-        }
-
-        .home-nav-links .home-nav-cta:hover {
-            border-color: var(--home-accent);
-            background: rgba(121, 169, 255, 0.08);
-        }
-
-        .home-menu-toggle {
-            display: none;
-            color: var(--home-text);
-            background: var(--home-panel);
-            border: 1px solid var(--home-border);
-            border-radius: 10px;
-            padding: 9px 12px;
-            font-size: 1.15rem;
-            cursor: pointer;
-        }
-
-        /* =========================================
-           HERO
-        ========================================= */
-
-        .home-hero {
-            position: relative;
-            overflow: hidden;
-            padding: 112px 0 96px;
-            background:
-                radial-gradient(
-                    ellipse at 80% 15%,
-                    rgba(61, 108, 196, 0.18),
-                    transparent 42%
-                ),
-                radial-gradient(
-                    ellipse at 12% 80%,
-                    rgba(44, 160, 157, 0.09),
-                    transparent 38%
-                );
-        }
-
-        .home-hero::after {
-            content: "";
-            position: absolute;
-            width: 390px;
-            height: 390px;
-            right: -190px;
-            bottom: -240px;
-            border: 1px solid rgba(121, 169, 255, 0.12);
-            border-radius: 50%;
-            box-shadow:
-                0 0 0 45px rgba(121, 169, 255, 0.025),
-                0 0 0 90px rgba(121, 169, 255, 0.02);
-            pointer-events: none;
-        }
-
-        .home-hero-grid {
-            display: grid;
-            grid-template-columns: minmax(0, 1.4fr) minmax(280px, 0.8fr);
-            align-items: center;
-            gap: 72px;
-        }
-
-        .home-availability {
-            display: inline-flex;
-            align-items: center;
-            gap: 9px;
-            margin-bottom: 25px;
-            padding: 9px 13px;
-            border: 1px solid rgba(141, 224, 208, 0.23);
-            background: rgba(141, 224, 208, 0.055);
-            border-radius: 999px;
-            color: #b5eee3;
-            font-size: 0.78rem;
-        }
-
-        .home-status-dot {
-            width: 7px;
-            height: 7px;
-            border-radius: 50%;
-            background: var(--home-accent-2);
-            box-shadow: 0 0 12px rgba(141, 224, 208, 0.5);
-        }
-
-        .home-hero h1 {
-            max-width: 780px;
-            margin: 0 0 24px;
-            color: var(--home-text);
-            font-size: clamp(2.8rem, 6.2vw, 5.3rem);
-            line-height: 1.035;
-            letter-spacing: -0.065em;
-        }
-
-        .home-hero h1 .home-gradient {
-            display: block;
-            background: linear-gradient(
-                105deg,
-                #90b7ff 5%,
-                #8de0d0 95%
-            );
-            -webkit-background-clip: text;
-            background-clip: text;
-            color: transparent;
-        }
-
-        .home-hero-description {
-            max-width: 650px;
-            margin: 0;
-            color: var(--home-muted);
-            font-size: 1.05rem;
-            line-height: 1.95;
-        }
-
-        .home-hero-actions {
-            display: flex;
-            flex-wrap: wrap;
-            gap: 13px;
-            margin-top: 34px;
-        }
-
-        .home-btn {
-            display: inline-flex;
-            align-items: center;
-            justify-content: center;
-            gap: 10px;
-            min-height: 48px;
-            padding: 13px 19px;
-            border: 1px solid var(--home-border);
-            border-radius: 11px;
-            background: rgba(255, 255, 255, 0.035);
-            color: var(--home-text);
-            text-decoration: none;
-            font-size: 0.91rem;
-            font-weight: 750;
-            transition:
-                transform 0.2s ease,
-                border-color 0.2s ease,
-                background 0.2s ease,
-                box-shadow 0.2s ease;
-            cursor: pointer;
-        }
-
-        .home-btn:hover {
-            transform: translateY(-3px);
-            border-color: rgba(121, 169, 255, 0.55);
-        }
-
-        .home-btn-primary {
-            background: var(--home-accent);
-            color: #081225;
-            border-color: var(--home-accent);
-            box-shadow: 0 10px 35px rgba(67, 115, 203, 0.19);
-        }
-
-        .home-btn-primary:hover {
-            background: #a0c2ff;
-            border-color: #a0c2ff;
-        }
-
-        .home-hero-note {
-            margin-top: 20px;
-            color: #8594ae;
-            font-size: 0.8rem;
-            line-height: 1.7;
-        }
-
-        /* Hero profile card */
-
-        .home-profile-card {
-            position: relative;
-            padding: 27px;
-            border: 1px solid rgba(171, 193, 230, 0.18);
-            border-radius: 24px;
-            background: linear-gradient(
-                145deg,
-                rgba(24, 37, 63, 0.96),
-                rgba(14, 22, 40, 0.97)
-            );
-            box-shadow: 0 25px 90px rgba(0, 0, 0, 0.2);
-        }
-
-        .home-profile-top {
-            display: flex;
-            align-items: center;
-            gap: 16px;
-            padding-bottom: 22px;
-            border-bottom: 1px solid var(--home-border);
-        }
-
-        .home-avatar {
-            display: grid;
-            place-items: center;
-            flex-shrink: 0;
-            width: 62px;
-            height: 62px;
-            border-radius: 18px;
-            color: #091529;
-            background: linear-gradient(135deg, #91b8ff, #8de0d0);
-            font-size: 1.35rem;
-            font-weight: 900;
-            letter-spacing: -0.05em;
-        }
-
-        .home-profile-top h2 {
-            margin: 0 0 6px;
-            font-size: 1.15rem;
-            letter-spacing: -0.03em;
-        }
-
-        .home-profile-top p {
-            margin: 0;
-            color: var(--home-muted);
-            font-size: 0.8rem;
-            line-height: 1.6;
-        }
-
-        .home-profile-label {
-            margin: 24px 0 13px;
-            color: #8798b6;
-            font-size: 0.72rem;
-            font-weight: 800;
-            letter-spacing: 0.13em;
-            text-transform: uppercase;
-        }
-
-        .home-profile-list {
-            display: grid;
-            gap: 13px;
-            margin: 0;
-            padding: 0;
-            list-style: none;
-        }
-
-        .home-profile-list li {
-            display: flex;
-            align-items: flex-start;
-            gap: 11px;
-            color: #d9e3f5;
-            font-size: 0.88rem;
-            line-height: 1.6;
-        }
-
-        .home-check {
-            color: var(--home-accent-2);
-            font-weight: 900;
-        }
-
-        .home-profile-footer {
-            display: flex;
-            flex-wrap: wrap;
-            gap: 8px;
-            margin-top: 23px;
-            padding-top: 20px;
-            border-top: 1px solid var(--home-border);
-        }
-
-        .home-mini-tag {
-            padding: 7px 10px;
-            border: 1px solid var(--home-border);
-            border-radius: 8px;
-            color: #c7d5ec;
-            font-size: 0.73rem;
-        }
-
-        /* =========================================
-           QUICK VALUE STRIP
-        ========================================= */
-
-        .home-value-strip {
-            position: relative;
-            z-index: 2;
-            border-block: 1px solid var(--home-border);
-            background: rgba(255, 255, 255, 0.018);
-        }
-
-        .home-value-grid {
-            display: grid;
-            grid-template-columns: repeat(4, minmax(0, 1fr));
-        }
-
-        .home-value-item {
-            padding: 27px 22px;
-            border-right: 1px solid var(--home-border);
-        }
-
-        .home-value-item:first-child {
-            padding-left: 0;
-        }
-
-        .home-value-item:last-child {
-            border-right: 0;
-        }
-
-        .home-value-item strong {
-            display: block;
-            margin-bottom: 7px;
-            color: var(--home-text);
-            font-size: 0.95rem;
-        }
-
-        .home-value-item span {
-            display: block;
-            color: var(--home-muted);
-            font-size: 0.8rem;
-            line-height: 1.65;
-        }
-
-        /* =========================================
-           PROJECT FILTERS AND CARDS
-        ========================================= */
-
-        .home-project-filters {
-            display: flex;
-            flex-wrap: wrap;
-            gap: 9px;
-            margin-bottom: 27px;
-        }
-
-        .home-filter {
-            padding: 9px 13px;
-            border: 1px solid var(--home-border);
-            border-radius: 999px;
-            background: transparent;
-            color: var(--home-muted);
-            font: inherit;
-            font-size: 0.8rem;
-            cursor: pointer;
-            transition: all 0.2s ease;
-        }
-
-        .home-filter:hover,
-        .home-filter.active {
-            color: var(--home-text);
-            border-color: rgba(121, 169, 255, 0.55);
-            background: rgba(121, 169, 255, 0.1);
-        }
-
-        .home-project-count {
-            margin: 0 0 18px;
-            color: #8292ad;
-            font-size: 0.78rem;
-        }
-
-        .home-project-grid {
-            display: grid;
-            grid-template-columns: repeat(3, minmax(0, 1fr));
-            gap: 18px;
-        }
-
-        .home-project-card {
-            position: relative;
-            display: flex;
-            flex-direction: column;
-            min-height: 315px;
-            padding: 25px;
-            overflow: hidden;
-            border: 1px solid var(--home-border);
-            border-radius: var(--home-radius);
-            background: linear-gradient(
-                150deg,
-                rgba(20, 31, 53, 0.93),
-                rgba(15, 23, 41, 0.94)
-            );
-            transition:
-                transform 0.25s ease,
-                border-color 0.25s ease,
-                box-shadow 0.25s ease;
-        }
-
-        .home-project-card::before {
-            content: "";
-            position: absolute;
-            top: 0;
-            left: 25px;
-            right: 25px;
-            height: 2px;
-            background: linear-gradient(
-                90deg,
-                var(--home-accent),
-                var(--home-accent-2)
-            );
-            opacity: 0;
-            transition: opacity 0.25s ease;
-        }
-
-        .home-project-card:hover {
-            transform: translateY(-5px);
-            border-color: rgba(121, 169, 255, 0.35);
-            box-shadow: 0 18px 45px rgba(0, 0, 0, 0.15);
-        }
-
-        .home-project-card:hover::before {
-            opacity: 1;
-        }
-
-        .home-project-card[hidden] {
-            display: none !important;
-        }
-
-        .home-project-number {
-            display: inline-flex;
-            align-items: center;
-            justify-content: center;
-            width: 42px;
-            height: 42px;
-            margin-bottom: 24px;
-            border: 1px solid rgba(121, 169, 255, 0.2);
-            border-radius: 12px;
-            background: rgba(121, 169, 255, 0.08);
-            color: var(--home-accent);
-            font-size: 0.84rem;
-            font-weight: 850;
-        }
-
-        .home-project-type {
-            margin: 0 0 9px;
-            color: var(--home-accent-2);
-            font-size: 0.7rem;
-            font-weight: 800;
-            letter-spacing: 0.1em;
-            text-transform: uppercase;
-        }
-
-        .home-project-card h3 {
-            margin: 0 0 12px;
-            color: var(--home-text);
-            font-size: 1.14rem;
-            line-height: 1.45;
-            letter-spacing: -0.025em;
-        }
-
-        .home-project-card > p {
-            margin: 0 0 20px;
-            color: var(--home-muted);
-            font-size: 0.86rem;
-            line-height: 1.8;
-        }
-
-        .home-project-tags {
-            display: flex;
-            flex-wrap: wrap;
-            gap: 7px;
-            margin-top: auto;
-            margin-bottom: 22px;
-        }
-
-        .home-project-tags span {
-            padding: 6px 8px;
-            border: 1px solid rgba(171, 193, 230, 0.11);
-            border-radius: 7px;
-            color: #aebed8;
-            font-size: 0.68rem;
-        }
-
-        .home-project-link {
-            display: inline-flex;
-            align-items: center;
-            gap: 8px;
-            align-self: flex-start;
-            color: var(--home-accent);
-            font-size: 0.86rem;
-            font-weight: 800;
-            text-decoration: none;
-        }
-
-        .home-project-link span {
-            transition: transform 0.2s ease;
-        }
-
-        .home-project-link:hover span {
-            transform: translateX(4px);
-        }
-
-        /* =========================================
-           ABOUT / APPROACH
-        ========================================= */
-
-        .home-about-grid {
-            display: grid;
-            grid-template-columns: minmax(0, 1.1fr) minmax(0, 0.9fr);
-            gap: 60px;
-            align-items: start;
-        }
-
-        .home-about-copy p {
-            margin: 0 0 18px;
-            color: var(--home-muted);
-            font-size: 0.96rem;
-            line-height: 1.95;
-        }
-
-        .home-about-copy strong {
-            color: var(--home-text);
-            font-weight: 750;
-        }
-
-        .home-approach-list {
-            display: grid;
-            gap: 13px;
-        }
-
-        .home-approach-card {
-            padding: 19px 20px;
-            border: 1px solid var(--home-border);
-            border-radius: 14px;
-            background: rgba(255, 255, 255, 0.025);
-        }
-
-        .home-approach-card h3 {
-            margin: 0 0 7px;
-            color: var(--home-text);
-            font-size: 0.96rem;
-        }
-
-        .home-approach-card p {
-            margin: 0;
-            color: var(--home-muted);
-            font-size: 0.84rem;
-            line-height: 1.75;
-        }
-
-        /* =========================================
-           CAREER TIMELINE
-        ========================================= */
-
-        .home-timeline {
-            position: relative;
-            display: grid;
-            gap: 0;
-            max-width: 900px;
-        }
-
-        .home-timeline::before {
-            content: "";
-            position: absolute;
-            top: 15px;
-            bottom: 20px;
-            left: 8px;
-            width: 1px;
-            background: linear-gradient(
-                to bottom,
-                var(--home-accent),
-                rgba(141, 224, 208, 0.12)
-            );
-        }
-
-        .home-timeline-item {
-            position: relative;
-            padding: 0 0 35px 39px;
-        }
-
-        .home-timeline-item:last-child {
-            padding-bottom: 0;
-        }
-
-        .home-timeline-dot {
-            position: absolute;
-            top: 5px;
-            left: 2px;
-            width: 13px;
-            height: 13px;
-            border: 3px solid var(--home-bg);
-            border-radius: 50%;
-            background: var(--home-accent);
-            box-shadow: 0 0 0 1px rgba(121, 169, 255, 0.5);
-        }
-
-        .home-timeline-meta {
-            display: flex;
-            flex-wrap: wrap;
-            align-items: center;
-            gap: 10px;
-            margin-bottom: 8px;
-        }
-
-        .home-timeline-date {
-            color: var(--home-accent-2);
-            font-size: 0.77rem;
-            font-weight: 800;
-            letter-spacing: 0.05em;
-            text-transform: uppercase;
-        }
-
-        .home-timeline-label {
-            padding: 5px 8px;
-            border: 1px solid var(--home-border);
-            border-radius: 6px;
-            color: #aebed8;
-            font-size: 0.69rem;
-        }
-
-        .home-timeline-item h3 {
-            margin: 0 0 8px;
-            color: var(--home-text);
-            font-size: 1.1rem;
-        }
-
-        .home-timeline-item p {
-            max-width: 780px;
-            margin: 0;
-            color: var(--home-muted);
-            font-size: 0.88rem;
-            line-height: 1.85;
-        }
-
-        .home-timeline-details {
-            margin-top: 12px;
-        }
-
-        .home-timeline-details summary {
-            display: inline-flex;
-            align-items: center;
-            gap: 7px;
-            color: var(--home-accent);
-            font-size: 0.81rem;
-            font-weight: 750;
-            cursor: pointer;
-        }
-
-        .home-timeline-details ul {
-            padding-left: 19px;
-            color: var(--home-muted);
-            font-size: 0.84rem;
-            line-height: 1.9;
-        }
-
-        /* =========================================
-           SKILLS
-        ========================================= */
-
-        .home-skills-grid {
-            display: grid;
-            grid-template-columns: repeat(2, minmax(0, 1fr));
-            gap: 18px;
-        }
-
-        .home-skill-card {
-            padding: 24px;
-            border: 1px solid var(--home-border);
-            border-radius: 16px;
-            background: rgba(255, 255, 255, 0.025);
-        }
-
-        .home-skill-card h3 {
-            display: flex;
-            align-items: center;
-            gap: 10px;
-            margin: 0 0 16px;
-            color: var(--home-text);
-            font-size: 1rem;
-        }
-
-        .home-skill-icon {
-            display: grid;
-            place-items: center;
-            width: 34px;
-            height: 34px;
-            border-radius: 10px;
-            background: rgba(121, 169, 255, 0.1);
-            color: var(--home-accent);
-            font-size: 0.9rem;
-        }
-
-        .home-skill-tags {
-            display: flex;
-            flex-wrap: wrap;
-            gap: 9px;
-        }
-
-        .home-skill-tags span {
-            padding: 8px 10px;
-            border: 1px solid var(--home-border);
-            border-radius: 8px;
-            color: #c1cde1;
-            font-size: 0.78rem;
-        }
-
-        .home-skills-note {
-            margin-top: 20px;
-            padding: 16px 18px;
-            border-left: 3px solid var(--home-accent-2);
-            background: rgba(141, 224, 208, 0.045);
-            color: var(--home-muted);
-            font-size: 0.83rem;
-            line-height: 1.8;
-        }
-
-        /* =========================================
-           CERTIFICATION AND EDUCATION
-        ========================================= */
-
-        .home-credentials-grid {
-            display: grid;
-            grid-template-columns: repeat(2, minmax(0, 1fr));
-            gap: 18px;
-        }
-
-        .home-credential-card {
-            display: flex;
-            align-items: flex-start;
-            gap: 17px;
-            padding: 24px;
-            border: 1px solid var(--home-border);
-            border-radius: 16px;
-            background: linear-gradient(
-                140deg,
-                rgba(22, 34, 57, 0.85),
-                rgba(14, 22, 40, 0.8)
-            );
-        }
-
-        .home-credential-icon {
-            display: grid;
-            place-items: center;
-            flex-shrink: 0;
-            width: 45px;
-            height: 45px;
-            border-radius: 13px;
-            background: rgba(141, 224, 208, 0.09);
-            color: var(--home-accent-2);
-            font-size: 1.15rem;
-            font-weight: 850;
-        }
-
-        .home-credential-card h3 {
-            margin: 0 0 8px;
-            color: var(--home-text);
-            font-size: 1rem;
-        }
-
-        .home-credential-card p {
-            margin: 0;
-            color: var(--home-muted);
-            font-size: 0.83rem;
-            line-height: 1.75;
-        }
-
-        /* =========================================
-           CONTACT
-        ========================================= */
-
-        .home-contact-panel {
-            position: relative;
-            overflow: hidden;
-            padding: 54px;
-            border: 1px solid rgba(121, 169, 255, 0.24);
-            border-radius: 24px;
-            background:
-                radial-gradient(
-                    ellipse at 100% 0%,
-                    rgba(121, 169, 255, 0.15),
-                    transparent 45%
-                ),
-                linear-gradient(
-                    135deg,
-                    rgba(22, 35, 59, 0.96),
-                    rgba(14, 22, 40, 0.98)
-                );
-        }
-
-        .home-contact-panel h2 {
-            max-width: 650px;
-            margin: 0 0 16px;
-            color: var(--home-text);
-            font-size: clamp(2rem, 4vw, 3.2rem);
-            line-height: 1.15;
-            letter-spacing: -0.05em;
-        }
-
-        .home-contact-panel > p {
-            max-width: 650px;
-            margin: 0;
-            color: var(--home-muted);
-            line-height: 1.9;
-        }
-
-        .home-contact-actions {
-            display: flex;
-            flex-wrap: wrap;
-            gap: 12px;
-            margin-top: 27px;
-        }
-
-        .home-contact-note {
-            margin-top: 20px !important;
-            font-size: 0.78rem;
-        }
-
-        /* =========================================
-           FOOTER AND SCROLL TOP
-        ========================================= */
-
-        .home-footer {
-            padding: 26px 0;
-            border-top: 1px solid var(--home-border);
-            background: rgba(0, 0, 0, 0.1);
-        }
-
-        .home-footer-inner {
-            display: flex;
-            align-items: center;
-            justify-content: space-between;
-            flex-wrap: wrap;
-            gap: 16px;
-        }
-
-        .home-footer p {
-            margin: 0;
-            color: #8594ae;
-            font-size: 0.79rem;
-            line-height: 1.7;
-        }
-
-        .home-footer-links {
-            display: flex;
-            flex-wrap: wrap;
-            gap: 17px;
-        }
-
-        .home-footer-links a {
-            color: #aab8d0;
-            font-size: 0.79rem;
-            text-decoration: none;
-        }
-
-        .home-footer-links a:hover {
-            color: var(--home-accent);
-        }
-
-        .home-back-top {
-            position: fixed;
-            right: 22px;
-            bottom: 22px;
-            z-index: 900;
-            display: grid;
-            place-items: center;
-            width: 44px;
-            height: 44px;
-            border: 1px solid var(--home-border);
-            border-radius: 13px;
-            background: #18243b;
-            color: var(--home-text);
-            font-size: 1.1rem;
-            text-decoration: none;
-            box-shadow: 0 8px 30px rgba(0, 0, 0, 0.25);
-            opacity: 0;
-            pointer-events: none;
-            transform: translateY(8px);
-            transition: all 0.2s ease;
-        }
-
-        .home-back-top.visible {
-            opacity: 1;
-            pointer-events: auto;
-            transform: translateY(0);
-        }
-
-        /* =========================================
-           REVEAL ANIMATIONS
-        ========================================= */
-
-        .home-reveal {
-            opacity: 0;
-            transform: translateY(18px);
-            transition:
-                opacity 0.55s ease,
-                transform 0.55s ease;
-        }
-
-        .home-reveal.is-visible {
-            opacity: 1;
-            transform: translateY(0);
-        }
-
-        /* =========================================
-           RESPONSIVE
-        ========================================= */
-
-        @media (max-width: 950px) {
-            .home-hero-grid {
-                grid-template-columns: minmax(0, 1fr);
-                gap: 42px;
-            }
-
-            .home-profile-card {
-                max-width: 600px;
-            }
-
-            .home-project-grid {
-                grid-template-columns: repeat(2, minmax(0, 1fr));
-            }
-
-            .home-about-grid {
-                grid-template-columns: minmax(0, 1fr);
-                gap: 35px;
-            }
-
-            .home-value-grid {
-                grid-template-columns: repeat(2, minmax(0, 1fr));
-            }
-
-            .home-value-item:nth-child(2) {
-                border-right: 0;
-            }
-
-            .home-value-item:nth-child(1),
-            .home-value-item:nth-child(2) {
-                border-bottom: 1px solid var(--home-border);
-            }
-
-            .home-value-item:nth-child(3) {
-                padding-left: 0;
-            }
-
-            .home-hero {
-                padding-top: 85px;
-            }
-        }
-
-        @media (max-width: 650px) {
-            .home-container {
-                width: min(100% - 32px, var(--home-width));
-            }
-
-            .home-section {
-                padding: 67px 0;
-            }
-
-            .home-nav-inner {
-                min-height: 66px;
-            }
-
-            .home-menu-toggle {
-                display: inline-flex;
-            }
-
-            .home-nav-links {
-                display: none;
-                position: absolute;
-                top: calc(100% + 1px);
-                left: 0;
-                right: 0;
-                padding: 18px 22px 23px;
-                border-bottom: 1px solid var(--home-border);
-                background: #0d1426;
-                flex-direction: column;
-                align-items: stretch;
-                gap: 0;
-            }
-
-            .home-nav-links.open {
-                display: flex;
-            }
-
-            .home-nav-links a {
-                padding: 14px 5px;
-                border-bottom: 1px solid rgba(255, 255, 255, 0.05);
-            }
-
-            .home-nav-links .home-nav-cta {
-                margin-top: 12px;
-                text-align: center;
-            }
-
-            .home-hero {
-                padding: 70px 0 65px;
-            }
-
-            .home-hero h1 {
-                font-size: clamp(2.65rem, 12vw, 4.2rem);
-            }
-
-            .home-hero-description {
-                font-size: 0.96rem;
-            }
-
-            .home-hero-actions {
-                align-items: stretch;
-                flex-direction: column;
-            }
-
-            .home-hero-actions .home-btn {
-                width: 100%;
-                box-sizing: border-box;
-            }
-
-            .home-profile-card {
-                padding: 21px;
-            }
-
-            .home-value-item {
-                padding: 20px 12px;
-            }
-
-            .home-value-item:first-child,
-            .home-value-item:nth-child(3) {
-                padding-left: 0;
-            }
-
-            .home-value-item strong {
-                font-size: 0.86rem;
-            }
-
-            .home-value-item span {
-                font-size: 0.75rem;
-            }
-
-            .home-project-grid,
-            .home-skills-grid,
-            .home-credentials-grid {
-                grid-template-columns: minmax(0, 1fr);
-            }
-
-            .home-project-card {
-                min-height: 280px;
-            }
-
-            .home-contact-panel {
-                padding: 30px 22px;
-            }
-
-            .home-contact-actions {
-                align-items: stretch;
-                flex-direction: column;
-            }
-
-            .home-contact-actions .home-btn {
-                width: 100%;
-                box-sizing: border-box;
-            }
-
-            .home-footer-inner {
-                align-items: flex-start;
-                flex-direction: column;
-            }
-        }
-
-        @media (prefers-reduced-motion: reduce) {
-            *,
-            *::before,
-            *::after {
-                scroll-behavior: auto !important;
-                animation-duration: 0.01ms !important;
-                transition-duration: 0.01ms !important;
-            }
-
-            .home-reveal {
-                opacity: 1;
-                transform: none;
-            }
-        }
-    </style>
-</head>
-
-<body id="top">
-
-    <!-- =========================================
-         NAVIGATION
-    ========================================== -->
-
-    <nav class="home-nav" aria-label="Main navigation">
-        <div class="home-container home-nav-inner">
-
-            <a class="home-brand" href="#top" aria-label="Zishan Khan home">
-                Zishan Khan<span></span>
+ </head>
+<body>
+
+    <!-- Navigation -->
+    <header class="site-header">
+        <div class="container nav">
+            <a class="brand" href="#home" aria-label="Zishan Khan home">
+               <img src="images/logo.png" alt="Zishan Khan logo">
             </a>
 
             <button
-                class="home-menu-toggle"
-                id="homeMenuToggle"
+                class="menu-toggle"
+                id="menuToggle"
                 type="button"
                 aria-label="Open navigation menu"
+                aria-controls="navLinks"
                 aria-expanded="false"
-                aria-controls="homeNavLinks">
-                ☰
+            >
+                <span id="menuIcon" aria-hidden="true">☰</span>
             </button>
 
-            <div class="home-nav-links" id="homeNavLinks">
-                <a href="#work">Portfolio</a>
-                <a href="#about">About</a>
+            <nav class="nav-links" id="navLinks" aria-label="Main navigation">
+                <a href="#projects">Projects</a>
                 <a href="#experience">Experience</a>
                 <a href="#skills">Skills</a>
-                <a href="#contact" class="home-nav-cta">Let's Connect ↗</a>
-            </div>
-
+                <a href="#credentials">Education</a>
+                <a class="nav-contact" href="#contact">Contact me ↗</a>
+            </nav>
         </div>
-    </nav>
-
+    </header>
 
     <main>
 
-        <!-- =========================================
-             HERO
-        ========================================== -->
+        <!-- Hero -->
+        <section class="hero" id="home">
+            <div class="container hero-grid">
 
-        <header class="home-hero">
-            <div class="home-container home-hero-grid">
-
-                <div class="home-reveal">
-
-                    <div class="home-availability">
-                        <span class="home-status-dot"></span>
-                        Product Delivery · Business Analysis · Product Management
+                <div>
+                    <div class="availability">
+                        <span class="availability-dot"></span>
+                        Product Delivery · Business Analysis
                     </div>
-
-                    <p class="home-eyebrow">Welcome to my portfolio</p>
 
                     <h1>
-                        Bridging business needs and
-                        <span class="home-gradient">product delivery.</span>
+                        Turning business needs into
+                        <span>delivered products.</span>
                     </h1>
 
-                    <p class="home-hero-description">
-                        I'm Zishan Khan, a product delivery professional with
-                        experience across business analysis, enterprise
-                        integrations, data migration and cloud operations.
-                        I help translate business requirements into actionable
-                        work, align cross-functional teams, validate solutions
-                        and support reliable releases and go-lives.
+                    <p class="hero-copy">
+                        I'm Zishan Khan, a Product Delivery Manager with
+                        experience translating business requirements into
+                        actionable work, coordinating cross-functional teams,
+                        and supporting enterprise software delivery from
+                        discovery through testing and go-live.
                     </p>
 
-                    <div class="home-hero-actions">
-
-                        <a class="home-btn home-btn-primary" href="#work">
-                            Explore my work <span aria-hidden="true">↘</span>
+                    <div class="button-row">
+                        <a class="button button-primary" href="#projects">
+                            Explore my work <span aria-hidden="true">↗</span>
                         </a>
 
-                        
-                     
                         <a
-                            class="home-btn"
+                            class="button button-secondary"
                             href="documents/ZISHAN%20KHAN_RESUME_PM_2026.pdf"
-                            download="ZISHAN_KHAN_RESUME_PM_2026.pdf">
-                            Download resume <span aria-hidden="true">↓</span>
+                            target="_blank"
+                            rel="noopener noreferrer"
+                        >
+                            View resume ↗
                         </a>
-
-
-                        <a class="home-btn" href="#contact">
-                            Contact me <span aria-hidden="true">↗</span>
-                        </a>
-
                     </div>
-
-                    <p class="home-hero-note">
-                        Focused on clear requirements, practical collaboration
-                        and delivery that meets business needs.
-                    </p>
-
                 </div>
 
+                <aside class="profile-card" aria-label="Professional profile">
+                    <div class="profile-initials" aria-hidden="true">ZK</div>
 
-                <aside class="home-profile-card home-reveal"
-                       aria-label="Professional overview">
+                    <h2>Zishan Khan</h2>
+                    <p>Product Delivery Manager</p>
 
-                    <div class="home-profile-top">
-
-                        <div class="home-avatar" aria-hidden="true">ZK</div>
-
-                        <div>
-                            <h2>Zishan Khan</h2>
-                            <p>Product Delivery Manager</p>
-                            <p>Business Analysis · Enterprise Software</p>
-                        </div>
-
+                    <div class="profile-detail">
+                        <strong>Product & Business</strong>
+                        <span>Requirements, user stories, stakeholder alignment</span>
                     </div>
 
-                    <p class="home-profile-label">How I contribute</p>
-
-                    <ul class="home-profile-list">
-                        <li>
-                            <span class="home-check">✓</span>
-                            <span>Turn business requirements into clear user stories and acceptance criteria.</span>
-                        </li>
-                        <li>
-                            <span class="home-check">✓</span>
-                            <span>Coordinate developers, QA, DevOps, stakeholders and clients.</span>
-                        </li>
-                        <li>
-                            <span class="home-check">✓</span>
-                            <span>Support testing, troubleshooting, releases and go-live readiness.</span>
-                        </li>
-                        <li>
-                            <span class="home-check">✓</span>
-                            <span>Bring structure to complex integrations, migrations and operational workflows.</span>
-                        </li>
-                    </ul>
-
-                    <div class="home-profile-footer">
-                        <span class="home-mini-tag">CSPO Certified</span>
-                        <span class="home-mini-tag">Agile Delivery</span>
-                        <span class="home-mini-tag">Cross-functional Teams</span>
+                    <div class="profile-detail">
+                        <strong>Delivery & Quality</strong>
+                        <span>Cross-team coordination, testing, go-live support</span>
                     </div>
 
+                    <div class="profile-detail">
+                        <strong>Enterprise Technology</strong>
+                        <span>Data migration, IDM, monitoring, integrations</span>
+                    </div>
                 </aside>
 
             </div>
-        </header>
+        </section>
 
+        <!-- Core strengths -->
+        <section aria-label="Professional strengths">
+            <div class="container">
+                <div class="value-strip">
+                    <div class="value-item">
+                        <strong>Product Delivery</strong>
+                        <span>From requirements to release readiness</span>
+                    </div>
 
-        <!-- =========================================
-             AREAS OF EXPERIENCE
-        ========================================== -->
+                    <div class="value-item">
+                        <strong>Cross-functional Teams</strong>
+                        <span>Coordinating product, engineering, QA and operations</span>
+                    </div>
 
-        <section class="home-value-strip" aria-label="Areas of experience">
-            <div class="home-container home-value-grid">
-
-                <div class="home-value-item">
-                    <strong>Product Delivery</strong>
-                    <span>Requirements, prioritisation and release coordination</span>
+                    <div class="value-item">
+                        <strong>Enterprise Solutions</strong>
+                        <span>Integrations, migrations and identity management</span>
+                    </div>
                 </div>
-
-                <div class="home-value-item">
-                    <strong>Business Analysis</strong>
-                    <span>Stakeholder needs, user stories and process clarity</span>
-                </div>
-
-                <div class="home-value-item">
-                    <strong>Enterprise Integrations</strong>
-                    <span>Identity, IoT, third-party systems and data flows</span>
-                </div>
-
-                <div class="home-value-item">
-                    <strong>Operational Readiness</strong>
-                    <span>Monitoring, validation and incident coordination</span>
-                </div>
-
             </div>
         </section>
 
+        <!-- Selected projects -->
+        <section class="section projects-section" id="projects">
+            <div class="container">
 
-        <!-- =========================================
-             SELECTED WORK
-        ========================================== -->
-
-        <section class="home-section" id="work">
-            <div class="home-container">
-
-                <div class="home-section-heading home-reveal">
-                    <p class="home-eyebrow">Selected work</p>
-
-                    <h2>
-                        Projects that show
-                        <span class="home-accent">how I work.</span>
-                    </h2>
-
-                    <p>
-                        Explore examples of enterprise delivery work across
-                        data migration, cloud operations, identity management,
-                        infrastructure, integrations and feature delivery.
-                        Each case study focuses on the problem, my role,
-                        collaboration and delivery approach.
+                <div class="section-heading">
+                    <span class="eyebrow">Selected work</span>
+                    <h2>Projects & case studies</h2>
+                    <p class="section-intro">
+                        Examples of the systems, delivery challenges and
+                        cross-functional work I've contributed to. Each
+                        case study explains the context, my role and the
+                        delivery approach.
                     </p>
                 </div>
 
+                <div class="project-grid">
 
-                <div class="home-project-filters"
-                     role="group"
-                     aria-label="Filter case studies">
-
-                    <button class="home-filter active"
-                            type="button"
-                            data-filter="all"
-                            aria-pressed="true">
-                        All projects
-                    </button>
-
-                    <button class="home-filter"
-                            type="button"
-                            data-filter="product"
-                            aria-pressed="false">
-                        Product delivery
-                    </button>
-
-                    <button class="home-filter"
-                            type="button"
-                            data-filter="data"
-                            aria-pressed="false">
-                        Data & migration
-                    </button>
-
-                    <button class="home-filter"
-                            type="button"
-                            data-filter="cloud"
-                            aria-pressed="false">
-                        Cloud & operations
-                    </button>
-
-                    <button class="home-filter"
-                            type="button"
-                            data-filter="integration"
-                            aria-pressed="false">
-                        Integrations
-                    </button>
-
-                </div>
-
-                <p class="home-project-count"
-                   id="homeProjectCount"
-                   aria-live="polite">
-                    Showing all 6 case studies
-                </p>
-
-
-                <div class="home-project-grid" id="homeProjectGrid">
-
-                    <!-- Project 1 -->
-                    <article class="home-project-card home-reveal"
-                             data-category="data">
-
-                        <span class="home-project-number">01</span>
-
-                        <p class="home-project-type">Data & Migration</p>
-
+                    <article class="project-card">
+                        <span class="project-number">01 / DATA</span>
                         <h3>ETL & Data Migration</h3>
-
                         <p>
-                            Coordinating requirements, field mapping and
-                            validation to support enterprise data migration
-                            from a legacy property management system.
+                            Requirements, field mapping and data validation
+                            for migrating legacy property-management data
+                            into a new platform.
                         </p>
-
-                        <div class="home-project-tags">
-                            <span>ETL</span>
-                            <span>SQL Validation</span>
-                            <span>Requirements</span>
+                        <div class="project-tags">
+                            <span class="tag">ETL</span>
+                            <span class="tag">SQL Validation</span>
+                            <span class="tag">Requirements</span>
                         </div>
-
-                        <a class="home-project-link"
-                           href="etl-case-study.html">
+                        <a class="project-link" href="etl-case-study.html">
                             Read case study <span aria-hidden="true">→</span>
                         </a>
-
                     </article>
 
-
-                    <!-- Project 2 -->
-                    <article class="home-project-card home-reveal"
-                             data-category="cloud">
-
-                        <span class="home-project-number">02</span>
-
-                        <p class="home-project-type">Cloud & Operations</p>
-
-                        <h3>Cloud Monitoring & Incident Management</h3>
-
+                    <article class="project-card">
+                        <span class="project-number">02 / OPERATIONS</span>
+                        <h3>Cloud Monitoring & Incidents</h3>
                         <p>
-                            Establishing monitoring processes, dashboards,
-                            standard operating procedures and clearer
-                            incident ownership for a cloud monitoring team.
+                            Monitoring operations, team coordination,
+                            documentation and investigation of alerts
+                            and recurring issues.
                         </p>
-
-                        <div class="home-project-tags">
-                            <span>Splunk</span>
-                            <span>Datadog</span>
-                            <span>Process Improvement</span>
+                        <div class="project-tags">
+                            <span class="tag">Splunk</span>
+                            <span class="tag">Datadog</span>
+                            <span class="tag">Incident Management</span>
                         </div>
-
-                        <a class="home-project-link"
-                           href="monitoring-case-study.html">
+                        <a class="project-link" href="monitoring-case-study.html">
                             Read case study <span aria-hidden="true">→</span>
                         </a>
-
                     </article>
 
-
-                    <!-- Project 3 -->
-                    <article class="home-project-card home-reveal"
-                             data-category="integration">
-
-                        <span class="home-project-number">03</span>
-
-                        <p class="home-project-type">Identity & Integrations</p>
-
+                    <article class="project-card">
+                        <span class="project-number">03 / IDENTITY</span>
                         <h3>Enterprise Identity Management</h3>
-
                         <p>
-                            Supporting identity integrations, client-specific
-                            business rules and migration planning involving
-                            Amazon Cognito and enterprise systems.
+                            Coordinating identity integrations, migration
+                            scenarios, requirements and readiness for
+                            enterprise client delivery.
                         </p>
-
-                        <div class="home-project-tags">
-                            <span>Amazon Cognito</span>
-                            <span>AWS Lambda</span>
-                            <span>Migration</span>
+                        <div class="project-tags">
+                            <span class="tag">Amazon Cognito</span>
+                            <span class="tag">AWS Lambda</span>
+                            <span class="tag">IDM</span>
                         </div>
-
-                        <a class="home-project-link"
-                           href="idm-case-study.html">
+                        <a class="project-link" href="idm-case-study.html">
                             Read case study <span aria-hidden="true">→</span>
                         </a>
-
                     </article>
 
-
-                    <!-- Project 4 -->
-                    <article class="home-project-card home-reveal"
-                             data-category="cloud">
-
-                        <span class="home-project-number">04</span>
-
-                        <p class="home-project-type">Cloud Infrastructure</p>
-
+                    <article class="project-card">
+                        <span class="project-number">04 / CLOUD</span>
                         <h3>AWS Environment Migration</h3>
-
                         <p>
                             Coordinating DevOps, database and development
-                            teams on migration preparation, automation
-                            scripts and deployment readiness.
+                            teams to support environment migration and
+                            minimize delivery disruption.
                         </p>
-
-                        <div class="home-project-tags">
-                            <span>AWS</span>
-                            <span>Rundeck</span>
-                            <span>Release Coordination</span>
+                        <div class="project-tags">
+                            <span class="tag">AWS</span>
+                            <span class="tag">Rundeck</span>
+                            <span class="tag">Coordination</span>
                         </div>
-
-                        <a class="home-project-link"
-                           href="aws-migration-case-study.html">
+                        <a class="project-link" href="aws-migration-case-study.html">
                             Read case study <span aria-hidden="true">→</span>
                         </a>
-
                     </article>
 
-
-                    <!-- Project 5 -->
-                    <article class="home-project-card home-reveal"
-                             data-category="integration">
-
-                        <span class="home-project-number">05</span>
-
-                        <p class="home-project-type">Hospitality Integrations</p>
-
-                        <h3>IoT & Third-Party Integrations</h3>
-
+                    <article class="project-card">
+                        <span class="project-number">05 / INTEGRATIONS</span>
+                        <h3>Hospitality IoT & Integrations</h3>
                         <p>
-                            Translating client requirements, coordinating
-                            external providers and internal teams, validating
-                            integrations and supporting go-live activities.
+                            Requirements, test-environment setup,
+                            integration testing and go-live coordination
+                            across hospitality technology systems.
                         </p>
-
-                        <div class="home-project-tags">
-                            <span>IoT</span>
-                            <span>Testing</span>
-                            <span>Go-Live Support</span>
+                        <div class="project-tags">
+                            <span class="tag">Third-party APIs</span>
+                            <span class="tag">Testing</span>
+                            <span class="tag">Go-live</span>
                         </div>
-
-                        <a class="home-project-link"
-                           href="iot-integration-case-study.html">
+                        <a class="project-link" href="iot-integration-case-study.html">
                             Read case study <span aria-hidden="true">→</span>
                         </a>
-
                     </article>
 
-
-                    <!-- Project 6 -->
-                    <article class="home-project-card home-reveal"
-                             data-category="product">
-
-                        <span class="home-project-number">06</span>
-
-                        <p class="home-project-type">Product Delivery</p>
-
+                    <article class="project-card">
+                        <span class="project-number">06 / PRODUCT</span>
                         <h3>Enterprise Feature Delivery</h3>
-
                         <p>
-                            Turning business needs into actionable
-                            requirements and user stories, coordinating
-                            engineering and QA, and supporting feature
-                            validation and delivery.
+                            Turning feature requirements into user stories,
+                            aligning teams, supporting validation and
+                            coordinating delivery to clients.
                         </p>
-
-                        <div class="home-project-tags">
-                            <span>User Stories</span>
-                            <span>QA Coordination</span>
-                            <span>Agile</span>
+                        <div class="project-tags">
+                            <span class="tag">User Stories</span>
+                            <span class="tag">Jira</span>
+                            <span class="tag">Release Readiness</span>
                         </div>
-
-                        <a class="home-project-link"
-                           href="feature-delivery-case-study.html">
+                        <a class="project-link" href="feature-delivery-case-study.html">
                             Read case study <span aria-hidden="true">→</span>
                         </a>
-
                     </article>
 
                 </div>
-
             </div>
         </section>
 
+        <!-- Experience -->
+        <section class="section" id="experience">
+            <div class="container experience-layout">
 
-        <!-- =========================================
-             ABOUT ME
-        ========================================== -->
-
-        <section class="home-section home-section-alt" id="about">
-            <div class="home-container">
-
-                <div class="home-section-heading home-reveal">
-                    <p class="home-eyebrow">A little about me</p>
-
-                    <h2>
-                        I bring business and technical teams
-                        <span class="home-accent">onto the same page.</span>
-                    </h2>
-                </div>
-
-
-                <div class="home-about-grid">
-
-                    <div class="home-about-copy home-reveal">
-
-                        <p>
-                            My professional journey has taken me through
-                            technical support, business analysis and product
-                            delivery in enterprise hospitality software.
-                            Each stage has helped me understand a different
-                            part of the product lifecycle: the customer
-                            problem, the business requirement and the work
-                            needed to deliver a practical solution.
-                        </p>
-
-                        <p>
-                            I enjoy working through complex requirements,
-                            asking questions when something is unclear,
-                            documenting expected behaviour and helping
-                            different teams stay aligned. My work has included
-                            <strong>data migration, identity management,
-                            cloud monitoring, AWS migration and third-party
-                            integrations.</strong>
-                        </p>
-
-                        <p>
-                            I work closely with developers, QA, DevOps,
-                            clients and other stakeholders. I can engage
-                            with technical details, investigate issues using
-                            logs and testing tools, and help clarify problems
-                            without confusing delivery coordination with
-                            software development ownership.
-                        </p>
-
-                        <p>
-                            My approach is practical: understand the problem,
-                            make the requirement clear, coordinate the right
-                            people, validate the result and support the team
-                            through delivery.
-                        </p>
-
-                    </div>
-
-
-                    <div class="home-approach-list home-reveal">
-
-                        <article class="home-approach-card">
-                            <h3>01 · Understand the problem</h3>
-                            <p>
-                                Clarify stakeholder needs, existing workflows,
-                                constraints and the intended business outcome.
-                            </p>
-                        </article>
-
-                        <article class="home-approach-card">
-                            <h3>02 · Make the work actionable</h3>
-                            <p>
-                                Document requirements, user stories,
-                                acceptance criteria, dependencies and
-                                expected behaviour.
-                            </p>
-                        </article>
-
-                        <article class="home-approach-card">
-                            <h3>03 · Coordinate delivery</h3>
-                            <p>
-                                Keep engineering, QA, operations and
-                                stakeholders aligned on progress, issues
-                                and release readiness.
-                            </p>
-                        </article>
-
-                        <article class="home-approach-card">
-                            <h3>04 · Validate and improve</h3>
-                            <p>
-                                Support testing, investigate issues,
-                                clarify gaps and help teams prepare for
-                                go-live and ongoing operations.
-                            </p>
-                        </article>
-
-                    </div>
-
-                </div>
-
-            </div>
-        </section>
-
-
-        <!-- =========================================
-             CAREER JOURNEY
-        ========================================== -->
-
-        <section class="home-section" id="experience">
-            <div class="home-container">
-
-                <div class="home-section-heading home-reveal">
-                    <p class="home-eyebrow">Career journey</p>
-
-                    <h2>
-                        From technical support to
-                        <span class="home-accent">product delivery.</span>
-                    </h2>
-
+                <div class="experience-summary">
+                    <span class="eyebrow">Career journey</span>
+                    <h2>Experience built around delivery</h2>
                     <p>
-                        My career developed through hands-on customer
-                        support, business analysis and increasingly
-                        cross-functional product delivery responsibilities.
-                        Expand each stage to explore examples of my work.
+                        My work has grown from technical support and
+                        troubleshooting into business analysis and
+                        product delivery, giving me experience across
+                        customer needs, technical teams and releases.
+                    </p>
+
+                    <a class="project-link" href="#contact">
+                        Get in touch <span aria-hidden="true">→</span>
+                    </a>
+                </div>
+
+                <div class="experience-list">
+
+                    <article class="experience-item">
+                        <div class="experience-top">
+                            <div>
+                                <h3>Product Delivery Manager</h3>
+                                <p class="experience-company">HotelKey</p>
+                            </div>
+                            <span class="experience-date">Late 2022–2025</span>
+                        </div>
+
+                        <ul class="experience-points">
+                            <li>
+                                Translated client and business requirements
+                                into user stories and actionable delivery work.
+                            </li>
+                            <li>
+                                Coordinated developers, QA, DevOps and
+                                external teams across integrations, IDM,
+                                data migration and monitoring.
+                            </li>
+                            <li>
+                                Supported testing, issue investigation,
+                                release readiness, client delivery and go-live.
+                            </li>
+                        </ul>
+                    </article>
+
+                    <article class="experience-item">
+                        <div class="experience-top">
+                            <div>
+                                <h3>Business Analyst</h3>
+                                <p class="experience-company">HotelKey</p>
+                            </div>
+                            <span class="experience-date">2020–2022</span>
+                        </div>
+
+                        <ul class="experience-points">
+                            <li>
+                                Gathered requirements and documented
+                                business processes, user stories and
+                                implementation details.
+                            </li>
+                            <li>
+                                Supported enterprise data migration,
+                                field mapping, SQL-based validation,
+                                reporting and testing.
+                            </li>
+                            <li>
+                                Prepared client-facing documentation and
+                                coordinated with teams to resolve gaps.
+                            </li>
+                        </ul>
+                    </article>
+
+                    <article class="experience-item">
+                        <div class="experience-top">
+                            <div>
+                                <h3>Technical Support Agent</h3>
+                                <p class="experience-company">HotelKey</p>
+                            </div>
+                            <span class="experience-date">2019–2020</span>
+                        </div>
+
+                        <ul class="experience-points">
+                            <li>
+                                Supported customers with technical issues
+                                and investigated application and system problems.
+                            </li>
+                            <li>
+                                Contributed to internal knowledge bases,
+                                SOPs, reporting and team knowledge sharing.
+                            </li>
+                        </ul>
+                    </article>
+
+                </div>
+            </div>
+        </section>
+
+        <!-- Skills -->
+        <section class="section" id="skills">
+            <div class="container">
+
+                <div class="section-heading">
+                    <span class="eyebrow">Capabilities</span>
+                    <h2>Skills & tools</h2>
+                    <p class="section-intro">
+                        A practical mix of product delivery, analysis,
+                        testing, monitoring and technical collaboration.
                     </p>
                 </div>
 
+                <div class="skills-grid">
 
-                <div class="home-timeline">
-
-                    <!-- Product Delivery Manager -->
-                    <article class="home-timeline-item home-reveal">
-
-                        <span class="home-timeline-dot"
-                              aria-hidden="true"></span>
-
-                        <div class="home-timeline-meta">
-                            <span class="home-timeline-date">
-                                Late 2022 – 2025
-                            </span>
-                            <span class="home-timeline-label">
-                                Product Delivery
-                            </span>
-                        </div>
-
-                        <h3>Product Delivery Manager · HotelKey</h3>
-
-                        <p>
-                            Coordinated delivery across enterprise product
-                            areas, including reporting and ETL, identity
-                            management, core product functionality and
-                            hospitality integrations.
-                        </p>
-
-                        <details class="home-timeline-details">
-                            <summary>Explore responsibilities</summary>
-                            <ul>
-                                <li>Translated business needs into requirements, user stories and delivery tasks.</li>
-                                <li>Worked with engineering, QA, DevOps and client teams to coordinate implementation and releases.</li>
-                                <li>Supported testing, defect investigation, integration validation and go-live readiness.</li>
-                                <li>Contributed to enterprise identity integrations, AWS-related work and hospitality systems.</li>
-                                <li>Led a 15-person cloud monitoring team and helped establish monitoring processes and documentation; team ownership was handed over by the end of 2025.</li>
-                            </ul>
-                        </details>
-
-                    </article>
-
-
-                    <!-- Business Analyst -->
-                    <article class="home-timeline-item home-reveal">
-
-                        <span class="home-timeline-dot"
-                              aria-hidden="true"></span>
-
-                        <div class="home-timeline-meta">
-                            <span class="home-timeline-date">
-                                2020 – 2022
-                            </span>
-                            <span class="home-timeline-label">
-                                Business Analysis
-                            </span>
-                        </div>
-
-                        <h3>Business Analyst · HotelKey</h3>
-
-                        <p>
-                            Worked between enterprise client needs and
-                            internal teams, supporting requirements,
-                            documentation, testing and the launch of
-                            product functionality.
-                        </p>
-
-                        <details class="home-timeline-details">
-                            <summary>Explore responsibilities</summary>
-                            <ul>
-                                <li>Gathered and clarified client requirements.</li>
-                                <li>Created and maintained Jira tasks, documentation and client knowledge resources.</li>
-                                <li>Supported testing, issue investigation and communication between teams.</li>
-                                <li>Contributed to ETL and financial integration requirements, data field mapping and validation.</li>
-                                <li>Participated in enterprise client workshops in Dubai to review technical documentation and identify requirement gaps.</li>
-                            </ul>
-                        </details>
-
-                    </article>
-
-
-                    <!-- Technical Support -->
-                    <article class="home-timeline-item home-reveal">
-
-                        <span class="home-timeline-dot"
-                              aria-hidden="true"></span>
-
-                        <div class="home-timeline-meta">
-                            <span class="home-timeline-date">
-                                2019 – 2020
-                            </span>
-                            <span class="home-timeline-label">
-                                Technical Support
-                            </span>
-                        </div>
-
-                        <h3>Technical Support Agent · HotelKey</h3>
-
-                        <p>
-                            Built a foundation in customer issues,
-                            troubleshooting, product behaviour and
-                            communication between customers and technical
-                            teams before moving into business analysis.
-                        </p>
-
-                        <details class="home-timeline-details">
-                            <summary>Explore responsibilities</summary>
-                            <ul>
-                                <li>Investigated customer-reported issues and helped communicate their impact.</li>
-                                <li>Developed practical knowledge of the product and hospitality workflows.</li>
-                                <li>Supported internal knowledge sharing and documentation.</li>
-                                <li>Built the customer-focused perspective that later informed requirements and delivery work.</li>
-                            </ul>
-                        </details>
-
-                    </article>
-
-                </div>
-
-                <p class="home-hero-note">
-                    Role periods are presented as a high-level summary.
-                    Please verify the dates against your employment records
-                    before publishing.
-                </p>
-
-            </div>
-        </section>
-
-
-        <!-- =========================================
-             SKILLS & TOOLS
-        ========================================== -->
-
-        <section class="home-section home-section-alt" id="skills">
-            <div class="home-container">
-
-                <div class="home-section-heading home-reveal">
-                    <p class="home-eyebrow">Skills & tools</p>
-
-                    <h2>
-                        A practical toolkit for
-                        <span class="home-accent">delivery and analysis.</span>
-                    </h2>
-
-                    <p>
-                        The tools and working methods I have used to
-                        document requirements, validate functionality,
-                        investigate issues and coordinate delivery.
-                    </p>
-                </div>
-
-
-                <div class="home-skills-grid">
-
-                    <article class="home-skill-card home-reveal">
-                        <h3>
-                            <span class="home-skill-icon">01</span>
-                            Product & Business Analysis
-                        </h3>
-
-                        <div class="home-skill-tags">
+                    <article class="skill-card">
+                        <h3>Product & Business Analysis</h3>
+                        <div class="skill-tags">
                             <span>Requirements Gathering</span>
                             <span>User Stories</span>
                             <span>Acceptance Criteria</span>
                             <span>Stakeholder Management</span>
                             <span>Process Documentation</span>
                             <span>Agile / Scrum</span>
-                            <span>Delivery Coordination</span>
-                            <span>Release Readiness</span>
-                        </div>
-                    </article>
-
-
-                    <article class="home-skill-card home-reveal">
-                        <h3>
-                            <span class="home-skill-icon">02</span>
-                            Testing & Troubleshooting
-                        </h3>
-
-                        <div class="home-skill-tags">
-                            <span>Postman</span>
-                            <span>Charles Proxy</span>
-                            <span>SQL Validation</span>
-                            <span>Integration Testing</span>
-                            <span>Defect Investigation</span>
-                            <span>UAT Support</span>
                             <span>Jira</span>
                             <span>Confluence</span>
                         </div>
                     </article>
 
+                    <article class="skill-card">
+                        <h3>Testing & Troubleshooting</h3>
+                        <div class="skill-tags">
+                            <span>Postman</span>
+                            <span>Charles Proxy</span>
+                            <span>Integration Testing</span>
+                            <span>UAT Support</span>
+                            <span>SQL Validation</span>
+                            <span>Defect Investigation</span>
+                            <span>ServiceNow</span>
+                        </div>
+                    </article>
 
-                    <article class="home-skill-card home-reveal">
-                        <h3>
-                            <span class="home-skill-icon">03</span>
-                            Cloud & Monitoring
-                        </h3>
-
-                        <div class="home-skill-tags">
+                    <article class="skill-card">
+                        <h3>Cloud & Monitoring</h3>
+                        <div class="skill-tags">
                             <span>AWS</span>
                             <span>Amazon Cognito</span>
                             <span>AWS Lambda</span>
+                            <span>CloudWatch</span>
                             <span>Splunk</span>
                             <span>Datadog</span>
-                            <span>AWS CloudWatch</span>
                             <span>Rundeck Coordination</span>
                             <span>Incident Management</span>
                         </div>
                     </article>
 
-
-                    <article class="home-skill-card home-reveal">
-                        <h3>
-                            <span class="home-skill-icon">04</span>
-                            Databases & Collaboration
-                        </h3>
-
-                        <div class="home-skill-tags">
+                    <article class="skill-card">
+                        <h3>Data & Collaboration</h3>
+                        <div class="skill-tags">
                             <span>MySQL</span>
                             <span>Microsoft SQL Server</span>
                             <span>DynamoDB</span>
-                            <span>ServiceNow</span>
-                            <span>Zendesk</span>
                             <span>Power BI</span>
+                            <span>Zendesk</span>
                             <span>Microsoft Office</span>
+                            <span>Teams</span>
                             <span>Figma</span>
                         </div>
                     </article>
 
                 </div>
 
-
-                <div class="home-skills-note home-reveal">
-                    <strong>How I work technically:</strong>
-                    I use technical tools to understand systems, validate
-                    behaviour and collaborate effectively with engineers.
-                    My professional focus is product delivery and business
-                    analysis rather than full-time software development.
-                </div>
+                <p class="skills-note">
+                    Technical tools are listed to reflect practical project
+                    experience and collaboration; this is not a claim of
+                    specialist-level programming expertise in every tool.
+                </p>
 
             </div>
         </section>
 
+        <!-- Education and certification -->
+        <section class="section" id="credentials">
+            <div class="container">
 
-        <!-- =========================================
-             EDUCATION & CERTIFICATION
-        ========================================== -->
-
-        <section class="home-section" id="credentials">
-            <div class="home-container">
-
-                <div class="home-section-heading home-reveal">
-                    <p class="home-eyebrow">Education & credentials</p>
-
-                    <h2>
-                        The foundation behind
-                        <span class="home-accent">my work.</span>
-                    </h2>
+                <div class="section-heading">
+                    <span class="eyebrow">Education & credentials</span>
+                    <h2>Foundations & certification</h2>
                 </div>
 
+                <div class="credentials-grid">
 
-                <div class="home-credentials-grid">
-
-                    <article class="home-credential-card home-reveal">
-
-                        <div class="home-credential-icon"
-                             aria-hidden="true">
-                            ✓
-                        </div>
-
-                        <div>
-                            <h3>Certified Scrum Product Owner (CSPO)</h3>
-                            <p>
-                                Product ownership and Agile collaboration
-                                certification. Add the credential verification
-                                link here if you want recruiters to verify it.
-                            </p>
-                        </div>
-
-                    </article>
-
-
-                    <article class="home-credential-card home-reveal">
-
-                        <div class="home-credential-icon"
-                             aria-hidden="true">
-                            ED
-                        </div>
-
+                    <article class="credential-card">
+                        <div class="credential-icon" aria-hidden="true">ED</div>
                         <div>
                             <h3>Bachelor's Degree in Engineering</h3>
                             <p>
-                                KDK College of Engineering · Mechanical
-                                Engineering. Reported CGPA: 8.55.
+                                KDK College of Engineering ·
+                                Mechanical Engineering
+                            </p>
+                            <p>
+                                CGPA: 8.55 · First Division
                             </p>
                         </div>
+                    </article>
 
+                    <article class="credential-card">
+                        <div class="credential-icon" aria-hidden="true">✓</div>
+                        <div>
+                            <h3>Certified Scrum Product Owner</h3>
+                            <p>CSPO certification</p>
+                            <p>
+                                Product ownership and Agile delivery foundations.
+                            </p>
+                        </div>
                     </article>
 
                 </div>
-
             </div>
         </section>
 
+        <!-- Contact -->
+        <section class="section" id="contact">
+            <div class="container">
 
-        <!-- Beyond Work -->
-        <section class="home-section home-section-alt" id="beyond-work">
-            <div class="home-container">
-
-                <div class="home-section-heading home-reveal">
-                    <p class="home-eyebrow">Beyond the workplace</p>
-
-                    <h2>
-                        A few things that make me
-                        <span class="home-accent">who I am.</span>
-                    </h2>
-
-                    <p>
-                        Outside work, I enjoy exploring stories, ideas and questions
-                        that give me a different perspective on the world.
-                    </p>
-                </div>
-
-                <div class="home-skills-grid">
-
-                    <article class="home-skill-card home-reveal">
-                        <h3>
-                            <span class="home-skill-icon">✦</span>
-                            Anime & Storytelling
-                        </h3>
-                        <p class="home-muted">
-                            I enjoy anime for its characters, world-building and
-                            stories about perseverance, loyalty, ambition and
-                            personal growth.
+                <div class="contact-panel">
+                    <div>
+                        <span class="eyebrow">Let's connect</span>
+                        <h2>Have a role or project in mind?</h2>
+                        <p>
+                            I'm interested in opportunities across product
+                            delivery, product management and business analysis.
+                            Feel free to reach out to discuss a potential fit.
                         </p>
-                    </article>
-
-                    <article class="home-skill-card home-reveal">
-                        <h3>
-                            <span class="home-skill-icon">∑</span>
-                            Mathematics & Physics
-                        </h3>
-                        <p class="home-muted">
-                            I enjoy exploring how things work, understanding
-                            complicated ideas and finding the logic behind
-                            everyday phenomena.
-                        </p>
-                    </article>
-
-                    <article class="home-skill-card home-reveal">
-                        <h3>
-                            <span class="home-skill-icon">⌛</span>
-                            History
-                        </h3>
-                        <p class="home-muted">
-                            History interests me because it offers different
-                            perspectives on people, societies, decisions and
-                            the events that shape the world.
-                        </p>
-                    </article>
-
-                    <article class="home-skill-card home-reveal">
-                        <h3>
-                            <span class="home-skill-icon">↗</span>
-                            Continuous Learning
-                        </h3>
-                        <p class="home-muted">
-                            I like learning about new technologies, exploring
-                            unfamiliar topics and finding ways to broaden
-                            my understanding beyond my day-to-day work.
-                        </p>
-                    </article>
-
-                </div>
-
-            </div>
-        </section>
-
-        <!-- =========================================
-             CONTACT
-        ========================================== -->
-
-        <section class="home-section home-section-alt" id="contact">
-            <div class="home-container">
-
-                <div class="home-contact-panel home-reveal">
-
-                    <p class="home-eyebrow">Let's connect</p>
-
-                    <h2>
-                        Have a product or delivery challenge to solve?
-                    </h2>
-
-                    <p>
-                        I'm interested in Product Delivery Manager,
-                        Product Manager and Business Analyst opportunities.
-                        If you're looking for someone who can help clarify
-                        requirements, coordinate teams and support execution,
-                        I'd be glad to connect.
-                    </p>
-
-                    <div class="home-contact-actions">
-
-                        <a class="home-btn home-btn-primary"
-                           href="mailto:yourszishankhan1000@gmail.com?subject=Professional%20Opportunity">
-                            Email me <span aria-hidden="true">↗</span>
-                        </a>
-
-                        <!-- Replace this with your actual LinkedIn profile URL. -->
-                        <a class="home-btn"
-                           href="https://www.linkedin.com/in/zishan-khan-020160176/"
-                           target="_blank"
-                           rel="noopener noreferrer">
-                            Connect on LinkedIn <span aria-hidden="true">↗</span>
-                        </a>
-
-                        <a class="home-btn" href="#top">
-                            Back to top <span aria-hidden="true">↑</span>
-                        </a>
-
                     </div>
 
-                    <p class="home-contact-note">
-                        For privacy, only professional contact details
-                        intended for public sharing appear here.
-                    </p>
+                    <div class="contact-actions">
+                        <a
+                            class="button button-primary"
+                            href="mailto:yourszishankhan1000@gmail.com"
+                        >
+                            Email me ↗
+                        </a>
 
+                        <a
+                            class="button button-secondary"
+                            href="https://www.linkedin.com/in/zishan-khan-020160176/"
+                            target="_blank"
+                            rel="noopener noreferrer"
+                        >
+                            LinkedIn ↗
+                        </a>
+                    </div>
                 </div>
 
             </div>
@@ -2215,175 +521,64 @@
 
     </main>
 
-
-    <!-- =========================================
-         FOOTER
-    ========================================== -->
-
-    <footer class="home-footer">
-        <div class="home-container home-footer-inner">
-
+    <!-- Footer -->
+    <footer class="site-footer">
+        <div class="container footer-inner">
             <p>
-                © <span id="homeCurrentYear">2026</span> Zishan Khan | Product Delivery Portfolio.
+                © <span id="currentYear"></span> Zishan Khan.
+                Product Delivery Portfolio.
             </p>
 
-            <div class="home-footer-links">
-                <a href="#work">Portfolio</a>
-                <a href="#about">About</a>
-                <a href="#experience">Experience</a>
-                <a href="#beyond-work">Beyond Work</a>
+            <div class="footer-links">
+                <a href="#home">Back to top ↑</a>
+                <a href="#projects">Projects</a>
                 <a href="#contact">Contact</a>
             </div>
-
         </div>
     </footer>
 
-
-    <a href="#top"
-       class="home-back-top"
-       id="homeBackTop"
-       aria-label="Back to top">
-        ↑
-    </a>
-
-
-    <!-- =========================================
-         INTERACTIONS
-    ========================================== -->
-
     <script>
-        document.addEventListener("DOMContentLoaded", function () {
+        const menuToggle = document.getElementById("menuToggle");
+        const navLinks = document.getElementById("navLinks");
+        const menuIcon = document.getElementById("menuIcon");
 
-            /* Mobile navigation */
+        function closeMenu() {
+            navLinks.classList.remove("is-open");
+            menuToggle.setAttribute("aria-expanded", "false");
+            menuToggle.setAttribute("aria-label", "Open navigation menu");
+            menuIcon.textContent = "☰";
+        }
 
-            const menuToggle = document.getElementById("homeMenuToggle");
-            const navLinks = document.getElementById("homeNavLinks");
+        menuToggle.addEventListener("click", function () {
+            const isOpen = navLinks.classList.toggle("is-open");
 
-            function closeMenu() {
-                navLinks.classList.remove("open");
-                document.body.classList.remove("home-menu-open");
-                menuToggle.setAttribute("aria-expanded", "false");
-                menuToggle.setAttribute("aria-label", "Open navigation menu");
-                menuToggle.textContent = "☰";
-            }
+            menuToggle.setAttribute("aria-expanded", String(isOpen));
+            menuToggle.setAttribute(
+                "aria-label",
+                isOpen ? "Close navigation menu" : "Open navigation menu"
+            );
 
-            menuToggle.addEventListener("click", function () {
-                const isOpen = navLinks.classList.toggle("open");
-
-                document.body.classList.toggle("home-menu-open", isOpen);
-                menuToggle.setAttribute("aria-expanded", String(isOpen));
-                menuToggle.setAttribute(
-                    "aria-label",
-                    isOpen ? "Close navigation menu" : "Open navigation menu"
-                );
-                menuToggle.textContent = isOpen ? "✕" : "☰";
-            });
-
-            navLinks.querySelectorAll("a").forEach(function (link) {
-                link.addEventListener("click", closeMenu);
-            });
-
-            window.addEventListener("resize", function () {
-                if (window.innerWidth > 650) {
-                    closeMenu();
-                }
-            });
-
-
-            /* Interactive project filters */
-
-            const filterButtons = document.querySelectorAll(".home-filter");
-            const projectCards = document.querySelectorAll(".home-project-card");
-            const projectCount = document.getElementById("homeProjectCount");
-
-            function applyProjectFilter(filter) {
-                let visibleCount = 0;
-
-                projectCards.forEach(function (card) {
-                    const matches =
-                        filter === "all" ||
-                        card.dataset.category === filter;
-
-                    card.hidden = !matches;
-
-                    if (matches) {
-                        visibleCount++;
-                    }
-                });
-
-                projectCount.textContent =
-                    "Showing " + visibleCount +
-                    (visibleCount === 1 ? " case study" : " case studies");
-
-                filterButtons.forEach(function (button) {
-                    const isActive = button.dataset.filter === filter;
-
-                    button.classList.toggle("active", isActive);
-                    button.setAttribute("aria-pressed", String(isActive));
-                });
-            }
-
-            filterButtons.forEach(function (button) {
-                button.addEventListener("click", function () {
-                    applyProjectFilter(button.dataset.filter);
-                });
-            });
-
-
-            /* Subtle scroll reveal */
-
-            const revealItems = document.querySelectorAll(".home-reveal");
-            const reducedMotion = window.matchMedia(
-                "(prefers-reduced-motion: reduce)"
-            ).matches;
-
-            if ("IntersectionObserver" in window && !reducedMotion) {
-                const revealObserver = new IntersectionObserver(
-                    function (entries, observer) {
-                        entries.forEach(function (entry) {
-                            if (entry.isIntersecting) {
-                                entry.target.classList.add("is-visible");
-                                observer.unobserve(entry.target);
-                            }
-                        });
-                    },
-                    {
-                        threshold: 0.08,
-                        rootMargin: "0px 0px -25px 0px"
-                    }
-                );
-
-                revealItems.forEach(function (item) {
-                    revealObserver.observe(item);
-                });
-            } else {
-                revealItems.forEach(function (item) {
-                    item.classList.add("is-visible");
-                });
-            }
-
-
-            /* Back-to-top visibility */
-
-            const backTop = document.getElementById("homeBackTop");
-
-            function updateBackTop() {
-                backTop.classList.toggle("visible", window.scrollY > 500);
-            }
-
-            window.addEventListener("scroll", updateBackTop, {
-                passive: true
-            });
-
-            updateBackTop();
-
-
-            /* Automatic footer year */
-
-            document.getElementById("homeCurrentYear").textContent =
-                new Date().getFullYear();
-
+            menuIcon.textContent = isOpen ? "✕" : "☰";
         });
+
+        navLinks.querySelectorAll("a").forEach(function (link) {
+            link.addEventListener("click", closeMenu);
+        });
+
+        document.addEventListener("keydown", function (event) {
+            if (event.key === "Escape") {
+                closeMenu();
+            }
+        });
+
+        window.addEventListener("resize", function () {
+            if (window.innerWidth > 700) {
+                closeMenu();
+            }
+        });
+
+        document.getElementById("currentYear").textContent =
+            new Date().getFullYear();
     </script>
 
 </body>

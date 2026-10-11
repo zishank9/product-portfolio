@@ -5702,3 +5702,29 @@ h1, h2, h3, h4, h5, h6 { font-family: var(--font-heading); color: var(--text); }
         0 0 0 4px var(--tree-gold-soft),
         0 0 18px var(--tree-gold-soft);
 }
+
+/* End of RPG SKILL TREE — SELECTION POLISH---------------------------------------------------------------------------------- */
+
+
+
+/* Hero recruiter contact link */
+
+.hero-contact-link {
+    display: inline-flex;
+    align-items: center;
+    color: var(--muted);
+    font-size: 0.92rem;
+    font-weight: 600;
+    text-decoration: none;
+    transition: color 0.2s ease;
+}
+
+.hero-contact-link:hover {
+    color: var(--accent);
+}
+
+.hero-contact-link:focus-visible {
+    outline: 2px solid var(--accent);
+    outline-offset: 5px;
+    border-radius: 3px;
+}

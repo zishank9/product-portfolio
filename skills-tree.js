@@ -8,169 +8,178 @@ document.addEventListener("DOMContentLoaded", () => {
 
     if (!tree) return;
 
-    const abilities = {
-        requirements: {
-            title: "Requirements Gathering",
-            description:
-                "Understanding client needs and translating them into clear, actionable requirements.",
-            tags: ["Business Analysis", "Requirements", "Client Discussions"],
-            example:
-                "For third-party integrations, I work with clients and technical teams to clarify expected workflows, dependencies, and delivery requirements."
-        },
+   
+const abilities = {
 
-        stories: {
-            title: "User Stories & Acceptance Criteria",
-            description:
-                "Breaking business requirements into user stories that engineering teams can discuss, estimate, and implement.",
-            tags: ["User Stories", "Acceptance Criteria", "Jira"],
-            example:
-                "I translate integration and feature requirements into actionable user stories, including expected behavior and validation criteria."
-        },
+    // BUSINESS & PRODUCT
 
-        process: {
-            title: "Process Mapping",
-            description:
-                "Understanding how existing workflows operate and documenting changes needed for improved business processes.",
-            tags: ["Workflow Analysis", "Documentation", "Business Processes"],
-            example:
-                "During migration and integration projects, I help clarify existing workflows and how the target process should function."
-        },
+    requirements: {
+        title: "Requirements Gathering",
+        description:
+            "Understanding business problems, clarifying client expectations, and translating needs into actionable requirements.",
+        tags: ["Business Analysis", "Client Requirements", "Stakeholder Discussions"],
+        example:
+            "For hospitality integrations, I worked with clients to understand how systems such as telephony, Wi-Fi, and third-party platforms should interact, then clarified those expectations with engineering teams."
+    },
 
-        stakeholders: {
-            title: "Stakeholder Management",
-            description:
-                "Keeping clients, business teams, and engineering stakeholders aligned on requirements, progress, and delivery expectations.",
-            tags: ["Communication", "Coordination", "Stakeholder Alignment"],
-            example:
-                "I coordinate discussions between clients, developers, DevOps, and third-party providers to resolve dependencies and keep delivery moving."
-        },
+    stories: {
+        title: "User Stories & Acceptance Criteria",
+        description:
+            "Breaking business requirements into manageable user stories with clear expected behavior and validation criteria.",
+        tags: ["User Stories", "Acceptance Criteria", "Jira"],
+        example:
+            "I translated integration and feature requirements into user stories so developers could understand the expected functionality and QA teams could validate the results."
+    },
 
-        prioritization: {
-            title: "Prioritization",
-            description:
-                "Helping teams understand business needs, dependencies, and delivery considerations when planning work.",
-            tags: ["Backlog Discussions", "Dependencies", "Planning"],
-            example:
-                "I help clarify which requirements and integration dependencies need attention before development or release activities can proceed."
-        },
+    process: {
+        title: "Process Mapping",
+        description:
+            "Understanding existing business workflows, identifying dependencies, and documenting how processes should work after changes.",
+        tags: ["Workflow Analysis", "Process Documentation", "Business Analysis"],
+        example:
+            "During data migration projects, I helped clarify how information moved from legacy hospitality systems into the target platform and what needed to be validated."
+    },
 
-        documentation: {
-            title: "Product & Process Documentation",
-            description:
-                "Creating clear documentation to support implementation, testing, troubleshooting, and operational handover.",
-            tags: ["Confluence", "User Stories", "Process Documentation"],
-            example:
-                "I prepare requirements, workflow information, and deployment-related documentation so different teams have a shared reference."
-        },
+    stakeholders: {
+        title: "Stakeholder Management",
+        description:
+            "Keeping clients, business stakeholders, developers, and external partners aligned on requirements, progress, and dependencies.",
+        tags: ["Stakeholder Communication", "Client Coordination", "Team Alignment"],
+        example:
+            "During third-party integrations, I coordinated with clients, engineering teams, and external providers to clarify responsibilities, investigate blockers, and support delivery."
+    },
 
-        agile: {
-            title: "Agile / Scrum",
-            description:
-                "Supporting iterative delivery through requirements refinement, coordination, and progress tracking.",
-            tags: ["Agile", "Scrum", "Jira", "Confluence"],
-            example:
-                "I work with engineering teams to clarify requirements, track delivery items, and address issues throughout development."
-        },
+    prioritization: {
+        title: "Prioritization & Dependencies",
+        description:
+            "Helping teams understand business needs, delivery dependencies, and which issues require attention before work can progress.",
+        tags: ["Requirements Prioritization", "Dependencies", "Delivery Planning"],
+        example:
+            "When an integration depended on external configurations or technical changes, I helped identify those dependencies and coordinate the next steps with the relevant teams."
+    },
 
-        coordination: {
-            title: "Cross-Functional Coordination",
-            description:
-                "Connecting business, development, QA, DevOps, and external teams to support delivery.",
-            tags: ["Engineering Coordination", "Communication", "Dependencies"],
-            example:
-                "During AWS environment migration, I coordinated DevOps, database, and development teams around migration activities and troubleshooting."
-        },
+    documentation: {
+        title: "Product & Process Documentation",
+        description:
+            "Preparing clear documentation that supports implementation, testing, troubleshooting, and knowledge sharing.",
+        tags: ["Confluence", "User Stories", "Process Documentation"],
+        example:
+            "I documented requirements, integration workflows, troubleshooting steps, and migration procedures to help teams work from a shared understanding."
+    },
 
-        release: {
-            title: "Release Planning",
-            description:
-                "Supporting release readiness through dependency tracking, testing coordination, and deployment preparation.",
-            tags: ["Release Readiness", "Deployment", "Planning"],
-            example:
-                "I help coordinate testing, migration validation, documentation, and operational preparation before planned releases."
-        },
+    // DELIVERY & QUALITY
 
-        testing: {
-            title: "Testing & UAT",
-            description:
-                "Validating software behavior against requirements and identifying issues before delivery.",
-            tags: ["UAT", "Postman", "Charles Proxy", "Validation"],
-            example:
-                "I set up test environments and validate hospitality integrations, investigating unexpected behavior before client delivery."
-        },
+    agile: {
+        title: "Agile / Scrum",
+        description:
+            "Supporting iterative software delivery through requirements clarification, development coordination, and progress tracking.",
+        tags: ["Agile", "Scrum", "Jira", "CSPO"],
+        example:
+            "I worked with development teams to clarify user stories, answer implementation questions, track issues, and support validation during feature delivery."
+    },
 
-        issues: {
-            title: "Issue Investigation & Resolution",
-            description:
-                "Investigating reported problems, collecting relevant information, and coordinating technical resolution.",
-            tags: ["Troubleshooting", "Jira", "ServiceNow", "Zendesk"],
-            example:
-                "I work with engineering and support teams to investigate integration failures, review available evidence, and coordinate fixes."
-        },
+    coordination: {
+        title: "Cross-Functional Coordination",
+        description:
+            "Connecting business, development, QA, DevOps, database, and external teams to manage dependencies and support delivery.",
+        tags: ["Cross-Team Collaboration", "Engineering Coordination", "Dependencies"],
+        example:
+            "During AWS environment migration, I coordinated DevOps, database, and development teams around migration preparation, execution, validation, and troubleshooting."
+    },
 
-        golive: {
-            title: "Go-Live & Post-Delivery Support",
-            description:
-                "Supporting implementation, client delivery, and issue resolution after release.",
-            tags: ["Go-Live", "Client Coordination", "Post-Release Support"],
-            example:
-                "For hospitality integrations, I coordinate delivery activities and help troubleshoot issues encountered after go-live."
-        },
+    release: {
+        title: "Release Planning & Readiness",
+        description:
+            "Supporting release preparation through dependency tracking, testing coordination, documentation, and deployment readiness.",
+        tags: ["Release Readiness", "Deployment Coordination", "Planning"],
+        example:
+            "For enterprise software releases, I coordinated testing and outstanding issues, followed up on dependencies, and helped teams prepare for deployment."
+    },
 
-        sql: {
-            title: "SQL & Data Validation",
-            description:
-                "Using database knowledge to support investigation, data verification, and migration validation.",
-            tags: ["MySQL", "SQL Server", "DynamoDB", "Data Validation"],
-            example:
-                "During ETL and data migration projects, I support data validation, investigate discrepancies, and coordinate reconciliation activities."
-        },
+    testing: {
+        title: "Testing & UAT",
+        description:
+            "Validating expected software behavior, identifying defects, and coordinating investigations before client delivery.",
+        tags: ["UAT", "Postman", "Charles Proxy", "Integration Testing"],
+        example:
+            "For hospitality IoT integrations, I set up test environments, tested integration behavior, investigated unexpected results, and coordinated follow-up testing."
+    },
 
-        apis: {
-            title: "API & Third-Party Integrations",
-            description:
-                "Understanding integration workflows, testing expected behavior, and coordinating implementation with technical teams.",
-            tags: ["APIs", "Postman", "Third-Party Systems", "Integration Testing"],
-            example:
-                "I have supported hospitality integrations involving telephony, Wi-Fi, voicemail, and external platforms such as Canary, Virdee, and Toast."
-        },
+    issues: {
+        title: "Issue Investigation & Resolution",
+        description:
+            "Investigating application problems, gathering evidence, and coordinating with technical teams to support resolution.",
+        tags: ["Troubleshooting", "Jira", "ServiceNow", "Zendesk"],
+        example:
+            "When integrations behaved unexpectedly, I helped reproduce issues, review available information, document findings, and coordinate investigations with developers."
+    },
 
-        aws: {
-            title: "AWS & Cloud Platforms",
-            description:
-                "Supporting cloud migration and platform delivery through requirements, coordination, validation, and troubleshooting.",
-            tags: ["AWS", "Cloud Migration", "DevOps Coordination"],
-            example:
-                "I coordinated AWS environment migration activities involving DevOps, database, and development teams, including migration validation."
-        },
+    golive: {
+        title: "Go-Live & Post-Delivery Support",
+        description:
+            "Helping teams prepare for client delivery and supporting issue investigation after implementation.",
+        tags: ["Go-Live", "Client Coordination", "Post-Release Support"],
+        example:
+            "During hospitality integration delivery, I coordinated with internal and third-party teams, supported go-live activities, and helped troubleshoot issues after release."
+    },
 
-        monitoring: {
-            title: "Monitoring & Observability",
-            description:
-                "Using monitoring tools to investigate application behavior and support incident analysis.",
-            tags: ["Splunk", "Datadog", "Application Monitoring", "Telemetry"],
-            example:
-                "I have worked with monitoring tools and Java application telemetry to support issue investigation and operational visibility."
-        },
+    // TECHNICAL & SYSTEMS
 
-        identity: {
-            title: "Identity Management",
-            description:
-                "Supporting identity integration and migration workflows through technical coordination, testing, and requirements clarification.",
-            tags: ["Amazon Cognito", "AWS Lambda", "Identity Integration"],
-            example:
-                "I supported identity management integration work involving Amazon Cognito and AWS Lambda, including implementation and validation activities."
-        },
+    sql: {
+        title: "SQL & Data Validation",
+        description:
+            "Using database knowledge to validate information, investigate discrepancies, and support enterprise data migration.",
+        tags: ["MySQL", "SQL Server", "DynamoDB", "Data Validation"],
+        example:
+            "During ETL migration, I used SQL-based validation to compare source and target information, identify discrepancies, and support reconciliation with the relevant teams."
+    },
 
-        migration: {
-            title: "ETL & Data Migration",
-            description:
-                "Supporting migration workflows, data validation, issue investigation, and coordination between business and engineering teams.",
-            tags: ["ETL", "Data Migration", "SQL", "Reconciliation"],
-            example:
-                "I worked on hospitality data migration projects involving legacy data mapping, validation, and financial reconciliation."
-        }
-    };
+    apis: {
+        title: "API & Third-Party Integrations",
+        description:
+            "Understanding integration workflows, validating expected behavior, and coordinating technical implementation.",
+        tags: ["APIs", "Postman", "Third-Party Integrations", "Testing"],
+        example:
+            "I supported integrations involving PBX, voicemail, Wi-Fi, Canary, Virdee, and Toast by clarifying requirements, coordinating teams, and testing integration behavior."
+    },
+
+    aws: {
+        title: "AWS & Cloud Platforms",
+        description:
+            "Supporting cloud-related initiatives through requirements clarification, technical coordination, validation, and troubleshooting.",
+        tags: ["AWS", "Cloud Migration", "DevOps Coordination"],
+        example:
+            "During AWS environment migration, I coordinated development, database, and DevOps teams, supported migration planning, and participated in validation and troubleshooting."
+    },
+
+    monitoring: {
+        title: "Monitoring & Observability",
+        description:
+            "Using application monitoring and telemetry information to investigate incidents and support operational visibility.",
+        tags: ["Splunk", "Datadog", "CloudWatch", "Application Telemetry"],
+        example:
+            "I worked with Splunk, Datadog, and Java application telemetry to investigate application behavior, review alerts, and coordinate technical follow-up."
+    },
+
+    identity: {
+        title: "Identity Management",
+        description:
+            "Supporting identity integration requirements, migration scenarios, testing, and coordination with technical teams.",
+        tags: ["Amazon Cognito", "AWS Lambda", "Identity Integration"],
+        example:
+            "I supported identity management integration work involving Amazon Cognito and AWS Lambda, including requirements clarification, implementation coordination, and validation. The intended large-scale migration was not completed."
+    },
+
+    migration: {
+        title: "ETL & Data Migration",
+        description:
+            "Supporting legacy data mapping, transformation requirements, validation, and reconciliation across enterprise systems.",
+        tags: ["ETL", "SQL", "Data Migration", "Reconciliation"],
+        example:
+            "I worked on hospitality data migration projects involving legacy field mapping, SQL-based validation, financial reconciliation, and coordination with engineering teams."
+    }
+};
+
 
     const buttons = tree.querySelectorAll(".skill-ability");
     const title = document.getElementById("skillAbilityTitle");

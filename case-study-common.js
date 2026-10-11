@@ -707,42 +707,80 @@ const menuToggle = document.getElementById("menuToggle");
 
     if (!section) return;
 
-    const careerData = {
-        delivery: {
-            title: "Product Delivery Manager",
-            date: "HotelKey · Late 2022–2025",
-            summary:
-                "Connecting business priorities with engineering and delivery teams.",
-            points: [
-                "Turned client and business requirements into user stories and actionable work.",
-                "Coordinated developers, QA, DevOps and external teams across integrations, identity management, data migration and monitoring.",
-                "Supported testing, issue investigation, release readiness and go-live."
-            ]
-        },
+    
+const careerData = {
+    delivery: {
+        title: "Product Delivery Manager",
+        date: "HotelKey · Late 2022–2025",
 
-        analyst: {
-            title: "Business Analyst",
-            date: "HotelKey · 2020–2022",
-            summary:
-                "Turning business needs into clear requirements and implementation details.",
-            points: [
-                "Gathered requirements and documented processes, user stories and implementation needs.",
-                "Supported data migration through field mapping, SQL-based validation, reporting and testing.",
-                "Prepared client-facing documentation and worked with teams to clarify gaps and resolve issues."
-            ]
-        },
+        summary:
+            "Bridging business requirements and technical execution " +
+            "by coordinating stakeholders, engineering teams, " +
+            "testing activities, and enterprise software delivery.",
 
-        support: {
-            title: "Technical Support Agent",
-            date: "HotelKey · 2019–2020",
-            summary:
-                "Learning how software problems affect customers and how teams can resolve them.",
-            points: [
-                "Investigated application and system issues reported by customers.",
-                "Contributed to knowledge-base articles, standard procedures, reporting and team knowledge sharing."
-            ]
-        }
-    };
+        points: [
+            "Gathered and clarified client requirements, " +
+            "translated business needs into user stories, " +
+            "and supported feature prioritization.",
+
+            "Coordinated developers, QA, DevOps, database, " +
+            "and third-party teams across enterprise integrations, " +
+            "data migrations, identity management, and cloud initiatives.",
+
+            "Supported testing, issue investigation, " +
+            "release planning, go-live readiness, " +
+            "and post-delivery troubleshooting."
+        ]
+    },
+
+    analyst: {
+        title: "Business Analyst",
+        date: "HotelKey · 2020–2022",
+
+        summary:
+            "Understanding business processes, documenting " +
+            "requirements, and helping technical teams translate " +
+            "client needs into practical software solutions.",
+
+        points: [
+            "Worked with stakeholders to gather requirements, " +
+            "clarify business workflows, document user stories, " +
+            "and communicate expected system behavior.",
+
+            "Supported enterprise data migration through " +
+            "field mapping, SQL-based validation, " +
+            "data reconciliation, and testing.",
+
+            "Prepared functional documentation, " +
+            "investigated requirement gaps, and coordinated " +
+            "with development and testing teams."
+        ]
+    },
+
+    support: {
+        title: "Technical Support Agent",
+        date: "HotelKey · 2019–2020",
+
+        summary:
+            "Supporting customers, investigating application " +
+            "issues, and building an understanding of how " +
+            "enterprise software works in real-world environments.",
+
+        points: [
+            "Investigated customer-reported application " +
+            "issues, gathered relevant information, " +
+            "and helped identify potential causes.",
+
+            "Coordinated with internal teams to escalate " +
+            "technical issues and follow up on resolutions.",
+
+            "Contributed to troubleshooting documentation, " +
+            "knowledge-base articles, standard procedures, " +
+            "and team knowledge sharing."
+        ]
+    }
+};
+
 
     const bars = section.querySelectorAll(".career-bar");
     const title = section.querySelector("#careerDetailTitle");

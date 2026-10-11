@@ -5728,3 +5728,21 @@ h1, h2, h3, h4, h5, h6 { font-family: var(--font-heading); color: var(--text); }
     outline-offset: 5px;
     border-radius: 3px;
 }
+
+/* End of Hero recruiter contact link */
+
+
+.aws-workflow {
+    width: 100%;
+    max-width: 100%;
+    overflow: hidden;
+}
+
+.aws-workflow-image {
+    display: block;
+    width: 100%;
+    height: auto;
+    max-width: 100%;
+    object-fit: contain;
+    border-radius: 16px;
+}

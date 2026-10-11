@@ -1,620 +1,611 @@
 
+
 <!DOCTYPE html>
+
 <html lang="en">
+
 <head>
+
     <meta charset="UTF-8">
+
         <script src="theme.js" ></script>
+
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
     <meta name="description"
+
           content="Case study on AWS environment migration, cross-functional delivery coordination, deployment workflows, and migration validation.">
+
     <meta name="theme-color" content="#0b1020">
+
     <title>AWS Environment Migration | Zishan Khan</title>  
+
     <link rel="preconnect" href="https://fonts.googleapis.com">
+
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+
     <link
+
     href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Space+Grotesk:wght@400;500;600;700&display=swap"
+
     rel="stylesheet"
+
     >
+
     <link rel="stylesheet" href="styles.css">
-   
+
+
+
 </head>
+
+
 
 <body>
 
+
+
     <div class="aws-progress-track" aria-hidden="true">
+
         <div class="aws-progress-bar" id="awsProgressBar"></div>
+
     </div>
 
+
+
        <!-- Navigation -->
+
     <header class="site-header">
+
         <div class="container nav">
+
             <a class="brand" href="index.html" aria-label="Go to homepage">
-                <img
-                    class="brand-logo logo-dark"
-                    src="images/logo-dark.png"
-                    alt="Zishan Khan"
-                >
 
                 <img
-                    class="brand-logo logo-light"
-                    src="images/logo-light.png"
-                    alt=""
-                    aria-hidden="true"
+
+                    class="brand-logo logo-dark"
+
+                    src="images/logo-dark.png"
+
+                    alt="Zishan Khan"
+
                 >
+
+
+
+                <img
+
+                    class="brand-logo logo-light"
+
+                    src="images/logo-light.png"
+
+                    alt=""
+
+                    aria-hidden="true"
+
+                >
+
           </a>
 
+
+
             <button
+
                 class="menu-toggle"
+
                 id="menuToggle"
+
                 type="button"
+
                 aria-label="Open navigation menu"
+
                 aria-controls="navLinks"
+
                 aria-expanded="false"
+
             >
+
                 <span id="menuIcon" aria-hidden="true">☰</span>
+
             </button>
 
+
+
                        <nav class="nav-links" id="navLinks" aria-label="Main navigation">
-                <a href="/index.html#projects">Projects</a>
-                <a href="/index.html#experience">Experience</a>
-                <a href="/index.html#skills">Skills</a>
-                <a href="/index.html#credentials">Education</a>
-                <a class="nav-contact" href="/index.html#contact">Contact me ↗</a>
+
+                <a href="index.html#projects">Projects</a>
+
+                <a href="index.html#experience">Experience</a>
+
+                <a href="index.html#skills">Skills</a>
+
+                <a href="index.html#credentials">Education</a>
+
+                <a class="nav-contact" href="index.html#contact">Contact me ↗</a>
+
             </nav>
+
         </div>
+
     </header>
+
+
 
     <main class="container">
 
+
+
         <!-- HERO -->
+
         <section class="case-hero" id="top">
 
+
+
             <p class="case-label">
-                Case Study 04 · Cloud Infrastructure
+
+                Case Study 04 · Cloud &amp; Regional Migration
+
             </p>
+
+
 
             <h1>
+
                 Coordinating AWS Environment Migration
+
                 and Deployment Readiness
+
             </h1>
 
+
+
             <p class="case-intro">
+
                 How I coordinated DevOps, database, and development teams
+
                 during an AWS environment migration, helping define the
+
                 workflow, coordinate automation, validate results, and
+
                 plan for minimal disruption to application availability.
+
             </p>
 
+
+
             <div class="aws-hero-actions">
+
                 <a class="aws-action aws-action-primary" href="#aws-overview">
+
                     Explore the case study ↓
+
                 </a>
+
                 <a class="aws-action" href="#aws-workflow">
+
                     Explore the workflow
+
                 </a>
+
             </div>
+
+
 
             <div class="case-meta">
 
+
+
                 <div class="meta-card">
+
                     <p>Role</p>
+
                     <strong>Product Delivery Manager</strong>
+
                 </div>
 
+
+
                 <div class="meta-card">
+
                     <p>Teams involved</p>
+
                     <strong>DevOps, Database, and Development</strong>
+
                 </div>
 
+
+
                 <div class="meta-card">
+
                     <p>Technical context</p>
-                    <strong>AWS, Rundeck, Java, database systems</strong>
+
+                    <strong>AWS DMS, Java, Kura, Rundeck</strong>
+
                 </div>
 
+
+
                 <div class="meta-card">
+
                     <p>Primary focus</p>
-                    <strong>Migration coordination and delivery readiness</strong>
+
+                    <strong>Regional data and IoT migration delivery</strong>
+
                 </div>
+
+
 
             </div>
+
         </section>
 
+
+
         <!-- MOBILE CONTENTS -->
+
         <details class="aws-mobile-toc">
+
             <summary>On this page · Jump to a section</summary>
+
             <div class="aws-mobile-links">
+
                 <a href="#aws-overview">Project Overview</a>
+
                 <a href="#aws-challenge">The Challenge</a>
+
                 <a href="#aws-workflow">Interactive Migration Workflow</a>
+
                 <a href="#aws-contributions">My Role and Contributions</a>
+
                 <a href="#aws-approach">My Approach</a>
+
                 <a href="#aws-outcomes">Contribution and Delivery Impact</a>
+
                 <a href="#aws-learnings">Key Learnings</a>
+
                 <a href="#aws-skills">Skills Demonstrated</a>
-                <a href="#aws-confidentiality">Confidentiality</a>
+
+
             </div>
+
         </details>
+
+
 
         <div class="aws-layout">
 
+
+
             <!-- DESKTOP CONTENTS -->
+
             <aside class="aws-toc" aria-label="Case study contents">
+
                 <p class="aws-toc-title">On this page</p>
+
                 <a href="#aws-overview">Project Overview</a>
+
                 <a href="#aws-challenge">The Challenge</a>
+
                 <a href="#aws-workflow">Migration Workflow</a>
+
                 <a href="#aws-contributions">My Contributions</a>
+
                 <a href="#aws-approach">My Approach</a>
+
                 <a href="#aws-outcomes">Delivery Impact</a>
+
                 <a href="#aws-learnings">Key Learnings</a>
+
                 <a href="#aws-skills">Skills Demonstrated</a>
-                <a href="#aws-confidentiality">Confidentiality</a>
+
+
             </aside>
+
+
 
             <div class="aws-content">
 
+
+
                 <!-- OVERVIEW -->
+
                 <section class="case-section aws-reveal" id="aws-overview">
-
                     <h2>Project Overview</h2>
-
                     <p>
-                        The project involved moving application artifacts between
-                        AWS environments. Successful execution required coordinated
-                        work across DevOps, database, and development teams, along
-                        with a clear migration workflow and validation activities.
+                        Some properties had been provisioned in AWS regions that did not match
+                        their intended geographic or operational environment. Examples included
+                        Asia-Pacific properties placed outside their intended China environment,
+                        European properties hosted in US regions instead of EMEA, and properties
+                        assigned to one US East environment when another was required.
                     </p>
-
                     <p>
-                        The work included coordinating Rundeck automation scripts,
-                        aligning database-related requirements, and working with
-                        developers involved in a Java-based program used to transfer
-                        application artifacts between environments.
+                        The initiative addressed these placement inconsistencies while supporting
+                        more balanced distribution of data and resource usage across US environments.
+                        Each move had to preserve the property's operational data and ensure that
+                        dependent services remained accessible in the destination environment.
                     </p>
-
-                    <p>
-                        A key consideration throughout the planning and delivery
-                        process was minimizing downtime and reducing the risk of
-                        disruption during migration.
-                    </p>
-
                     <div class="case-callout">
-                        <strong>My focus:</strong>
-                        Coordinating the people, dependencies, execution steps,
-                        and validation activities required to prepare the migration.
-                        My role centred on product delivery and technical
-                        coordination rather than claiming ownership of all
-                        underlying engineering implementation.
+                        <strong>Two connected migration tracks:</strong>
+                        Property data relocation using AWS Database Migration Service (DMS)
+                        and Java-based destination transformations; and IoT migration using
+                        Kura packages with destination-specific snapshot updates.
                     </div>
-
                     <h3>Teams involved</h3>
-
                     <div class="aws-team-grid">
-
                         <article class="aws-team-card">
                             <span class="aws-team-icon" aria-hidden="true">D</span>
                             <h3>DevOps</h3>
-                            <p>
-                                Coordinated work involving Rundeck scripts and
-                                migration automation dependencies.
-                            </p>
+                            <p>Supported environment readiness, Rundeck automation, execution coordination, and infrastructure dependencies.</p>
                         </article>
-
                         <article class="aws-team-card">
                             <span class="aws-team-icon" aria-hidden="true">DB</span>
                             <h3>Database</h3>
-                            <p>
-                                Worked with the database team on migration-related
-                                requirements and dependencies.
-                            </p>
+                            <p>Supported data movement, source-to-destination checks, and AWS DMS-related requirements.</p>
                         </article>
-
                         <article class="aws-team-card">
                             <span class="aws-team-icon" aria-hidden="true">J</span>
                             <h3>Development</h3>
-                            <p>
-                                Coordinated with developers involved in the
-                                Java-based artifact transfer program.
-                            </p>
+                            <p>Implemented Java transformation logic and IoT snapshot updates needed for the destination environment.</p>
                         </article>
-
                     </div>
-
                 </section>
+
+
 
                 <!-- CHALLENGE -->
+
                 <section class="case-section aws-reveal" id="aws-challenge">
-
                     <h2>The Challenge</h2>
-
                     <p>
-                        Moving application artifacts between environments required
-                        multiple technical workstreams to remain aligned. The
-                        migration needed clear requirements, defined execution
-                        steps, appropriate coordination, and validation before
-                        the team could consider the work ready for completion.
+                        A property is more than a database record. Its data, application resources,
+                        and connected IoT configurations must remain consistent after relocation.
+                        A successful transfer was therefore not just about copying information:
+                        it was about making the property usable in its new region.
                     </p>
-
                     <ul>
-                        <li>
-                            Coordinate dependencies between DevOps, database,
-                            and development teams.
-                        </li>
-                        <li>
-                            Establish a clear migration workflow and clarify
-                            responsibilities across technical workstreams.
-                        </li>
-                        <li>
-                            Coordinate automation development and the application
-                            artifact transfer process.
-                        </li>
-                        <li>
-                            Plan for minimal downtime while managing migration
-                            risks and dependencies.
-                        </li>
-                        <li>
-                            Validate migration results and investigate issues
-                            discovered during execution.
-                        </li>
+                        <li><strong>Regional placement:</strong> Move properties from incorrectly assigned environments into their intended region, including APAC-to-China, US-to-EMEA, and US East environment corrections.</li>
+                        <li><strong>Data integrity:</strong> Ensure required records and relationships were transferred and transformed appropriately for the destination.</li>
+                        <li><strong>Execution speed:</strong> Coordinate a migration process that could complete efficiently while minimizing operational disruption.</li>
+                        <li><strong>IoT continuity:</strong> Update region-dependent Kura snapshot configuration so connected resources referenced the destination environment.</li>
+                        <li><strong>Post-migration access:</strong> Validate that the relocated property's resources and expected functionality remained available.</li>
                     </ul>
-
+                    <div class="case-callout">
+                        <strong>Central delivery question:</strong>
+                        How do we move a live property's data and connected configuration to the
+                        correct environment without leaving records, references, or resources behind?
+                    </div>
                 </section>
 
+
+
                 <!-- INTERACTIVE WORKFLOW -->
+
                 <section class="case-section aws-reveal" id="aws-workflow">
+
+
 
                     <h2>Interactive Migration Workflow</h2>
 
+
+
                     <p class="aws-muted">
+
                         Explore the main stages of the migration process.
+
                         Select a stage to view its purpose and how it relates
+
                         to my coordination responsibilities.
+
                     </p>
 
-                    <div class="aws-workflow">
 
-                        <h3>Migration delivery stages</h3>
 
-                        <p class="aws-muted">
-                            This is a conceptual summary of the workflow described
-                            in this case study, not a representation of a specific
-                            production execution sequence.
-                        </p>
+               
+<div class="aws-workflow">
+    <img
+        src="images/aws-migration-workflow.png"
+        alt="Five-stage AWS migration workflow covering regional requirements, team dependencies, AWS DMS and IoT migration preparation, coordinated execution, and validation."
+        class="aws-workflow-image"
+        loading="lazy"
+    >
+</div>
 
-                        <div class="aws-workflow-grid" role="group"
-                             aria-label="Interactive migration stages">
 
-                            <button class="aws-stage" type="button"
-                                    data-stage="0" aria-pressed="true">
-                                <span class="aws-stage-number">STAGE 01</span>
-                                <strong>Define requirements</strong>
-                            </button>
 
-                            <button class="aws-stage" type="button"
-                                    data-stage="1" aria-pressed="false">
-                                <span class="aws-stage-number">STAGE 02</span>
-                                <strong>Align teams</strong>
-                            </button>
+                    
 
-                            <button class="aws-stage" type="button"
-                                    data-stage="2" aria-pressed="false">
-                                <span class="aws-stage-number">STAGE 03</span>
-                                <strong>Coordinate automation</strong>
-                            </button>
 
-                            <button class="aws-stage" type="button"
-                                    data-stage="3" aria-pressed="false">
-                                <span class="aws-stage-number">STAGE 04</span>
-                                <strong>Prepare execution</strong>
-                            </button>
-
-                            <button class="aws-stage" type="button"
-                                    data-stage="4" aria-pressed="false">
-                                <span class="aws-stage-number">STAGE 05</span>
-                                <strong>Validate results</strong>
-                            </button>
-
-                        </div>
-
-                        <div class="aws-stage-detail" aria-live="polite">
-                            <h4 id="awsStageTitle">01. Define requirements</h4>
-                            <p id="awsStageDescription">
-                                Clarify migration requirements, dependencies,
-                                expected outcomes, and the sequence of activities
-                                needed to prepare the work.
-                            </p>
-                        </div>
-
-                    </div>
-
-                    <div class="case-callout">
-                        <strong>Delivery consideration:</strong>
-                        Minimizing downtime was an objective of the migration
-                        planning. No numerical downtime reduction or specific
-                        availability result is claimed.
-                    </div>
 
                 </section>
+
+
 
                 <!-- CONTRIBUTIONS -->
+
                 <section class="case-section aws-reveal" id="aws-contributions">
-
                     <h2>My Role and Contributions</h2>
-
-                    <p class="aws-muted">
-                        Expand each area to explore the responsibilities
-                        handled during the migration work.
-                    </p>
-
+                    <p class="aws-muted">I contributed to development planning and participated in code reviews, while coordinating requirements, delivery dependencies, migration validation, and troubleshooting. Engineering teams wrote and implemented the migration code. Expand each area for details.</p>
                     <details class="aws-accordion">
-                        <summary>1. Requirements and migration workflow</summary>
-                        <div class="aws-accordion-body">
-                            <ul>
-                                <li>
-                                    Helped define migration requirements and the
-                                    workflow needed to coordinate the activity.
-                                </li>
-                                <li>
-                                    Worked across technical teams to clarify
-                                    dependencies and align the sequence of
-                                    migration activities.
-                                </li>
-                                <li>
-                                    Helped maintain a shared understanding of the
-                                    expected process and delivery requirements.
-                                </li>
-                            </ul>
-                        </div>
+                        <summary>1. Requirements and destination mapping</summary>
+                        <div class="aws-accordion-body"><ul>
+                            <li>Helped clarify which properties needed to move, their source environment, and the intended destination.</li>
+                            <li>Worked with teams to identify dependencies between property data, application resources, and IoT configuration.</li>
+                            <li>Helped define the expected outcome and the checks needed after migration.</li>
+                        </ul></div>
                     </details>
-
                     <details class="aws-accordion">
-                        <summary>2. Cross-functional coordination</summary>
-                        <div class="aws-accordion-body">
-                            <ul>
-                                <li>
-                                    Coordinated DevOps, database, and development
-                                    teams throughout migration preparation and execution.
-                                </li>
-                                <li>
-                                    Coordinated the development of Rundeck scripts
-                                    supporting the migration workflow.
-                                </li>
-                                <li>
-                                    Worked with developers involved in the Java-based
-                                    artifact transfer program, helping align technical
-                                    implementation with migration requirements.
-                                </li>
-                                <li>
-                                    Followed up on technical dependencies and issues
-                                    requiring input from different teams.
-                                </li>
-                            </ul>
-                        </div>
+                        <summary>2. Data migration coordination — AWS DMS and Java</summary>
+                        <div class="aws-accordion-body"><ul>
+                            <li>Coordinated database and development work around transferring data between AWS regions using DMS.</li>
+                            <li>Participated in development planning for the Java-based transformations needed to update destination-specific data.</li>
+                            <li>Participated in code reviews, discussing implementation considerations and alignment with the agreed migration requirements.</li>
+                            <li>Followed up on data transfer progress, discrepancies, and validation dependencies.</li>
+                        </ul></div>
                     </details>
-
                     <details class="aws-accordion">
-                        <summary>3. Downtime and risk considerations</summary>
-                        <div class="aws-accordion-body">
-                            <ul>
-                                <li>
-                                    Helped plan the migration workflow with the objective
-                                    of minimizing application downtime.
-                                </li>
-                                <li>
-                                    Coordinated the steps needed to prepare the migration
-                                    and reduce avoidable execution risks.
-                                </li>
-                                <li>
-                                    Helped ensure that migration activities and
-                                    dependencies were documented for the teams involved.
-                                </li>
-                            </ul>
-                        </div>
+                        <summary>3. IoT migration coordination — Kura snapshots</summary>
+                        <div class="aws-accordion-body"><ul>
+                            <li>Coordinated the separate IoT migration workstream involving Kura packages.</li>
+                            <li>Participated in development planning for Kura snapshot-file updates that applied destination-specific configuration.</li>
+                            <li>Participated in code reviews and technical discussions related to snapshot changes and migration dependencies.</li>
+                            <li>Supported checks that IoT-related resources remained accessible after the regional move.</li>
+                        </ul></div>
                     </details>
-
                     <details class="aws-accordion">
-                        <summary>4. Validation and troubleshooting</summary>
-                        <div class="aws-accordion-body">
-                            <ul>
-                                <li>
-                                    Reviewed and validated migration results against
-                                    the expected outcome.
-                                </li>
-                                <li>
-                                    Participated in troubleshooting issues identified
-                                    during migration activities.
-                                </li>
-                                <li>
-                                    Prepared documentation and deployment procedures
-                                    to support a more consistent execution process.
-                                </li>
-                            </ul>
-                        </div>
+                        <summary>4. Execution readiness, validation, and troubleshooting</summary>
+                        <div class="aws-accordion-body"><ul>
+                            <li>Coordinated DevOps, database, and development teams, including Rundeck automation dependencies and implementation review follow-ups.</li>
+                            <li>Helped prepare execution steps and documentation with minimal downtime as a planning goal.</li>
+                            <li>Reviewed migration outcomes and participated in investigating data or resource-access issues.</li>
+                        </ul></div>
                     </details>
-
                 </section>
+
+
 
                 <!-- APPROACH -->
+
                 <section class="case-section aws-reveal" id="aws-approach">
-
-                    <h2>My Approach</h2>
-
+                    <h2>Two Migration Workstreams</h2>
+                    <p>The work required separate handling of application data and connected IoT configuration. Both needed to agree on the destination environment.</p>
+                    <div class="aws-team-grid">
+                        <article class="aws-team-card">
+                            <span class="aws-team-icon" aria-hidden="true">01</span>
+                            <h3>Property Data Migration</h3>
+                            <p><strong>Source region → AWS DMS → destination region</strong></p>
+                            <p>Database records were transferred across regions. Java-based logic handled items that required transformation or destination-specific updates.</p>
+                            <p><strong>Validation focus:</strong> Required data present, expected relationships preserved, and destination resources accessible.</p>
+                        </article>
+                        <article class="aws-team-card">
+                            <span class="aws-team-icon" aria-hidden="true">02</span>
+                            <h3>IoT Configuration Migration</h3>
+                            <p><strong>Source Kura configuration → snapshot updates → destination environment</strong></p>
+                            <p>The IoT workstream used Kura packages and code that rewrote snapshot-file values to match the destination environment.</p>
+                            <p><strong>Validation focus:</strong> Destination-specific configuration applied and dependent IoT resources accessible.</p>
+                        </article>
+                    </div>
+                    <h3>How I supported execution</h3>
                     <ol>
-                        <li>
-                            <strong>Define the workflow:</strong>
-                            Help clarify migration requirements, dependencies,
-                            and the expected sequence of activities.
-                        </li>
-                        <li>
-                            <strong>Align technical teams:</strong>
-                            Coordinate DevOps, database, and development work
-                            so that dependent tasks remain aligned.
-                        </li>
-                        <li>
-                            <strong>Coordinate automation:</strong>
-                            Follow up on the Rundeck scripts and Java-based
-                            artifact transfer work required by the migration.
-                        </li>
-                        <li>
-                            <strong>Prepare for execution:</strong>
-                            Help document the process and plan the work with
-                            minimal downtime as an objective.
-                        </li>
-                        <li>
-                            <strong>Validate and troubleshoot:</strong>
-                            Review results, investigate issues with the relevant
-                            teams, and help resolve gaps against expectations.
-                        </li>
+                        <li><strong>Confirm placement:</strong> Establish source and destination regions for the affected properties.</li>
+                        <li><strong>Align dependencies:</strong> Coordinate data, application, infrastructure, and IoT workstreams.</li>
+                        <li><strong>Prepare migration:</strong> Follow up on DMS, Java transformations, Kura snapshot changes, and Rundeck execution needs.</li>
+                        <li><strong>Validate the move:</strong> Review transferred data, updated configuration, and access to destination resources.</li>
+                        <li><strong>Resolve gaps:</strong> Coordinate troubleshooting when data or dependent resources do not behave as expected.</li>
                     </ol>
-
                 </section>
+
+
 
                 <!-- OUTCOMES -->
+
                 <section class="case-section aws-reveal" id="aws-outcomes">
-
-                    <h2>Contribution and Delivery Impact</h2>
-
+                    <h2>Delivery Outcomes and Value</h2>
                     <p>
-                        My contribution focused on keeping the technical workstreams
-                        aligned and making the migration process more structured,
-                        traceable, and easier for the teams to execute.
+                        The initiative supported the relocation of properties toward their intended
+                        regional environments and addressed inconsistencies in data placement.
+                        My contribution centred on coordinating the migration workstreams,
+                        documenting the process, and validating results with the technical teams.
                     </p>
-
                     <div class="aws-outcome-grid">
-
-                        <article class="aws-outcome-card">
-                            <span class="aws-outcome-icon" aria-hidden="true">01</span>
-                            <strong>Structured Migration Workflow</strong>
-                            Helped establish a clearer migration workflow
-                            across multiple technical teams.
-                        </article>
-
-                        <article class="aws-outcome-card">
-                            <span class="aws-outcome-icon" aria-hidden="true">02</span>
-                            <strong>Automation Coordination</strong>
-                            Coordinated automation-related dependencies
-                            involving Rundeck scripts and the artifact
-                            transfer program.
-                        </article>
-
-                        <article class="aws-outcome-card">
-                            <span class="aws-outcome-icon" aria-hidden="true">03</span>
-                            <strong>Validation and Troubleshooting</strong>
-                            Supported migration validation and troubleshooting
-                            during execution.
-                        </article>
-
-                        <article class="aws-outcome-card">
-                            <span class="aws-outcome-icon" aria-hidden="true">04</span>
-                            <strong>Documented Procedures</strong>
-                            Prepared documentation and deployment procedures
-                            to support repeatable execution.
-                        </article>
-
+                        <article class="aws-outcome-card"><span class="aws-outcome-icon" aria-hidden="true">01</span><strong>Regional Alignment</strong>Supported moves from incorrectly assigned environments toward intended geographic or operational regions.</article>
+                        <article class="aws-outcome-card"><span class="aws-outcome-icon" aria-hidden="true">02</span><strong>Data Migration Validation</strong>Helped verify transferred information and follow up on destination-specific transformation requirements.</article>
+                        <article class="aws-outcome-card"><span class="aws-outcome-icon" aria-hidden="true">03</span><strong>IoT Configuration Continuity</strong>Coordinated Kura snapshot migration requirements and post-migration accessibility checks.</article>
+                        <article class="aws-outcome-card"><span class="aws-outcome-icon" aria-hidden="true">04</span><strong>Cross-Team Delivery</strong>Kept DevOps, database, and development activities aligned through planning, execution, and troubleshooting.</article>
                     </div>
-
-                    <div class="case-callout">
-                        <strong>Downtime consideration:</strong>
-                        Minimizing downtime remained a key consideration
-                        during migration planning.
-                    </div>
-
-                    <p>
-                        No specific downtime reduction, migration duration,
-                        or performance improvement is claimed because verified
-                        numerical measurements are not available for publication.
-                    </p>
-
                 </section>
+
+
 
                 <!-- LEARNINGS -->
+
                 <section class="case-section aws-reveal" id="aws-learnings">
-
-                    <h2>Key Learnings</h2>
-
+                    <h2>What This Project Reinforced</h2>
                     <ul>
-                        <li>
-                            Infrastructure migrations depend on coordination
-                            and clear ownership as much as on technical execution.
-                        </li>
-                        <li>
-                            Documented workflows help teams manage dependencies
-                            and execute complex activities more consistently.
-                        </li>
-                        <li>
-                            Migration validation and troubleshooting should
-                            be considered part of delivery, not treated as
-                            afterthoughts.
-                        </li>
-                        <li>
-                            A delivery manager needs enough technical context
-                            to ask the right questions, identify dependencies,
-                            and coordinate decisions without overstating
-                            hands-on engineering responsibilities.
-                        </li>
+                        <li><strong>Regional migration is a business and operational problem:</strong> Correct placement matters for how services and data are distributed.</li>
+                        <li><strong>Moving data is only one part of the job:</strong> Destination-specific transformations and connected configuration require equal attention.</li>
+                        <li><strong>Validation must cover usability:</strong> A successful transfer still needs checks that the destination's resources can be accessed.</li>
+                        <li><strong>Development planning and code reviews matter:</strong> Reviewing implementation decisions against migration requirements helped identify dependencies and potential gaps before execution.</li>
+                        <li><strong>Clear coordination reduces ambiguity:</strong> Database, development, DevOps, and IoT dependencies need a shared execution plan.</li>
                     </ul>
-
                 </section>
+
+
 
                 <!-- SKILLS -->
+
                 <section class="case-section aws-reveal" id="aws-skills">
-
                     <h2>Skills Demonstrated</h2>
-
                     <div class="skill-list">
                         <span class="skill-tag">Product Delivery</span>
-                        <span class="skill-tag">Technical Project Coordination</span>
-                        <span class="skill-tag">AWS Environment Migration</span>
-                        <span class="skill-tag">Requirements Analysis</span>
-                        <span class="skill-tag">Cross-functional Collaboration</span>
-                        <span class="skill-tag">Migration Planning</span>
-                        <span class="skill-tag">Risk and Dependency Management</span>
-                        <span class="skill-tag">Rundeck</span>
-                        <span class="skill-tag">Java Application Coordination</span>
-                        <span class="skill-tag">Database Coordination</span>
-                        <span class="skill-tag">Validation and Troubleshooting</span>
+                        <span class="skill-tag">Cross-Region AWS Migration</span>
+                        <span class="skill-tag">Requirements &amp; Destination Mapping</span>
+                        <span class="skill-tag">AWS DMS Coordination</span>
+                        <span class="skill-tag">Java Transformation Planning</span>
+                        <span class="skill-tag">Code Review Participation</span>
+                        <span class="skill-tag">Kura / IoT Migration</span>
+                        <span class="skill-tag">Rundeck Automation Coordination</span>
+                        <span class="skill-tag">Data Validation</span>
+                        <span class="skill-tag">Risk &amp; Dependency Management</span>
+                        <span class="skill-tag">Troubleshooting</span>
                         <span class="skill-tag">Technical Documentation</span>
                     </div>
-
                 </section>
+
+
 
                 <!-- CONFIDENTIALITY -->
+
                 <section class="case-section aws-reveal" id="aws-confidentiality">
-
-                    <p>
-                        <em>
-                            Confidentiality note: This case study describes the
-                            project at a high level. Internal infrastructure
-                            details, customer information, scripts, credentials,
-                            configurations, and proprietary implementation
-                            details have been omitted.
-                        </em>
-                    </p>
-
+                    <p><em>Portfolio note: Property scenarios and infrastructure details are presented at a high level to protect confidential information. Engineering teams developed the migration code. I participated in development planning and code reviews, alongside delivery coordination, requirements, validation, and issue follow-up.</em></p>
                 </section>
 
+
+
             </div>
+
         </div>
 
+
+
         <footer class="case-footer">
-            <a href="index.html#work">
+
+            <a href="index.html#projects">
+
                 &larr; Back to Selected Work
+
             </a>
 
+
+
             <a class="mon-next-link" href="monitoring-case-study.html">
+
                 Next Case Study: Monitoring &rarr;
+
             </a>
+
         </footer>
+
+
 
     </main>
 
+
+
     <!-- BACK TO TOP -->
+
     <button class="aws-back-top" id="awsBackTop"
+
             type="button" aria-label="Back to top" title="Back to top">
+
         ↑
+
     </button>
+
+
 
     <script src="case-study-common.js"></script>
 
+
+
 </body>
+
 </html>

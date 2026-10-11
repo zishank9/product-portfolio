@@ -697,3 +697,271 @@ const menuToggle = document.getElementById("menuToggle");
         document.getElementById("currentYear").textContent =
             new Date().getFullYear();
 }
+
+/* =========================================
+   INTERACTIVE CAREER TIMELINE
+========================================= */
+
+(function () {
+    const section = document.querySelector(".career-section");
+
+    if (!section) return;
+
+    const careerData = {
+        delivery: {
+            title: "Product Delivery Manager",
+            date: "HotelKey · Late 2022–2025",
+            summary:
+                "Connecting business priorities with engineering and delivery teams.",
+            points: [
+                "Turned client and business requirements into user stories and actionable work.",
+                "Coordinated developers, QA, DevOps and external teams across integrations, identity management, data migration and monitoring.",
+                "Supported testing, issue investigation, release readiness and go-live."
+            ]
+        },
+
+        analyst: {
+            title: "Business Analyst",
+            date: "HotelKey · 2020–2022",
+            summary:
+                "Turning business needs into clear requirements and implementation details.",
+            points: [
+                "Gathered requirements and documented processes, user stories and implementation needs.",
+                "Supported data migration through field mapping, SQL-based validation, reporting and testing.",
+                "Prepared client-facing documentation and worked with teams to clarify gaps and resolve issues."
+            ]
+        },
+
+        support: {
+            title: "Technical Support Agent",
+            date: "HotelKey · 2019–2020",
+            summary:
+                "Learning how software problems affect customers and how teams can resolve them.",
+            points: [
+                "Investigated application and system issues reported by customers.",
+                "Contributed to knowledge-base articles, standard procedures, reporting and team knowledge sharing."
+            ]
+        }
+    };
+
+    const bars = section.querySelectorAll(".career-bar");
+    const title = section.querySelector("#careerDetailTitle");
+    const date = section.querySelector("#careerDetailDate");
+    const summary = section.querySelector("#careerDetailSummary");
+    const list = section.querySelector("#careerDetailList");
+
+    if (!title || !date || !summary || !list) return;
+
+    bars.forEach((bar) => {
+        bar.addEventListener("click", () => {
+            const role = careerData[bar.dataset.career];
+
+            if (!role) return;
+
+            bars.forEach((item) => {
+                item.classList.remove("is-active");
+                item.setAttribute("aria-pressed", "false");
+            });
+
+            bar.classList.add("is-active");
+            bar.setAttribute("aria-pressed", "true");
+
+            title.textContent = role.title;
+            date.textContent = role.date;
+            summary.textContent = role.summary;
+
+            list.replaceChildren();
+
+            role.points.forEach((point) => {
+                const li = document.createElement("li");
+                li.textContent = point;
+                list.appendChild(li);
+            });
+        });
+    });
+})();
+
+
+/* =========================================
+   INTERACTIVE SKILLS MIND MAP
+========================================= */
+
+(function () {
+    function initializeSkillsMindMap() {
+        const section = document.querySelector(
+            ".skills-mindmap-section"
+        );
+
+        if (!section) return;
+
+        const skillData = {
+            business: {
+                title: "Business Analysis",
+                description:
+                    "Turning business needs into clear requirements that teams can discuss, estimate and deliver.",
+                skills: [
+                    "Requirements Gathering",
+                    "User Stories",
+                    "Acceptance Criteria",
+                    "Stakeholder Management",
+                    "Process Documentation",
+                    "Agile / Scrum"
+                ],
+                example:
+                    "For a new integration, I help clarify client requirements, identify dependencies and turn expected behavior into actionable user stories."
+            },
+
+            delivery: {
+                title: "Product Delivery",
+                description:
+                    "Helping teams stay aligned, manage dependencies and work through issues during delivery.",
+                skills: [
+                    "Jira",
+                    "Confluence",
+                    "Cross-team Coordination",
+                    "Release Readiness",
+                    "Incident Management",
+                    "ServiceNow"
+                ],
+                example:
+                    "During enterprise delivery, I coordinate with engineering, QA, DevOps and external teams to clarify blockers, support testing and prepare for go-live."
+            },
+
+            testing: {
+                title: "Testing & Validation",
+                description:
+                    "Supporting validation, investigating unexpected behavior and helping teams understand defects.",
+                skills: [
+                    "Postman",
+                    "Charles Proxy",
+                    "Integration Testing",
+                    "UAT Support",
+                    "SQL Validation",
+                    "Defect Investigation"
+                ],
+                example:
+                    "During data migration, I support SQL-based validation and help investigate mismatches before delivery."
+            },
+
+            technical: {
+                title: "Technical Systems",
+                description:
+                    "Using monitoring, data and platform knowledge to collaborate with technical teams on enterprise software and integrations.",
+                skills: [
+                    "AWS",
+                    "Amazon Cognito",
+                    "AWS Lambda",
+                    "CloudWatch",
+                    "Splunk",
+                    "Datadog",
+                    "Rundeck",
+                    "MySQL",
+                    "SQL Server",
+                    "DynamoDB",
+                    "Power BI",
+                    "Zendesk",
+                    "Microsoft Office",
+                    "Teams",
+                    "Figma"
+                ],
+                example:
+                    "For cloud migration, monitoring and identity management initiatives, I support requirements, coordination, investigation and validation with technical teams."
+            },
+
+            communication: {
+                title: "Communication & Collaboration",
+                description:
+                    "Helping stakeholders and delivery teams stay aligned on requirements, priorities and next steps.",
+                skills: [
+                    "Stakeholder Communication",
+                    "Cross-team Collaboration",
+                    "Client Documentation",
+                    "Requirements Clarification",
+                    "Knowledge Sharing"
+                ],
+                example:
+                    "When business and engineering teams have different expectations, I help clarify the requirement, document decisions and keep the work moving."
+            },
+
+            solving: {
+                title: "Problem Solving",
+                description:
+                    "Investigating issues, understanding their impact and working with the right teams toward resolution.",
+                skills: [
+                    "Issue Investigation",
+                    "Incident Management",
+                    "Defect Analysis",
+                    "Troubleshooting Coordination",
+                    "Process Improvement"
+                ],
+                example:
+                    "When an integration behaves unexpectedly, I help reproduce the issue, collect relevant information and coordinate investigation with technical teams."
+            }
+        };
+
+        const nodes = section.querySelectorAll(
+            ".skills-map-node"
+        );
+
+        const title = section.querySelector(
+            "#skillsDetailTitle"
+        );
+
+        const description = section.querySelector(
+            "#skillsDetailDescription"
+        );
+
+        const tags = section.querySelector(
+            "#skillsDetailTags"
+        );
+
+        const example = section.querySelector(
+            "#skillsDetailExample"
+        );
+
+        if (!title || !description || !tags || !example) {
+            return;
+        }
+
+        nodes.forEach((node) => {
+            node.addEventListener("click", () => {
+                const selected = skillData[node.dataset.skill];
+
+                if (!selected) return;
+
+                nodes.forEach((item) => {
+                    item.classList.remove("is-active");
+                    item.setAttribute(
+                        "aria-pressed",
+                        "false"
+                    );
+                });
+
+                node.classList.add("is-active");
+                node.setAttribute("aria-pressed", "true");
+
+                title.textContent = selected.title;
+                description.textContent =
+                    selected.description;
+                example.textContent = selected.example;
+
+                tags.replaceChildren();
+
+                selected.skills.forEach((skill) => {
+                    const tag = document.createElement("span");
+                    tag.textContent = skill;
+                    tags.appendChild(tag);
+                });
+            });
+        });
+    }
+
+    if (document.readyState === "loading") {
+        document.addEventListener(
+            "DOMContentLoaded",
+            initializeSkillsMindMap
+        );
+    } else {
+        initializeSkillsMindMap();
+    }
+})();

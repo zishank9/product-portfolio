@@ -3,6 +3,7 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
+    <script src="theme.js" defer></script>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="description" content="Zishan Khan is a Product Delivery Manager with experience in enterprise software delivery, business analysis, data migration, identity management, cloud monitoring, and integrations.">
     <meta name="theme-color" content="#0b1020">
@@ -14,15 +15,28 @@
     rel="stylesheet"
     >   
     <link rel="stylesheet" href="styles.css">
+    <script src="skills-tree.js" defer></script>
+    <script src="skills-tree-lines.js" defer></script>
  </head>
 <body>
 
     <!-- Navigation -->
     <header class="site-header">
         <div class="container nav">
-            <a class="brand" href="#home" aria-label="Zishan Khan home">
-               <img src="images/logo.png" alt="Zishan Khan logo">
-            </a>
+          <a class="brand" href="index.html" aria-label="Go to homepage">
+                <img
+                    class="brand-logo logo-dark"
+                    src="images/logo-dark.png"
+                    alt="Zishan Khan"
+                >
+
+                <img
+                    class="brand-logo logo-light"
+                    src="images/logo-light.png"
+                    alt=""
+                    aria-hidden="true"
+                >
+          </a>
 
             <button
                 class="menu-toggle"
@@ -41,446 +55,818 @@
                 <a href="#skills">Skills</a>
                 <a href="#credentials">Education</a>
                 <a class="nav-contact" href="#contact">Contact me ↗</a>
+                <button
+    type="button"
+    class="theme-toggle"
+    id="themeToggle"
+    aria-label="Switch to light mode"
+    aria-pressed="false"
+    title="Switch theme"
+>
+    <span class="theme-icon theme-icon-sun" aria-hidden="true">
+        ☀
+    </span>
+
+    <span class="theme-icon theme-icon-moon" aria-hidden="true">
+        ☾
+    </span>
+</button>
             </nav>
+            
+       
         </div>
+        
     </header>
 
     <main>
 
         <!-- Hero -->
+
         <section class="hero" id="home">
-            <div class="container hero-grid">
+    <div class="container hero-layout">
 
-                <div>
-                    <div class="availability">
-                        <span class="availability-dot"></span>
-                        Product Delivery · Business Analysis
-                    </div>
+        <!-- LEFT SIDE: HERO CONTENT -->
+        <div class="hero-content">
 
-                    <h1>
-                        Turning business needs into
-                        <span>delivered products.</span>
-                    </h1>
+            <p class="hero-eyebrow">
+                Product Delivery Manager · Business Analysis
+            </p>
 
-                    <p class="hero-copy">
-                        I'm Zishan Khan, a Product Delivery Manager with
-                        experience translating business requirements into
-                        actionable work, coordinating cross-functional teams,
-                        and supporting enterprise software delivery from
-                        discovery through testing and go-live.
-                    </p>
+            <h1>
+                I help turn business problems into
+                <span>products that work.</span>
+            </h1>
 
-                    <div class="button-row">
-                        <a class="button button-primary" href="#projects">
-                            Explore my work <span aria-hidden="true">↗</span>
-                        </a>
-
-                        <a
-                            class="button button-secondary"
-                            href="documents/ZISHAN%20KHAN_RESUME_PM_2026.pdf"
-                            target="_blank"
-                            rel="noopener noreferrer"
-                        >
-                            View resume ↗
-                        </a>
-                    </div>
-                </div>
-
-                <aside class="profile-card" aria-label="Professional profile">
-                    <div class="profile-initials" aria-hidden="true">ZK</div>
-
-                    <h2>Zishan Khan</h2>
-                    <p>Product Delivery Manager</p>
-
-                    <div class="profile-detail">
-                        <strong>Product & Business</strong>
-                        <span>Requirements, user stories, stakeholder alignment</span>
-                    </div>
-
-                    <div class="profile-detail">
-                        <strong>Delivery & Quality</strong>
-                        <span>Cross-team coordination, testing, go-live support</span>
-                    </div>
-
-                    <div class="profile-detail">
-                        <strong>Enterprise Technology</strong>
-                        <span>Data migration, IDM, monitoring, integrations</span>
-                    </div>
-                </aside>
-
-            </div>
-        </section>
-
-        <!-- Core strengths -->
-        <section aria-label="Professional strengths">
-            <div class="container">
-                <div class="value-strip">
-                    <div class="value-item">
-                        <strong>Product Delivery</strong>
-                        <span>From requirements to release readiness</span>
-                    </div>
-
-                    <div class="value-item">
-                        <strong>Cross-functional Teams</strong>
-                        <span>Coordinating product, engineering, QA and operations</span>
-                    </div>
-
-                    <div class="value-item">
-                        <strong>Enterprise Solutions</strong>
-                        <span>Integrations, migrations and identity management</span>
-                    </div>
-                </div>
-            </div>
-        </section>
-
-        <!-- Selected projects -->
-        <section class="section projects-section" id="projects">
-            <div class="container">
-
-                <div class="section-heading">
-                    <span class="eyebrow">Selected work</span>
-                    <h2>Projects & case studies</h2>
-                    <p class="section-intro">
-                        Examples of the systems, delivery challenges and
-                        cross-functional work I've contributed to. Each
-                        case study explains the context, my role and the
-                        delivery approach.
-                    </p>
-                </div>
-
-                <div class="project-grid">
-
-                    <article class="project-card">
-                        <span class="project-number">01 / DATA</span>
-                        <h3>ETL & Data Migration</h3>
-                        <p>
-                            Requirements, field mapping and data validation
-                            for migrating legacy property-management data
-                            into a new platform.
-                        </p>
-                        <div class="project-tags">
-                            <span class="tag">ETL</span>
-                            <span class="tag">SQL Validation</span>
-                            <span class="tag">Requirements</span>
-                        </div>
-                        <a class="project-link" href="etl-case-study.html">
-                            Read case study <span aria-hidden="true">→</span>
-                        </a>
-                    </article>
-
-                    <article class="project-card">
-                        <span class="project-number">02 / OPERATIONS</span>
-                        <h3>Cloud Monitoring & Incidents</h3>
-                        <p>
-                            Monitoring operations, team coordination,
-                            documentation and investigation of alerts
-                            and recurring issues.
-                        </p>
-                        <div class="project-tags">
-                            <span class="tag">Splunk</span>
-                            <span class="tag">Datadog</span>
-                            <span class="tag">Incident Management</span>
-                        </div>
-                        <a class="project-link" href="monitoring-case-study.html">
-                            Read case study <span aria-hidden="true">→</span>
-                        </a>
-                    </article>
-
-                    <article class="project-card">
-                        <span class="project-number">03 / IDENTITY</span>
-                        <h3>Enterprise Identity Management</h3>
-                        <p>
-                            Coordinating identity integrations, migration
-                            scenarios, requirements and readiness for
-                            enterprise client delivery.
-                        </p>
-                        <div class="project-tags">
-                            <span class="tag">Amazon Cognito</span>
-                            <span class="tag">AWS Lambda</span>
-                            <span class="tag">IDM</span>
-                        </div>
-                        <a class="project-link" href="idm-case-study.html">
-                            Read case study <span aria-hidden="true">→</span>
-                        </a>
-                    </article>
-
-                    <article class="project-card">
-                        <span class="project-number">04 / CLOUD</span>
-                        <h3>AWS Environment Migration</h3>
-                        <p>
-                            Coordinating DevOps, database and development
-                            teams to support environment migration and
-                            minimize delivery disruption.
-                        </p>
-                        <div class="project-tags">
-                            <span class="tag">AWS</span>
-                            <span class="tag">Rundeck</span>
-                            <span class="tag">Coordination</span>
-                        </div>
-                        <a class="project-link" href="aws-migration-case-study.html">
-                            Read case study <span aria-hidden="true">→</span>
-                        </a>
-                    </article>
-
-                    <article class="project-card">
-                        <span class="project-number">05 / INTEGRATIONS</span>
-                        <h3>Hospitality IoT & Integrations</h3>
-                        <p>
-                            Requirements, test-environment setup,
-                            integration testing and go-live coordination
-                            across hospitality technology systems.
-                        </p>
-                        <div class="project-tags">
-                            <span class="tag">Third-party APIs</span>
-                            <span class="tag">Testing</span>
-                            <span class="tag">Go-live</span>
-                        </div>
-                        <a class="project-link" href="iot-integration-case-study.html">
-                            Read case study <span aria-hidden="true">→</span>
-                        </a>
-                    </article>
-
-                    <article class="project-card">
-                        <span class="project-number">06 / PRODUCT</span>
-                        <h3>Enterprise Feature Delivery</h3>
-                        <p>
-                            Turning feature requirements into user stories,
-                            aligning teams, supporting validation and
-                            coordinating delivery to clients.
-                        </p>
-                        <div class="project-tags">
-                            <span class="tag">User Stories</span>
-                            <span class="tag">Jira</span>
-                            <span class="tag">Release Readiness</span>
-                        </div>
-                        <a class="project-link" href="feature-delivery-case-study.html">
-                            Read case study <span aria-hidden="true">→</span>
-                        </a>
-                    </article>
-
-                </div>
-            </div>
-        </section>
-
-        <!-- Experience -->
-        <section class="section" id="experience">
-            <div class="container experience-layout">
-
-                <div class="experience-summary">
-                    <span class="eyebrow">Career journey</span>
-                    <h2>Experience built around delivery</h2>
-                    <p>
-                        My work has grown from technical support and
-                        troubleshooting into business analysis and
-                        product delivery, giving me experience across
-                        customer needs, technical teams and releases.
-                    </p>
-
-                    <a class="project-link" href="#contact">
-                        Get in touch <span aria-hidden="true">→</span>
-                    </a>
-                </div>
-
-                <div class="experience-list">
-
-                    <article class="experience-item">
-                        <div class="experience-top">
-                            <div>
-                                <h3>Product Delivery Manager</h3>
-                                <p class="experience-company">HotelKey</p>
-                            </div>
-                            <span class="experience-date">Late 2022–2025</span>
-                        </div>
-
-                        <ul class="experience-points">
-                            <li>
-                                Translated client and business requirements
-                                into user stories and actionable delivery work.
-                            </li>
-                            <li>
-                                Coordinated developers, QA, DevOps and
-                                external teams across integrations, IDM,
-                                data migration and monitoring.
-                            </li>
-                            <li>
-                                Supported testing, issue investigation,
-                                release readiness, client delivery and go-live.
-                            </li>
-                        </ul>
-                    </article>
-
-                    <article class="experience-item">
-                        <div class="experience-top">
-                            <div>
-                                <h3>Business Analyst</h3>
-                                <p class="experience-company">HotelKey</p>
-                            </div>
-                            <span class="experience-date">2020–2022</span>
-                        </div>
-
-                        <ul class="experience-points">
-                            <li>
-                                Gathered requirements and documented
-                                business processes, user stories and
-                                implementation details.
-                            </li>
-                            <li>
-                                Supported enterprise data migration,
-                                field mapping, SQL-based validation,
-                                reporting and testing.
-                            </li>
-                            <li>
-                                Prepared client-facing documentation and
-                                coordinated with teams to resolve gaps.
-                            </li>
-                        </ul>
-                    </article>
-
-                    <article class="experience-item">
-                        <div class="experience-top">
-                            <div>
-                                <h3>Technical Support Agent</h3>
-                                <p class="experience-company">HotelKey</p>
-                            </div>
-                            <span class="experience-date">2019–2020</span>
-                        </div>
-
-                        <ul class="experience-points">
-                            <li>
-                                Supported customers with technical issues
-                                and investigated application and system problems.
-                            </li>
-                            <li>
-                                Contributed to internal knowledge bases,
-                                SOPs, reporting and team knowledge sharing.
-                            </li>
-                        </ul>
-                    </article>
-
-                </div>
-            </div>
-        </section>
-
-        <!-- Skills -->
-        <section class="section" id="skills">
-            <div class="container">
-
-                <div class="section-heading">
-                    <span class="eyebrow">Capabilities</span>
-                    <h2>Skills & tools</h2>
-                    <p class="section-intro">
-                        A practical mix of product delivery, analysis,
-                        testing, monitoring and technical collaboration.
-                    </p>
-                </div>
-
-                <div class="skills-grid">
-
-                    <article class="skill-card">
-                        <h3>Product & Business Analysis</h3>
-                        <div class="skill-tags">
-                            <span>Requirements Gathering</span>
-                            <span>User Stories</span>
-                            <span>Acceptance Criteria</span>
-                            <span>Stakeholder Management</span>
-                            <span>Process Documentation</span>
-                            <span>Agile / Scrum</span>
-                            <span>Jira</span>
-                            <span>Confluence</span>
-                        </div>
-                    </article>
-
-                    <article class="skill-card">
-                        <h3>Testing & Troubleshooting</h3>
-                        <div class="skill-tags">
-                            <span>Postman</span>
-                            <span>Charles Proxy</span>
-                            <span>Integration Testing</span>
-                            <span>UAT Support</span>
-                            <span>SQL Validation</span>
-                            <span>Defect Investigation</span>
-                            <span>ServiceNow</span>
-                        </div>
-                    </article>
-
-                    <article class="skill-card">
-                        <h3>Cloud & Monitoring</h3>
-                        <div class="skill-tags">
-                            <span>AWS</span>
-                            <span>Amazon Cognito</span>
-                            <span>AWS Lambda</span>
-                            <span>CloudWatch</span>
-                            <span>Splunk</span>
-                            <span>Datadog</span>
-                            <span>Rundeck Coordination</span>
-                            <span>Incident Management</span>
-                        </div>
-                    </article>
-
-                    <article class="skill-card">
-                        <h3>Data & Collaboration</h3>
-                        <div class="skill-tags">
-                            <span>MySQL</span>
-                            <span>Microsoft SQL Server</span>
-                            <span>DynamoDB</span>
-                            <span>Power BI</span>
-                            <span>Zendesk</span>
-                            <span>Microsoft Office</span>
-                            <span>Teams</span>
-                            <span>Figma</span>
-                        </div>
-                    </article>
-
-                </div>
-
-                <p class="skills-note">
-                    Technical tools are listed to reflect practical project
-                    experience and collaboration; this is not a claim of
-                    specialist-level programming expertise in every tool.
+            <div class="hero-intro">
+                <p>
+                    Hi, I'm Zishan. I work at the intersection of business
+                    and technology, helping teams understand what needs to
+                    be built, why it matters, and how to get it delivered.
                 </p>
 
+                <p>
+                    My work has involved enterprise software, integrations,
+                    data migration, monitoring, and identity management.
+                    I enjoy bringing clarity to complex problems and helping
+                    different teams move towards a shared goal.
+                </p>
             </div>
-        </section>
 
-        <!-- Education and certification -->
-        <section class="section" id="credentials">
-            <div class="container">
+            <div class="button-row">
+                <a class="button button-primary" href="#projects">
+                    Explore my work
+                    <span aria-hidden="true">↗</span>
+                </a>
 
-                <div class="section-heading">
-                    <span class="eyebrow">Education & credentials</span>
-                    <h2>Foundations & certification</h2>
+                <a
+                    class="button button-secondary"
+                    href="documents/ZISHAN%20KHAN_RESUME_PM_2026.pdf"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                >
+                    View resume ↗
+                </a>
+            </div>
+
+        </div>
+        <!-- END LEFT SIDE -->
+
+
+        <!-- RIGHT SIDE: PRODUCT MANAGEMENT IMAGE -->
+        <div class="hero-visual">
+            <img
+                src="images/product-management.png"
+                alt="Product management planning and delivery"
+                class="hero-image"
+            >
+            <div class="hero-example">
+            <p class="hero-example-label">
+                What this looks like in practice
+            </p>
+
+            <p>
+                A new integration isn't just a technical task. It takes
+                clear requirements, agreement between teams, thoughtful
+                testing, issue tracking, and preparation for go-live.
+                I help connect those pieces.
+            </p>
+        </div>
+        </div>
+  
+    </div>
+<!-- CORE STRENGTHS -->
+<section class="strengths-section" aria-label="Professional strengths">
+    <div class="container">
+
+        <div class="strengths-grid">
+
+            <!-- CARD 1: PRODUCT DELIVERY -->
+            <article class="strength-card">
+
+                <div class="strength-icon" aria-hidden="true">
+                    <svg viewBox="0 0 24 24" fill="none"
+                         stroke="currentColor" stroke-width="1.8"
+                         stroke-linecap="round" stroke-linejoin="round">
+                        <rect x="5" y="4" width="14" height="17" rx="2"/>
+                        <path d="M9 4.5h6M9 10h6M9 14l2 2 4-4"/>
+                    </svg>
                 </div>
 
-                <div class="credentials-grid">
+                <h3>From idea to delivery</h3>
 
-                    <article class="credential-card">
-                        <div class="credential-icon" aria-hidden="true">ED</div>
-                        <div>
-                            <h3>Bachelor's Degree in Engineering</h3>
-                            <p>
-                                KDK College of Engineering ·
-                                Mechanical Engineering
-                            </p>
-                            <p>
-                                CGPA: 8.55 · First Division
-                            </p>
-                        </div>
-                    </article>
+                <p>
+                    I help turn business needs into clear requirements,
+                    actionable user stories, and coordinated releases.
+                </p>
 
-                    <article class="credential-card">
-                        <div class="credential-icon" aria-hidden="true">✓</div>
-                        <div>
-                            <h3>Certified Scrum Product Owner</h3>
-                            <p>CSPO certification</p>
-                            <p>
-                                Product ownership and Agile delivery foundations.
-                            </p>
+            </article>
+
+            <!-- CARD 2: TEAM COLLABORATION -->
+            <article class="strength-card">
+
+                <div class="strength-icon" aria-hidden="true">
+                    <svg viewBox="0 0 24 24" fill="none"
+                         stroke="currentColor" stroke-width="1.8"
+                         stroke-linecap="round" stroke-linejoin="round">
+                        <circle cx="9" cy="8" r="3"/>
+                        <path d="M3 20v-2a6 6 0 0 1 12 0v2"/>
+                        <path d="M17 5a3 3 0 0 1 0 6"/>
+                        <path d="M18 14a5 5 0 0 1 3 5v1"/>
+                    </svg>
+                </div>
+
+                <h3>Connecting the teams</h3>
+
+                <p>
+                    I bring stakeholders, engineering, QA, and operations
+                    together to clarify priorities, address blockers,
+                    and keep delivery moving.
+                </p>
+
+            </article>
+
+            <!-- CARD 3: ENTERPRISE SOLUTIONS -->
+            <article class="strength-card">
+
+                <div class="strength-icon" aria-hidden="true">
+                    <svg viewBox="0 0 24 24" fill="none"
+                         stroke="currentColor" stroke-width="1.8"
+                         stroke-linecap="round" stroke-linejoin="round">
+                        <rect x="9" y="2" width="6" height="6" rx="1"/>
+                        <rect x="2" y="16" width="6" height="6" rx="1"/>
+                        <rect x="16" y="16" width="6" height="6" rx="1"/>
+                        <path d="M12 8v4M5 16v-4h14v4"/>
+                    </svg>
+                </div>
+
+                <h3>Solving complex problems</h3>
+
+                <p>
+                    I've supported enterprise integrations, data migrations,
+                    identity management, and monitoring initiatives,
+                    helping teams deliver dependable solutions.
+                </p>
+
+            </article>
+
+        </div>
+
+    </div>
+</section>
+
+        <!-- Selected projects -->
+
+<section class="section projects-section" id="projects">
+    <div class="container">
+
+        <div class="section-heading">
+            <span class="eyebrow">Selected work</span>
+            <h2>A little of what I do.</h2>
+            <p class="section-intro">
+                From connecting systems to delivering new features,
+                my work is about understanding problems, bringing
+                people together and helping turn requirements into
+                practical solutions.
+            </p>
+        </div>
+
+        <div class="project-grid">
+
+            <article class="project-card">
+                <a class="project-image" href="etl-case-study.html"
+                   aria-label="View data migration project">
+                    <img src="images/data-migration.png"
+                         alt="Reference image for a data migration project">
+                </a>
+                <div class="project-content">
+                    <span class="project-category">Data & Platforms</span>
+                    <h3>Moving data between systems</h3>
+                    <p>
+                        Helping teams map business data, clarify
+                        requirements and validate information during
+                        a platform migration.
+                    </p>
+                    <a class="project-link" href="etl-case-study.html">
+                        Read about the project ↗
+                    </a>
+                </div>
+            </article>
+
+            <article class="project-card">
+                <a class="project-image" href="monitoring-case-study.html"
+                   aria-label="View monitoring and incident management project">
+                    <img src="images/monitoring.png"
+                         alt="Reference image for system monitoring">
+                </a>
+                <div class="project-content">
+                    <span class="project-category">Operations</span>
+                    <h3>Understanding what's happening in a system</h3>
+                    <p>
+                        Making alerts and incidents easier for teams
+                        to investigate through monitoring coordination,
+                        documentation and issue tracking.
+                    </p>
+                    <a class="project-link" href="monitoring-case-study.html">
+                        Read about the project ↗
+                    </a>
+                </div>
+            </article>
+
+            <article class="project-card">
+                <a class="project-image" href="idm-case-study.html"
+                   aria-label="View identity management project">
+                    <img src="images/identity-management.png"
+                         alt="Reference image for identity management">
+                </a>
+                <div class="project-content">
+                    <span class="project-category">Identity & Access</span>
+                    <h3>Helping systems recognise their users</h3>
+                    <p>
+                        Coordinating identity integration requirements,
+                        migration scenarios and readiness for enterprise
+                        software delivery.
+                    </p>
+                    <a class="project-link" href="idm-case-study.html">
+                        Read about the project ↗
+                    </a>
+                </div>
+            </article>
+
+            <article class="project-card">
+                <a class="project-image" href="aws-migration-case-study.html"
+                   aria-label="View cloud migration project">
+                    <img src="images/cloud-migration.png"
+                         alt="Reference image for a cloud migration">
+                </a>
+                <div class="project-content">
+                    <span class="project-category">Cloud & Infrastructure</span>
+                    <h3>Moving an application environment</h3>
+                    <p>
+                        Bringing development, database and DevOps teams
+                        together to coordinate migration activities
+                        and dependencies.
+                    </p>
+                    <a class="project-link" href="aws-migration-case-study.html">
+                        Read about the project ↗
+                    </a>
+                </div>
+            </article>
+
+            <article class="project-card">
+                <a class="project-image" href="iot-integration-case-study.html"
+                   aria-label="View hospitality integrations project">
+                    <img src="images/hospitality-integrations.png"
+                         alt="Reference image for hospitality technology integrations">
+                </a>
+                <div class="project-content">
+                    <span class="project-category">Hospitality Technology</span>
+                    <h3>Connecting hospitality systems</h3>
+                    <p>
+                        Working through integration requirements,
+                        test coordination and go-live activities across
+                        connected hospitality technologies.
+                    </p>
+                    <a class="project-link" href="iot-integration-case-study.html">
+                        Read about the project ↗
+                    </a>
+                </div>
+            </article>
+
+            <article class="project-card">
+                <a class="project-image" href="feature-delivery-case-study.html"
+                   aria-label="View product feature delivery project">
+                    <img src="images/feature-delivery.png"
+                         alt="Reference image for product feature delivery">
+                </a>
+                <div class="project-content">
+                    <span class="project-category">Product Delivery</span>
+                    <h3>From feature idea to release</h3>
+                    <p>
+                        Turning requirements into user stories,
+                        aligning stakeholders and supporting teams
+                        through validation and release readiness.
+                    </p>
+                    <a class="project-link" href="feature-delivery-case-study.html">
+                        Read about the project ↗
+                    </a>
+                </div>
+            </article>
+
+        </div>
+    </div>
+</section>
+
+
+
+<!-- EXPERIENCE — INTERACTIVE CAREER TIMELINE -->
+<section class="section career-section" id="experience">
+    <div class="container">
+
+        <div class="career-intro">
+            <span class="eyebrow">Professional experience</span>
+            <h2>My career journey</h2>
+            <p>
+                From investigating customer problems to understanding
+                business requirements and coordinating enterprise
+                product delivery.
+            </p>
+        </div>
+
+        <div class="career-chart">
+
+            <div class="career-chart-heading">
+                <div>
+                    <h3>Career progression</h3>
+                    <p>HotelKey · 2019–2025</p>
+                </div>
+
+                <span class="career-chart-hint">
+                    Select a role to explore
+                </span>
+            </div>
+
+            <!-- Scrollable Gantt-style timeline -->
+            <div class="career-chart-scroll" tabindex="0"
+                 aria-label="Career timeline from 2019 to 2025">
+
+                <div class="career-chart-inner">
+
+                    <!-- Year headings -->
+                    <div class="career-chart-years">
+                        <span class="career-chart-spacer"></span>
+                        <div class="career-year-grid">
+                            <span>2019</span>
+                            <span>2020</span>
+                            <span>2021</span>
+                            <span>2022</span>
+                            <span>2023</span>
+                            <span>2024</span>
+                            <span>2025</span>
                         </div>
-                    </article>
+                    </div>
+
+                    <!-- Product Delivery Manager -->
+                    <div class="career-chart-row">
+                        <span class="career-role-label">
+                            Product Delivery Manager
+                        </span>
+
+                        <div class="career-track">
+                            <button
+                                type="button"
+                                class="career-bar career-bar-delivery is-active"
+                                data-career="delivery"
+                                aria-pressed="true"
+                                style="--bar-start: 3.8; --bar-length: 3.2;"
+                                aria-label="Product Delivery Manager, late 2022 to 2025"
+                            >
+                                <span class="career-bar-label">
+                                    Product Delivery
+                                </span>
+                            </button>
+                        </div>
+                    </div>
+
+                    <!-- Business Analyst -->
+                    <div class="career-chart-row">
+                        <span class="career-role-label">
+                            Business Analyst
+                        </span>
+
+                        <div class="career-track">
+                            <button
+                                type="button"
+                                class="career-bar career-bar-analyst"
+                                data-career="analyst"
+                                aria-pressed="false"
+                                style="--bar-start: 1; --bar-length: 2.8;"
+                                aria-label="Business Analyst, 2020 to late 2022"
+                            >
+                                <span class="career-bar-label">
+                                    Business Analysis
+                                </span>
+                            </button>
+                        </div>
+                    </div>
+
+                    <!-- Technical Support -->
+                    <div class="career-chart-row">
+                        <span class="career-role-label">
+                            Technical Support Agent
+                        </span>
+
+                        <div class="career-track">
+                            <button
+                                type="button"
+                                class="career-bar career-bar-support"
+                                data-career="support"
+                                aria-pressed="false"
+                                style="--bar-start: 0; --bar-length: 1;"
+                                aria-label="Technical Support Agent, 2019 to 2020"
+                            >
+                                <span class="career-bar-label">
+                                    Support
+                                </span>
+                            </button>
+                        </div>
+                    </div>
 
                 </div>
             </div>
-        </section>
+
+
+            <!-- Interactive details panel -->
+            <div class="career-detail" id="careerDetail"
+                 aria-live="polite" aria-atomic="true">
+
+                <div class="career-detail-header">
+                    <div>
+                        <span class="career-detail-eyebrow">
+                            Selected role
+                        </span>
+                        <h3 id="careerDetailTitle">
+                            Product Delivery Manager
+                        </h3>
+                        <p id="careerDetailDate">
+                            HotelKey · Late 2022–2025
+                        </p>
+                    </div>
+                </div>
+
+                <p class="career-detail-summary"
+                   id="careerDetailSummary">
+                    Connecting business priorities with engineering
+                    and delivery teams.
+                </p>
+
+                <ul class="career-detail-list" id="careerDetailList">
+                    <li>
+                        Turned client and business requirements into
+                        user stories and actionable work.
+                    </li>
+                    <li>
+                        Coordinated developers, QA, DevOps and external
+                        teams across integrations, identity management,
+                        data migration and monitoring.
+                    </li>
+                    <li>
+                        Supported testing, issue investigation,
+                        release readiness and go-live.
+                    </li>
+                </ul>
+
+            </div>
+
+        </div>
+
+    </div>
+</section>
+
+
+<!-- =========================================
+     INTERACTIVE RPG SKILL TREE
+========================================= -->
+
+<section class="section skills-tree-section" id="skills">
+    <div class="container">
+
+        <div class="section-heading">
+            <span class="eyebrow">What I bring to a team</span>
+            <h2>My skills, connected.</h2>
+            <p class="section-intro">
+                Explore the skills I use to connect business needs,
+                technical teams, and successful product delivery.
+            </p>
+        </div>
+
+        
+<div class="skills-tree" id="skillsTree">
+
+    <!-- Skill tree header -->
+    <div class="skills-tree-header">
+        <div>
+            <span class="skills-tree-label">EXPERTISE MAP</span>
+            <h3>Product Delivery Skill Tree</h3>
+        </div>
+        <span class="skills-tree-hint">
+            Select an ability to explore
+        </span>
+    </div>
+
+    <!-- Three skill branches -->
+    <div class="skills-tree-board">
+        <svg
+            class="skill-tree-connections"
+            aria-hidden="true"
+            xmlns="http://www.w3.org/2000/svg"
+        >
+        </svg>
+        <!-- BUSINESS ANALYSIS -->
+        <div class="skill-branch branch-business">
+            <h4>Business & Product</h4>
+
+            <div class="skill-branch-nodes">
+                <button class="skill-ability" type="button"
+                        data-ability="requirements">
+                    <span class="ability-icon" aria-hidden="true">◎</span>
+                    <span class="ability-name">Requirements</span>
+                </button>
+
+                <button class="skill-ability" type="button"
+                        data-ability="stories">
+                    <span class="ability-icon" aria-hidden="true">▤</span>
+                    <span class="ability-name">User Stories</span>
+                </button>
+
+                <button class="skill-ability" type="button"
+                        data-ability="process">
+                    <span class="ability-icon" aria-hidden="true">◇</span>
+                    <span class="ability-name">Process Mapping</span>
+                </button>
+
+                <button class="skill-ability" type="button"
+                        data-ability="stakeholders">
+                    <span class="ability-icon" aria-hidden="true">♧</span>
+                    <span class="ability-name">Stakeholders</span>
+                </button>
+
+                <button class="skill-ability" type="button"
+                        data-ability="prioritization">
+                    <span class="ability-icon" aria-hidden="true">✧</span>
+                    <span class="ability-name">Prioritization</span>
+                </button>
+
+                <button class="skill-ability" type="button"
+                        data-ability="documentation">
+                    <span class="ability-icon" aria-hidden="true">▣</span>
+                    <span class="ability-name">Documentation</span>
+                </button>
+            </div>
+        </div>
+
+        <!-- PRODUCT DELIVERY -->
+        <div class="skill-branch branch-delivery">
+            <h4>Delivery & Quality</h4>
+
+            <div class="skill-branch-nodes">
+                <button class="skill-ability" type="button"
+                        data-ability="agile">
+                    <span class="ability-icon" aria-hidden="true">↻</span>
+                    <span class="ability-name">Agile / Scrum</span>
+                </button>
+
+                <button class="skill-ability" type="button"
+                        data-ability="coordination">
+                    <span class="ability-icon" aria-hidden="true">✣</span>
+                    <span class="ability-name">Coordination</span>
+                </button>
+
+                <button class="skill-ability" type="button"
+                        data-ability="release">
+                    <span class="ability-icon" aria-hidden="true">➤</span>
+                    <span class="ability-name">Release Planning</span>
+                </button>
+
+                <button class="skill-ability" type="button"
+                        data-ability="testing">
+                    <span class="ability-icon" aria-hidden="true">✓</span>
+                    <span class="ability-name">Testing & UAT</span>
+                </button>
+
+                <button class="skill-ability" type="button"
+                        data-ability="issues">
+                    <span class="ability-icon" aria-hidden="true">⚑</span>
+                    <span class="ability-name">Issue Resolution</span>
+                </button>
+
+                <button class="skill-ability" type="button"
+                        data-ability="golive">
+                    <span class="ability-icon" aria-hidden="true">✦</span>
+                    <span class="ability-name">Go-Live Support</span>
+                </button>
+            </div>
+        </div>
+
+        <!-- TECHNICAL SYSTEMS -->
+        <div class="skill-branch branch-technical">
+            <h4>Technical & Systems</h4>
+
+            <div class="skill-branch-nodes">
+                <button class="skill-ability" type="button"
+                        data-ability="sql">
+                    <span class="ability-icon" aria-hidden="true">▤</span>
+                    <span class="ability-name">SQL & Data</span>
+                </button>
+
+                <button class="skill-ability" type="button"
+                        data-ability="apis">
+                    <span class="ability-icon" aria-hidden="true">⌘</span>
+                    <span class="ability-name">API Integrations</span>
+                </button>
+
+                <button class="skill-ability" type="button"
+                        data-ability="aws">
+                    <span class="ability-icon" aria-hidden="true">☁</span>
+                    <span class="ability-name">AWS & Cloud</span>
+                </button>
+
+                <button class="skill-ability" type="button"
+                        data-ability="monitoring">
+                    <span class="ability-icon" aria-hidden="true">◉</span>
+                    <span class="ability-name">Monitoring</span>
+                </button>
+
+                <button class="skill-ability" type="button"
+                        data-ability="identity">
+                    <span class="ability-icon" aria-hidden="true">♙</span>
+                    <span class="ability-name">Identity Systems</span>
+                </button>
+
+                <button class="skill-ability" type="button"
+                        data-ability="migration">
+                    <span class="ability-icon" aria-hidden="true">⇄</span>
+                    <span class="ability-name">Data Migration</span>
+                </button>
+            </div>
+        </div>
+
+    </div>
+
+    <!-- Selected ability details -->
+    <div class="skill-ability-details"
+         id="skillAbilityDetails"
+         aria-live="polite">
+
+        <span class="skill-detail-category">
+            BUSINESS & PRODUCT
+        </span>
+
+        <h3 id="skillAbilityTitle">
+            Requirements Gathering
+        </h3>
+
+        <p id="skillAbilityDescription">
+            Understanding client needs and translating them
+            into clear, actionable requirements.
+        </p>
+
+        <div class="skill-ability-tags" id="skillAbilityTags">
+            <span>Business Analysis</span>
+            <span>User Stories</span>
+            <span>Stakeholder Collaboration</span>
+        </div>
+
+        <div class="skill-ability-example">
+            <strong>How I use this skill</strong>
+            <p id="skillAbilityExample">
+                I work with clients and engineering teams to clarify
+                requirements, identify dependencies, and support delivery.
+            </p>
+        </div>
+
+    </div>
+
+</div>
+
+
+    </div>
+</section>
+     
+
+
+  
+<!-- =========================================
+     EDUCATION & CERTIFICATIONS
+========================================= -->
+
+<section class="section credentials-section" id="credentials">
+    <div class="container">
+
+        <div class="section-heading">
+            <span class="eyebrow">My foundations</span>
+
+            <h2>Education & Certification</h2>
+
+            <p class="section-intro">
+                An engineering background complemented by
+                professional training in product ownership
+                and Agile delivery.
+            </p>
+        </div>
+
+        <div class="credentials-showcase">
+
+            <!-- Education -->
+            <article class="credential-showcase-card education-card">
+
+                <div class="credential-showcase-top">
+                    <div class="credential-showcase-icon"
+                         aria-hidden="true">
+                        <svg viewBox="0 0 24 24"
+                             fill="none"
+                             stroke="currentColor"
+                             stroke-width="1.8"
+                             stroke-linecap="round"
+                             stroke-linejoin="round">
+                            <path d="m2 10 10-5 10 5-10 5-10-5Z"/>
+                            <path d="M6 12v5c3.5 3 8.5 3 12 0v-5"/>
+                            <path d="M22 10v7"/>
+                        </svg>
+                    </div>
+
+                    <span class="credential-showcase-type">
+                        Education
+                    </span>
+                </div>
+
+                <div class="credential-showcase-body">
+                    <h3>Bachelor's Degree in Engineering</h3>
+
+                    <p class="credential-showcase-specialization">
+                        Mechanical Engineering
+                    </p>
+
+                    <p class="credential-showcase-institution">
+                        KDK College of Engineering
+                    </p>
+                </div>
+
+                <div class="credential-showcase-footer">
+                    <span>CGPA 8.55 / 10</span>
+                    <span>First Division</span>
+                </div>
+
+            </article>
+
+            <!-- Certification -->
+            <article class="credential-showcase-card certification-card">
+
+                <div class="credential-showcase-top">
+                    <div class="credential-showcase-icon"
+                         aria-hidden="true">
+                        <svg viewBox="0 0 24 24"
+                             fill="none"
+                             stroke="currentColor"
+                             stroke-width="1.8"
+                             stroke-linecap="round"
+                             stroke-linejoin="round">
+                            <circle cx="12" cy="8" r="5"/>
+                            <path d="m8.5 12-1.5 9 5-3 5 3-1.5-9"/>
+                            <path d="m10 8 1.5 1.5L14 7"/>
+                        </svg>
+                    </div>
+
+                    <span class="credential-showcase-type">
+                        Professional Certification
+                    </span>
+                </div>
+
+                <div class="credential-showcase-body">
+                    <h3>Certified Scrum Product Owner</h3>
+
+                    <p class="credential-showcase-specialization">
+                        CSPO
+                    </p>
+
+                    <p class="credential-showcase-institution">
+                        Product ownership and Scrum principles
+                    </p>
+                </div>
+
+                <div class="credential-showcase-footer">
+                    <span>Agile Delivery</span>
+                    <span>Product Ownership</span>
+                </div>
+
+            </article>
+
+        </div>
+
+    </div>
+</section>
+
+
+
 
         <!-- Contact -->
         <section class="section" id="contact">
